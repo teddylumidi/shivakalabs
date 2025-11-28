@@ -3,43 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivakalabs - Your Gateway to Digital Excellence</title>
+    <title>Shivakalabs - Elevate Your Digital Future</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom scrollbar for dark theme */
+        /* Custom scrollbar for premium dark theme */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #2d3748; /* Dark gray */
+            background: #3a3a42; /* Charcoal gray */
         }
         ::-webkit-scrollbar-thumb {
-            background: #4a5568; /* Lighter gray */
+            background: #D4AF37; /* Rich gold */
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #6b7280;
+            background: #E8C547;
         }
 
-        /* Custom Colors/Theming */
-        .dark-bg { background-color: #1f2025; }
-        .dark-header { background-color: #0b1a37; } /* Deep Navy/Dark Blue */
-        .gold-accent { color: #facc15; } /* Tailwind yellow-400 */
-        .gold-border { border-color: #facc15; }
-        .blue-package { background-color: #1e3a8a; } /* Dark Blue */
-        .orange-package { background-color: #c2410c; } /* Dark Orange */
-        .green-package { background-color: #047857; } /* Dark Green */
-        .package-footer-blue { background-color: #172554; }
-        .package-footer-orange { background-color: #9a3412; }
-        .package-footer-green { background-color: #065f46; }
+        /* Premium Colors/Theming matching logo */
+        .dark-bg { background-color: #0f0f15; } /* Deep charcoal */
+        .dark-header { background-color: #1a1a24; } /* Premium dark gray */
+        .gold-accent { color: #D4AF37; } /* Rich gold */
+        .gold-border { border-color: #D4AF37; }
+        .blue-package { background-color: #2a2a3a; } /* Charcoal with blue tint */
+        .orange-package { background-color: #3a2a1a; } /* Charcoal with gold tint */
+        .green-package { background-color: #2a3a2a; } /* Charcoal with green tint */
+        .package-footer-blue { background-color: #1a1a2a; }
+        .package-footer-orange { background-color: #2a1a0a; }
+        .package-footer-green { background-color: #1a2a1a; }
         .whatsapp-green { background-color: #25D366; } /* Official WhatsApp Green */
+        
+        /* Premium gradients */
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%); }
+        .gold-text-gradient { background: linear-gradient(135deg, #D4AF37, #E8C547); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
         /* Active sidebar link style */
         .active-link {
-            background-color: #facc15;
-            color: #1f2025 !important;
+            background-color: #D4AF37;
+            color: #0f0f15 !important;
             font-weight: 700;
         }
+        
+        /* Luxury card hover effects */
+        .luxury-card { transition: all 0.3s ease; }
+        .luxury-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15); }
     </style>
     <script>
         tailwind.config = {
@@ -60,12 +68,12 @@
         <header class="dark-header shadow-lg p-4 sticky top-0 z-10">
             <div class="max-w-7xl mx-auto flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center border-2 border-white">
+                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-full flex items-center justify-center border-2 border-gray-400 shadow-lg">
                         <span class="text-xl font-black dark-bg p-1 rounded-full leading-none">S</span>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold">Shivakalabs</h1>
-                        <p class="text-sm text-gray-300">Your Gateway to Digital Excellence</p>
+                        <h1 class="text-2xl font-bold text-white">Shivakalabs</h1>
+                        <p class="text-sm text-gray-400">Elevate Your Digital Future</p>
                     </div>
                 </div>
                 
@@ -145,49 +153,50 @@
         const content = {
             'home': `
                 <div class="p-6 md:p-8 dark-bg">
-                    <h2 class="text-3xl font-semibold text-center text-white mb-8">Welcome to ShivakaLabs — your one-stop platform for all government services and professional solutions</h2>
+                    <h2 class="text-4xl font-bold text-center text-white mb-3">Elevate Your Digital Presence</h2>
+                    <p class="text-center text-gray-400 text-lg mb-12">Premium services for government, web, design & marketing</p>
                     
                     <div class="flex justify-center mb-12">
-                        <div class="w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center border-4 border-white shadow-xl">
-                            <span class="text-4xl font-black dark-bg p-2 rounded-full leading-none">S</span>
+                        <div class="w-28 h-28 gold-gradient rounded-full flex items-center justify-center border-4 border-gray-400 shadow-2xl transform hover:scale-105 transition">
+                            <span class="text-5xl font-black dark-bg p-2 rounded-full leading-none">S</span>
                         </div>
                     </div>
 
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         
                         <!-- Service Card: eCitizen -->
-                        <div class="dark-header p-6 rounded-xl shadow-lg hover:shadow-yellow-500/30 transition duration-300 border-t-4 border-yellow-400">
-                            <h3 class="text-xl font-bold mb-2 text-yellow-400">eCitizen</h3>
-                            <p class="text-gray-300 text-sm mb-4">Access essential government services like KRA, NTSA, and immigration forms easily.</p>
+                        <div class="luxury-card dark-header p-6 rounded-xl shadow-lg border-t-4 border-yellow-400">
+                            <h3 class="text-xl font-bold mb-2 gold-accent">eCitizen Services</h3>
+                            <p class="text-gray-300 text-sm mb-4">Seamlessly navigate government portals—KRA, NTSA, immigration, and more with trusted expertise.</p>
                             <button onclick="setView('ecitizen')" class="whatsapp-green hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition flex items-center justify-center">
-                                ${whatsappIcon} Contact via WhatsApp
+                                ${whatsappIcon} Connect Now
                             </button>
                         </div>
                         
                         <!-- Service Card: Web Development -->
-                        <div class="dark-header p-6 rounded-xl shadow-lg hover:shadow-yellow-500/30 transition duration-300 border-t-4 border-yellow-400">
-                            <h3 class="text-xl font-bold mb-2 text-yellow-400">Web Development</h3>
-                            <p class="text-gray-300 text-sm mb-4">Professional full-stack solutions: custom websites, e-commerce, and system integration.</p>
+                        <div class="luxury-card dark-header p-6 rounded-xl shadow-lg border-t-4 border-yellow-400">
+                            <h3 class="text-xl font-bold mb-2 gold-accent">Web Development</h3>
+                            <p class="text-gray-300 text-sm mb-4">Bespoke digital solutions: stunning websites, powerful e-commerce, and seamless integrations.</p>
                             <button onclick="setView('web-development')" class="whatsapp-green hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition flex items-center justify-center">
-                                ${whatsappIcon} Contact via WhatsApp
+                                ${whatsappIcon} Connect Now
                             </button>
                         </div>
 
                         <!-- Service Card: Graphic Design -->
-                        <div class="dark-header p-6 rounded-xl shadow-lg hover:shadow-yellow-500/30 transition duration-300 border-t-4 border-yellow-400">
-                            <h3 class="text-xl font-bold mb-2 text-yellow-400">Graphic Design</h3>
-                            <p class="text-gray-300 text-sm mb-4">Stunning visual branding, logos, print media, and digital asset creation.</p>
+                        <div class="luxury-card dark-header p-6 rounded-xl shadow-lg border-t-4 border-yellow-400">
+                            <h3 class="text-xl font-bold mb-2 gold-accent">Graphic Design</h3>
+                            <p class="text-gray-300 text-sm mb-4">Captivating brand identity, logos, print media, and digital art that leaves lasting impressions.</p>
                             <button onclick="setView('graphic-design')" class="whatsapp-green hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition flex items-center justify-center">
-                                ${whatsappIcon} Contact via WhatsApp
+                                ${whatsappIcon} Connect Now
                             </button>
                         </div>
 
                         <!-- Service Card: Digital Marketing -->
-                        <div class="dark-header p-6 rounded-xl shadow-lg hover:shadow-yellow-500/30 transition duration-300 border-t-4 border-yellow-400">
-                            <h3 class="text-xl font-bold mb-2 text-yellow-400">Digital Marketing</h3>
-                            <p class="text-gray-300 text-sm mb-4">Strategy and execution for SEO, social media, campaigns, and online visibility.</p>
+                        <div class="luxury-card dark-header p-6 rounded-xl shadow-lg border-t-4 border-yellow-400">
+                            <h3 class="text-xl font-bold mb-2 gold-accent">Digital Marketing</h3>
+                            <p class="text-gray-300 text-sm mb-4">Strategic campaigns: SEO mastery, social prominence, and amplified online visibility guaranteed.</p>
                             <button onclick="setView('digital-marketing')" class="whatsapp-green hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition flex items-center justify-center">
-                                ${whatsappIcon} Contact via WhatsApp
+                                ${whatsappIcon} Connect Now
                             </button>
                         </div>
 
@@ -196,8 +205,8 @@
             `,
             'ecitizen': `
                 <div class="p-6 md:p-8 dark-bg">
-                    <h2 class="text-3xl font-semibold text-white mb-2">E-CITIZEN & GOVERNMENT SERVICES ASSISTANCE</h2>
-                    <p class="text-gray-400 mb-8">We simplify and streamline complex government processes, ensuring quick and accurate submission for all critical services.</p>
+                    <h2 class="text-4xl font-bold gold-accent mb-2">Official Government Portal Mastery</h2>
+                    <p class="text-gray-400 mb-8 text-lg">Navigate every government service with precision, speed, and complete peace of mind.</p>
 
                     <div class="grid lg:grid-cols-2 gap-8">
                         
@@ -264,7 +273,8 @@
             `,
             'web-development': `
                 <div class="p-6 md:p-8 dark-bg">
-                    <h2 class="text-3xl font-semibold text-red-500 mb-8">WEB DEVELOPMENT PACKAGES</h2>
+                    <h2 class="text-4xl font-bold gold-accent mb-2">Premium Web Solutions</h2>
+                    <p class="text-gray-400 mb-8 text-lg">Crafted websites that convert, engage, and elevate your online presence</p>
 
                     <div class="grid lg:grid-cols-3 gap-6">
                         
