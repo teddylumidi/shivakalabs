@@ -4,6 +4,7 @@ import re
 import secrets
 import gzip
 import io
+import json
 from datetime import datetime, timedelta
 from flask import Flask, request, jsonify, send_file, session, make_response
 from flask_cors import CORS
@@ -19,6 +20,11 @@ from docx import Document
 import requests
 import html
 import bleach
+try:
+    from openai import OpenAI
+    OPENAI_CLIENT = OpenAI(api_key=os.getenv('OPENAI_API_KEY', ''))
+except:
+    OPENAI_CLIENT = None
 
 app = Flask(__name__)
 app.config['COMPRESS_LEVEL'] = 9
@@ -358,6 +364,38 @@ def generate_cover_letter_docx(filename):
     doc.add_paragraph()
     doc.add_paragraph('Best regards,')
     doc.save(filename)
+
+@app.route('/api/ai-generate-document', methods=['POST'])
+def ai_generate_document():
+    """AI-Generate document using GPT-5"""
+    data = request.json or {}
+    doc_type = bleach.clean(str(data.get('type', 'cv')))
+    language = bleach.clean(str(data.get('language', 'en')))
+    
+    prompts = {
+        'cv': f'Generate a professional CV in {language} with realistic details for a software engineer with 5 years experience. Include: contact, summary (2-3 lines), experience (3 roles), education, skills. Format nicely.',
+        'cover-letter': f'Generate a professional cover letter in {language} for a tech position. Make it compelling and personalized. Include: opening, 2 paragraphs about experience, closing.',
+        'proposal': f'Generate a 1-page project proposal in {language} for web development services. Include: executive summary, scope (3 deliverables), timeline (3 phases), pricing breakdown.',
+        'invoice': f'Generate a professional invoice in {language}. Include: invoice number, date, client info, 3 line items with quantities/rates, subtotal, tax, total.',
+        'certificate': f'Generate a certificate of achievement in {language}. Include: title, recipient placeholder, course name, date, organization.',
+        'report': f'Generate a professional 1-page report in {language}. Include: title, executive summary, 3 findings with details, conclusion with recommendations.'
+    }
+    
+    prompt = prompts.get(doc_type, f'Generate a professional {doc_type} document in {language}')
+    
+    if OPENAI_CLIENT:
+        try:
+            response = OPENAI_CLIENT.chat.completions.create(
+                model="gpt-5",
+                messages=[{"role": "user", "content": prompt}],
+                max_completion_tokens=1024
+            )
+            content = response.choices[0].message.content
+            return jsonify({'content': content}), 200
+        except Exception as e:
+            pass
+    
+    return jsonify({'content': f'[Document: {doc_type.upper()}]\n\n[AI generation requires OpenAI API key. Using template...]\n\nThis is a {doc_type} template in {language}.'}), 200
 
 @app.route('/api/verify-payment', methods=['POST'])
 def verify_payment():

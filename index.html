@@ -211,9 +211,9 @@
                         </div>
 
                         <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700 hover:border-indigo-400">
-                            <div class="w-24 h-24 mx-auto mb-4 bg-gradient-gold rounded-lg flex items-center justify-center drop-shadow-lg"><svg class="w-12 h-12 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/></svg></div>
+                            <img src="/documents-gen-logo.png" alt="DocumentsGen Logo" class="h-32 w-32 mx-auto mb-4 object-contain drop-shadow-lg">
                             <h3 class="text-2xl font-bold text-white mb-3">DocumentsGen</h3>
-                            <p class="text-gray-400 mb-6">AI-powered document generation: CVs, proposals, certificates, invoices, and more</p>
+                            <p class="text-gray-400 mb-6">AI-powered document generation powered by GPT-5</p>
                             <button onclick="setView('documents-gen')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>Generate Now</button>
                         </div>
                     </div>
@@ -222,9 +222,9 @@
             'documents-gen': `
                 <div class="space-y-8">
                     <div class="text-center mb-8">
-                        <div class="w-32 h-32 bg-gradient-gold rounded-2xl flex items-center justify-center mx-auto mb-4 drop-shadow-lg"><svg class="w-16 h-16 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/></svg></div>
+                        <img src="/documents-gen-logo.png" alt="DocumentsGen" class="h-40 w-40 mx-auto mb-4 object-contain drop-shadow-lg">
                         <h2 class="text-4xl font-bold gold-accent mb-2">DocumentsGen</h2>
-                        <p class="text-gray-400 text-lg">AI-Powered Global Document Generation</p>
+                        <p class="text-gray-400 text-lg">AI-Generated Documents in 6 Languages, 8 Currencies, 180+ Countries</p>
                     </div>
 
                     <div class="grid md:grid-cols-3 gap-4 mb-6">
@@ -883,11 +883,19 @@
             securityManager.showNotification(`✅ ${tier.toUpperCase()} mode activated! ${docGenState.limits} documents available.`, 'success');
         }
 
-        function selectDoc(type) {
+        async function selectDoc(type) {
             if (!docGenState.tier) { securityManager.showNotification('Select a plan first.', 'error'); return; }
             if (docGenState.docs >= docGenState.limits) { securityManager.showNotification(`Limit reached! (${docGenState.docs}/${docGenState.limits})`, 'error'); return; }
-            document.getElementById('preview-content').textContent = templates[type] || 'Template loading...';
+            document.getElementById('preview-content').textContent = '🤖 AI is generating your document...';
             document.getElementById('generated-content').classList.remove('hidden');
+            try {
+                const res = await fetch('/api/ai-generate-document', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({type: type, language: document.getElementById('language-selector')?.value || 'en'}) });
+                const data = await res.json();
+                document.getElementById('preview-content').textContent = data.content || templates[type] || 'Generated content';
+            } catch(e) {
+                document.getElementById('preview-content').textContent = templates[type] || 'Template fallback';
+                securityManager.showNotification('Using template (AI unavailable)', 'info');
+            }
             document.getElementById('doc-type').value = type;
         }
 
