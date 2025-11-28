@@ -2,8 +2,6 @@
 import os
 import re
 import secrets
-import hashlib
-from functools import wraps
 from datetime import datetime, timedelta
 from flask import Flask, request, jsonify, send_file, session, make_response
 from flask_cors import CORS
@@ -11,7 +9,6 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
-from werkzeug.security import safe_str_cmp
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
