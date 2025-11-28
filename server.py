@@ -8,7 +8,9 @@ HANDLER = http.server.SimpleHTTPRequestHandler
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
+socketserver.TCPServer.allow_reuse_address = True
+
 with socketserver.TCPServer(("0.0.0.0", PORT), HANDLER) as httpd:
     print(f"Server running at http://0.0.0.0:{PORT}/")
-    print("Serving index..jsx as the main page")
+    print("Serving index.html")
     httpd.serve_forever()
