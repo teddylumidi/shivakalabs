@@ -224,51 +224,98 @@
                     <div class="text-center mb-8">
                         <div class="w-32 h-32 bg-gradient-gold rounded-2xl flex items-center justify-center mx-auto mb-4 drop-shadow-lg"><svg class="w-16 h-16 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/></svg></div>
                         <h2 class="text-4xl font-bold gold-accent mb-2">DocumentsGen</h2>
-                        <p class="text-gray-400 text-lg">AI-Powered Professional Document Generation</p>
+                        <p class="text-gray-400 text-lg">AI-Powered Global Document Generation</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-4 mb-6">
+                        <div class="luxury-card dark-header p-4 rounded-xl border border-gray-700">
+                            <label class="text-xs font-bold text-yellow-400">🌍 Country</label>
+                            <select id="country-selector" onchange="updatePricing()" class="w-full p-2 bg-gray-900 border border-gray-600 rounded text-white text-sm font-bold">
+                                <option value="KE">🇰🇪 Kenya</option>
+                                <option value="US">🇺🇸 United States</option>
+                                <option value="GB">🇬🇧 United Kingdom</option>
+                                <option value="IN">🇮🇳 India</option>
+                                <option value="NG">🇳🇬 Nigeria</option>
+                                <option value="ZA">🇿🇦 South Africa</option>
+                                <option value="UG">🇺🇬 Uganda</option>
+                                <option value="GH">🇬🇭 Ghana</option>
+                                <option value="CA">🇨🇦 Canada</option>
+                                <option value="AU">🇦🇺 Australia</option>
+                            </select>
+                        </div>
+                        <div class="luxury-card dark-header p-4 rounded-xl border border-gray-700">
+                            <label class="text-xs font-bold text-yellow-400">🗣️ Language</label>
+                            <select id="language-selector" class="w-full p-2 bg-gray-900 border border-gray-600 rounded text-white text-sm font-bold">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="ar">العربية</option>
+                                <option value="sw">Kiswahili</option>
+                                <option value="hi">हिन्दी</option>
+                                <option value="zh">中文</option>
+                            </select>
+                        </div>
+                        <div class="luxury-card dark-header p-4 rounded-xl border border-gray-700">
+                            <label class="text-xs font-bold text-yellow-400">💱 Currency</label>
+                            <select id="currency-selector" onchange="updatePricing()" class="w-full p-2 bg-gray-900 border border-gray-600 rounded text-white text-sm font-bold">
+                                <option value="KES">KES - KSh</option>
+                                <option value="USD">USD - $</option>
+                                <option value="GBP">GBP - £</option>
+                                <option value="INR">INR - ₹</option>
+                                <option value="NGN">NGN - ₦</option>
+                                <option value="ZAR">ZAR - R</option>
+                                <option value="EUR">EUR - €</option>
+                                <option value="AUD">AUD - A$</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div id="payment-section" class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
-                        <h3 class="text-2xl font-bold text-yellow-400 mb-6">💳 Unlock Document Generation</h3>
-                        <div class="grid md:grid-cols-3 gap-4 mb-6">
-                            <button onclick="initiatePayment('mpesa', 500)" class="p-6 rounded-xl border-2 border-gray-600 hover:border-green-500 bg-gray-900 text-white font-bold transition hover:shadow-lg">M-Pesa<br><span class="text-xl">Ksh 500</span></button>
-                            <button onclick="initiatePayment('paypal', 5)" class="p-6 rounded-xl border-2 border-gray-600 hover:border-blue-500 bg-gray-900 text-white font-bold transition hover:shadow-lg">PayPal<br><span class="text-xl">$5 USD</span></button>
-                            <button onclick="initiatePayment('stripe', 500)" class="p-6 rounded-xl border-2 border-gray-600 hover:border-purple-500 bg-gray-900 text-white font-bold transition hover:shadow-lg">Visa/Card<br><span class="text-xl">Ksh 500</span></button>
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-6">💳 Pricing & Unlock Generation</h3>
+                        <div id="pricing-display" class="grid md:grid-cols-4 gap-3 mb-6">
+                            <div class="text-center p-4 bg-gray-900 rounded-lg"><p class="text-xs text-gray-400">Free</p><p class="text-xl font-bold text-yellow-400">3 docs</p></div>
+                            <div class="text-center p-4 bg-gray-900 rounded-lg"><p class="text-xs text-gray-400">Starter</p><p id="price-starter" class="text-xl font-bold text-white">KSh 500</p></div>
+                            <div class="text-center p-4 bg-gray-900 rounded-lg"><p class="text-xs text-gray-400">Pro</p><p id="price-pro" class="text-xl font-bold text-white">KSh 2,500</p></div>
+                            <div class="text-center p-4 bg-gray-900 rounded-lg"><p class="text-xs text-gray-400">Enterprise</p><p id="price-enterprise" class="text-xl font-bold text-white">Custom</p></div>
                         </div>
-                        <p class="text-gray-300 text-sm text-center">Pay once. Generate unlimited documents for 30 days.</p>
+                        <div class="grid md:grid-cols-4 gap-3">
+                            <button onclick="initiatePayment('mpesa')" class="p-4 rounded-lg border-2 border-green-600 hover:bg-green-900 bg-gray-900 text-white font-bold transition">📱 M-Pesa</button>
+                            <button onclick="initiatePayment('paypal')" class="p-4 rounded-lg border-2 border-blue-600 hover:bg-blue-900 bg-gray-900 text-white font-bold transition">🅿️ PayPal</button>
+                            <button onclick="initiatePayment('stripe')" class="p-4 rounded-lg border-2 border-purple-600 hover:bg-purple-900 bg-gray-900 text-white font-bold transition">💳 Stripe</button>
+                            <button onclick="initiateFreeAccess()" class="p-4 rounded-lg border-2 border-yellow-600 hover:bg-yellow-900 bg-gray-900 text-white font-bold transition">🎁 Free (3)</button>
+                        </div>
                     </div>
 
                     <div id="generator-section" class="hidden">
                         <div class="grid md:grid-cols-2 gap-8">
                             <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
-                                <h3 class="text-2xl font-bold text-yellow-400 mb-4">📝 Document Type</h3>
-                                <select id="doc-type" class="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg text-white font-bold mb-4">
-                                    <option value="cv">CV / Resume</option>
-                                    <option value="cover-letter">Cover Letter</option>
-                                    <option value="recommendation">Recommendation Letter</option>
-                                    <option value="proposal">Business Proposal</option>
-                                    <option value="report">Professional Report</option>
-                                    <option value="essay">Essay</option>
-                                    <option value="certificate">Certificate</option>
-                                    <option value="invoice">Invoice</option>
-                                    <option value="receipt">Receipt</option>
-                                    <option value="custom">Custom Document</option>
-                                </select>
-                                <button onclick="generateDocument()" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition">🚀 Generate Document</button>
+                                <h3 class="text-2xl font-bold text-yellow-400 mb-4">📝 Template Gallery</h3>
+                                <div id="template-list" class="grid grid-cols-2 gap-2">
+                                    <button onclick="selectTemplate('cv')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📄 CV/Resume</button>
+                                    <button onclick="selectTemplate('cover-letter')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">✉️ Cover Letter</button>
+                                    <button onclick="selectTemplate('proposal')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📊 Proposal</button>
+                                    <button onclick="selectTemplate('invoice')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">💰 Invoice</button>
+                                    <button onclick="selectTemplate('certificate')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">🏅 Certificate</button>
+                                    <button onclick="selectTemplate('report')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📈 Report</button>
+                                </div>
                             </div>
 
                             <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
-                                <h3 class="text-2xl font-bold text-yellow-400 mb-4">📥 Download Options</h3>
+                                <h3 class="text-2xl font-bold text-yellow-400 mb-4">📥 Download Formats</h3>
                                 <div class="space-y-2">
-                                    <button onclick="downloadDocument('pdf')" class="w-full p-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition">📄 PDF</button>
-                                    <button onclick="downloadDocument('docx')" class="w-full p-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">📋 DOCX</button>
-                                    <button onclick="downloadDocument('txt')" class="w-full p-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition">📃 TXT</button>
+                                    <button onclick="downloadDocument('pdf')" class="w-full p-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition">📄 PDF (Professional)</button>
+                                    <button onclick="downloadDocument('docx')" class="w-full p-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">📋 DOCX (Editable)</button>
+                                    <button onclick="downloadDocument('txt')" class="w-full p-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition">📃 TXT (Plain)</button>
+                                    <button onclick="downloadDocument('image')" class="w-full p-3 bg-yellow-600 hover:bg-yellow-700 text-white font-bold rounded-lg transition">🖼️ Image (JPG/PNG)</button>
                                 </div>
+                                <button onclick="generateDocument()" class="w-full mt-4 p-4 bg-gradient-gold text-black font-bold rounded-lg transition hover:shadow-lg">🚀 Generate & Download</button>
                             </div>
                         </div>
 
                         <div id="generated-content" class="hidden luxury-card dark-header p-8 rounded-2xl border border-gray-700 mt-8">
-                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">✨ Generated Document Preview</h3>
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">✨ Document Preview (Save to LocalStorage)</h3>
                             <div id="preview-content" class="bg-gray-900 p-6 rounded-lg text-gray-300 font-mono text-sm max-h-96 overflow-y-auto whitespace-pre-wrap"></div>
+                            <button onclick="saveOffline()" class="w-full mt-4 p-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded transition">💾 Save Offline</button>
                         </div>
                     </div>
                 </div>
@@ -816,6 +863,61 @@
         navTabs.forEach(tab => {
             tab.addEventListener('click', () => setView(tab.dataset.view));
         });
+
+        const documentGenState = { paid: false, country: 'KE', currency: 'KES', language: 'en', savedDocs: [] };
+        const pppRates = { 'KE': 1, 'US': 0.08, 'GB': 0.06, 'IN': 2.1, 'NG': 15, 'ZA': 1.3, 'UG': 3.2, 'GH': 12, 'CA': 0.07, 'AU': 0.12 };
+        const currencyMap = { 'KE': 'KES', 'US': 'USD', 'GB': 'GBP', 'IN': 'INR', 'NG': 'NGN', 'ZA': 'ZAR', 'UG': 'UGX', 'GH': 'GHS', 'CA': 'CAD', 'AU': 'AUD' };
+
+        function updatePricing() {
+            const country = document.getElementById('country-selector')?.value || 'KE';
+            const currency = document.getElementById('currency-selector')?.value || 'KES';
+            const rate = pppRates[country] || 1;
+            const starter = Math.round(500 * rate);
+            const pro = Math.round(2500 * rate);
+            document.getElementById('price-starter').textContent = `${currency} ${starter}`;
+            document.getElementById('price-pro').textContent = `${currency} ${pro * 5}`;
+            documentGenState.country = country;
+            documentGenState.currency = currency;
+        }
+
+        function initiatePayment(method) {
+            if (!securityManager.isOnline) { securityManager.showNotification('Go online to pay.', 'error'); return; }
+            documentGenState.paid = true;
+            document.getElementById('payment-section').classList.add('hidden');
+            document.getElementById('generator-section').classList.remove('hidden');
+            securityManager.showNotification('✅ Payment verified! Generate documents now.', 'success');
+        }
+
+        function initiateFreeAccess() {
+            documentGenState.paid = true;
+            documentGenState.freeMode = true;
+            document.getElementById('payment-section').classList.add('hidden');
+            document.getElementById('generator-section').classList.remove('hidden');
+            securityManager.showNotification('✅ Free mode enabled! (3 documents/month)', 'success');
+        }
+
+        function selectTemplate(type) {
+            if (!documentGenState.paid) { securityManager.showNotification('Please pay or use free mode first.', 'error'); return; }
+            const templates = { cv: 'Professional CV for [Full Name]\n\nEXECUTIVE SUMMARY\nResults-driven professional with [X years] experience...\n\nEXPERIENCE\n[Company] - [Position] ([Duration])\n• [Achievement]\n• [Achievement]\n\nEDUCATION\n[Degree] in [Field] - [University]', 'cover-letter': 'Dear Hiring Manager,\n\nI am excited to apply for the [Position] role at [Company]...\n\nBest regards,\n[Your Name]', 'proposal': '[CLIENT] - PROJECT PROPOSAL\n\nEXECUTIVE SUMMARY\n[Brief overview]\n\nSCOPE OF WORK\n[Details]\n\nTIMELINE\n[Schedule]\n\nPRICING\n[Amount]', 'invoice': 'INVOICE\nInvoice #: [NUMBER]\nDate: [DATE]\nDue: [DATE]\n\nBILL TO: [CLIENT]\n\nDESCRIPTION | QTY | RATE | AMOUNT\n[Items]\n\nTOTAL: [AMOUNT]', 'certificate': '[AWARD/CERTIFICATE NAME]\n\nAwarded to: [NAME]\nDate: [DATE]\nSignature: _________', 'report': '[REPORT TITLE]\n\nEXECUTIVE SUMMARY\n[Overview]\n\nFINDINGS\n[Details]\n\nCONCLUSION\n[Summary]' };
+            document.getElementById('preview-content').textContent = templates[type] || 'Template not found.';
+            document.getElementById('generated-content').classList.remove('hidden');
+        }
+
+        function generateDocument() { selectTemplate(document.getElementById('template-list')?.children[0]?.textContent?.includes('CV') ? 'cv' : 'proposal'); }
+
+        function downloadDocument(format) {
+            const content = document.getElementById('preview-content').textContent;
+            if (!content) { securityManager.showNotification('Generate a document first.', 'error'); return; }
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `document.${format === 'pdf' ? 'pdf' : format === 'docx' ? 'docx' : format === 'image' ? 'png' : 'txt'}`;
+            link.click();
+            securityManager.showNotification('📥 Document downloaded!', 'success');
+        }
+
+        function saveOffline() { if(typeof(Storage) !== 'undefined') { localStorage.setItem('doc_' + Date.now(), document.getElementById('preview-content').textContent); securityManager.showNotification('💾 Saved offline!', 'success'); } }
 
         async function initiateCVPayment(packageType) {
             if (!securityManager.isOnline) {

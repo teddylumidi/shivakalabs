@@ -1,0 +1,261 @@
+1️⃣ GLOBALIZATION & LOCALIZATION ENGINE
+A. Remove Kenya-specific language
+
+Replace all mentions of “Kenya” with neutral global terms.
+
+Everything must work for global users.
+
+B. Country Detection
+
+Automatically detect the user’s country via:
+
+IP lookup
+
+Manual override with a country selector dropdown
+
+Every template and pricing adjusts to the detected country.
+
+C. Localization of Legal Content
+
+Each template dynamically adapts clauses based on the user’s country.
+
+Create region-specific template folders:
+
+/ke (Kenya)
+
+/us
+
+/uk
+
+/ng
+
+/in
+
+/za
+
+/ca
+
+/au
+
+/global
+
+D. Multi-Language Support
+
+Include languages:
+
+English
+
+French
+
+Spanish
+
+Arabic
+
+Swahili
+
+Hindi
+
+Chinese
+
+Allow easy addition of new languages.
+
+2️⃣ GLOBAL PRICING USING PPP (Purchasing Power Parity)
+Automatic Currency & PPP Adjustment
+
+Pricing must auto-convert to:
+
+USD
+
+KSh
+
+INR
+
+NGN
+
+GBP
+
+ZAR
+
+EUR
+
+AUD
+
+Pricing Tiers
+
+Free Plan
+
+3 free templates/month
+
+Starter
+
+Pay per document (PPP adjusted)
+
+Pro
+
+Unlimited access, auto-fill, editing, branding
+
+Business
+
+Multi-user/team, advanced tools
+
+Enterprise
+
+API + White label + corporate support
+
+Include monthly & yearly toggle + currency switcher.
+
+3️⃣ PAYMENT SYSTEM (GLOBAL + AFRICA)
+
+Integrate worldwide payment gateways:
+
+Stripe
+
+PayPal
+
+Visa / Mastercard
+
+M-PESA STK Push
+
+Crypto (optional)
+
+Every transaction must:
+
+Be verified before document generation
+
+Log to a secure database
+
+Trigger receipts and invoices
+
+4️⃣ CV & COVER LETTER SERVICE (NEW MENU)
+
+Add a new menu section:
+
+“CV & Cover Letter Writing”
+
+Pricing:
+
+CV → KSh 50
+
+Cover Letter → KSh 30
+
+CV + Cover Letter → KSh 80
+
+Rules:
+
+Payment must be completed and verified first
+
+Once paid:
+
+Prompt user for their details
+
+AI generates:
+
+A professionally formatted CV
+
+A tailored cover letter
+
+User can download as:
+
+PDF
+
+DOCX
+
+TXT
+
+JPG/PNG (image export)
+
+5️⃣ SECURITY REQUIREMENTS (EXTREME SECURITY MODE)
+
+Make the entire system military-grade secure:
+
+API Security
+
+Enforce strict backend validation
+
+Use secure server-side API keys only
+
+Rate limiting
+
+IP throttling
+
+JWT authentication
+
+Role-based access control
+
+SQL injection / XSS / CSRF protection
+
+Input sanitization
+
+No sensitive data stored unencrypted
+
+App Security
+
+Use HTTPS everywhere
+
+Implement CSP, HSTS, X-Frame protection
+
+Hide server fingerprints
+
+Log suspicious activity
+
+Auto-block brute-force attacks
+
+6️⃣ PERFORMANCE & OFFLINE-FIRST OPTIMIZATION
+
+Convert the platform into a Progressive Web App (PWA)
+
+Enable:
+
+Offline template creation
+
+Local caching
+
+IndexedDB storage
+
+Background sync
+
+Optimize for:
+
+Fast load (<1.5s)
+
+Mobile responsiveness
+
+Global CDN
+
+Lazy loading & code splitting
+
+The site must still work offline and sync later.
+
+7️⃣ AI DOCUMENT GENERATION ENGINE
+Core Features
+
+Fillable dynamic forms
+
+Smart auto-fill (reuse data across documents)
+
+AI Draft Assistant (generate entire documents from prompts)
+
+AI formatting
+
+Modern PDF export
+
+Version control for saved documents
+
+Editable previews
+
+E-Signature Integration
+
+Native signing flow
+OR
+
+DocuSign integration
+
+Cloud Save
+
+User accounts
+
+Saved drafts
+
+File management dashboard
+
+Invoice archive

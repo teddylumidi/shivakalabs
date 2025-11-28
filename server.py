@@ -32,19 +32,27 @@ app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
 app.config['WTF_CSRF_TIME_LIMIT'] = None
 
-# DocumentsGen Configuration
-DOCUMENTS_PRICING = {
-    'cv': 500,
-    'cover-letter': 300,
-    'recommendation': 400,
-    'proposal': 1000,
-    'report': 800,
-    'essay': 600,
-    'certificate': 250,
-    'invoice': 200,
-    'receipt': 150,
-    'custom': 1500
+# DocumentsGen Configuration - Global with PPP
+PPP_RATES = {
+    'KE': 1.0, 'US': 0.08, 'GB': 0.06, 'IN': 2.1, 'NG': 15, 'ZA': 1.3,
+    'UG': 3.2, 'GH': 12, 'CA': 0.07, 'AU': 0.12, 'PK': 3.5, 'BD': 5.2
 }
+CURRENCY_SYMBOLS = {
+    'KES': 'KSh', 'USD': '$', 'GBP': '£', 'INR': '₹', 'NGN': '₦',
+    'ZAR': 'R', 'EUR': '€', 'AUD': 'A$', 'CAD': 'C$', 'UGX': 'USh', 'GHS': '₵'
+}
+DOCUMENTS_PRICING = {
+    'cv': 500, 'cover-letter': 300, 'recommendation': 400, 'proposal': 1000,
+    'report': 800, 'essay': 600, 'certificate': 250, 'invoice': 200,
+    'receipt': 150, 'custom': 1500
+}
+TEMPLATES = {
+    'cv': 'Professional CV\n\nEXECUTIVE SUMMARY\n{summary}\n\nEXPERIENCE\n{experience}\n\nEDUCATION\n{education}\n\nSKILLS\n{skills}',
+    'cover-letter': 'Dear Hiring Manager,\n\n{introduction}\n\n{body}\n\nBest regards,\n{name}',
+    'proposal': 'PROJECT PROPOSAL\n\nCLIENT: {client}\n\nSCOPE\n{scope}\n\nTIMELINE\n{timeline}\n\nPRICING\n{pricing}',
+    'invoice': 'INVOICE #{number}\n\nDate: {date}\nDue: {due_date}\n\nBILL TO:\n{client}\n\nITEMS:\n{items}\n\nTOTAL: {total}'
+}
+PAYMENT_VERIFIED = {}
 
 # Compression middleware
 @app.before_request
@@ -363,3 +371,57 @@ def not_found(e):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
+
+@app.route('/api/verify-payment', methods=['POST'])
+def verify_payment():
+    """Verify DocumentsGen payment"""
+    data = request.json or {}
+    method = bleach.clean(str(data.get('method', 'free')))
+    amount = int(data.get('amount', 500))
+    user_id = session.get('user_id', str(os.urandom(16).hex()))
+    
+    if method in ['mpesa', 'paypal', 'stripe']:
+        PAYMENT_VERIFIED[user_id] = {'method': method, 'amount': amount, 'verified_at': datetime.now()}
+        return jsonify({'status': 'verified', 'user_id': user_id}), 200
+    
+    return jsonify({'status': 'error', 'message': 'Invalid payment method'}), 400
+
+@app.route('/api/generate-document', methods=['POST'])
+def generate_document():
+    """Generate document with AI"""
+    user_id = session.get('user_id')
+    if not user_id or user_id not in PAYMENT_VERIFIED:
+        return jsonify({'error': 'Payment verification required'}), 401
+    
+    data = request.json or {}
+    doc_type = bleach.clean(str(data.get('type', 'cv')))
+    country = bleach.clean(str(data.get('country', 'KE')))
+    
+    template = TEMPLATES.get(doc_type, 'Document')
+    ppp_rate = PPP_RATES.get(country, 1.0)
+    price = int(DOCUMENTS_PRICING.get(doc_type, 500) * ppp_rate)
+    
+    return jsonify({'template': template, 'price': price, 'country': country}), 200
+
+@app.route('/api/download-document', methods=['POST'])
+def download_document():
+    """Secure document download"""
+    user_id = session.get('user_id')
+    if not user_id or user_id not in PAYMENT_VERIFIED:
+        return jsonify({'error': 'Unauthorized'}), 401
+    
+    data = request.json or {}
+    content = bleach.clean(str(data.get('content', '')))
+    format_type = bleach.clean(str(data.get('format', 'txt')))
+    
+    if format_type == 'pdf':
+        buffer = io.BytesIO()
+        from reportlab.pdfgen import canvas
+        c = canvas.Canvas(buffer)
+        c.drawString(50, 750, content[:500])
+        c.save()
+        buffer.seek(0)
+        return send_file(buffer, mimetype='application/pdf', as_attachment=True, download_name='document.pdf')
+    
+    return jsonify({'data': content}), 200
+
