@@ -31,9 +31,7 @@ app.config['WTF_CSRF_TIME_LIMIT'] = None
 # Initialize security tools
 CORS(app, resources={r"/api/*": {"origins": os.getenv('ALLOWED_ORIGINS', '*')}})
 Talisman(app, 
-    force_https=True,
-    strict_transport_security=True,
-    strict_transport_security_max_age=31536000,
+    force_https=False,
     content_security_policy={
         'default-src': "'self'",
         'script-src': ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://js.paystack.co"],
