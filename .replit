@@ -38,4 +38,4 @@ externalPort = 80
 
 [userenv.shared]
 PAYSTACK_SECRET_KEY = "238b292d4da31544"
-PAYSTACK_PUBLIC_KEY = "pk_test_your_public_key"
+PAYSTACK_PUBLIC_KEY = "pk_test_35cd142d3174518a92af53c22e98d20b297c4aca"
