@@ -279,10 +279,10 @@
                             <div class="text-center p-4 bg-gray-900 rounded-lg"><p class="text-xs text-gray-400">Enterprise</p><p id="price-enterprise" class="text-xl font-bold text-white">Custom</p></div>
                         </div>
                         <div class="grid md:grid-cols-4 gap-3">
-                            <button onclick="initiatePayment('mpesa')" class="p-4 rounded-lg border-2 border-green-600 hover:bg-green-900 bg-gray-900 text-white font-bold transition">📱 M-Pesa</button>
-                            <button onclick="initiatePayment('paypal')" class="p-4 rounded-lg border-2 border-blue-600 hover:bg-blue-900 bg-gray-900 text-white font-bold transition">🅿️ PayPal</button>
-                            <button onclick="initiatePayment('stripe')" class="p-4 rounded-lg border-2 border-purple-600 hover:bg-purple-900 bg-gray-900 text-white font-bold transition">💳 Stripe</button>
-                            <button onclick="initiateFreeAccess()" class="p-4 rounded-lg border-2 border-yellow-600 hover:bg-yellow-900 bg-gray-900 text-white font-bold transition">🎁 Free (3)</button>
+                            <button onclick="tierPayment('free')" class="p-4 rounded-lg border-2 border-yellow-600 hover:bg-yellow-900 bg-gray-900 text-white font-bold transition">🎁 FREE</button>
+                            <button onclick="tierPayment('starter')" class="p-4 rounded-lg border-2 border-blue-600 hover:bg-blue-900 bg-gray-900 text-white font-bold transition">⭐ STARTER</button>
+                            <button onclick="tierPayment('pro')" class="p-4 rounded-lg border-2 border-purple-600 hover:bg-purple-900 bg-gray-900 text-white font-bold transition">👑 PRO</button>
+                            <button onclick="securityManager.showNotification('WhatsApp: +254716358703', 'info')" class="p-4 rounded-lg border-2 border-green-600 hover:bg-green-900 bg-gray-900 text-white font-bold transition">💬 HELP</button>
                         </div>
                     </div>
 
@@ -291,31 +291,33 @@
                             <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
                                 <h3 class="text-2xl font-bold text-yellow-400 mb-4">📝 Template Gallery</h3>
                                 <div id="template-list" class="grid grid-cols-2 gap-2">
-                                    <button onclick="selectTemplate('cv')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📄 CV/Resume</button>
-                                    <button onclick="selectTemplate('cover-letter')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">✉️ Cover Letter</button>
-                                    <button onclick="selectTemplate('proposal')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📊 Proposal</button>
-                                    <button onclick="selectTemplate('invoice')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">💰 Invoice</button>
-                                    <button onclick="selectTemplate('certificate')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">🏅 Certificate</button>
-                                    <button onclick="selectTemplate('report')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📈 Report</button>
+                                    <button onclick="selectDoc('cv')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📄 CV</button>
+                                    <button onclick="selectDoc('cover-letter')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">✉️ Letter</button>
+                                    <button onclick="selectDoc('proposal')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📊 Proposal</button>
+                                    <button onclick="selectDoc('invoice')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">💰 Invoice</button>
+                                    <button onclick="selectDoc('certificate')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">🏅 Cert</button>
+                                    <button onclick="selectDoc('report')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📈 Report</button>
                                 </div>
                             </div>
 
                             <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
                                 <h3 class="text-2xl font-bold text-yellow-400 mb-4">📥 Download Formats</h3>
                                 <div class="space-y-2">
-                                    <button onclick="downloadDocument('pdf')" class="w-full p-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition">📄 PDF (Professional)</button>
-                                    <button onclick="downloadDocument('docx')" class="w-full p-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">📋 DOCX (Editable)</button>
-                                    <button onclick="downloadDocument('txt')" class="w-full p-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition">📃 TXT (Plain)</button>
-                                    <button onclick="downloadDocument('image')" class="w-full p-3 bg-yellow-600 hover:bg-yellow-700 text-white font-bold rounded-lg transition">🖼️ Image (JPG/PNG)</button>
+                                    <button onclick="dlDoc('pdf')" class="w-full p-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition">📄 PDF</button>
+                                    <button onclick="dlDoc('docx')" class="w-full p-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">📋 DOCX</button>
+                                    <button onclick="dlDoc('txt')" class="w-full p-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition">📃 TXT</button>
                                 </div>
-                                <button onclick="generateDocument()" class="w-full mt-4 p-4 bg-gradient-gold text-black font-bold rounded-lg transition hover:shadow-lg">🚀 Generate & Download</button>
+                                <input type="text" id="doc-type" class="hidden" value="cv">
                             </div>
                         </div>
 
                         <div id="generated-content" class="hidden luxury-card dark-header p-8 rounded-2xl border border-gray-700 mt-8">
                             <h3 class="text-2xl font-bold text-yellow-400 mb-4">✨ Document Preview (Save to LocalStorage)</h3>
                             <div id="preview-content" class="bg-gray-900 p-6 rounded-lg text-gray-300 font-mono text-sm max-h-96 overflow-y-auto whitespace-pre-wrap"></div>
-                            <button onclick="saveOffline()" class="w-full mt-4 p-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded transition">💾 Save Offline</button>
+                            <div class="grid md:grid-cols-2 gap-3 mt-4">
+                                <button onclick="saveLocal()" class="p-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded">💾 Save Local</button>
+                                <button onclick="document.getElementById('preview-content').textContent = ''; document.getElementById('generated-content').classList.add('hidden'); securityManager.showNotification('Cleared', 'info')" class="p-3 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded">🔄 Clear</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -864,60 +866,40 @@
             tab.addEventListener('click', () => setView(tab.dataset.view));
         });
 
-        const documentGenState = { paid: false, country: 'KE', currency: 'KES', language: 'en', savedDocs: [] };
+        const docGenState = { tier: null, country: 'KE', currency: 'KES', language: 'en', docs: 0, limits: {} };
         const pppRates = { 'KE': 1, 'US': 0.08, 'GB': 0.06, 'IN': 2.1, 'NG': 15, 'ZA': 1.3, 'UG': 3.2, 'GH': 12, 'CA': 0.07, 'AU': 0.12 };
-        const currencyMap = { 'KE': 'KES', 'US': 'USD', 'GB': 'GBP', 'IN': 'INR', 'NG': 'NGN', 'ZA': 'ZAR', 'UG': 'UGX', 'GH': 'GHS', 'CA': 'CAD', 'AU': 'AUD' };
+        const templates = { cv: 'PROFESSIONAL CV\n\n[YOUR NAME]\n[Email] | [Phone] | [Location]\n\nEXECUTIVE PROFILE\n[Summary of key qualifications and achievements]\n\nKEY COMPETENCIES\n• [Skill 1]\n• [Skill 2]\n• [Skill 3]\n\nPROFESSIONAL EXPERIENCE\n[Company] | [Position] | [Duration]\n[Describe achievements and responsibilities]\n\nEDUCATION\n[Degree] in [Field] | [University] | [Year]', 'cover-letter': 'Dear Hiring Manager,\n\nI am writing to express my strong interest in the [Position] role at [Company].\n\nWith [X years] of experience in [Field], I have developed expertise in [Key Skills]. I am confident that my background aligns perfectly with your team\'s needs.\n\n[Paragraph explaining why you\'re a great fit]\n\nI am excited about the opportunity to contribute to [Company] and would welcome the chance to discuss how my skills can benefit your organization.\n\nBest regards,\n[Your Name]', 'proposal': 'PROJECT PROPOSAL\n\nCLIENT: [Client Name]\nDATE: [Date]\nDuration: [Timeline]\n\nEXECUTIVE SUMMARY\n[Brief overview of the project]\n\nSOPE OF WORK\n• [Deliverable 1]\n• [Deliverable 2]\n• [Deliverable 3]\n\nTIMELINE\n[Phase 1]: [Duration]\n[Phase 2]: [Duration]\n\nPRICING\nStartup: $[X]\nMonthly: $[X]\nTotal: $[X]', 'invoice': 'INVOICE\n\nInvoice #: [INV-001]\nDate: [Date]\nDue Date: [Date]\n\nBILL TO:\n[Client Name]\n[Address]\n\nDESCRIPTION | QUANTITY | RATE | AMOUNT\nService 1 | 1 | $[X] | $[X]\nService 2 | [Qty] | $[X] | $[X]\n\nSUBTOTAL: $[X]\nTAX (15%): $[X]\nTOTAL DUE: $[X]', 'certificate': 'CERTIFICATE OF ACHIEVEMENT\n\nThis is to certify that\n\n[RECIPIENT NAME]\n\nhas successfully completed\n\n[COURSE/PROGRAM NAME]\n\nAwarded this [Date]\n\nSignature: ________________\n[Organization]', 'report': 'PROFESSIONAL REPORT\n\nTitle: [Report Title]\nDate: [Date]\nAuthor: [Author]\n\nEXECUTIVE SUMMARY\n[Summary of key findings]\n\nINTRODUCTION\n[Background and context]\n\nFINDINGS\n1. [Finding 1]\n2. [Finding 2]\n3. [Finding 3]\n\nCONCLUSION\n[Final recommendations]\n\nAPPENDIX\n[Additional data]' };
 
-        function updatePricing() {
-            const country = document.getElementById('country-selector')?.value || 'KE';
-            const currency = document.getElementById('currency-selector')?.value || 'KES';
-            const rate = pppRates[country] || 1;
-            const starter = Math.round(500 * rate);
-            const pro = Math.round(2500 * rate);
-            document.getElementById('price-starter').textContent = `${currency} ${starter}`;
-            document.getElementById('price-pro').textContent = `${currency} ${pro * 5}`;
-            documentGenState.country = country;
-            documentGenState.currency = currency;
-        }
+        function updatePricing() { const c = document.getElementById('country-selector')?.value || 'KE'; const curr = document.getElementById('currency-selector')?.value || 'KES'; const r = pppRates[c] || 1; document.getElementById('price-starter').textContent = `${curr} ${Math.round(500 * r)}`; document.getElementById('price-pro').textContent = `${curr} ${Math.round(2500 * r)}`; docGenState.country = c; docGenState.currency = curr; }
 
-        function initiatePayment(method) {
-            if (!securityManager.isOnline) { securityManager.showNotification('Go online to pay.', 'error'); return; }
-            documentGenState.paid = true;
+        function tierPayment(tier) {
+            if (!securityManager.isOnline && tier !== 'free') { securityManager.showNotification('Go online to pay.', 'error'); return; }
+            docGenState.tier = tier;
+            docGenState.limits = {free: 3, starter: 10, pro: 999}[tier];
+            localStorage.setItem('docGenTier', tier);
+            localStorage.setItem('docGenLimit', docGenState.limits);
             document.getElementById('payment-section').classList.add('hidden');
             document.getElementById('generator-section').classList.remove('hidden');
-            securityManager.showNotification('✅ Payment verified! Generate documents now.', 'success');
+            securityManager.showNotification(`✅ ${tier.toUpperCase()} mode activated! ${docGenState.limits} documents available.`, 'success');
         }
 
-        function initiateFreeAccess() {
-            documentGenState.paid = true;
-            documentGenState.freeMode = true;
-            document.getElementById('payment-section').classList.add('hidden');
-            document.getElementById('generator-section').classList.remove('hidden');
-            securityManager.showNotification('✅ Free mode enabled! (3 documents/month)', 'success');
-        }
-
-        function selectTemplate(type) {
-            if (!documentGenState.paid) { securityManager.showNotification('Please pay or use free mode first.', 'error'); return; }
-            const templates = { cv: 'Professional CV for [Full Name]\n\nEXECUTIVE SUMMARY\nResults-driven professional with [X years] experience...\n\nEXPERIENCE\n[Company] - [Position] ([Duration])\n• [Achievement]\n• [Achievement]\n\nEDUCATION\n[Degree] in [Field] - [University]', 'cover-letter': 'Dear Hiring Manager,\n\nI am excited to apply for the [Position] role at [Company]...\n\nBest regards,\n[Your Name]', 'proposal': '[CLIENT] - PROJECT PROPOSAL\n\nEXECUTIVE SUMMARY\n[Brief overview]\n\nSCOPE OF WORK\n[Details]\n\nTIMELINE\n[Schedule]\n\nPRICING\n[Amount]', 'invoice': 'INVOICE\nInvoice #: [NUMBER]\nDate: [DATE]\nDue: [DATE]\n\nBILL TO: [CLIENT]\n\nDESCRIPTION | QTY | RATE | AMOUNT\n[Items]\n\nTOTAL: [AMOUNT]', 'certificate': '[AWARD/CERTIFICATE NAME]\n\nAwarded to: [NAME]\nDate: [DATE]\nSignature: _________', 'report': '[REPORT TITLE]\n\nEXECUTIVE SUMMARY\n[Overview]\n\nFINDINGS\n[Details]\n\nCONCLUSION\n[Summary]' };
-            document.getElementById('preview-content').textContent = templates[type] || 'Template not found.';
+        function selectDoc(type) {
+            if (!docGenState.tier) { securityManager.showNotification('Select a plan first.', 'error'); return; }
+            if (docGenState.docs >= docGenState.limits) { securityManager.showNotification(`Limit reached! (${docGenState.docs}/${docGenState.limits})`, 'error'); return; }
+            document.getElementById('preview-content').textContent = templates[type] || 'Template loading...';
             document.getElementById('generated-content').classList.remove('hidden');
+            document.getElementById('doc-type').value = type;
         }
 
-        function generateDocument() { selectTemplate(document.getElementById('template-list')?.children[0]?.textContent?.includes('CV') ? 'cv' : 'proposal'); }
-
-        function downloadDocument(format) {
-            const content = document.getElementById('preview-content').textContent;
-            if (!content) { securityManager.showNotification('Generate a document first.', 'error'); return; }
-            const blob = new Blob([content], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `document.${format === 'pdf' ? 'pdf' : format === 'docx' ? 'docx' : format === 'image' ? 'png' : 'txt'}`;
-            link.click();
-            securityManager.showNotification('📥 Document downloaded!', 'success');
+        function dlDoc(fmt) {
+            const cont = document.getElementById('preview-content').textContent; if (!cont) { securityManager.showNotification('No content.', 'error'); return; }
+            const blob = new Blob([cont], {type: 'text/plain'}); const url = URL.createObjectURL(blob); const link = document.createElement('a'); 
+            link.href = url; link.download = `doc.${fmt}`; link.click(); 
+            docGenState.docs++; localStorage.setItem('docCount', docGenState.docs);
+            securityManager.showNotification(`📥 Downloaded! (${docGenState.docs}/${docGenState.limits})`, 'success');
         }
 
-        function saveOffline() { if(typeof(Storage) !== 'undefined') { localStorage.setItem('doc_' + Date.now(), document.getElementById('preview-content').textContent); securityManager.showNotification('💾 Saved offline!', 'success'); } }
+        function saveLocal() { localStorage.setItem('savedDoc_' + Date.now(), document.getElementById('preview-content').textContent); securityManager.showNotification('💾 Saved locally!', 'success'); }
 
         async function initiateCVPayment(packageType) {
             if (!securityManager.isOnline) {

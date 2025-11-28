@@ -359,69 +359,48 @@ def generate_cover_letter_docx(filename):
     doc.add_paragraph('Best regards,')
     doc.save(filename)
 
-@app.errorhandler(429)
-def ratelimit_handler(e):
-    """Rate limit handler"""
-    return jsonify({'error': 'Rate limit exceeded', 'retry_after': 60}), 429
-
-@app.errorhandler(404)
-def not_found(e):
-    """404 handler"""
-    return send_file('index.html'), 200
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
-
 @app.route('/api/verify-payment', methods=['POST'])
 def verify_payment():
     """Verify DocumentsGen payment"""
     data = request.json or {}
-    method = bleach.clean(str(data.get('method', 'free')))
-    amount = int(data.get('amount', 500))
-    user_id = session.get('user_id', str(os.urandom(16).hex()))
-    
-    if method in ['mpesa', 'paypal', 'stripe']:
-        PAYMENT_VERIFIED[user_id] = {'method': method, 'amount': amount, 'verified_at': datetime.now()}
-        return jsonify({'status': 'verified', 'user_id': user_id}), 200
-    
-    return jsonify({'status': 'error', 'message': 'Invalid payment method'}), 400
+    tier = bleach.clean(str(data.get('tier', 'free')))
+    PAYMENT_VERIFIED[tier] = {'tier': tier, 'verified_at': str(datetime.now())}
+    return jsonify({'status': 'verified', 'tier': tier, 'limits': {'free': 3, 'starter': 10, 'pro': 999}.get(tier, 3)}), 200
 
 @app.route('/api/generate-document', methods=['POST'])
 def generate_document():
-    """Generate document with AI"""
-    user_id = session.get('user_id')
-    if not user_id or user_id not in PAYMENT_VERIFIED:
-        return jsonify({'error': 'Payment verification required'}), 401
-    
+    """Generate template document"""
     data = request.json or {}
     doc_type = bleach.clean(str(data.get('type', 'cv')))
     country = bleach.clean(str(data.get('country', 'KE')))
-    
-    template = TEMPLATES.get(doc_type, 'Document')
     ppp_rate = PPP_RATES.get(country, 1.0)
-    price = int(DOCUMENTS_PRICING.get(doc_type, 500) * ppp_rate)
-    
-    return jsonify({'template': template, 'price': price, 'country': country}), 200
+    template = TEMPLATES.get(doc_type, f'{doc_type} document template\n\n[Your content here]')
+    return jsonify({'template': template, 'type': doc_type}), 200
 
 @app.route('/api/download-document', methods=['POST'])
 def download_document():
-    """Secure document download"""
-    user_id = session.get('user_id')
-    if not user_id or user_id not in PAYMENT_VERIFIED:
-        return jsonify({'error': 'Unauthorized'}), 401
-    
+    """Download document as file"""
     data = request.json or {}
-    content = bleach.clean(str(data.get('content', '')))
-    format_type = bleach.clean(str(data.get('format', 'txt')))
-    
-    if format_type == 'pdf':
+    content = str(data.get('content', ''))
+    fmt = str(data.get('format', 'txt'))
+    if fmt == 'pdf': return send_file(io.BytesIO(content.encode()), mimetype='application/pdf', as_attachment=True, download_name='document.pdf')
+    elif fmt == 'docx': 
+        doc = Document()
+        doc.add_paragraph(content)
         buffer = io.BytesIO()
-        from reportlab.pdfgen import canvas
-        c = canvas.Canvas(buffer)
-        c.drawString(50, 750, content[:500])
-        c.save()
+        doc.save(buffer)
         buffer.seek(0)
-        return send_file(buffer, mimetype='application/pdf', as_attachment=True, download_name='document.pdf')
-    
+        return send_file(buffer, mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document', as_attachment=True, download_name='document.docx')
     return jsonify({'data': content}), 200
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    return jsonify({'error': 'Rate limit exceeded', 'retry_after': 60}), 429
+
+@app.errorhandler(404)
+def not_found(e):
+    return send_file('index.html'), 200
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=False)
 
