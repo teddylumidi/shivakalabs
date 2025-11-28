@@ -405,16 +405,6 @@ def verify_payment():
     PAYMENT_VERIFIED[tier] = {'tier': tier, 'verified_at': str(datetime.now())}
     return jsonify({'status': 'verified', 'tier': tier, 'limits': {'free': 3, 'starter': 10, 'pro': 999}.get(tier, 3)}), 200
 
-@app.route('/api/generate-document', methods=['POST'])
-def generate_document():
-    """Generate template document"""
-    data = request.json or {}
-    doc_type = bleach.clean(str(data.get('type', 'cv')))
-    country = bleach.clean(str(data.get('country', 'KE')))
-    ppp_rate = PPP_RATES.get(country, 1.0)
-    template = TEMPLATES.get(doc_type, f'{doc_type} document template\n\n[Your content here]')
-    return jsonify({'template': template, 'type': doc_type}), 200
-
 @app.route('/api/download-document', methods=['POST'])
 def download_document():
     """Download document as file"""
