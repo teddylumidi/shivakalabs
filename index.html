@@ -108,9 +108,9 @@
                 
                 <!-- Search -->
                 <div class="pt-4 border-t border-gray-700">
-                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">ADVANCED SEARCH OPTIONS</h3>
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">SEARCH SERVICES</h3>
                     <div class="relative">
-                        <input type="text" placeholder="Search" class="w-full bg-gray-700 text-sm text-white rounded-lg py-2 pl-3 pr-10 focus:ring-yellow-400 focus:border-yellow-400 border-transparent">
+                        <input id="search-input" type="text" placeholder="Search services..." class="w-full bg-gray-700 text-sm text-white rounded-lg py-2 pl-3 pr-10 focus:ring-yellow-400 focus:border-yellow-400 border-transparent">
                         <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
                 </div>
@@ -118,11 +118,23 @@
                 <!-- Support & Info -->
                 <div class="pt-4 border-t border-gray-700">
                     <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">SUPPORT & INFO</h3>
-                    <nav class="space-y-1">
-                        <a href="#" class="block text-sm px-3 py-1 text-gray-400 hover:text-white rounded-lg transition">Contact Support</a>
-                        <a href="#" class="block text-sm px-3 py-1 text-gray-400 hover:text-white rounded-lg transition">Help Center</a>
-                        <a href="#" class="block text-sm px-3 py-1 text-gray-400 hover:text-white rounded-lg transition">Site Map</a>
-                        <a href="#" class="block text-sm px-3 py-1 text-gray-400 hover:text-white rounded-lg transition">New Features & ...</a>
+                    <nav class="space-y-2">
+                        <a href="https://wa.me/254716358703" target="_blank" class="flex items-center text-sm px-3 py-2 text-white hover:bg-green-600 rounded-lg transition whatsapp-green font-semibold">
+                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                            Contact Support
+                        </a>
+                        <a href="https://wa.me/254716358703" target="_blank" class="flex items-center text-sm px-3 py-2 text-white hover:bg-green-600 rounded-lg transition whatsapp-green font-semibold">
+                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                            Help Center
+                        </a>
+                        <a href="https://wa.me/254716358703" target="_blank" class="flex items-center text-sm px-3 py-2 text-white hover:bg-green-600 rounded-lg transition whatsapp-green font-semibold">
+                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                            Chat Now
+                        </a>
+                        <a href="https://wa.me/254716358703" target="_blank" class="flex items-center text-sm px-3 py-2 text-white hover:bg-green-600 rounded-lg transition whatsapp-green font-semibold">
+                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                            +254 716 358 703
+                        </a>
                     </nav>
                 </div>
 
@@ -226,36 +238,36 @@
                             <div>
                                 <h3 class="text-lg font-bold text-yellow-400 mb-3">TAX & REVENUE</h3>
                                 <ul class="space-y-2">
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">KRA PIN Registration</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Tax Returns Filing</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Compliance Certificates</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">E-Tims Integration</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">KRA PIN Registration</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Tax Returns Filing</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Compliance Certificates</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">E-Tims Integration</a></li>
                                 </ul>
 
                                 <h3 class="text-lg font-bold text-yellow-400 mt-6 mb-3">BUSINESS REGISTRATION</h3>
                                 <ul class="space-y-2">
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Business Name Registration</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Company Registration (CR12)</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Annual Returns Filing</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Trademark Registration</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Business Name Registration</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Company Registration (CR12)</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Annual Returns Filing</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Trademark Registration</a></li>
                                 </ul>
                             </div>
 
                             <div>
                                 <h3 class="text-lg font-bold text-yellow-400 mb-3">TRAVEL & IDENTITY</h3>
                                 <ul class="space-y-2">
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Passport Applications (New/Renewal)</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Visa Applications</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Birth/Death Certificates</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">National ID Replacement</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Passport Applications (New/Renewal)</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Visa Applications</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Birth/Death Certificates</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">National ID Replacement</a></li>
                                 </ul>
 
                                 <h3 class="text-lg font-bold text-yellow-400 mt-6 mb-3">DRIVING & TRANSPORT</h3>
                                 <ul class="space-y-2">
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">NTSA Driving Licence Renewal</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Motor Vehicle (Logbook Search)</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Road Service Licensing (PSV)</a></li>
-                                    <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition block">Traffic Act Penalties (e-fines)</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">NTSA Driving Licence Renewal</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Motor Vehicle (Logbook Search)</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Road Service Licensing (PSV)</a></li>
+                                    <li><a href="https://wa.me/254716358703" target="_blank" class="text-gray-300 hover:text-yellow-400 transition block">Traffic Act Penalties (e-fines)</a></li>
                                 </ul>
                             </div>
 
@@ -264,10 +276,10 @@
 
                     <!-- WhatsApp Button for eCitizen -->
                     <div class="mt-12 text-center">
-                        <button class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition shadow-xl text-lg flex items-center justify-center mx-auto">
+                        <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition shadow-xl text-lg flex items-center justify-center mx-auto inline-block">
                             ${whatsappIcon} Chat with eCitizen Support
-                        </button>
-                        <p class="text-gray-400 mt-2 text-sm">Call /Text: 0716358703</p>
+                        </a>
+                        <p class="text-gray-400 mt-2 text-sm">Call /Text: +254 716 358 703</p>
                     </div>
                 </div>
             `,
@@ -408,9 +420,9 @@
 
                     <!-- WhatsApp Button for Graphic Design -->
                     <div class="mt-12 text-center">
-                        <button class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition shadow-xl text-lg flex items-center justify-center mx-auto">
+                        <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition shadow-xl text-lg flex items-center justify-center mx-auto inline-block">
                             ${whatsappIcon} Discuss Your Project
-                        </button>
+                        </a>
                     </div>
                 </div>
             `,
@@ -502,9 +514,9 @@
                     
                     <!-- Primary Contact/Chat Button at the bottom -->
                     <div class="mt-12 text-center">
-                        <button class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition shadow-xl text-lg flex items-center justify-center mx-auto">
-                            ${whatsappIcon} Chat
-                        </button>
+                        <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition shadow-xl text-lg flex items-center justify-center mx-auto inline-block">
+                            ${whatsappIcon} Chat with Our Team
+                        </a>
                     </div>
 
                 </div>
@@ -548,6 +560,42 @@
                 }
             });
         });
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('keyup', (e) => {
+                const query = e.target.value.toLowerCase();
+                if (query.length === 0) return;
+                
+                // Map search queries to views
+                const searchMap = {
+                    'ecitizen': 'ecitizen',
+                    'government': 'ecitizen',
+                    'tax': 'ecitizen',
+                    'kra': 'ecitizen',
+                    'ntsa': 'ecitizen',
+                    'web': 'web-development',
+                    'website': 'web-development',
+                    'development': 'web-development',
+                    'design': 'graphic-design',
+                    'graphic': 'graphic-design',
+                    'branding': 'graphic-design',
+                    'marketing': 'digital-marketing',
+                    'digital': 'digital-marketing',
+                    'seo': 'digital-marketing',
+                    'social': 'digital-marketing'
+                };
+                
+                for (const [keyword, view] of Object.entries(searchMap)) {
+                    if (query.includes(keyword)) {
+                        setView(view);
+                        searchInput.value = '';
+                        break;
+                    }
+                }
+            });
+        }
 
         // Initialize with the Home view
         window.onload = () => {
