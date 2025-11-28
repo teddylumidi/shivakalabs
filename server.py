@@ -1,19 +1,32 @@
 #!/usr/bin/env python3
 import os
+import sys
 import json
-from flask import Flask, request, jsonify, send_file
-from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from docx import Document
 from datetime import datetime
 import requests
 
+try:
+    from flask import Flask, request, jsonify, send_file
+    from reportlab.lib.pagesizes import letter
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
+    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+    from reportlab.lib.units import inch
+    from docx import Document
+except ImportError as e:
+    print(f"Error importing required packages: {e}")
+    print("Please ensure all dependencies are installed.")
+    sys.exit(1)
+
 app = Flask(__name__)
 
-# Paystack API Key - Replace with environment variable
-PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY', 'sk_test_your_secret_key')
+# Paystack API Keys from environment variables
+PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
+PAYSTACK_PUBLIC_KEY = os.getenv('PAYSTACK_PUBLIC_KEY')
+
+if not PAYSTACK_SECRET_KEY:
+    print("WARNING: PAYSTACK_SECRET_KEY not set in environment variables")
+if not PAYSTACK_PUBLIC_KEY:
+    print("WARNING: PAYSTACK_PUBLIC_KEY not set in environment variables")
 
 # Serve static files
 @app.route('/')

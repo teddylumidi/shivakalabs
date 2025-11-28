@@ -22,14 +22,20 @@ args = "Shivakalabs Server"
 name = "Shivakalabs Server"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "webview"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python server.py"
 waitForPort = 5000
 
-[workflows.workflow.metadata]
-outputType = "webview"
-
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[userenv]
+
+[userenv.shared]
+PAYSTACK_SECRET_KEY = "238b292d4da31544"
+PAYSTACK_PUBLIC_KEY = "pk_test_your_public_key"
