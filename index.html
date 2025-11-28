@@ -11,7 +11,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" href="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png">
     <link rel="apple-touch-icon" href="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png">
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://js.paystack.co/v1/inline.js" defer></script>
     <script src="/security.js" defer></script>
     <style>
@@ -59,14 +59,16 @@
         .luxury-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15); }
     </style>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+        if (typeof tailwind !== 'undefined') {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Inter', 'sans-serif'],
+                        },
+                    }
                 }
-            }
+            };
         }
     </script>
 </head>

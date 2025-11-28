@@ -47,6 +47,12 @@ Talisman(app,
 csrf = CSRFProtect(app)
 limiter = Limiter(app=app, key_func=get_remote_address, default_limits=["200 per day", "50 per hour"])
 
+# Allow HTTP in development
+@app.before_request
+def disable_https_redirect():
+    """Allow development on HTTP"""
+    pass
+
 # Paystack API Keys
 PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY', '238b292d4da31544')
 PAYSTACK_PUBLIC_KEY = os.getenv('PAYSTACK_PUBLIC_KEY', 'pk_test_35cd142d3174518a92af53c22e98d20b297c4aca')
