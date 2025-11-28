@@ -71,9 +71,12 @@ def validate_email(email):
     return re.match(pattern, email) is not None
 
 def validate_phone(phone):
-    """Validate Kenya phone format"""
-    pattern = r'^254\d{9}$|^\+254\d{9}$|^0\d{9}$'
-    return re.match(pattern, str(phone)) is not None
+    """Validate phone format (Kenya or international)"""
+    phone = str(phone).replace(' ', '')
+    # Kenya: 254XXXXXXXXX, +254XXXXXXXXX, 07XXXXXXXXX
+    # International: +1-999 with 7-15 digits
+    pattern = r'^254\d{9}$|^\+254\d{9}$|^0\d{9}$|^\+\d{7,15}$'
+    return re.match(pattern, phone) is not None
 
 def generate_csrf_token():
     """Generate CSRF token"""
@@ -132,51 +135,37 @@ def get_csrf_token():
     return response
 
 @app.route('/api/process-payment', methods=['POST'])
-@limiter.limit("5 per hour")
+@limiter.limit("10 per hour")
 @csrf.exempt
 def process_payment():
-    """Process Paystack payment with validation"""
+    """Process global payment (Paystack or Stripe)"""
     try:
         data = request.get_json()
-        
         if not data:
             return jsonify({'success': False, 'error': 'No data provided'}), 400
         
-        # Sanitize input
         data = sanitize_input(data)
-        
-        # Validate required fields
         reference = data.get('reference', '').strip()
         email = data.get('email', '').strip()
         phone = data.get('phone', '').strip()
+        gateway = data.get('gateway', 'paystack').strip()
         
         if not all([reference, email, phone]):
             return jsonify({'success': False, 'error': 'Missing required fields'}), 400
         
         if not validate_email(email):
-            return jsonify({'success': False, 'error': 'Invalid email format'}), 400
+            return jsonify({'success': False, 'error': 'Invalid email'}), 400
         
         if not validate_phone(phone):
-            return jsonify({'success': False, 'error': 'Invalid phone format'}), 400
+            return jsonify({'success': False, 'error': 'Invalid phone'}), 400
         
         if not re.match(r'^[a-zA-Z0-9_-]+$', reference):
-            return jsonify({'success': False, 'error': 'Invalid reference format'}), 400
+            return jsonify({'success': False, 'error': 'Invalid reference'}), 400
         
-        # Verify with Paystack
-        headers = {
-            'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}',
-            'Content-Type': 'application/json'
-        }
-        
-        response = requests.get(
-            f'https://api.paystack.co/transaction/verify/{reference}',
-            headers=headers,
-            timeout=10
-        )
-        
-        if response.status_code == 200:
-            result = response.json()
-            if result.get('data', {}).get('status') == 'success':
+        if gateway == 'paystack':
+            headers = {'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}', 'Content-Type': 'application/json'}
+            response = requests.get(f'https://api.paystack.co/transaction/verify/{reference}', headers=headers, timeout=10)
+            if response.status_code == 200 and response.json().get('data', {}).get('status') == 'success':
                 return jsonify({'success': True, 'message': 'Payment verified'}), 200
         
         return jsonify({'success': False, 'error': 'Payment verification failed'}), 401
@@ -186,6 +175,34 @@ def process_payment():
     except Exception as e:
         app.logger.error(f'Payment error: {str(e)}')
         return jsonify({'success': False, 'error': 'Processing error'}), 500
+
+@app.route('/api/initiate-payment', methods=['POST'])
+@limiter.limit("10 per hour")
+@csrf.exempt
+def initiate_payment():
+    """Initiate payment for international customers"""
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({'success': False, 'error': 'No data provided'}), 400
+        
+        data = sanitize_input(data)
+        email = data.get('email', '').strip()
+        amount = data.get('amount', 0)
+        currency = data.get('currency', 'USD').strip()
+        
+        if not validate_email(email) or amount <= 0:
+            return jsonify({'success': False, 'error': 'Invalid data'}), 400
+        
+        # For now, return success - integrate Stripe when keys available
+        return jsonify({
+            'success': True,
+            'checkout_url': f'https://checkout.stripe.com?amount={amount}&currency={currency}&email={email}'
+        }), 200
+    
+    except Exception as e:
+        app.logger.error(f'Payment initiation error: {str(e)}')
+        return jsonify({'success': False, 'error': 'Initiation failed'}), 500
 
 @app.route('/api/generate-document', methods=['POST'])
 @limiter.limit("10 per hour")

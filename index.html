@@ -913,28 +913,35 @@
             setView('home');
         };
 
-        // Secure Paystack Payment Integration
+        // Global Payment Integration with Multi-Currency Support
         async function initiateCVPayment(packageType) {
             if (!securityManager.isOnline) {
                 securityManager.showNotification('You are offline. Please connect to the internet to make payments.', 'error');
                 return;
             }
 
-            let amount, description;
+            let amountKES, description;
             if (packageType === 'cv') {
-                amount = 5000;
+                amountKES = 5000;
                 description = 'Professional CV';
             } else if (packageType === 'cover') {
-                amount = 3000;
+                amountKES = 3000;
                 description = 'Cover Letter';
             } else if (packageType === 'both') {
-                amount = 8000;
+                amountKES = 8000;
                 description = 'CV & Cover Letter Bundle';
             }
-            showPaymentModal(packageType, amount, description);
+
+            // Convert to user's currency
+            const convertedAmount = securityManager.convertPrice(amountKES, securityManager.userCurrency);
+            showGlobalPaymentModal(packageType, amountKES, convertedAmount, description);
         }
 
-        function showPaymentModal(packageType, amount, description) {
+        function showGlobalPaymentModal(packageType, amountKES, convertedAmount, description) {
+            const isKenyan = securityManager.isKenyan();
+            const currency = securityManager.userCurrency;
+            const symbol = securityManager.getCurrencySymbol();
+            
             const modal = document.createElement('div');
             modal.id = 'payment-modal';
             modal.innerHTML = `
@@ -943,16 +950,17 @@
                         <h3 class="text-2xl font-bold text-yellow-400 mb-4">Complete Your Payment</h3>
                         <div class="bg-gray-800 rounded-lg p-4 mb-6">
                             <p class="text-gray-300 mb-2">Package: <span class="font-bold text-white">${securityManager.sanitizeInput(description)}</span></p>
-                            <p class="text-gray-300 mb-4">Amount: <span class="text-2xl font-bold text-yellow-400">Ksh ${amount/100}</span></p>
+                            <p class="text-gray-300 mb-2">Country: <span class="font-bold text-white">${securityManager.userCountry}</span></p>
+                            <p class="text-gray-300 mb-4">Amount: <span class="text-2xl font-bold text-yellow-400">${symbol} ${convertedAmount}</span></p>
                         </div>
                         <form id="payment-form" class="space-y-4" novalidate>
                             <input type="email" id="email" placeholder="Enter your email" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none" />
-                            <input type="tel" id="phone" placeholder="Enter your phone (254...)" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none" />
+                            <input type="tel" id="phone" placeholder="Enter your phone (${isKenyan ? '254...' : '+1...'})" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none" />
                             <input type="text" id="full_name" placeholder="Enter your full name" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none" />
                         </form>
                         <div class="flex gap-3 mt-6">
                             <button onclick="document.getElementById('payment-modal').remove()" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">Cancel</button>
-                            <button onclick="processPaystackPayment('${packageType}', ${amount}, '${description}')" class="flex-1 whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition">Pay with Paystack</button>
+                            <button onclick="processGlobalPayment('${packageType}', ${amountKES}, ${convertedAmount}, '${currency}', '${description}')" class="flex-1 whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition">Pay Now</button>
                         </div>
                     </div>
                 </div>
@@ -960,7 +968,7 @@
             document.body.appendChild(modal);
         }
 
-        async function processPaystackPayment(packageType, amount, description) {
+        async function processGlobalPayment(packageType, amountKES, convertedAmount, currency, description) {
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const full_name = document.getElementById('full_name').value.trim();
@@ -971,7 +979,7 @@
             }
 
             if (!securityManager.validatePhone(phone)) {
-                securityManager.showNotification('Invalid phone format. Use 254... format', 'error');
+                securityManager.showNotification('Invalid phone format', 'error');
                 return;
             }
 
@@ -980,37 +988,69 @@
                 return;
             }
 
-            const handler = PaystackPop.setup({
-                key: 'pk_test_35cd142d3174518a92af53c22e98d20b297c4aca',
-                email: email,
-                amount: amount,
-                currency: 'KES',
-                ref: 'CV_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
-                description: description,
-                onClose: () => securityManager.showNotification('Payment cancelled'),
-                onSuccess: async (response) => {
-                    const result = await securityManager.secureFetch('/api/process-payment', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            reference: response.reference,
-                            packageType: packageType,
-                            email: email,
-                            phone: phone,
-                            full_name: full_name,
-                            amount: amount
-                        })
-                    });
+            const isKenyan = securityManager.isKenyan();
+            const ref = 'CV_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 
-                    if (result.success) {
-                        securityManager.showNotification('Payment verified! Generating documents...');
-                        document.getElementById('payment-modal').remove();
-                        showDocumentForm(packageType);
-                    } else {
-                        securityManager.showNotification('Payment verification failed: ' + (result.error || 'Unknown error'), 'error');
+            if (isKenyan) {
+                // Paystack for Kenya
+                const handler = PaystackPop.setup({
+                    key: 'pk_test_35cd142d3174518a92af53c22e98d20b297c4aca',
+                    email: email,
+                    amount: amountKES,
+                    currency: 'KES',
+                    ref: ref,
+                    description: description,
+                    onClose: () => securityManager.showNotification('Payment cancelled'),
+                    onSuccess: async (response) => {
+                        await verifyPayment(response.reference, packageType, email, phone, full_name, amountKES, 'paystack');
                     }
+                });
+                handler.openIframe();
+            } else {
+                // Stripe for international
+                const result = await securityManager.secureFetch('/api/initiate-payment', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        packageType: packageType,
+                        amount: Math.round(convertedAmount * 100),
+                        currency: currency,
+                        email: email,
+                        phone: phone,
+                        full_name: full_name,
+                        amountKES: amountKES,
+                        reference: ref
+                    })
+                });
+
+                if (result.checkout_url) {
+                    window.location.href = result.checkout_url;
+                } else {
+                    securityManager.showNotification('Payment initiation failed', 'error');
                 }
+            }
+        }
+
+        async function verifyPayment(reference, packageType, email, phone, full_name, amount, gateway) {
+            const result = await securityManager.secureFetch('/api/process-payment', {
+                method: 'POST',
+                body: JSON.stringify({
+                    reference: reference,
+                    packageType: packageType,
+                    email: email,
+                    phone: phone,
+                    full_name: full_name,
+                    amount: amount,
+                    gateway: gateway
+                })
             });
-            handler.openIframe();
+
+            if (result.success) {
+                securityManager.showNotification('Payment verified! Generating documents...');
+                document.getElementById('payment-modal')?.remove();
+                showDocumentForm(packageType);
+            } else {
+                securityManager.showNotification('Payment verification failed: ' + (result.error || 'Unknown error'), 'error');
+            }
         }
 
         function showDocumentForm(packageType) {

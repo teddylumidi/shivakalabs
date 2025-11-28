@@ -4,7 +4,40 @@ class SecurityManager {
     this.csrfToken = null;
     this.requestQueue = [];
     this.isOnline = navigator.onLine;
+    this.userCountry = 'US';
+    this.userCurrency = 'USD';
     this.initOfflineDetection();
+    this.detectLocation();
+  }
+
+  async detectLocation() {
+    try {
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      this.userCountry = data.country_code || 'US';
+      this.userCurrency = data.currency || 'USD';
+      localStorage.setItem('user_country', this.userCountry);
+      localStorage.setItem('user_currency', this.userCurrency);
+    } catch (error) {
+      this.userCountry = 'US';
+      this.userCurrency = 'USD';
+    }
+  }
+
+  getCurrencySymbol() {
+    const symbols = {
+      'KES': 'KSh', 'USD': '$', 'EUR': '€', 'GBP': '£', 'UGX': 'USh', 
+      'TZS': 'TSh', 'ZAR': 'R', 'NGN': '₦', 'GHS': '₵', 'INR': '₹'
+    };
+    return symbols[this.userCurrency] || this.userCurrency;
+  }
+
+  convertPrice(priceKES, targetCurrency) {
+    const rates = {
+      'KES': 1, 'USD': 0.0078, 'EUR': 0.0074, 'GBP': 0.0062, 'UGX': 29.5,
+      'TZS': 20.1, 'ZAR': 0.13, 'NGN': 12.5, 'GHS': 0.12, 'INR': 0.65
+    };
+    return Math.round(priceKES * (rates[targetCurrency] || rates['USD']) * 100) / 100;
   }
 
   initOfflineDetection() {
@@ -43,8 +76,13 @@ class SecurityManager {
   }
 
   validatePhone(phone) {
-    const regex = /^254\d{9}$|^\+254\d{9}$|^0\d{9}$/;
-    return regex.test(phone.replace(/\s+/g, ''));
+    phone = phone.replace(/\s+/g, '');
+    // Accept Kenya format or any international format starting with +
+    return /^254\d{9}$|^\+254\d{9}$|^0\d{9}$|^\+\d{7,15}$/.test(phone);
+  }
+
+  isKenyan() {
+    return this.userCountry === 'KE';
   }
 
   async secureFetch(url, options = {}) {
