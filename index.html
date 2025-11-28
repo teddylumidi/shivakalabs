@@ -73,6 +73,7 @@
                     <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="graphic-design">Design</button>
                     <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="digital-marketing">Marketing</button>
                     <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="cv-writing">CV</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="documents-gen">DocumentsGen</button>
                     <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="how-it-works">How It Works</button>
                 </nav>
 
@@ -92,6 +93,7 @@
                     <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="graphic-design">Graphic Design</button>
                     <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="digital-marketing">Digital Marketing</button>
                     <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="cv-writing">CV & Cover Letter</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="documents-gen">DocumentsGen</button>
                     <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="how-it-works">How It Works</button>
                     <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="terms">Legal</button>
                 </div>
@@ -122,6 +124,7 @@
                             <button onclick="setView('graphic-design')" class="block text-gray-300 hover:text-white font-bold transition">Graphic Design</button>
                             <button onclick="setView('digital-marketing')" class="block text-gray-300 hover:text-white font-bold transition">Digital Marketing</button>
                             <button onclick="setView('cv-writing')" class="block text-gray-300 hover:text-white font-bold transition">CV & Cover Letter</button>
+                            <button onclick="setView('documents-gen')" class="block text-gray-300 hover:text-white font-bold transition">DocumentsGen</button>
                         </nav>
                     </div>
                     <div>
@@ -205,6 +208,67 @@
                             <h3 class="text-2xl font-bold text-white mb-3">CV & Cover Letter</h3>
                             <p class="text-gray-400 mb-6">Professional documents, expertly crafted for success</p>
                             <button onclick="setView('cv-writing')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>Get Started</button>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700 hover:border-indigo-400">
+                            <div class="w-24 h-24 mx-auto mb-4 bg-gradient-gold rounded-lg flex items-center justify-center drop-shadow-lg"><svg class="w-12 h-12 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/></svg></div>
+                            <h3 class="text-2xl font-bold text-white mb-3">DocumentsGen</h3>
+                            <p class="text-gray-400 mb-6">AI-powered document generation: CVs, proposals, certificates, invoices, and more</p>
+                            <button onclick="setView('documents-gen')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>Generate Now</button>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'documents-gen': `
+                <div class="space-y-8">
+                    <div class="text-center mb-8">
+                        <div class="w-32 h-32 bg-gradient-gold rounded-2xl flex items-center justify-center mx-auto mb-4 drop-shadow-lg"><svg class="w-16 h-16 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/></svg></div>
+                        <h2 class="text-4xl font-bold gold-accent mb-2">DocumentsGen</h2>
+                        <p class="text-gray-400 text-lg">AI-Powered Professional Document Generation</p>
+                    </div>
+
+                    <div id="payment-section" class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-6">💳 Unlock Document Generation</h3>
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <button onclick="initiatePayment('mpesa', 500)" class="p-6 rounded-xl border-2 border-gray-600 hover:border-green-500 bg-gray-900 text-white font-bold transition hover:shadow-lg">M-Pesa<br><span class="text-xl">Ksh 500</span></button>
+                            <button onclick="initiatePayment('paypal', 5)" class="p-6 rounded-xl border-2 border-gray-600 hover:border-blue-500 bg-gray-900 text-white font-bold transition hover:shadow-lg">PayPal<br><span class="text-xl">$5 USD</span></button>
+                            <button onclick="initiatePayment('stripe', 500)" class="p-6 rounded-xl border-2 border-gray-600 hover:border-purple-500 bg-gray-900 text-white font-bold transition hover:shadow-lg">Visa/Card<br><span class="text-xl">Ksh 500</span></button>
+                        </div>
+                        <p class="text-gray-300 text-sm text-center">Pay once. Generate unlimited documents for 30 days.</p>
+                    </div>
+
+                    <div id="generator-section" class="hidden">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                                <h3 class="text-2xl font-bold text-yellow-400 mb-4">📝 Document Type</h3>
+                                <select id="doc-type" class="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg text-white font-bold mb-4">
+                                    <option value="cv">CV / Resume</option>
+                                    <option value="cover-letter">Cover Letter</option>
+                                    <option value="recommendation">Recommendation Letter</option>
+                                    <option value="proposal">Business Proposal</option>
+                                    <option value="report">Professional Report</option>
+                                    <option value="essay">Essay</option>
+                                    <option value="certificate">Certificate</option>
+                                    <option value="invoice">Invoice</option>
+                                    <option value="receipt">Receipt</option>
+                                    <option value="custom">Custom Document</option>
+                                </select>
+                                <button onclick="generateDocument()" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition">🚀 Generate Document</button>
+                            </div>
+
+                            <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                                <h3 class="text-2xl font-bold text-yellow-400 mb-4">📥 Download Options</h3>
+                                <div class="space-y-2">
+                                    <button onclick="downloadDocument('pdf')" class="w-full p-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition">📄 PDF</button>
+                                    <button onclick="downloadDocument('docx')" class="w-full p-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">📋 DOCX</button>
+                                    <button onclick="downloadDocument('txt')" class="w-full p-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition">📃 TXT</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="generated-content" class="hidden luxury-card dark-header p-8 rounded-2xl border border-gray-700 mt-8">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">✨ Generated Document Preview</h3>
+                            <div id="preview-content" class="bg-gray-900 p-6 rounded-lg text-gray-300 font-mono text-sm max-h-96 overflow-y-auto whitespace-pre-wrap"></div>
                         </div>
                     </div>
                 </div>

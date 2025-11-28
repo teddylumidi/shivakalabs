@@ -32,6 +32,20 @@ app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
 app.config['WTF_CSRF_TIME_LIMIT'] = None
 
+# DocumentsGen Configuration
+DOCUMENTS_PRICING = {
+    'cv': 500,
+    'cover-letter': 300,
+    'recommendation': 400,
+    'proposal': 1000,
+    'report': 800,
+    'essay': 600,
+    'certificate': 250,
+    'invoice': 200,
+    'receipt': 150,
+    'custom': 1500
+}
+
 # Compression middleware
 @app.before_request
 def compress_request():
