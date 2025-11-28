@@ -7,13 +7,15 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://js.paystack.co; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.paystack.co; frame-src 'self' https://checkout.paystack.com">
     <meta name="theme-color" content="#D4AF37">
     <meta name="description" content="Shivakalabs - Premium digital services including government services, web development, design, marketing, and CV writing">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://js.paystack.co">
+    <link rel="preconnect" href="https://api.paystack.co">
     <title>Shivakalabs - Elevate Your Digital Future</title>
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" href="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png">
     <link rel="apple-touch-icon" href="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://js.paystack.co/v1/inline.js" defer></script>
-    <script src="/security.js" defer></script>
+    <script async src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://js.paystack.co/v1/inline.js"></script>
     <style>
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #3a3a42; }
@@ -55,7 +57,7 @@
         <header class="dark-header shadow-lg sticky top-0 z-50 border-b border-gray-700">
             <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <img src="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png" alt="Shivakalabs" class="h-10 w-10">
+                    <img src="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png" alt="Shivakalabs" class="h-10 w-10" loading="eager">
                     <div>
                         <h1 class="text-xl font-bold text-white">Shivakalabs</h1>
                         <p class="text-xs text-gray-400">Digital Excellence</p>
@@ -97,11 +99,12 @@
         </main>
 
         <!-- Floating WhatsApp Button -->
-        <a href="https://wa.me/254716358703" target="_blank" class="fixed bottom-6 right-6 whatsapp-green hover:bg-green-700 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition transform hover:scale-110 z-40">
+        <a href="https://wa.me/254716358703" target="_blank" class="fixed bottom-6 right-6 whatsapp-green hover:bg-green-700 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition transform hover:scale-110 z-40" rel="noopener noreferrer">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
         </a>
     </div>
 
+    <script src="/security.js" defer></script>
     <script>
         const contentArea = document.getElementById('content-area');
         const navTabs = document.querySelectorAll('.nav-tab');

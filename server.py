@@ -2,6 +2,8 @@
 import os
 import re
 import secrets
+import gzip
+import io
 from datetime import datetime, timedelta
 from flask import Flask, request, jsonify, send_file, session, make_response
 from flask_cors import CORS
@@ -19,6 +21,8 @@ import html
 import bleach
 
 app = Flask(__name__)
+app.config['COMPRESS_LEVEL'] = 9
+app.config['JSON_SORT_KEYS'] = False
 
 # Security Configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', secrets.token_hex(32))
@@ -28,28 +32,64 @@ app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
 app.config['WTF_CSRF_TIME_LIMIT'] = None
 
+# Compression middleware
+@app.before_request
+def compress_request():
+    if 'gzip' in request.headers.get('Accept-Encoding', ''):
+        request.is_gzip = True
+
+@app.after_request
+def compress_response(response):
+    if request.is_gzip and len(response.get_data()) > 500:
+        response.direct_passthrough = False
+        response.data = gzip.compress(response.get_data())
+        response.headers['Content-Encoding'] = 'gzip'
+        response.headers['Content-Length'] = len(response.data)
+    return response
+
+# Security & Performance Headers
+@app.after_request
+def set_security_headers(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    response.headers['Permissions-Policy'] = 'geolocation=*, microphone=(), camera=()'
+    response.headers['Strict-Transport-Security'] = 'max-age=31536000'
+    
+    # Aggressive caching for static assets
+    if request.path.endswith(('.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.woff', '.woff2', '.ttf')):
+        response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+        response.headers['ETag'] = None
+    elif request.path.endswith('.html'):
+        response.headers['Cache-Control'] = 'public, max-age=3600, must-revalidate'
+    else:
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+    
+    return response
+
 # Initialize security tools
 CORS(app, resources={r"/api/*": {"origins": os.getenv('ALLOWED_ORIGINS', '*')}})
 Talisman(app, 
     force_https=False,
+    strict_transport_security=True,
+    strict_transport_security_max_age=31536000,
     content_security_policy={
         'default-src': "'self'",
         'script-src': ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://js.paystack.co"],
         'style-src': ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com"],
         'img-src': ["'self'", "data:", "https:", "blob:"],
         'connect-src': ["'self'", "https://api.paystack.co"],
-        'frame-src': ["'self'", "https://checkout.paystack.com"]
+        'frame-src': ["'self'", "https://checkout.paystack.com"],
+        'base-uri': ["'self'"],
+        'form-action': ["'self'"]
     }
 )
 
 csrf = CSRFProtect(app)
 limiter = Limiter(app=app, key_func=get_remote_address, default_limits=["200 per day", "50 per hour"])
-
-# Allow HTTP in development
-@app.before_request
-def disable_https_redirect():
-    """Allow development on HTTP"""
-    pass
 
 # Paystack API Keys
 PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY', '238b292d4da31544')
