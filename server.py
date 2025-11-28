@@ -35,16 +35,21 @@ app.config['WTF_CSRF_TIME_LIMIT'] = None
 # Compression middleware
 @app.before_request
 def compress_request():
-    if 'gzip' in request.headers.get('Accept-Encoding', ''):
-        request.is_gzip = True
+    request.is_gzip = 'gzip' in request.headers.get('Accept-Encoding', '')
 
 @app.after_request
 def compress_response(response):
-    if request.is_gzip and len(response.get_data()) > 500:
-        response.direct_passthrough = False
-        response.data = gzip.compress(response.get_data())
-        response.headers['Content-Encoding'] = 'gzip'
-        response.headers['Content-Length'] = len(response.data)
+    if getattr(request, 'is_gzip', False) and response.status_code == 200:
+        try:
+            if response.direct_passthrough:
+                return response
+            data = response.get_data()
+            if len(data) > 500:
+                response.data = gzip.compress(data)
+                response.headers['Content-Encoding'] = 'gzip'
+                response.headers['Content-Length'] = len(response.data)
+        except:
+            pass
     return response
 
 # Security & Performance Headers

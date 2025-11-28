@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://js.paystack.co; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.paystack.co; frame-src 'self' https://checkout.paystack.com">
     <meta name="theme-color" content="#D4AF37">
@@ -65,23 +65,23 @@
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex space-x-8">
-                    <button class="nav-tab nav-underline active-nav text-sm font-medium text-white transition" data-view="home">Home</button>
-                    <button class="nav-tab nav-underline text-sm font-medium text-gray-300 hover:text-white transition" data-view="ecitizen">eCitizen</button>
-                    <button class="nav-tab nav-underline text-sm font-medium text-gray-300 hover:text-white transition" data-view="web-development">Web Dev</button>
-                    <button class="nav-tab nav-underline text-sm font-medium text-gray-300 hover:text-white transition" data-view="graphic-design">Design</button>
-                    <button class="nav-tab nav-underline text-sm font-medium text-gray-300 hover:text-white transition" data-view="digital-marketing">Marketing</button>
-                    <button class="nav-tab nav-underline text-sm font-medium text-gray-300 hover:text-white transition" data-view="cv-writing">CV Writing</button>
+                <nav class="hidden sm:flex space-x-2 md:space-x-4 lg:space-x-8">
+                    <button class="nav-tab nav-underline active-nav text-xs md:text-sm font-medium text-white transition" data-view="home">Home</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-medium text-gray-300 hover:text-white transition" data-view="ecitizen">eCitizen</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-medium text-gray-300 hover:text-white transition" data-view="web-development">Web</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-medium text-gray-300 hover:text-white transition" data-view="graphic-design">Design</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-medium text-gray-300 hover:text-white transition" data-view="digital-marketing">Marketing</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-medium text-gray-300 hover:text-white transition" data-view="cv-writing">CV</button>
                 </nav>
 
                 <!-- Mobile Menu Icon -->
-                <button id="mobile-menu-btn" class="lg:hidden text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <button id="mobile-menu-btn" class="sm:hidden text-white p-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
 
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden lg:hidden bg-gray-800 border-t border-gray-700">
+            <div id="mobile-menu" class="hidden sm:hidden bg-gray-800 border-t border-gray-700">
                 <div class="px-4 py-3 space-y-2">
                     <button class="nav-tab block w-full text-left px-3 py-2 rounded text-white font-medium hover:bg-gray-700" data-view="home">Home</button>
                     <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700" data-view="ecitizen">eCitizen</button>
@@ -94,13 +94,15 @@
         </header>
 
         <!-- Main Content -->
-        <main class="flex-1 max-w-7xl mx-auto w-full px-4 py-8">
-            <div id="content-area" class="w-full"></div>
+        <main class="flex-1 w-full px-2 sm:px-4 py-4 sm:py-8">
+            <div class="max-w-7xl mx-auto w-full">
+                <div id="content-area" class="w-full"></div>
+            </div>
         </main>
 
         <!-- Floating WhatsApp Button -->
-        <a href="https://wa.me/254716358703" target="_blank" class="fixed bottom-6 right-6 whatsapp-green hover:bg-green-700 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition transform hover:scale-110 z-40" rel="noopener noreferrer">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+        <a href="https://wa.me/254716358703" target="_blank" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 whatsapp-green hover:bg-green-700 text-white p-3 sm:p-4 rounded-full shadow-xl hover:shadow-2xl transition transform hover:scale-110 z-40" rel="noopener noreferrer" title="Chat on WhatsApp">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
         </a>
     </div>
 
