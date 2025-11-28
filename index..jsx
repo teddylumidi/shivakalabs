@@ -32,6 +32,7 @@
         .package-footer-blue { background-color: #172554; }
         .package-footer-orange { background-color: #9a3412; }
         .package-footer-green { background-color: #065f46; }
+        .whatsapp-green { background-color: #25D366; } /* Official WhatsApp Green */
 
         /* Active sidebar link style */
         .active-link {
@@ -132,6 +133,13 @@
         const navTabs = document.querySelectorAll('.nav-tab');
         const sidebarLinks = document.querySelectorAll('.sidebar-link');
         let currentView = 'home'; // Default view
+        
+        // WhatsApp Icon SVG (Used on Home Page)
+        const whatsappIcon = `
+            <svg class="w-5 h-5 mr-2 -ml-1 text-white" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/>
+            </svg>
+        `;
 
         // --- Content Definitions ---
         const content = {
@@ -151,8 +159,8 @@
                         <div class="dark-header p-6 rounded-xl shadow-lg hover:shadow-yellow-500/30 transition duration-300 border-t-4 border-yellow-400">
                             <h3 class="text-xl font-bold mb-2 text-yellow-400">eCitizen</h3>
                             <p class="text-gray-300 text-sm mb-4">Access essential government services like KRA, NTSA, and immigration forms easily.</p>
-                            <button onclick="setView('ecitizen')" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition">
-                                Contact via WhatsApp
+                            <button onclick="setView('ecitizen')" class="whatsapp-green hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition flex items-center justify-center">
+                                ${whatsappIcon} Contact via WhatsApp
                             </button>
                         </div>
                         
@@ -160,8 +168,8 @@
                         <div class="dark-header p-6 rounded-xl shadow-lg hover:shadow-yellow-500/30 transition duration-300 border-t-4 border-yellow-400">
                             <h3 class="text-xl font-bold mb-2 text-yellow-400">Web Development</h3>
                             <p class="text-gray-300 text-sm mb-4">Professional full-stack solutions: custom websites, e-commerce, and system integration.</p>
-                            <button onclick="setView('web-development')" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition">
-                                Contact via WhatsApp
+                            <button onclick="setView('web-development')" class="whatsapp-green hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition flex items-center justify-center">
+                                ${whatsappIcon} Contact via WhatsApp
                             </button>
                         </div>
 
@@ -169,8 +177,8 @@
                         <div class="dark-header p-6 rounded-xl shadow-lg hover:shadow-yellow-500/30 transition duration-300 border-t-4 border-yellow-400">
                             <h3 class="text-xl font-bold mb-2 text-yellow-400">Graphic Design</h3>
                             <p class="text-gray-300 text-sm mb-4">Stunning visual branding, logos, print media, and digital asset creation.</p>
-                            <button onclick="setView('graphic-design')" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition">
-                                Contact via WhatsApp
+                            <button onclick="setView('graphic-design')" class="whatsapp-green hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition flex items-center justify-center">
+                                ${whatsappIcon} Contact via WhatsApp
                             </button>
                         </div>
 
@@ -178,8 +186,8 @@
                         <div class="dark-header p-6 rounded-xl shadow-lg hover:shadow-yellow-500/30 transition duration-300 border-t-4 border-yellow-400">
                             <h3 class="text-xl font-bold mb-2 text-yellow-400">Digital Marketing</h3>
                             <p class="text-gray-300 text-sm mb-4">Strategy and execution for SEO, social media, campaigns, and online visibility.</p>
-                            <button onclick="setView('digital-marketing')" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition">
-                                Contact via WhatsApp
+                            <button onclick="setView('digital-marketing')" class="whatsapp-green hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full text-sm w-full transition flex items-center justify-center">
+                                ${whatsappIcon} Contact via WhatsApp
                             </button>
                         </div>
 
@@ -245,8 +253,10 @@
                         </div>
                     </div>
 
-                    <div class="mt-12 p-4 bg-gray-800 rounded-lg text-center">
-                        <p class="text-lg font-medium text-white">For eCitizen Support: Call /Text <span class="text-yellow-400 font-bold">0716358703</span></p>
+                    <div class="mt-12 p-4 whatsapp-green rounded-lg text-center shadow-lg">
+                        <p class="text-lg font-bold text-white flex items-center justify-center">
+                            ${whatsappIcon} eCitizen Support: Call /Text <span class="text-white font-bold ml-2">0716358703</span>
+                        </p>
                     </div>
                 </div>
             `,
@@ -372,8 +382,10 @@
                         </div>
                     </div>
 
-                    <div class="mt-12 p-4 bg-green-600 rounded-lg text-center shadow-lg">
-                        <p class="text-lg font-bold text-white">For More Info: Call / Text <span class="text-white">0716358703</span></p>
+                    <div class="mt-12 p-4 whatsapp-green rounded-lg text-center shadow-lg">
+                        <p class="text-lg font-bold text-white flex items-center justify-center">
+                            ${whatsappIcon} For More Info: Call / Text <span class="text-white ml-2">0716358703</span>
+                        </p>
                     </div>
                 </div>
             `,
@@ -459,6 +471,14 @@
                         </div>
 
                     </div>
+                    
+                    <!-- Contact/Chat Button at the bottom -->
+                    <div class="mt-12 text-center">
+                        <button class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition shadow-xl text-lg flex items-center justify-center mx-auto">
+                            ${whatsappIcon} Chat
+                        </button>
+                    </div>
+
                 </div>
             `,
         };
