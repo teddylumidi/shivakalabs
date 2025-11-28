@@ -6,6 +6,8 @@ requires-python = ">=3.11"
 dependencies = [
     "docx>=0.2.4",
     "flask>=3.1.2",
+    "python-docx>=1.2.0",
     "reportlab>=4.4.5",
+    "requests>=2.32.5",
     "stripe>=14.0.1",
 ]

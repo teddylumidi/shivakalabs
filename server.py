@@ -8,6 +8,7 @@ from reportlab.lib.units import inch
 from docx import Document
 from datetime import datetime
 import requests
+import io
 
 app = Flask(__name__)
 
