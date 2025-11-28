@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://js.paystack.co; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.paystack.co; frame-src 'self' https://checkout.paystack.com">
+    <meta name="theme-color" content="#D4AF37">
+    <meta name="description" content="Shivakalabs - Premium digital services including government services, web development, design, marketing, and CV writing">
     <title>Shivakalabs - Elevate Your Digital Future</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png">
+    <link rel="apple-touch-icon" href="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png">
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://js.paystack.co/v1/inline.js" defer></script>
+    <script src="/security.js" defer></script>
     <style>
         /* Custom scrollbar for premium dark theme */
         ::-webkit-scrollbar {
@@ -723,7 +731,7 @@
                                     <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>PDF & Word formats</li>
                                 </ul>
                                 <p class="text-3xl font-bold text-yellow-400 mb-4">Ksh 50</p>
-                                <button onclick="initiateCVPayment('cv')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition">
+                                <button onclick="initiateCVPayment('cv')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition disabled:opacity-50" disabled>
                                     Pay Now
                                 </button>
                             </div>
@@ -905,22 +913,24 @@
             setView('home');
         };
 
-        // Paystack Payment Integration
-        function initiateCVPayment(packageType) {
+        // Secure Paystack Payment Integration
+        async function initiateCVPayment(packageType) {
+            if (!securityManager.isOnline) {
+                securityManager.showNotification('You are offline. Please connect to the internet to make payments.', 'error');
+                return;
+            }
+
             let amount, description;
-            
             if (packageType === 'cv') {
-                amount = 5000; // 50 KSH in cents
+                amount = 5000;
                 description = 'Professional CV';
             } else if (packageType === 'cover') {
-                amount = 3000; // 30 KSH in cents
+                amount = 3000;
                 description = 'Cover Letter';
             } else if (packageType === 'both') {
-                amount = 8000; // 80 KSH in cents
+                amount = 8000;
                 description = 'CV & Cover Letter Bundle';
             }
-            
-            // Show payment form modal
             showPaymentModal(packageType, amount, description);
         }
 
@@ -928,21 +938,18 @@
             const modal = document.createElement('div');
             modal.id = 'payment-modal';
             modal.innerHTML = `
-                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div class="dark-header rounded-lg p-6 w-96 max-w-full mx-4">
+                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 backdrop-blur-sm">
+                    <div class="dark-header rounded-lg p-6 w-96 max-w-full mx-4 max-h-[90vh] overflow-y-auto">
                         <h3 class="text-2xl font-bold text-yellow-400 mb-4">Complete Your Payment</h3>
-                        
                         <div class="bg-gray-800 rounded-lg p-4 mb-6">
-                            <p class="text-gray-300 mb-2">Package: <span class="font-bold text-white">${description}</span></p>
+                            <p class="text-gray-300 mb-2">Package: <span class="font-bold text-white">${securityManager.sanitizeInput(description)}</span></p>
                             <p class="text-gray-300 mb-4">Amount: <span class="text-2xl font-bold text-yellow-400">Ksh ${amount/100}</span></p>
                         </div>
-
-                        <form id="payment-form" class="space-y-4">
+                        <form id="payment-form" class="space-y-4" novalidate>
                             <input type="email" id="email" placeholder="Enter your email" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none" />
                             <input type="tel" id="phone" placeholder="Enter your phone (254...)" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none" />
                             <input type="text" id="full_name" placeholder="Enter your full name" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none" />
                         </form>
-
                         <div class="flex gap-3 mt-6">
                             <button onclick="document.getElementById('payment-modal').remove()" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">Cancel</button>
                             <button onclick="processPaystackPayment('${packageType}', ${amount}, '${description}')" class="flex-1 whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition">Pay with Paystack</button>
@@ -953,34 +960,37 @@
             document.body.appendChild(modal);
         }
 
-        function processPaystackPayment(packageType, amount, description) {
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const full_name = document.getElementById('full_name').value;
+        async function processPaystackPayment(packageType, amount, description) {
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const full_name = document.getElementById('full_name').value.trim();
 
-            if (!email || !phone || !full_name) {
-                alert('Please fill in all fields');
+            if (!securityManager.validateEmail(email)) {
+                securityManager.showNotification('Invalid email format', 'error');
                 return;
             }
 
-            // Initialize Paystack payment
+            if (!securityManager.validatePhone(phone)) {
+                securityManager.showNotification('Invalid phone format. Use 254... format', 'error');
+                return;
+            }
+
+            if (!full_name || full_name.length < 2) {
+                securityManager.showNotification('Please enter a valid name', 'error');
+                return;
+            }
+
             const handler = PaystackPop.setup({
-                key: 'pk_test_35cd142d3174518a92af53c22e98d20b297c4aca', // Paystack test public key
+                key: 'pk_test_35cd142d3174518a92af53c22e98d20b297c4aca',
                 email: email,
                 amount: amount,
                 currency: 'KES',
-                ref: 'CV_' + Math.floor((Math.random() * 1000000000) + 1),
+                ref: 'CV_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
                 description: description,
-                onClose: function() {
-                    alert('Payment window closed.');
-                },
-                onSuccess: function(response) {
-                    // Payment successful - send to backend
-                    fetch('/process-payment', {
+                onClose: () => securityManager.showNotification('Payment cancelled'),
+                onSuccess: async (response) => {
+                    const result = await securityManager.secureFetch('/api/process-payment', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
                         body: JSON.stringify({
                             reference: response.reference,
                             packageType: packageType,
@@ -989,17 +999,15 @@
                             full_name: full_name,
                             amount: amount
                         })
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert('Payment successful! Your document generation will begin shortly.');
-                            document.getElementById('payment-modal').remove();
-                            // Redirect to download page or show form for document details
-                            showDocumentForm(packageType);
-                        }
-                    })
-                    .catch(err => console.error('Error:', err));
+                    });
+
+                    if (result.success) {
+                        securityManager.showNotification('Payment verified! Generating documents...');
+                        document.getElementById('payment-modal').remove();
+                        showDocumentForm(packageType);
+                    } else {
+                        securityManager.showNotification('Payment verification failed: ' + (result.error || 'Unknown error'), 'error');
+                    }
                 }
             });
             handler.openIframe();
@@ -1009,17 +1017,15 @@
             const modal = document.createElement('div');
             modal.id = 'document-form-modal';
             modal.innerHTML = `
-                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div class="dark-header rounded-lg p-6 w-96 max-w-full mx-4">
+                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 backdrop-blur-sm">
+                    <div class="dark-header rounded-lg p-6 w-96 max-w-full mx-4 max-h-[90vh] overflow-y-auto">
                         <h3 class="text-2xl font-bold text-yellow-400 mb-4">Your Document Details</h3>
                         <p class="text-gray-300 mb-6">Fill in your information to generate your professional document.</p>
-                        
-                        <form id="document-details" class="space-y-4">
-                            <textarea id="work_experience" placeholder="Your work experience" rows="4" class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none"></textarea>
-                            <textarea id="education" placeholder="Your education" rows="4" class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none"></textarea>
-                            <textarea id="skills" placeholder="Your skills (comma-separated)" rows="3" class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none"></textarea>
+                        <form id="document-details" class="space-y-4" novalidate>
+                            <textarea id="work_experience" placeholder="Your work experience" rows="4" maxlength="5000" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none"></textarea>
+                            <textarea id="education" placeholder="Your education" rows="4" maxlength="5000" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none"></textarea>
+                            <textarea id="skills" placeholder="Your skills (comma-separated)" rows="3" maxlength="2000" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none"></textarea>
                         </form>
-
                         <div class="flex gap-3 mt-6">
                             <button onclick="document.getElementById('document-form-modal').remove()" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">Cancel</button>
                             <button onclick="generateDocument('${packageType}')" class="flex-1 whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition">Generate Document</button>
@@ -1030,42 +1036,33 @@
             document.body.appendChild(modal);
         }
 
-        function generateDocument(packageType) {
-            const work_experience = document.getElementById('work_experience').value;
-            const education = document.getElementById('education').value;
-            const skills = document.getElementById('skills').value;
+        async function generateDocument(packageType) {
+            const work_experience = document.getElementById('work_experience').value.trim();
+            const education = document.getElementById('education').value.trim();
+            const skills = document.getElementById('skills').value.trim();
 
             if (!work_experience || !education || !skills) {
-                alert('Please fill in all fields');
+                securityManager.showNotification('Please fill in all fields', 'error');
                 return;
             }
 
-            // Send to backend for document generation
-            fetch('/generate-document', {
+            const result = await securityManager.secureFetch('/api/generate-document', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify({
                     packageType: packageType,
                     work_experience: work_experience,
                     education: education,
                     skills: skills
                 })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Document generated! Download link sent to your email.');
-                    document.getElementById('document-form-modal').remove();
-                } else {
-                    alert('Error generating document: ' + data.error);
-                }
-            })
-            .catch(err => {
-                alert('Error: ' + err);
-                console.error('Error:', err);
             });
+
+            if (result.success) {
+                securityManager.showNotification('Documents generated successfully!');
+                document.getElementById('document-form-modal').remove();
+                securityManager.storeSecurely('last_package', packageType);
+            } else {
+                securityManager.showNotification('Error: ' + (result.error || 'Unknown error'), 'error');
+            }
         }
 
     </script>

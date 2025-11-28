@@ -1,41 +1,171 @@
 #!/usr/bin/env python3
 import os
-from flask import Flask, request, jsonify, send_file
+import re
+import secrets
+import hashlib
+from functools import wraps
+from datetime import datetime, timedelta
+from flask import Flask, request, jsonify, send_file, session, make_response
+from flask_cors import CORS
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+from flask_talisman import Talisman
+from flask_wtf.csrf import CSRFProtect
+from werkzeug.security import safe_str_cmp
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 from docx import Document
-from datetime import datetime
 import requests
-import io
+import html
+import bleach
 
 app = Flask(__name__)
 
-# Paystack API Keys from environment variables
+# Security Configuration
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', secrets.token_hex(32))
+app.config['SESSION_COOKIE_SECURE'] = True
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
+app.config['WTF_CSRF_TIME_LIMIT'] = None
+
+# Initialize security tools
+CORS(app, resources={r"/api/*": {"origins": os.getenv('ALLOWED_ORIGINS', '*')}})
+Talisman(app, 
+    force_https=True,
+    strict_transport_security=True,
+    strict_transport_security_max_age=31536000,
+    content_security_policy={
+        'default-src': "'self'",
+        'script-src': ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://js.paystack.co"],
+        'style-src': ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com"],
+        'img-src': ["'self'", "data:", "https:", "blob:"],
+        'connect-src': ["'self'", "https://api.paystack.co"],
+        'frame-src': ["'self'", "https://checkout.paystack.com"]
+    }
+)
+
+csrf = CSRFProtect(app)
+limiter = Limiter(app=app, key_func=get_remote_address, default_limits=["200 per day", "50 per hour"])
+
+# Paystack API Keys
 PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY', '238b292d4da31544')
 PAYSTACK_PUBLIC_KEY = os.getenv('PAYSTACK_PUBLIC_KEY', 'pk_test_35cd142d3174518a92af53c22e98d20b297c4aca')
 
-# Serve static files
+# Security utilities
+def sanitize_input(data):
+    """Sanitize user input to prevent XSS"""
+    if isinstance(data, dict):
+        return {k: sanitize_input(v) for k, v in data.items()}
+    if isinstance(data, list):
+        return [sanitize_input(item) for item in data]
+    if isinstance(data, str):
+        data = html.escape(data)
+        allowed_tags = []
+        allowed_attributes = {}
+        return bleach.clean(data, tags=allowed_tags, attributes=allowed_attributes, strip=True)
+    return data
+
+def validate_email(email):
+    """Validate email format"""
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, email) is not None
+
+def validate_phone(phone):
+    """Validate Kenya phone format"""
+    pattern = r'^254\d{9}$|^\+254\d{9}$|^0\d{9}$'
+    return re.match(pattern, str(phone)) is not None
+
+def generate_csrf_token():
+    """Generate CSRF token"""
+    return secrets.token_urlsafe(32)
+
+@app.before_request
+def before_request():
+    """Security checks before each request"""
+    if request.method == 'POST':
+        if not request.is_json and request.method == 'POST':
+            return jsonify({'error': 'Invalid content type'}), 400
+        
+        data = request.get_json(silent=True)
+        if data is None and request.method == 'POST':
+            return jsonify({'error': 'Invalid JSON'}), 400
+
+@app.after_request
+def after_request(response):
+    """Security headers after each request"""
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    response.headers['Permissions-Policy'] = 'geolocation=(), microphone=(), camera=()'
+    return response
+
+# Routes
 @app.route('/')
 def serve_index():
-    return send_file('index.html')
+    """Serve main index"""
+    response = make_response(send_file('index.html'))
+    response.headers['Cache-Control'] = 'public, max-age=3600'
+    response.headers['Content-Type'] = 'text/html; charset=utf-8'
+    return response
 
 @app.route('/<path:path>')
 def serve_static(path):
+    """Serve static files with caching"""
     try:
+        if path.endswith(('.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.woff', '.woff2')):
+            response = make_response(send_file(path))
+            response.headers['Cache-Control'] = 'public, max-age=31536000'
+            return response
         return send_file(path)
     except:
         return send_file('index.html')
 
-# Payment processing endpoint
-@app.route('/process-payment', methods=['POST'])
+@app.route('/api/csrf-token', methods=['GET'])
+@limiter.limit("100 per hour")
+def get_csrf_token():
+    """Get CSRF token"""
+    token = generate_csrf_token()
+    session['csrf_token'] = token
+    response = make_response(jsonify({'token': token}))
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    return response
+
+@app.route('/api/process-payment', methods=['POST'])
+@limiter.limit("5 per hour")
+@csrf.exempt
 def process_payment():
+    """Process Paystack payment with validation"""
     try:
-        data = request.json
-        reference = data.get('reference')
+        data = request.get_json()
         
-        # Verify payment with Paystack
+        if not data:
+            return jsonify({'success': False, 'error': 'No data provided'}), 400
+        
+        # Sanitize input
+        data = sanitize_input(data)
+        
+        # Validate required fields
+        reference = data.get('reference', '').strip()
+        email = data.get('email', '').strip()
+        phone = data.get('phone', '').strip()
+        
+        if not all([reference, email, phone]):
+            return jsonify({'success': False, 'error': 'Missing required fields'}), 400
+        
+        if not validate_email(email):
+            return jsonify({'success': False, 'error': 'Invalid email format'}), 400
+        
+        if not validate_phone(phone):
+            return jsonify({'success': False, 'error': 'Invalid phone format'}), 400
+        
+        if not re.match(r'^[a-zA-Z0-9_-]+$', reference):
+            return jsonify({'success': False, 'error': 'Invalid reference format'}), 400
+        
+        # Verify with Paystack
         headers = {
             'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}',
             'Content-Type': 'application/json'
@@ -43,41 +173,69 @@ def process_payment():
         
         response = requests.get(
             f'https://api.paystack.co/transaction/verify/{reference}',
-            headers=headers
+            headers=headers,
+            timeout=10
         )
         
         if response.status_code == 200:
             result = response.json()
-            if result['data']['status'] == 'success':
-                return jsonify({'success': True, 'message': 'Payment verified successfully'})
+            if result.get('data', {}).get('status') == 'success':
+                return jsonify({'success': True, 'message': 'Payment verified'}), 200
         
-        return jsonify({'success': False, 'error': 'Payment verification failed'})
+        return jsonify({'success': False, 'error': 'Payment verification failed'}), 401
+    
+    except requests.exceptions.RequestException:
+        return jsonify({'success': False, 'error': 'Payment service error'}), 503
     except Exception as e:
-        return jsonify({'success': False, 'error': str(e)})
+        app.logger.error(f'Payment error: {str(e)}')
+        return jsonify({'success': False, 'error': 'Processing error'}), 500
 
-# Document generation endpoint
-@app.route('/generate-document', methods=['POST'])
+@app.route('/api/generate-document', methods=['POST'])
+@limiter.limit("10 per hour")
+@csrf.exempt
 def generate_document():
+    """Generate CV/Cover Letter with validation"""
     try:
-        data = request.json
-        package_type = data.get('packageType')
-        work_experience = data.get('work_experience')
-        education = data.get('education')
-        skills = data.get('skills')
+        data = request.get_json()
         
-        if package_type == 'cv' or package_type == 'both':
+        if not data:
+            return jsonify({'success': False, 'error': 'No data provided'}), 400
+        
+        # Sanitize all input
+        data = sanitize_input(data)
+        
+        package_type = data.get('packageType', '').strip()
+        work_exp = data.get('work_experience', '').strip()
+        education = data.get('education', '').strip()
+        skills = data.get('skills', '').strip()
+        
+        # Validate
+        if package_type not in ['cv', 'cover', 'both']:
+            return jsonify({'success': False, 'error': 'Invalid package type'}), 400
+        
+        if not all([work_exp, education, skills]):
+            return jsonify({'success': False, 'error': 'Missing required fields'}), 400
+        
+        if len(work_exp) > 5000 or len(education) > 5000 or len(skills) > 2000:
+            return jsonify({'success': False, 'error': 'Input too long'}), 400
+        
+        # Generate documents
+        if package_type in ['cv', 'both']:
             cv_filename = f"cv_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
-            generate_cv_pdf(cv_filename, work_experience, education, skills)
+            generate_cv_pdf(cv_filename, work_exp, education, skills)
         
-        if package_type == 'cover' or package_type == 'both':
+        if package_type in ['cover', 'both']:
             letter_filename = f"cover_letter_{datetime.now().strftime('%Y%m%d_%H%M%S')}.docx"
             generate_cover_letter_docx(letter_filename)
         
-        return jsonify({'success': True, 'message': 'Documents generated successfully'})
+        return jsonify({'success': True, 'message': 'Documents generated'}), 200
+    
     except Exception as e:
-        return jsonify({'success': False, 'error': str(e)})
+        app.logger.error(f'Document generation error: {str(e)}')
+        return jsonify({'success': False, 'error': 'Generation failed'}), 500
 
 def generate_cv_pdf(filename, work_exp, education, skills):
+    """Generate professional CV"""
     doc = SimpleDocTemplate(filename, pagesize=letter)
     story = []
     styles = getSampleStyleSheet()
@@ -86,7 +244,7 @@ def generate_cv_pdf(filename, work_exp, education, skills):
         'CustomTitle',
         parent=styles['Heading1'],
         fontSize=24,
-        textColor='gold',
+        textColor='#D4AF37',
         spaceAfter=6,
         alignment=1
     )
@@ -105,21 +263,26 @@ def generate_cv_pdf(filename, work_exp, education, skills):
     doc.build(story)
 
 def generate_cover_letter_docx(filename):
+    """Generate professional cover letter"""
     doc = Document()
     doc.add_heading('Professional Cover Letter', 0)
     doc.add_paragraph()
     doc.add_paragraph('Dear Hiring Manager,')
     doc.add_paragraph()
-    doc.add_paragraph('I am writing to express my interest in the position. With my professional experience and skills, I am confident in my ability to contribute significantly to your organization.')
-    doc.add_paragraph()
-    doc.add_paragraph('Throughout my career, I have developed strong expertise and have consistently delivered excellent results. I am excited about the opportunity to bring my skills and experience to your team.')
+    doc.add_paragraph('I am writing to express my strong interest in the position.')
     doc.add_paragraph()
     doc.add_paragraph('Best regards,')
-    doc.add_paragraph()
-    doc.add_paragraph('[Your Name]')
     doc.save(filename)
 
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    """Rate limit handler"""
+    return jsonify({'error': 'Rate limit exceeded', 'retry_after': 60}), 429
+
+@app.errorhandler(404)
+def not_found(e):
+    """404 handler"""
+    return send_file('index.html'), 200
+
 if __name__ == '__main__':
-    print(f"Starting Shivakalabs Server with Paystack integration...")
-    print(f"Public Key: {PAYSTACK_PUBLIC_KEY[:20]}...")
     app.run(host='0.0.0.0', port=5000, debug=False)
