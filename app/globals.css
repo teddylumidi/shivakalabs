@@ -2,22 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-teal-900 via-teal-800 to-teal-950 text-white min-h-screen;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
 @layer components {
-  .luxury-card {
-    @apply transition-all duration-300 hover:shadow-lg;
+  .btn-primary {
+    @apply bg-white text-teal-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-lg;
   }
 
-  .nav-underline {
-    @apply relative;
+  .btn-secondary {
+    @apply border-2 border-white text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-teal-900;
   }
-}
 
-html {
-  scroll-behavior: smooth;
-}
+  .service-card {
+    @apply bg-white/5 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 hover:bg-white/10 hover:shadow-2xl border border-white/10 hover:border-white/30;
+  }
 
-body {
-  @apply bg-dark text-gray-100;
+  .nav-link {
+    @apply text-white hover:text-teal-200 transition-colors duration-200 px-4 py-2 font-medium;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight;
+  }
+  
+  .floating-label {
+    @apply absolute text-xs md:text-sm font-medium text-white/80 bg-teal-800/50 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -25,27 +61,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #3a3a42;
+  background: #134e4a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D4AF37;
+  background: #14b8a6;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E8C547;
+  background: #2dd4bf;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 .animate-fade-in {

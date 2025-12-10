@@ -1,88 +1,138 @@
 'use client'
 
 import { useAppStore } from '@/lib/store'
-
-const services = [
-  {
-    id: 'ecitizen',
-    icon: '🏛️',
-    title: 'eCitizen Services',
-    description: 'Seamlessly navigate government portals—KRA, NTSA, immigration, and more with trusted expertise',
-    color: 'border-yellow-400',
-  },
-  {
-    id: 'web-development',
-    icon: '🌐',
-    title: 'Web Development',
-    description: 'Stunning websites, e-commerce, and seamless integrations',
-    color: 'border-blue-400',
-  },
-  {
-    id: 'graphic-design',
-    icon: '🎨',
-    title: 'Graphic Design',
-    description: 'Brand identity, logos, print media & digital art',
-    color: 'border-purple-400',
-  },
-  {
-    id: 'digital-marketing',
-    icon: '📱',
-    title: 'Digital Marketing',
-    description: 'SEO, social media, and amplified online visibility',
-    color: 'border-red-400',
-  },
-  {
-    id: 'cv-writing',
-    icon: '📄',
-    title: 'CV & Cover Letter',
-    description: 'Professional documents, expertly crafted for success',
-    color: 'border-green-400',
-  },
-  {
-    id: 'documents-gen',
-    icon: '✨',
-    title: 'DocumentsGen',
-    description: 'AI-powered document generation powered by GPT-5',
-    color: 'border-indigo-400',
-  },
-]
+import { useEffect, useState } from 'react'
 
 export default function HomeView() {
   const { setView } = useAppStore()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const industries = [
+    { name: 'Trading', position: { top: '15%', right: '15%' } },
+    { name: 'Banking', position: { top: '20%', right: '8%' } },
+    { name: 'Fintech', position: { top: '35%', left: '12%' } },
+    { name: 'Marketplaces', position: { top: '30%', right: '5%' } },
+    { name: 'Crypto', position: { top: '55%', left: '15%' } },
+    { name: 'NBFl', position: { top: '50%', right: '10%' } },
+    { name: 'Gaming & Casino', position: { bottom: '25%', right: '8%' } },
+  ]
 
   return (
-    <div className="space-y-16">
-      <div className="text-center space-y-6 py-12">
-        <h2 className="text-5xl md:text-6xl font-bold text-white">
-          Elevate Your <span className="text-gold">Digital</span> Presence
-        </h2>
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-          Premium services for government, web, design, marketing & professional documents
-        </p>
-        <div className="h-32 w-32 mx-auto bg-gradient-to-br from-gold to-gold-light rounded-full flex items-center justify-center text-4xl font-bold text-black">S</div>
-      </div>
+    <div className="min-h-screen relative pt-20">
+      {/* Hero Section */}
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="relative z-10">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                Future-Proof Your Business with Intelligent Digital Services
+              </h1>
+              <p className="text-xl text-white/80 mb-8 max-w-2xl">
+                From eCitizen government services to professional web development, AI-powered solutions, and digital marketing - all in 100+ countries.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="btn-primary flex items-center justify-center gap-2">
+                  Book a free demo
+                </button>
+                <button className="btn-secondary flex items-center justify-center gap-2">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  <div className="text-left">
+                    <div className="font-semibold">Watch Video</div>
+                    <div className="text-xs opacity-80">1 min</div>
+                  </div>
+                </button>
+              </div>
+            </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((service) => (
-          <div
-            key={service.id}
-            className={`bg-dark-secondary p-8 rounded-2xl border border-gray-700 hover:border-${service.color.split('-')[1]}-400 transition-all hover:shadow-lg hover:shadow-${service.color.split('-')[1]}-400/20`}
-          >
-            <div className="text-5xl mb-4">{service.icon}</div>
-            <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
-            <p className="text-gray-400 mb-6">{service.description}</p>
-            <button
-              onClick={() => setView(service.id)}
-              className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z" />
-              </svg>
-              Explore Services
-            </button>
+            {/* Right Content - 3D Head Illustration */}
+            <div className="relative h-[600px] hidden lg:block">
+              {/* Animated floating labels */}
+              {mounted && industries.map((industry, i) => (
+                <div
+                  key={industry.name}
+                  className="floating-label"
+                  style={{
+                    ...industry.position,
+                    animationDelay: `${i * 0.5}s`,
+                  }}
+                >
+                  {industry.name}
+                </div>
+              ))}
+              
+              {/* Central 3D Head Wireframe Representation */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="relative w-80 h-80">
+                  {/* Glowing orb effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-emerald-400 rounded-full opacity-20 blur-3xl animate-pulse-slow"></div>
+                  
+                  {/* Wireframe circles */}
+                  <div className="absolute inset-0 border-2 border-cyan-400/30 rounded-full"></div>
+                  <div className="absolute inset-4 border-2 border-emerald-400/30 rounded-full"></div>
+                  <div className="absolute inset-8 border-2 border-teal-400/30 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
+                  
+                  {/* Security icons */}
+                  <div className="absolute top-10 left-10 w-8 h-8 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  </div>
+                  <div className="absolute bottom-20 right-10 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
+
+      {/* Services Preview */}
+      <section className="py-20 px-4 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Comprehensive Digital Solutions
+            </h2>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              Everything your business needs to thrive in the digital age
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: '🏛️', title: 'eCitizen Services', desc: '46+ government services', link: 'ecitizen' },
+              { icon: '💻', title: 'Web Development', desc: 'Modern, responsive websites', link: 'web-development' },
+              { icon: '🎨', title: 'Graphic Design', desc: 'Professional branding', link: 'graphic-design' },
+              { icon: '📱', title: 'Digital Marketing', desc: 'Growth-focused campaigns', link: 'digital-marketing' },
+              { icon: '📄', title: 'CV Writing', desc: 'Professional resumes', link: 'cv-writing' },
+              { icon: '🤖', title: 'AI Documents', desc: 'Intelligent document generation', link: 'documents-gen' },
+            ].map((service) => (
+              <div
+                key={service.link}
+                onClick={() => setView(service.link)}
+                className="glass-card p-8 cursor-pointer group hover:scale-105 transition-all duration-300"
+              >
+                <div className="text-5xl mb-4">{service.icon}</div>
+                <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
+                <p className="text-white/70 mb-4">{service.desc}</p>
+                <div className="text-white font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
+                  Learn more <span>→</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
