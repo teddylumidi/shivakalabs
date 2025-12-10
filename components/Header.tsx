@@ -15,13 +15,13 @@ export default function Header() {
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-teal-900/80 backdrop-blur-md border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-teal-500/20 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center cursor-pointer" onClick={() => setView('home')}>
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 flex items-center justify-center">
+            <div className="flex items-center space-x-3">
+              <div className="w-11 h-11 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg shadow-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
@@ -31,15 +31,15 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => setView(item.id)}
-                className={`nav-link relative ${
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-150 ${
                   currentView === item.id
-                    ? 'text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-white after:rounded-full'
-                    : 'text-white/80'
+                    ? 'bg-teal-500 text-white shadow-md'
+                    : 'text-slate-200 hover:text-white hover:bg-slate-800'
                 }`}
               >
                 {item.label}
@@ -48,11 +48,11 @@ export default function Header() {
           </nav>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <button className="text-white font-medium px-6 py-2 rounded-lg border border-white/30 hover:bg-white/10 transition-all">
+          <div className="hidden lg:flex items-center space-x-3">
+            <button className="text-slate-200 hover:text-white font-medium px-5 py-2 rounded-lg border border-teal-500/40 hover:border-teal-400 hover:bg-slate-800 transition-all duration-150">
               Log in
             </button>
-            <button className="bg-white text-teal-900 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-all">
+            <button className="bg-teal-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-teal-400 shadow-lg shadow-teal-500/20 transition-all duration-150">
               Sign Up
             </button>
           </div>
@@ -82,25 +82,25 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="lg:hidden py-4 space-y-2 border-t border-white/10">
+          <nav className="lg:hidden py-4 space-y-2 border-t border-teal-500/20 bg-slate-900/95">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => setView(item.id)}
-                className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
+                className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-150 ${
                   currentView === item.id
-                    ? 'bg-white/20 text-white font-semibold'
-                    : 'text-white/80 hover:bg-white/10'
+                    ? 'bg-teal-500 text-white font-semibold shadow-md'
+                    : 'text-slate-200 hover:bg-slate-800 hover:text-white'
                 }`}
               >
                 {item.label}
               </button>
             ))}
             <div className="pt-4 space-y-2">
-              <button className="block w-full text-center text-white font-medium px-6 py-3 rounded-lg border border-white/30 hover:bg-white/10 transition-all">
+              <button className="block w-full text-center text-slate-200 font-medium px-6 py-3 rounded-lg border border-teal-500/40 hover:border-teal-400 hover:bg-slate-800 transition-all">
                 Log in
               </button>
-              <button className="block w-full text-center bg-white text-teal-900 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-all">
+              <button className="block w-full text-center bg-teal-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-teal-400 shadow-lg transition-all">
                 Sign Up
               </button>
             </div>
