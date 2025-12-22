@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://js.paystack.co; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.paystack.co; frame-src 'self' https://checkout.paystack.com">
+    <meta name="theme-color" content="#D4AF37">
+    <meta name="description" content="Shivakalabs - Premium digital services including government services, web development, design, marketing, and CV writing">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://js.paystack.co">
+    <link rel="preconnect" href="https://api.paystack.co">
+    <title>Shivakalabs - Elevate Your Digital Future</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png">
+    <link rel="apple-touch-icon" href="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png">
+    <script async src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://js.paystack.co/v1/inline.js"></script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #3a3a42; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #E8C547; }
+
+        .dark-bg { background-color: #0f0f15; }
+        .dark-header { background-color: #1a1a24; }
+        .gold-accent { color: #D4AF37; }
+        .gold-border { border-color: #D4AF37; }
+        .whatsapp-green { background-color: #25D366; }
+        .gradient-gold { background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%); }
+        .luxury-card { transition: all 0.3s ease; }
+        .luxury-card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px rgba(212, 175, 55, 0.2); }
+        .service-icon { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: rgba(212, 175, 55, 0.1); }
+        .nav-underline { position: relative; }
+        .nav-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #D4AF37; transition: width 0.3s ease; }
+        .nav-underline:hover::after { width: 100%; }
+        .active-nav::after { width: 100% !important; }
+    </style>
+    <script>
+        if (typeof tailwind !== 'undefined') {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Inter', 'sans-serif'],
+                        },
+                    }
+                }
+            };
+        }
+    </script>
+</head>
+<body class="dark-bg text-gray-100 min-h-screen font-sans">
+
+    <div id="app" class="flex flex-col h-full">
+        <!-- Modern Header -->
+        <header class="dark-header shadow-lg sticky top-0 z-50 border-b border-gray-700">
+            <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <img src="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png" alt="Shivakalabs" class="h-10 w-10" loading="eager">
+                    <div>
+                        <h1 class="text-xl font-bold text-white">Shivakalabs</h1>
+                        <p class="text-xs text-gray-400">Digital Excellence</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden sm:flex space-x-2 md:space-x-4 lg:space-x-6">
+                    <button class="nav-tab nav-underline active-nav text-xs md:text-sm font-bold text-white transition" data-view="home">Home</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="about">About</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="ecitizen">eCitizen</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="web-development">Web</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="graphic-design">Design</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="digital-marketing">Marketing</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="cv-writing">CV</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="documents-gen">DocumentsGen</button>
+                    <button class="nav-tab nav-underline text-xs md:text-sm font-bold text-gray-300 hover:text-white transition" data-view="how-it-works">How It Works</button>
+                </nav>
+
+                <!-- Mobile Menu Icon -->
+                <button id="mobile-menu-btn" class="sm:hidden text-white p-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden sm:hidden bg-gray-800 border-t border-gray-700">
+                <div class="px-4 py-3 space-y-2">
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-white font-bold hover:bg-gray-700" data-view="home">Home</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="about">About Us</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="ecitizen">eCitizen</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="web-development">Web Development</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="graphic-design">Graphic Design</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="digital-marketing">Digital Marketing</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="cv-writing">CV & Cover Letter</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="documents-gen">DocumentsGen</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="how-it-works">How It Works</button>
+                    <button class="nav-tab block w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-gray-700 font-bold" data-view="terms">Legal</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 w-full px-2 sm:px-4 py-4 sm:py-8">
+            <div class="max-w-7xl mx-auto w-full">
+                <div id="content-area" class="w-full"></div>
+            </div>
+        </main>
+
+        <!-- Floating WhatsApp Button -->
+        <a href="https://wa.me/254716358703" target="_blank" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 whatsapp-green hover:bg-green-700 text-white p-3 sm:p-4 rounded-full shadow-xl hover:shadow-2xl transition transform hover:scale-110 z-40" rel="noopener noreferrer" title="Chat on WhatsApp">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+        </a>
+
+        <!-- Footer -->
+        <footer class="dark-header border-t border-gray-700 mt-12 py-8">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-yellow-400 mb-4">Services</h3>
+                        <nav class="space-y-2">
+                            <button onclick="setView('ecitizen')" class="block text-gray-300 hover:text-white font-bold transition">eCitizen Services</button>
+                            <button onclick="setView('web-development')" class="block text-gray-300 hover:text-white font-bold transition">Web Development</button>
+                            <button onclick="setView('graphic-design')" class="block text-gray-300 hover:text-white font-bold transition">Graphic Design</button>
+                            <button onclick="setView('digital-marketing')" class="block text-gray-300 hover:text-white font-bold transition">Digital Marketing</button>
+                            <button onclick="setView('cv-writing')" class="block text-gray-300 hover:text-white font-bold transition">CV & Cover Letter</button>
+                            <button onclick="setView('documents-gen')" class="block text-gray-300 hover:text-white font-bold transition">DocumentsGen</button>
+                        </nav>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-yellow-400 mb-4">Quick Links</h3>
+                        <nav class="space-y-2">
+                            <button onclick="setView('home')" class="block text-gray-300 hover:text-white font-bold transition">Home</button>
+                            <a href="https://wa.me/254716358703" target="_blank" class="text-white hover:text-white font-bold transition whatsapp-green px-2 rounded inline-flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>Contact Us</a>
+                            <p class="text-gray-400 text-sm mt-4">Available 24/7 for your digital needs</p>
+                        </nav>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 pt-6">
+                    <div class="flex justify-center space-x-6 mb-6">
+                        <a href="https://facebook.com/shivakalabs" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition transform hover:scale-110" title="Facebook"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="https://instagram.com/shivakalabs" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-pink-400 transition transform hover:scale-110" title="Instagram"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465.646.25 1.195.581 1.738 1.15.57.55.902 1.091 1.15 1.738.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.15 1.738c-.55.569-1.091.9-1.738 1.15-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.738-1.15c-.569-.55-.9-1.091-1.15-1.738-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.15-1.738C2.9 4.08 3.441 3.75 4.087 3.5 4.724 3.252 5.45 3.084 6.514 3.035 7.58 2.988 7.921 2.975 10.313 2.975zM12 7a5 5 0 100 10 5 5 0 000-10zm0 1.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7zm5.5-1.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z"/></svg></a>
+                        <a href="https://linkedin.com/company/shivakalabs" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-500 transition transform hover:scale-110" title="LinkedIn"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.39v-1.2h-2.84v8.37h2.84v-4.93c0-.77.62-1.4 1.39-1.4a1.39 1.39 0 011.39 1.4v4.93h2.84M6.88 9.56a1.56 1.56 0 110-3.12 1.56 1.56 0 010 3.12m1.37 9.94H5.5v-8.37h2.74v8.37z"/></svg></a>
+                        <a href="https://twitter.com/shivakalabs" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-sky-400 transition transform hover:scale-110" title="Twitter"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7a4.5 4.5 0 01-1.25.2z"/></svg></a>
+                    </div>
+                    <p class="text-gray-400 text-sm text-center">© 2025 Shivakalabs. All rights reserved. | <a href="https://wa.me/254716358703" class="whatsapp-green hover:bg-green-700 text-white font-bold px-2 rounded inline-flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>WhatsApp: +254 716 358 703</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/security.js" defer></script>
+    <script>
+        const contentArea = document.getElementById('content-area');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let currentView = 'home';
+        
+        const whatsappIcon = `<svg class="w-5 h-5 mr-2 -ml-1 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>`;
+
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const content = {
+            'home': `
+                <div class="space-y-16">
+                    <div class="text-center space-y-6 py-12">
+                        <h2 class="text-5xl md:text-6xl font-bold text-white">
+                            Elevate Your <span class="gold-accent">Digital</span> Presence
+                        </h2>
+                        <p class="text-xl text-gray-400 max-w-2xl mx-auto">Premium services for government, web, design, marketing & professional documents</p>
+                        <img src="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png" alt="Logo" class="h-32 w-32 mx-auto">
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700 hover:border-yellow-400">
+                            <img src="/eCitizen-logo.png" alt="eCitizen Logo" class="h-20 w-20 mx-auto mb-4 object-contain drop-shadow-lg">
+                            <h3 class="text-2xl font-bold text-white mb-3">eCitizen Services</h3>
+                            <p class="text-gray-400 mb-6">Seamlessly navigate government portals—KRA, NTSA, immigration, and more with trusted expertise</p>
+                            <button onclick="setView('ecitizen')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>Explore Services</button>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700 hover:border-blue-400">
+                            <img src="/web-dev-logo.png" alt="Web Development Logo" class="h-24 w-24 mx-auto mb-4 object-contain drop-shadow-lg">
+                            <h3 class="text-2xl font-bold text-white mb-3">Web Development</h3>
+                            <p class="text-gray-400 mb-6">Stunning websites, e-commerce, and seamless integrations</p>
+                            <button onclick="setView('web-development')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>View Projects</button>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700 hover:border-purple-400">
+                            <img src="/design-logo.png" alt="Graphic Design Logo" class="h-24 w-24 mx-auto mb-4 object-contain drop-shadow-lg">
+                            <h3 class="text-2xl font-bold text-white mb-3">Graphic Design</h3>
+                            <p class="text-gray-400 mb-6">Brand identity, logos, print media & digital art</p>
+                            <button onclick="setView('graphic-design')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>View Designs</button>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700 hover:border-red-400">
+                            <img src="/marketing-logo.png" alt="Digital Marketing Logo" class="h-24 w-24 mx-auto mb-4 object-contain drop-shadow-lg">
+                            <h3 class="text-2xl font-bold text-white mb-3">Digital Marketing</h3>
+                            <p class="text-gray-400 mb-6">SEO, social media, and amplified online visibility</p>
+                            <button onclick="setView('digital-marketing')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>Learn More</button>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700 hover:border-green-400">
+                            <img src="/cv-logo.png" alt="CV & Cover Letter Logo" class="h-24 w-24 mx-auto mb-4 object-contain drop-shadow-lg">
+                            <h3 class="text-2xl font-bold text-white mb-3">CV & Cover Letter</h3>
+                            <p class="text-gray-400 mb-6">Professional documents, expertly crafted for success</p>
+                            <button onclick="setView('cv-writing')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>Get Started</button>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700 hover:border-indigo-400">
+                            <svg class="h-24 w-24 mx-auto mb-4 drop-shadow-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="docGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" /><stop offset="100%" style="stop-color:#9d7f0d;stop-opacity:1" /></linearGradient></defs><path d="M60 20h60v140H60z" fill="url(#docGrad)" stroke="white" stroke-width="2"/><path d="M70 40h40M70 60h40M70 80h35M70 100h40M70 120h40" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="140" cy="60" r="25" fill="none" stroke="#22c55e" stroke-width="3"/><path d="M135 60l5 8l10-12" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <h3 class="text-2xl font-bold text-white mb-3">DocumentsGen</h3>
+                            <p class="text-gray-400 mb-6">AI-powered document generation powered by GPT-5</p>
+                            <button onclick="setView('documents-gen')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>Generate Now</button>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'documents-gen': `
+                <div class="space-y-8">
+                    <div class="text-center mb-8">
+                        <svg class="h-40 w-40 mx-auto mb-4 drop-shadow-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="docGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" /><stop offset="100%" style="stop-color:#9d7f0d;stop-opacity:1" /></linearGradient></defs><g><path d="M50 30h80v130H50z" fill="url(#docGrad2)" stroke="#D4AF37" stroke-width="2"/><path d="M65 50h50M65 75h45M65 100h50M65 125h45" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="140" cy="75" r="30" fill="none" stroke="#22c55e" stroke-width="3"/><path d="M132 75l8 12l15-18" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 30v10M50 30h-5M130 160v5M130 165h5" stroke="#D4AF37" stroke-width="2" opacity="0.6"/></g></svg>
+                        <h2 class="text-4xl font-bold gold-accent mb-2">DocumentsGen</h2>
+                        <p class="text-gray-400 text-lg">AI-Generated Documents in 6 Languages, 8 Currencies, 180+ Countries</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-4 mb-6">
+                        <div class="luxury-card dark-header p-4 rounded-xl border border-gray-700">
+                            <label class="text-xs font-bold text-yellow-400">🌍 Country</label>
+                            <select id="country-selector" onchange="updatePricing()" class="w-full p-2 bg-gray-900 border border-gray-600 rounded text-white text-sm font-bold">
+                                <option value="KE">🇰🇪 Kenya</option>
+                                <option value="US">🇺🇸 United States</option>
+                                <option value="GB">🇬🇧 United Kingdom</option>
+                                <option value="IN">🇮🇳 India</option>
+                                <option value="NG">🇳🇬 Nigeria</option>
+                                <option value="ZA">🇿🇦 South Africa</option>
+                                <option value="UG">🇺🇬 Uganda</option>
+                                <option value="GH">🇬🇭 Ghana</option>
+                                <option value="CA">🇨🇦 Canada</option>
+                                <option value="AU">🇦🇺 Australia</option>
+                            </select>
+                        </div>
+                        <div class="luxury-card dark-header p-4 rounded-xl border border-gray-700">
+                            <label class="text-xs font-bold text-yellow-400">🗣️ Language</label>
+                            <select id="language-selector" class="w-full p-2 bg-gray-900 border border-gray-600 rounded text-white text-sm font-bold">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="ar">العربية</option>
+                                <option value="sw">Kiswahili</option>
+                                <option value="hi">हिन्दी</option>
+                                <option value="zh">中文</option>
+                            </select>
+                        </div>
+                        <div class="luxury-card dark-header p-4 rounded-xl border border-gray-700">
+                            <label class="text-xs font-bold text-yellow-400">💱 Currency</label>
+                            <select id="currency-selector" onchange="updatePricing()" class="w-full p-2 bg-gray-900 border border-gray-600 rounded text-white text-sm font-bold">
+                                <option value="KES">KES - KSh</option>
+                                <option value="USD">USD - $</option>
+                                <option value="GBP">GBP - £</option>
+                                <option value="INR">INR - ₹</option>
+                                <option value="NGN">NGN - ₦</option>
+                                <option value="ZAR">ZAR - R</option>
+                                <option value="EUR">EUR - €</option>
+                                <option value="AUD">AUD - A$</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="payment-section" class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-6">💳 Pricing & Unlock Generation</h3>
+                        <div id="pricing-display" class="grid md:grid-cols-4 gap-3 mb-6">
+                            <div class="text-center p-4 bg-gray-900 rounded-lg"><p class="text-xs text-gray-400">Free</p><p class="text-xl font-bold text-yellow-400">3 docs</p></div>
+                            <div class="text-center p-4 bg-gray-900 rounded-lg"><p class="text-xs text-gray-400">Starter</p><p id="price-starter" class="text-xl font-bold text-white">KSh 500</p></div>
+                            <div class="text-center p-4 bg-gray-900 rounded-lg"><p class="text-xs text-gray-400">Pro</p><p id="price-pro" class="text-xl font-bold text-white">KSh 2,500</p></div>
+                            <div class="text-center p-4 bg-gray-900 rounded-lg"><p class="text-xs text-gray-400">Enterprise</p><p id="price-enterprise" class="text-xl font-bold text-white">Custom</p></div>
+                        </div>
+                        <div class="grid md:grid-cols-4 gap-3">
+                            <button onclick="tierPayment('free')" class="p-4 rounded-lg border-2 border-yellow-600 hover:bg-yellow-900 bg-gray-900 text-white font-bold transition">🎁 FREE</button>
+                            <button onclick="tierPayment('starter')" class="p-4 rounded-lg border-2 border-blue-600 hover:bg-blue-900 bg-gray-900 text-white font-bold transition">⭐ STARTER</button>
+                            <button onclick="tierPayment('pro')" class="p-4 rounded-lg border-2 border-purple-600 hover:bg-purple-900 bg-gray-900 text-white font-bold transition">👑 PRO</button>
+                            <button onclick="securityManager.showNotification('WhatsApp: +254716358703', 'info')" class="p-4 rounded-lg border-2 border-green-600 hover:bg-green-900 bg-gray-900 text-white font-bold transition">💬 HELP</button>
+                        </div>
+                    </div>
+
+                    <div id="generator-section" class="hidden">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                                <h3 class="text-2xl font-bold text-yellow-400 mb-4">📝 Template Gallery</h3>
+                                <div id="template-list" class="grid grid-cols-2 gap-2">
+                                    <button onclick="selectDoc('cv')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📄 CV</button>
+                                    <button onclick="selectDoc('cover-letter')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">✉️ Letter</button>
+                                    <button onclick="selectDoc('proposal')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📊 Proposal</button>
+                                    <button onclick="selectDoc('invoice')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">💰 Invoice</button>
+                                    <button onclick="selectDoc('certificate')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">🏅 Cert</button>
+                                    <button onclick="selectDoc('report')" class="p-3 bg-gray-900 hover:bg-gray-800 rounded text-white text-sm font-bold border border-gray-600">📈 Report</button>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                                <h3 class="text-2xl font-bold text-yellow-400 mb-4">📥 Download Formats</h3>
+                                <div class="space-y-2">
+                                    <button onclick="dlDoc('pdf')" class="w-full p-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition">📄 PDF</button>
+                                    <button onclick="dlDoc('docx')" class="w-full p-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">📋 DOCX</button>
+                                    <button onclick="dlDoc('txt')" class="w-full p-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition">📃 TXT</button>
+                                </div>
+                                <input type="text" id="doc-type" class="hidden" value="cv">
+                            </div>
+                        </div>
+
+                        <div id="generated-content" class="hidden luxury-card dark-header p-8 rounded-2xl border border-gray-700 mt-8">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">✨ Document Preview (Save to LocalStorage)</h3>
+                            <div id="preview-content" class="bg-gray-900 p-6 rounded-lg text-gray-300 font-mono text-sm max-h-96 overflow-y-auto whitespace-pre-wrap"></div>
+                            <div class="grid md:grid-cols-2 gap-3 mt-4">
+                                <button onclick="saveLocal()" class="p-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded">💾 Save Local</button>
+                                <button onclick="document.getElementById('preview-content').textContent = ''; document.getElementById('generated-content').classList.add('hidden'); securityManager.showNotification('Cleared', 'info')" class="p-3 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded">🔄 Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'ecitizen': `
+                <div class="space-y-12">
+                    <div class="text-center mb-8">
+                        <img src="/eCitizen-logo.png" alt="eCitizen Logo" class="h-32 mx-auto mb-4 drop-shadow-lg">
+                        <h2 class="text-4xl font-bold gold-accent mb-2">Official Government Services</h2>
+                        <p class="text-gray-400 text-lg">Navigate government portals with expert assistance</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-3">
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><div class="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center mx-auto mb-2"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><h4 class="font-bold text-white mb-1 text-sm">KRA PIN</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><div class="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center mx-auto mb-2"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></div><h4 class="font-bold text-white mb-1 text-sm">Tax Returns</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><div class="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center mx-auto mb-2"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><h4 class="font-bold text-white mb-1 text-sm">Compliance</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><div class="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center mx-auto mb-2"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><h4 class="font-bold text-white mb-1 text-sm">E-TIMS</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><div class="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center mx-auto mb-2"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg></div><h4 class="font-bold text-white mb-1 text-sm">Monthly Rental</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><div class="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center mx-auto mb-2"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><h4 class="font-bold text-white mb-1 text-sm">KRA PIN Registration</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">KRA PIN Company</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">KRA NIL Returns</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">KRA P9 Returns</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">KRA WHT Certificate</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">TCC Certificate</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">KRA PIN Update</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">KRA Email Reset</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">AGPO Certificate</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Good Conduct</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">NTSA PDL</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">HELB Clearance</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Company Registration</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Business Linking</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">NTSA Smart DL</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">eCitizen Account</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">IFMIS Services</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">NTSA/TIMS Account</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">HELB Account</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">HELB Loan App</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">KUUCCPS Application</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">DL Renewal</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Metropol CRB</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Project Printing</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Document Netting</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">NSSF Returns</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Project Consulting</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">TSC Number</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">KMTC Account</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">GHRIS Payslips</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">GHRIS Registration</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Password Recovery</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">TSC Wealth Decl.</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">IFMIS Account</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Company Profile+AOA</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Partnership Deed</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Company Profile</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Article of Assoc.</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Business Name Reg.</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">First KUCCPS</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                        <div class="luxury-card dark-header p-4 rounded-lg text-center border border-gray-700 hover:border-yellow-400"><h4 class="font-bold text-white mb-1 text-sm">Passport Application</h4><a href="https://wa.me/254716358703" target="_blank" class="mt-2 whatsapp-green hover:bg-green-700 text-white text-xs font-bold py-1 px-2 rounded block transition">Apply</a></div>
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                            Need Help? Chat with Us
+                        </a>
+                    </div>
+                </div>
+            `,
+            'web-development': `
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="text-4xl font-bold gold-accent mb-2">Web Development Packages</h2>
+                        <p class="text-gray-400 text-lg">Professional websites tailored to your business needs</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-3 gap-6">
+                        <!-- Package 1: Basic Website -->
+                        <div class="dark-header rounded-2xl overflow-hidden border-2 border-gray-700 flex flex-col luxury-card">
+                            <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-6 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-2">Basic Website</h3>
+                                <p class="text-blue-100 text-sm">Perfect for small business</p>
+                            </div>
+                            <div class="flex-1 p-6">
+                                <ul class="space-y-2 text-gray-300 text-sm mb-6">
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>5-8 Pages</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Responsive Design</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Contact Form</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Mobile Optimized</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>SEO Basics</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>SSL Certificate</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>1 Month Support</li>
+                                </ul>
+                                <p class="text-2xl font-bold text-yellow-400 mb-4">Ksh 20,000</p>
+                                <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg block text-center transition inline-flex items-center justify-center gap-2">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                                    Get Started
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Package 2: Professional Website -->
+                        <div class="dark-header rounded-2xl overflow-hidden border-2 border-yellow-400 flex flex-col ring-2 ring-yellow-400 ring-opacity-20 luxury-card">
+                            <div class="absolute top-3 right-3 bg-yellow-400 text-black px-3 py-1 text-xs font-bold rounded-full">POPULAR</div>
+                            <div class="bg-gradient-to-r from-yellow-600 to-yellow-500 p-6 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-2">Professional Website</h3>
+                                <p class="text-yellow-100 text-sm">For growing businesses</p>
+                            </div>
+                            <div class="flex-1 p-6">
+                                <ul class="space-y-2 text-gray-300 text-sm mb-6">
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>10-15 Pages</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Advanced Responsive Design</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>CMS Integration</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Blog Section</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>SEO Optimization</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Analytics Setup</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>3 Months Support</li>
+                                </ul>
+                                <p class="text-2xl font-bold text-yellow-400 mb-4">Ksh 40,000</p>
+                                <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg block text-center transition inline-flex items-center justify-center gap-2">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                                    Choose Plan
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Package 3: E-Commerce Platform -->
+                        <div class="dark-header rounded-2xl overflow-hidden border-2 border-gray-700 flex flex-col luxury-card">
+                            <div class="bg-gradient-to-r from-green-600 to-green-500 p-6 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-2">E-Commerce Store</h3>
+                                <p class="text-green-100 text-sm">Full online store solution</p>
+                            </div>
+                            <div class="flex-1 p-6">
+                                <ul class="space-y-2 text-gray-300 text-sm mb-6">
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Unlimited Products</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Payment Gateway</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Inventory Management</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Order Management</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Customer Dashboard</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>Analytics & Reports</li>
+                                    <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>6 Months Support</li>
+                                </ul>
+                                <p class="text-2xl font-bold text-yellow-400 mb-4">Ksh 80,000</p>
+                                <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg block text-center transition inline-flex items-center justify-center gap-2">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dark-header rounded-2xl p-8 border border-gray-700">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-6">Additional Services</h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-gray-300 text-sm">
+                            <div><span class="text-yellow-400 font-bold">API Integration:</span> Ksh 20,000 - Connect third-party services</div>
+                            <div><span class="text-yellow-400 font-bold">Domain & Hosting:</span> Ksh 5,000/year - Professional email included</div>
+                            <div><span class="text-yellow-400 font-bold">Maintenance Plan:</span> Ksh 10,000/month - Updates & security patches</div>
+                            <div><span class="text-yellow-400 font-bold">Mobile App:</span> From Ksh 200,000 - iOS & Android versions</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                            Start Your Project
+                        </a>
+                    </div>
+                </div>
+            `,
+            'graphic-design': `
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="text-4xl font-bold gold-accent mb-2">Graphic Design Services</h2>
+                        <p class="text-gray-400 text-lg">Captivating visuals for your brand</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-4">Branding & Print</h3>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>✓ Logo Design</li>
+                                <li>✓ Brand Guidelines</li>
+                                <li>✓ Business Cards</li>
+                                <li>✓ Brochures & Flyers</li>
+                                <li>✓ Packaging Design</li>
+                                <li>✓ Signage & Banners</li>
+                            </ul>
+                        </div>
+
+                        <div class="dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-4">Digital Assets</h3>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>✓ Web Design Mockups</li>
+                                <li>✓ Social Media Graphics</li>
+                                <li>✓ UI/UX Design</li>
+                                <li>✓ Infographics</li>
+                                <li>✓ Animation Assets</li>
+                                <li>✓ Icon Design</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition inline-flex items-center justify-center gap-2" rel="noopener noreferrer" title="Chat on WhatsApp">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                            Apply Now
+                        </a>
+                    </div>
+                </div>
+            `,
+            'digital-marketing': `
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="text-4xl font-bold gold-accent mb-2">Digital Marketing Packages</h2>
+                        <p class="text-gray-400 text-lg">Strategic campaigns for online visibility</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-3 gap-6">
+                        <div class="dark-header rounded-2xl overflow-hidden border border-gray-700 flex flex-col">
+                            <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-6 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-2">BASIC</h3>
+                                <p class="text-blue-100 text-sm">Perfect for startups</p>
+                            </div>
+                            <div class="flex-1 p-6">
+                                <ul class="space-y-2 text-gray-300 text-sm">
+                                    <li>✓ 2 Social Platforms</li>
+                                    <li>✓ Content Strategy</li>
+                                    <li>✓ 30 Posts/Month</li>
+                                    <li>✓ Ad Management</li>
+                                    <li>✓ Monthly Report</li>
+                                </ul>
+                                <p class="text-2xl font-bold text-yellow-400 mt-6 mb-4">Ksh 35,000</p>
+                                <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg block text-center transition">Get Started</a>
+                            </div>
+                        </div>
+
+                        <div class="dark-header rounded-2xl overflow-hidden border border-yellow-400 flex flex-col ring-2 ring-yellow-400 ring-opacity-20">
+                            <div class="bg-gradient-to-r from-yellow-600 to-yellow-500 p-6 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-2">STANDARD</h3>
+                                <p class="text-yellow-100 text-sm">Most popular</p>
+                            </div>
+                            <div class="flex-1 p-6">
+                                <ul class="space-y-2 text-gray-300 text-sm">
+                                    <li>✓ 3 Social Platforms</li>
+                                    <li>✓ Content Strategy</li>
+                                    <li>✓ 45 Posts/Month</li>
+                                    <li>✓ Ad Management</li>
+                                    <li>✓ Monthly Report</li>
+                                </ul>
+                                <p class="text-2xl font-bold text-yellow-400 mt-6 mb-4">Ksh 50,000</p>
+                                <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg block text-center transition">Choose Plan</a>
+                            </div>
+                        </div>
+
+                        <div class="dark-header rounded-2xl overflow-hidden border border-gray-700 flex flex-col">
+                            <div class="bg-gradient-to-r from-green-600 to-green-500 p-6 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-2">AGGRESSIVE</h3>
+                                <p class="text-green-100 text-sm">Enterprise level</p>
+                            </div>
+                            <div class="flex-1 p-6">
+                                <ul class="space-y-2 text-gray-300 text-sm">
+                                    <li>✓ 5 Social Platforms</li>
+                                    <li>✓ Content Strategy</li>
+                                    <li>✓ 60 Posts/Month</li>
+                                    <li>✓ Ad Management</li>
+                                    <li>✓ Monthly Report</li>
+                                </ul>
+                                <p class="text-2xl font-bold text-yellow-400 mt-6 mb-4">Ksh 100,000</p>
+                                <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg block text-center transition">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="https://wa.me/254716358703" target="_blank" class="whatsapp-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>
+                            Chat with Our Team
+                        </a>
+                    </div>
+                </div>
+            `,
+            'cv-writing': `
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="text-4xl font-bold gold-accent mb-2">CV & Cover Letter Writing</h2>
+                        <p class="text-gray-400 text-lg">Professional documents for your success</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="dark-header rounded-2xl overflow-hidden border-2 border-yellow-400 flex flex-col luxury-card">
+                            <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-6 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-2">Professional CV</h3>
+                                <p class="text-blue-100 text-sm">Get noticed by employers</p>
+                            </div>
+                            <div class="flex-1 p-6">
+                                <ul class="space-y-2 text-gray-300 text-sm mb-6">
+                                    <li>✓ Professional format</li>
+                                    <li>✓ Multiple formats</li>
+                                    <li>✓ PDF & Word</li>
+                                </ul>
+                                <p class="text-3xl font-bold text-yellow-400 mb-4">Ksh 50</p>
+                                <button onclick="initiateCVPayment('cv')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition">Pay Now</button>
+                            </div>
+                        </div>
+
+                        <div class="dark-header rounded-2xl overflow-hidden border-2 border-yellow-400 flex flex-col luxury-card">
+                            <div class="bg-gradient-to-r from-purple-600 to-purple-500 p-6 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-2">Cover Letter</h3>
+                                <p class="text-purple-100 text-sm">Make first impression count</p>
+                            </div>
+                            <div class="flex-1 p-6">
+                                <ul class="space-y-2 text-gray-300 text-sm mb-6">
+                                    <li>✓ Tailored to position</li>
+                                    <li>✓ Professional tone</li>
+                                    <li>✓ PDF & Word</li>
+                                </ul>
+                                <p class="text-3xl font-bold text-yellow-400 mb-4">Ksh 30</p>
+                                <button onclick="initiateCVPayment('cover')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition">Pay Now</button>
+                            </div>
+                        </div>
+
+                        <div class="dark-header rounded-2xl overflow-hidden border-2 border-yellow-400 flex flex-col luxury-card relative">
+                            <div class="absolute top-3 right-3 bg-yellow-400 text-black px-3 py-1 text-xs font-bold rounded-full">BEST VALUE</div>
+                            <div class="bg-gradient-to-r from-green-600 to-green-500 p-6 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-2">Complete Package</h3>
+                                <p class="text-green-100 text-sm">CV + Cover Letter</p>
+                            </div>
+                            <div class="flex-1 p-6">
+                                <ul class="space-y-2 text-gray-300 text-sm mb-6">
+                                    <li>✓ Both CV & letter</li>
+                                    <li>✓ Save Ksh 40</li>
+                                    <li>✓ All formats</li>
+                                </ul>
+                                <p class="text-3xl font-bold text-yellow-400 mb-4">Ksh 80</p>
+                                <button onclick="initiateCVPayment('both')" class="w-full whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition">Pay Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dark-header rounded-2xl p-8 border border-gray-700">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-6">How It Works</h3>
+                        <div class="grid md:grid-cols-4 gap-4">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">1</div>
+                                <p class="text-gray-300">Choose package</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">2</div>
+                                <p class="text-gray-300">Complete payment</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">3</div>
+                                <p class="text-gray-300">Fill information</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">4</div>
+                                <p class="text-gray-300">Get documents</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'about': `
+                <div class="space-y-12">
+                    <div class="text-center space-y-4 py-8">
+                        <h2 class="text-5xl md:text-6xl font-bold text-white">About <span class="gold-accent">Shivakalabs</span></h2>
+                        <p class="text-xl text-gray-400">Transforming Digital Services in Kenya</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Our Mission</h3>
+                            <p class="text-gray-300 leading-relaxed">At Shivakalabs, we believe in democratizing access to professional digital services. Founded with a vision to empower Kenyan entrepreneurs, businesses, and individuals, we deliver world-class government assistance, web solutions, creative design, marketing expertise, and professional document services—all on a flexible, pay-as-you-go basis. No contracts. No complications. Just results.</p>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Our Values</h3>
+                            <ul class="text-gray-300 space-y-3">
+                                <li class="flex items-start gap-3"><span class="text-green-400 font-bold mt-1">✓</span> <span><strong>Integrity:</strong> Transparent pricing, honest timelines, guaranteed results</span></li>
+                                <li class="flex items-start gap-3"><span class="text-green-400 font-bold mt-1">✓</span> <span><strong>Excellence:</strong> Obsessed with quality in every service we deliver</span></li>
+                                <li class="flex items-start gap-3"><span class="text-green-400 font-bold mt-1">✓</span> <span><strong>Accessibility:</strong> Remote-first, pay-as-you-go, serving Kenya and beyond</span></li>
+                                <li class="flex items-start gap-3"><span class="text-green-400 font-bold mt-1">✓</span> <span><strong>Support:</strong> Available 24/7 via WhatsApp for your peace of mind</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-4">Why Choose Shivakalabs?</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-2">🚀 Pay-As-You-Go</h4>
+                                <p class="text-gray-300">No hidden fees. No long-term commitments. Pay only for what you use, when you use it.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-2">🌍 Globally Scalable</h4>
+                                <p class="text-gray-300">Multi-currency support. Whether you're in Nairobi or New York, we serve you with excellence.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-2">⚡ Remote First</h4>
+                                <p class="text-gray-300">Based in Kenya, serving the world. Fast turnarounds, professional quality, always accessible.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'how-it-works': `
+                <div class="space-y-12">
+                    <div class="text-center space-y-4 py-8">
+                        <h2 class="text-5xl md:text-6xl font-bold text-white">How We <span class="gold-accent">Work</span></h2>
+                        <p class="text-xl text-gray-400">Simple. Transparent. Fast.</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-6">eCitizen Government Services</h3>
+                            <div class="grid md:grid-cols-4 gap-4">
+                                <div class="text-center"><div class="w-12 h-12 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">1</div><p class="text-gray-300 font-bold mb-2">Identify Service</p><p class="text-sm text-gray-400">Choose from 46+ government services</p></div>
+                                <div class="text-center"><div class="w-12 h-12 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">2</div><p class="text-gray-300 font-bold mb-2">Contact Us</p><p class="text-sm text-gray-400">WhatsApp or message with details</p></div>
+                                <div class="text-center"><div class="w-12 h-12 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">3</div><p class="text-gray-300 font-bold mb-2">We Handle It</p><p class="text-sm text-gray-400">3-7 business days turnaround</p></div>
+                                <div class="text-center"><div class="w-12 h-12 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">4</div><p class="text-gray-300 font-bold mb-2">Receive Results</p><p class="text-sm text-gray-400">Digital documents delivered</p></div>
+                            </div>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-6">Web Development</h3>
+                            <div class="grid md:grid-cols-4 gap-4">
+                                <div class="text-center"><div class="w-12 h-12 bg-blue-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">1</div><p class="text-gray-300 font-bold mb-2">Discovery</p><p class="text-sm text-gray-400">Understand your vision & goals</p></div>
+                                <div class="text-center"><div class="w-12 h-12 bg-blue-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">2</div><p class="text-gray-300 font-bold mb-2">Design</p><p class="text-sm text-gray-400">2-3 weeks for mockups</p></div>
+                                <div class="text-center"><div class="w-12 h-12 bg-blue-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">3</div><p class="text-gray-300 font-bold mb-2">Develop</p><p class="text-sm text-gray-400">3-8 weeks depending on complexity</p></div>
+                                <div class="text-center"><div class="w-12 h-12 bg-blue-400 text-black font-bold rounded-full flex items-center justify-center mx-auto mb-3">4</div><p class="text-gray-300 font-bold mb-2">Launch</p><p class="text-sm text-gray-400">Live on your domain instantly</p></div>
+                            </div>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-6">What You Need To Prepare</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-3">For Government Services:</h4>
+                                    <ul class="text-gray-300 space-y-2">
+                                        <li>✓ Contact information</li>
+                                        <li>✓ Email address</li>
+                                        <li>✓ Service-specific requirements</li>
+                                        <li>✓ Any required supporting documents</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-3">For Web Development:</h4>
+                                    <ul class="text-gray-300 space-y-2">
+                                        <li>✓ Detailed project requirements</li>
+                                        <li>✓ Brand colors & logos</li>
+                                        <li>✓ Content (text, images, videos)</li>
+                                        <li>✓ Hosting preferences</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'terms': `
+                <div class="space-y-12">
+                    <div class="text-center space-y-4 py-8">
+                        <h2 class="text-5xl md:text-6xl font-bold text-white">Legal & <span class="gold-accent">Policies</span></h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Terms of Service</h3>
+                            <div class="text-gray-300 space-y-3 text-sm">
+                                <p><strong>1. Scope:</strong> Shivakalabs provides government services, web development, design, marketing, and document writing on a pay-as-you-go basis.</p>
+                                <p><strong>2. Payment:</strong> Payment in full required before service commencement. Multi-currency accepted via Paystack (KE) and Stripe (international).</p>
+                                <p><strong>3. Turnaround:</strong> Estimated timelines: Government services (3-7 days), Web development (2-8 weeks), Design (1-3 weeks), Documents (1-3 days).</p>
+                                <p><strong>4. Modifications:</strong> Reasonable revisions included. Excessive changes may incur additional fees.</p>
+                                <p><strong>5. Liability:</strong> Shivakalabs is not responsible for delays caused by government agencies or third-party systems.</p>
+                                <p><strong>6. Governing Law:</strong> These terms are governed by Kenyan law.</p>
+                            </div>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Privacy & Data Protection</h3>
+                            <div class="text-gray-300 space-y-3 text-sm">
+                                <p><strong>1. Data Collection:</strong> We collect only information necessary to provide services (name, email, phone, business details, and service-specific requirements).</p>
+                                <p><strong>2. Sensitive Data Handling:</strong> Personal documents, business information, and service details are treated as highly confidential. Encrypted end-to-end and stored in secure, isolated databases.</p>
+                                <p><strong>3. Access Control:</strong> Only authorized Shivakalabs team members with direct need have access to client data. No third-party access without explicit written consent.</p>
+                                <p><strong>4. Data Use:</strong> Your data is used solely for service delivery and compliance. We never sell, share, or use your data for marketing without permission.</p>
+                                <p><strong>5. Security Measures:</strong> Military-grade AES-256 encryption for all data at rest. TLS 1.2+ for data in transit. Regular security audits and penetration testing.</p>
+                                <p><strong>6. Retention:</strong> Data retained only as long as necessary or legally required. You can request immediate deletion anytime.</p>
+                                <p><strong>7. Your Rights:</strong> You have the right to access, modify, export, or delete your data. Request anytime via WhatsApp—we respond within 24 hours.</p>
+                                <p><strong>8. Compliance:</strong> Full compliance with GDPR, Kenya Data Protection Act, Kenya Computer Misuse and Cybercrimes Act, and international privacy standards.</p>
+                                <p><strong>9. Breach Notification:</strong> In the unlikely event of a data breach, we notify all affected clients within 24 hours with detailed information and remediation steps.</p>
+                                <p><strong>10. Transparency:</strong> We never track, profile, or use cookies for personal data beyond session management. No behavioral tracking or analytics on sensitive information.</p>
+                            </div>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">100% Satisfaction Guarantee</h3>
+                            <div class="text-gray-300 space-y-3 text-sm">
+                                <p><strong>Our Promise:</strong> If you're not completely satisfied with our work, we'll make it right.</p>
+                                <p><strong>Refund Policy:</strong></p>
+                                <ul class="ml-4 space-y-2">
+                                    <li>✓ 7-day money-back guarantee for all services</li>
+                                    <li>✓ Full refund if service not delivered as promised</li>
+                                    <li>✓ Unlimited revisions until you're happy (web/design)</li>
+                                    <li>✓ Government service costs refunded if application rejected due to our error</li>
+                                </ul>
+                                <p><strong>How To Claim:</strong> Contact us via WhatsApp (+254 716 358 703) within 7 days of purchase with your concern.</p>
+                            </div>
+                        </div>
+
+                        <div class="luxury-card dark-header p-8 rounded-2xl border border-gray-700">
+                            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Support & Contact</h3>
+                            <div class="text-gray-300 space-y-4">
+                                <p><strong>Available 24/7</strong> for all inquiries and support needs.</p>
+                                <p><strong>WhatsApp:</strong> <a href="https://wa.me/254716358703" class="text-green-400 font-bold hover:text-green-300">+254 716 358 703</a></p>
+                                <p><strong>Email:</strong> <a href="mailto:support@shivakalabs.com" class="text-yellow-400 font-bold hover:text-yellow-300">support@shivakalabs.com</a></p>
+                                <p><strong>Response Time:</strong> Under 1 hour during business hours</p>
+                                <p class="text-xs text-gray-400 mt-4">Last updated: November 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        };
+
+        function setView(view) {
+            currentView = view;
+            contentArea.innerHTML = content[view] || '<p>Loading...</p>';
+            
+            navTabs.forEach(tab => {
+                if(tab.dataset.view === view) {
+                    tab.classList.add('active-nav');
+                    tab.classList.remove('text-gray-300');
+                    tab.classList.add('text-white');
+                } else {
+                    tab.classList.remove('active-nav');
+                    tab.classList.add('text-gray-300');
+                    tab.classList.remove('text-white');
+                }
+            });
+            
+            mobileMenu.classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => setView(tab.dataset.view));
+        });
+
+        const docGenState = { tier: null, country: 'KE', currency: 'KES', language: 'en', docs: 0, limits: {} };
+        const pppRates = { 'KE': 1, 'US': 0.08, 'GB': 0.06, 'IN': 2.1, 'NG': 15, 'ZA': 1.3, 'UG': 3.2, 'GH': 12, 'CA': 0.07, 'AU': 0.12 };
+        const templates = { cv: 'PROFESSIONAL CV\n\n[YOUR NAME]\n[Email] | [Phone] | [Location]\n\nEXECUTIVE PROFILE\n[Summary of key qualifications and achievements]\n\nKEY COMPETENCIES\n• [Skill 1]\n• [Skill 2]\n• [Skill 3]\n\nPROFESSIONAL EXPERIENCE\n[Company] | [Position] | [Duration]\n[Describe achievements and responsibilities]\n\nEDUCATION\n[Degree] in [Field] | [University] | [Year]', 'cover-letter': 'Dear Hiring Manager,\n\nI am writing to express my strong interest in the [Position] role at [Company].\n\nWith [X years] of experience in [Field], I have developed expertise in [Key Skills]. I am confident that my background aligns perfectly with your team\'s needs.\n\n[Paragraph explaining why you\'re a great fit]\n\nI am excited about the opportunity to contribute to [Company] and would welcome the chance to discuss how my skills can benefit your organization.\n\nBest regards,\n[Your Name]', 'proposal': 'PROJECT PROPOSAL\n\nCLIENT: [Client Name]\nDATE: [Date]\nDuration: [Timeline]\n\nEXECUTIVE SUMMARY\n[Brief overview of the project]\n\nSOPE OF WORK\n• [Deliverable 1]\n• [Deliverable 2]\n• [Deliverable 3]\n\nTIMELINE\n[Phase 1]: [Duration]\n[Phase 2]: [Duration]\n\nPRICING\nStartup: $[X]\nMonthly: $[X]\nTotal: $[X]', 'invoice': 'INVOICE\n\nInvoice #: [INV-001]\nDate: [Date]\nDue Date: [Date]\n\nBILL TO:\n[Client Name]\n[Address]\n\nDESCRIPTION | QUANTITY | RATE | AMOUNT\nService 1 | 1 | $[X] | $[X]\nService 2 | [Qty] | $[X] | $[X]\n\nSUBTOTAL: $[X]\nTAX (15%): $[X]\nTOTAL DUE: $[X]', 'certificate': 'CERTIFICATE OF ACHIEVEMENT\n\nThis is to certify that\n\n[RECIPIENT NAME]\n\nhas successfully completed\n\n[COURSE/PROGRAM NAME]\n\nAwarded this [Date]\n\nSignature: ________________\n[Organization]', 'report': 'PROFESSIONAL REPORT\n\nTitle: [Report Title]\nDate: [Date]\nAuthor: [Author]\n\nEXECUTIVE SUMMARY\n[Summary of key findings]\n\nINTRODUCTION\n[Background and context]\n\nFINDINGS\n1. [Finding 1]\n2. [Finding 2]\n3. [Finding 3]\n\nCONCLUSION\n[Final recommendations]\n\nAPPENDIX\n[Additional data]' };
+
+        function updatePricing() { const c = document.getElementById('country-selector')?.value || 'KE'; const curr = document.getElementById('currency-selector')?.value || 'KES'; const r = pppRates[c] || 1; document.getElementById('price-starter').textContent = `${curr} ${Math.round(500 * r)}`; document.getElementById('price-pro').textContent = `${curr} ${Math.round(2500 * r)}`; docGenState.country = c; docGenState.currency = curr; }
+
+        function tierPayment(tier) {
+            if (!securityManager.isOnline && tier !== 'free') { securityManager.showNotification('Go online to pay.', 'error'); return; }
+            docGenState.tier = tier;
+            docGenState.limits = {free: 3, starter: 10, pro: 999}[tier];
+            localStorage.setItem('docGenTier', tier);
+            localStorage.setItem('docGenLimit', docGenState.limits);
+            document.getElementById('payment-section').classList.add('hidden');
+            document.getElementById('generator-section').classList.remove('hidden');
+            securityManager.showNotification(`✅ ${tier.toUpperCase()} mode activated! ${docGenState.limits} documents available.`, 'success');
+        }
+
+        async function selectDoc(type) {
+            if (!docGenState.tier) { securityManager.showNotification('Select a plan first.', 'error'); return; }
+            if (docGenState.docs >= docGenState.limits) { securityManager.showNotification(`Limit reached! (${docGenState.docs}/${docGenState.limits})`, 'error'); return; }
+            document.getElementById('preview-content').textContent = '🤖 AI is generating your document...';
+            document.getElementById('generated-content').classList.remove('hidden');
+            try {
+                const res = await fetch('/api/ai-generate-document', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({type: type, language: document.getElementById('language-selector')?.value || 'en'}) });
+                const data = await res.json();
+                document.getElementById('preview-content').textContent = data.content || templates[type] || 'Generated content';
+            } catch(e) {
+                document.getElementById('preview-content').textContent = templates[type] || 'Template fallback';
+                securityManager.showNotification('Using template (AI unavailable)', 'info');
+            }
+            document.getElementById('doc-type').value = type;
+        }
+
+        function dlDoc(fmt) {
+            const cont = document.getElementById('preview-content').textContent; if (!cont) { securityManager.showNotification('No content.', 'error'); return; }
+            const blob = new Blob([cont], {type: 'text/plain'}); const url = URL.createObjectURL(blob); const link = document.createElement('a'); 
+            link.href = url; link.download = `doc.${fmt}`; link.click(); 
+            docGenState.docs++; localStorage.setItem('docCount', docGenState.docs);
+            securityManager.showNotification(`📥 Downloaded! (${docGenState.docs}/${docGenState.limits})`, 'success');
+        }
+
+        function saveLocal() { localStorage.setItem('savedDoc_' + Date.now(), document.getElementById('preview-content').textContent); securityManager.showNotification('💾 Saved locally!', 'success'); }
+
+        async function initiateCVPayment(packageType) {
+            if (!securityManager.isOnline) {
+                securityManager.showNotification('You are offline. Please connect to the internet to make payments.', 'error');
+                return;
+            }
+
+            let amountKES, description;
+            if (packageType === 'cv') {
+                amountKES = 5000;
+                description = 'Professional CV';
+            } else if (packageType === 'cover') {
+                amountKES = 3000;
+                description = 'Cover Letter';
+            } else if (packageType === 'both') {
+                amountKES = 8000;
+                description = 'CV & Cover Letter Bundle';
+            }
+
+            const convertedAmount = securityManager.convertPrice(amountKES, securityManager.userCurrency);
+            showGlobalPaymentModal(packageType, amountKES, convertedAmount, description);
+        }
+
+        function showGlobalPaymentModal(packageType, amountKES, convertedAmount, description) {
+            const isKenyan = securityManager.isKenyan();
+            const currency = securityManager.userCurrency;
+            const symbol = securityManager.getCurrencySymbol();
+            
+            const modal = document.createElement('div');
+            modal.id = 'payment-modal';
+            modal.innerHTML = `
+                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 backdrop-blur-sm">
+                    <div class="dark-header rounded-2xl p-8 w-96 max-w-full mx-4 max-h-[90vh] overflow-y-auto">
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-6">Complete Your Payment</h3>
+                        <div class="bg-gray-800 rounded-lg p-4 mb-6">
+                            <p class="text-gray-300 mb-3">Package: <span class="font-bold text-white">${securityManager.sanitizeInput(description)}</span></p>
+                            <p class="text-gray-300 mb-3">Country: <span class="font-bold text-white">${securityManager.userCountry}</span></p>
+                            <p class="text-gray-300">Amount: <span class="text-2xl font-bold text-yellow-400">${symbol} ${convertedAmount}</span></p>
+                        </div>
+                        <form id="payment-form" class="space-y-4" novalidate>
+                            <input type="email" id="email" placeholder="Enter your email" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none">
+                            <input type="tel" id="phone" placeholder="Enter your phone (${isKenyan ? '254...' : '+1...'})" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none">
+                            <input type="text" id="full_name" placeholder="Enter your full name" required class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-yellow-400 outline-none">
+                        </form>
+                        <div class="flex space-x-3 mt-6">
+                            <button onclick="document.getElementById('payment-modal').remove()" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">Cancel</button>
+                            <button onclick="processPayment('${packageType}', ${amountKES}, '${currency}')" class="flex-1 whatsapp-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition hover:shadow-lg inline-flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.038 2.007c-5.459 0-9.882 4.423-9.882 9.882 0 1.954.57 3.824 1.637 5.421L2.015 22l4.98-1.571c1.517.842 3.235 1.285 4.988 1.285h.007c5.459 0 9.882-4.423 9.882-9.882S17.497 2.007 12.038 2.007zm3.111 13.928c-.144.275-.417.375-.688.406-.271.031-.62.063-1.07-.156s-2.73-1.334-3.156-1.554c-.427-.22-2.18-1.334-2.586-1.802-.406-.468-.833-.865-.833-1.802s.646-1.427.875-1.636c.229-.208.5-.27.677-.27.177 0 .344-.063.531-.031.187.031.396.00.604.468.208.468.708 1.761.771 1.886.062.125.104.375.021.573-.083.198-.521.656-.646.781-.125.125-.25.26-.146.479.104.218.667 1.052 1.448 1.739.583.51 1.052.688 1.406.813.437.156.708.125.917-.094.208-.219.896-1.094 1.135-1.334.239-.239.468-.187.833-.062.365.125 2.333 1.209 2.729 1.438.396.229.646.344.74.531.094.187.094.989-.479 1.833z"/></svg>Process Payment</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        async function processPayment(packageType, amountKES, currency) {
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const nameInput = document.getElementById('full_name');
+
+            if (!emailInput.value || !phoneInput.value || !nameInput.value) {
+                securityManager.showNotification('Please fill all fields', 'error');
+                return;
+            }
+
+            const isKenyan = securityManager.isKenyan();
+            const convertedAmount = securityManager.convertPrice(amountKES, currency);
+
+            try {
+                const response = await fetch('/api/initiate-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: emailInput.value,
+                        phone: phoneInput.value,
+                        full_name: nameInput.value,
+                        package_type: packageType,
+                        amount_kes: amountKES,
+                        currency: currency,
+                        converted_amount: convertedAmount,
+                        is_kenyan: isKenyan
+                    })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    if (isKenyan && window.PaystackPop) {
+                        window.PaystackPop.setup({
+                            key: data.public_key,
+                            email: emailInput.value,
+                            amount: convertedAmount * 100,
+                            ref: data.reference,
+                            onClose: () => securityManager.showNotification('Payment window closed', 'info'),
+                            onSuccess: () => {
+                                securityManager.showNotification('Payment successful!', 'success');
+                                document.getElementById('payment-modal').remove();
+                            }
+                        }).openIframe();
+                    } else {
+                        securityManager.showNotification('International payment gateway coming soon', 'info');
+                        document.getElementById('payment-modal').remove();
+                    }
+                }
+            } catch (error) {
+                securityManager.showNotification('Payment initialization failed', 'error');
+            }
+        }
+
+        window.onload = () => setView('home');
+    </script>
+
+</body>
+</html>
