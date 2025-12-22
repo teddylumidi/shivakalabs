@@ -29,6 +29,7 @@
             color: var(--color-text);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         #app {
@@ -67,6 +68,7 @@
             font-size: 1.5rem;
             color: var(--color-gold);
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .logo:hover { color: var(--color-gold-light); transform: scale(1.05); }
@@ -99,6 +101,8 @@
             font-weight: 500;
             position: relative;
             transition: color 0.3s;
+            cursor: pointer;
+            display: block;
         }
 
         nav a::after {
@@ -115,7 +119,7 @@
         nav a:hover, nav a.active { color: var(--color-gold); }
         nav a:hover::after, nav a.active::after { width: 100%; }
 
-        .menu-toggle { display: none; background: none; border: none; color: var(--color-gold); font-size: 1.5rem; cursor: pointer; }
+        .menu-toggle { display: none; background: none; border: none; color: var(--color-gold); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
 
         /* MAIN CONTENT */
         main {
@@ -126,10 +130,15 @@
             overflow-x: hidden;
         }
 
+        .section {
+            width: 100%;
+            scroll-margin-top: 80px;
+        }
+
         .hero {
             background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
             padding: 4rem 2rem;
-            min-height: 60vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -208,7 +217,7 @@
             transform: translateY(-2px);
         }
 
-        .services-section {
+        .content-section {
             padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -293,6 +302,34 @@
 
         .service-card p { color: var(--color-text); opacity: 0.85; }
 
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: var(--color-dark-light);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .portfolio-item h3 {
+            color: var(--color-gold);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
         /* FOOTER */
         footer {
             background-color: var(--color-dark-light);
@@ -326,6 +363,7 @@
             margin-bottom: 0.75rem;
             display: inline-block;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .footer-section a:hover { color: var(--color-gold); opacity: 1; }
@@ -345,6 +383,7 @@
             align-items: center;
             justify-content: center;
             color: var(--color-gold);
+            text-decoration: none;
         }
 
         .social-links a:hover { background: var(--color-gold); color: var(--color-dark); }
@@ -361,13 +400,14 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .header-content { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; }
-            nav { order: 3; width: 100%; display: none; flex-direction: column; gap: 0.5rem; }
+            nav { order: 3; width: 100%; display: none; flex-direction: column; gap: 0; }
             nav.active { display: flex; }
-            nav a { width: 100%; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); }
+            nav a { width: 100%; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); text-align: center; }
             .menu-toggle { display: block; order: 2; }
             .hero { padding: 2rem 1rem; min-height: 50vh; }
             .hero h1 { font-size: 2rem; }
             .services-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
             .footer-content { grid-template-columns: 1fr; }
             .cta-group { flex-direction: column; }
         }
@@ -383,17 +423,17 @@
         <!-- HEADER -->
         <header>
             <div class="header-content">
-                <a href="/" class="logo">
+                <a class="logo" onclick="scrollToSection('home')">
                     <div class="logo-icon">S</div>
                     <span>Shivakalabs</span>
                 </a>
 
                 <nav class="nav-menu">
-                    <a href="#home" class="nav-link active">Home</a>
-                    <a href="#services" class="nav-link">Services</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#portfolio" class="nav-link">Portfolio</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a class="nav-link active" onclick="scrollToSection('home')">Home</a>
+                    <a class="nav-link" onclick="scrollToSection('services')">Services</a>
+                    <a class="nav-link" onclick="scrollToSection('about')">About</a>
+                    <a class="nav-link" onclick="scrollToSection('portfolio')">Portfolio</a>
+                    <a class="nav-link" onclick="scrollToSection('contact')">Contact</a>
                 </nav>
 
                 <button class="menu-toggle" id="menuToggle">☰</button>
@@ -402,24 +442,24 @@
 
         <!-- MAIN CONTENT -->
         <main>
-            <!-- HERO -->
-            <section class="hero">
+            <!-- HOME SECTION -->
+            <section class="section hero" id="home">
                 <div class="hero-content">
                     <h1>Elevate Your Digital Future</h1>
                     <p>Premium digital services for government services, web development, design, marketing, and professional document generation</p>
                     <div class="cta-group">
-                        <button class="btn btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+                        <button class="btn btn-primary" onclick="scrollToSection('services')">
                             Explore Services
                         </button>
-                        <button class="btn btn-secondary" onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})">
+                        <button class="btn btn-secondary" onclick="scrollToSection('contact')">
                             Get Started
                         </button>
                     </div>
                 </div>
             </section>
 
-            <!-- SERVICES -->
-            <section class="services-section" id="services">
+            <!-- SERVICES SECTION -->
+            <section class="section content-section" id="services">
                 <div class="section-header">
                     <h2>Our Services</h2>
                     <p>Comprehensive digital solutions tailored to your needs</p>
@@ -464,8 +504,8 @@
                 </div>
             </section>
 
-            <!-- ABOUT -->
-            <section style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; width: 100%;" id="about">
+            <!-- ABOUT SECTION -->
+            <section class="section content-section" id="about">
                 <div class="section-header">
                     <h2>Why Choose Us</h2>
                     <p>Your trusted partner in digital transformation</p>
@@ -474,81 +514,180 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
                     <div style="background: var(--color-dark-light); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--color-gold);">
                         <h3 style="color: var(--color-gold); margin-bottom: 1rem; font-weight: 600;">Expert Team</h3>
-                        <p style="opacity: 0.85;">Our skilled professionals bring years of experience in digital services and technology.</p>
+                        <p style="opacity: 0.85;">Our skilled professionals bring years of experience in digital services and technology to deliver exceptional results.</p>
                     </div>
 
                     <div style="background: var(--color-dark-light); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--color-gold);">
                         <h3 style="color: var(--color-gold); margin-bottom: 1rem; font-weight: 600;">24/7 Support</h3>
-                        <p style="opacity: 0.85;">We're always available to assist you with your digital needs and answer your questions.</p>
+                        <p style="opacity: 0.85;">We're always available to assist you with your digital needs and answer your questions anytime.</p>
                     </div>
 
                     <div style="background: var(--color-dark-light); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--color-gold);">
                         <h3 style="color: var(--color-gold); margin-bottom: 1rem; font-weight: 600;">Affordable Pricing</h3>
-                        <p style="opacity: 0.85;">Quality services at competitive prices that fit your budget and business needs.</p>
+                        <p style="opacity: 0.85;">Quality services at competitive prices that fit your budget and business needs without compromise.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PORTFOLIO SECTION -->
+            <section class="section content-section" id="portfolio">
+                <div class="section-header">
+                    <h2>Recent Projects</h2>
+                    <p>Showcase of our latest and greatest work</p>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <h3>eCitizen Platform Enhancement</h3>
+                        <p style="opacity: 0.85; margin-bottom: 1rem;">Streamlined government services portal with improved user experience and faster processing.</p>
+                        <span style="color: var(--color-gold); font-size: 0.9rem;">Government Services</span>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <h3>Corporate Website Redesign</h3>
+                        <p style="opacity: 0.85; margin-bottom: 1rem;">Modern responsive website for a tech startup with SEO optimization and fast loading times.</p>
+                        <span style="color: var(--color-gold); font-size: 0.9rem;">Web Development</span>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <h3>Brand Identity Design</h3>
+                        <p style="opacity: 0.85; margin-bottom: 1rem;">Complete brand identity including logo, color palette, and visual guidelines for a growing business.</p>
+                        <span style="color: var(--color-gold); font-size: 0.9rem;">Graphic Design</span>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <h3>Digital Marketing Campaign</h3>
+                        <p style="opacity: 0.85; margin-bottom: 1rem;">Integrated social media and email marketing campaign that increased engagement by 250%.</p>
+                        <span style="color: var(--color-gold); font-size: 0.9rem;">Digital Marketing</span>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <h3>CV Transformation Service</h3>
+                        <p style="opacity: 0.85; margin-bottom: 1rem;">Helped 500+ professionals land their dream jobs with professionally written CVs and cover letters.</p>
+                        <span style="color: var(--color-gold); font-size: 0.9rem;">CV Writing</span>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <h3>Document Generation System</h3>
+                        <p style="opacity: 0.85; margin-bottom: 1rem;">Automated document generation tool serving 1000+ users monthly with customizable templates.</p>
+                        <span style="color: var(--color-gold); font-size: 0.9rem;">DocumentsGen</span>
                     </div>
                 </div>
             </section>
         </main>
 
-        <!-- FOOTER -->
-        <footer>
+        <!-- FOOTER / CONTACT SECTION -->
+        <footer id="contact">
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Shivakalabs</h4>
-                    <p style="margin-bottom: 1rem;">Premium digital services for businesses and individuals.</p>
+                    <p style="margin-bottom: 1rem;">Premium digital services for businesses and individuals worldwide.</p>
                     <div class="social-links">
-                        <a href="#" title="Facebook">f</a>
-                        <a href="#" title="Instagram">📷</a>
-                        <a href="#" title="LinkedIn">in</a>
-                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="https://facebook.com" target="_blank" title="Facebook">f</a>
+                        <a href="https://instagram.com" target="_blank" title="Instagram">📷</a>
+                        <a href="https://linkedin.com" target="_blank" title="LinkedIn">in</a>
+                        <a href="https://twitter.com" target="_blank" title="Twitter">𝕏</a>
                     </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a onclick="scrollToSection('home')">Home</a></li>
+                        <li><a onclick="scrollToSection('services')">Services</a></li>
+                        <li><a onclick="scrollToSection('about')">About</a></li>
+                        <li><a onclick="scrollToSection('portfolio')">Portfolio</a></li>
+                    </ul>
                 </div>
 
                 <div class="footer-section">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#services">eCitizen Services</a></li>
-                        <li><a href="#services">Web Development</a></li>
-                        <li><a href="#services">Graphic Design</a></li>
-                        <li><a href="#services">Digital Marketing</a></li>
+                        <li><a onclick="scrollToSection('services')">eCitizen Services</a></li>
+                        <li><a onclick="scrollToSection('services')">Web Development</a></li>
+                        <li><a onclick="scrollToSection('services')">Graphic Design</a></li>
+                        <li><a onclick="scrollToSection('services')">Digital Marketing</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
-                    <h4>More Services</h4>
-                    <ul>
-                        <li><a href="#services">CV & Cover Letters</a></li>
-                        <li><a href="#services">DocumentsGen</a></li>
-                        <li><a href="#services">How It Works</a></li>
-                        <li><a href="#services">Pricing</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Email: info@shivakalabs.com</p>
-                    <p>WhatsApp: <a href="https://wa.me/254716358703" style="color: #25D366; font-weight: 600;">+254 716 358 703</a></p>
+                    <h4>Contact Us</h4>
+                    <p style="margin-bottom: 0.75rem;">📧 Email: info@shivakalabs.com</p>
+                    <p style="margin-bottom: 0.75rem;">📱 Phone: +254 716 358 703</p>
+                    <p style="margin-bottom: 0.75rem;">💬 WhatsApp: <a href="https://wa.me/254716358703" style="color: #25D366; font-weight: 600;" target="_blank">Chat Now</a></p>
                     <p>Available 24/7 for your support</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Shivakalabs. All rights reserved. | <a href="#" style="color: var(--color-gold); text-decoration: none;">Privacy</a> | <a href="#" style="color: var(--color-gold); text-decoration: none;">Terms</a></p>
+                <p>&copy; 2025 Shivakalabs. All rights reserved. | <a onclick="alert('Privacy Policy')" style="color: var(--color-gold); text-decoration: none; cursor: pointer;">Privacy</a> | <a onclick="alert('Terms of Service')" style="color: var(--color-gold); text-decoration: none; cursor: pointer;">Terms</a></p>
             </div>
         </footer>
     </div>
 
     <script>
+        // Navigation menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
 
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
 
-        document.querySelectorAll('.nav-link').forEach(link => {
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`[onclick="scrollToSection('${sectionId}')"]`);
+                if (activeLink && activeLink.classList.contains('nav-link')) {
+                    activeLink.classList.add('active');
+                }
+            }
+        }
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'services', 'about', 'portfolio', 'contact'];
+            let currentSection = 'home';
+
+            sections.forEach(sectionId => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom > 150) {
+                        currentSection = sectionId;
+                    }
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('onclick').includes(currentSection)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Prevent default anchor behavior
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('href').substring(1);
+                scrollToSection(sectionId);
             });
         });
     </script>
