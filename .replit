@@ -1,11 +1,11 @@
-modules = ["nodejs-20", "python-3.11"]
+modules = ["web", "nodejs-20", "python-3.11"]
 [agent]
 expertMode = true
 integrations = ["github:1.0.0", "python_openai:1.0.0"]
 
 [nix]
 channel = "stable-25_05"
-packages = ["freetype", "glibcLocales"]
+packages = ["freetype", "glibcLocales", "openssl", "postgresql"]
 
 [workflows]
 runButton = "Project"
@@ -17,30 +17,30 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Shivakalabs Server"
+args = "Start application"
 
 [[workflows.workflow]]
-name = "Shivakalabs Server"
+name = "Start application"
 author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "gunicorn --bind 0.0.0.0:5000 --reuse-port --reload main:app"
+waitForPort = 5000
 
 [workflows.workflow.metadata]
 outputType = "webview"
 
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python server.py"
-waitForPort = 5000
-
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 40563
-externalPort = 3001
 
 [userenv]
 
 [userenv.shared]
 PAYSTACK_SECRET_KEY = "238b292d4da31544"
 PAYSTACK_PUBLIC_KEY = "pk_test_35cd142d3174518a92af53c22e98d20b297c4aca"
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]

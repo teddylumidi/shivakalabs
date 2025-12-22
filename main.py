@@ -1,6 +1,1 @@
-def main():
-    print("Hello from repl-nix-workspace!")
-
-
-if __name__ == "__main__":
-    main()
+from server import app  # noqa: F401
