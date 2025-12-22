@@ -330,6 +330,34 @@
             font-weight: 600;
         }
 
+        /* HERO LOGO */
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--color-dark);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* FOOTER */
         footer {
             background-color: var(--color-dark-light);
@@ -445,6 +473,7 @@
             <!-- HOME SECTION -->
             <section class="section hero" id="home">
                 <div class="hero-content">
+                    <div class="hero-logo">S</div>
                     <h1>Elevate Your Digital Future</h1>
                     <p>Premium digital services for government services, web development, design, marketing, and professional document generation</p>
                     <div class="cta-group">
