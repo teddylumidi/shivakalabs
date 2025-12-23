@@ -13,19 +13,19 @@
     <script async src="https://js.paystack.co/v1/inline.js"></script>
     <style>
         :root {
-            --color-dark: #0f0f15;
-            --color-dark-light: #1a1a24;
+            --color-dark: transparent;
+            --color-dark-light: transparent;
             --color-gold: #D4AF37;
             --color-gold-light: #FFD700;
             --color-text: #e0e0e0;
-            --color-border: #2a2a3e;
+            --color-border: rgba(212, 175, 55, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; width: 100%; }
 
         body {
-            background-color: var(--color-dark);
+            background-color: transparent;
             color: var(--color-text);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
@@ -40,12 +40,12 @@
 
         /* HEADER */
         header {
-            background-color: var(--color-dark-light);
-            border-bottom: 1px solid var(--color-border);
+            background-color: transparent;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: none;
         }
 
         .header-content {
@@ -76,7 +76,7 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+            background: transparent;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -84,6 +84,12 @@
             color: var(--color-dark);
             font-weight: bold;
             flex-shrink: 0;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         nav {
@@ -136,14 +142,14 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
+            background: transparent;
             padding: 4rem 2rem;
             min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            border-bottom: 1px solid var(--color-border);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .hero-content {
@@ -251,8 +257,8 @@
         }
 
         .service-card {
-            background: var(--color-dark-light);
-            border: 1px solid var(--color-border);
+            background: rgba(26, 26, 36, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 12px;
             padding: 2rem;
             transition: all 0.3s;
@@ -333,9 +339,9 @@
 
         /* HERO LOGO */
         .hero-logo {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+            width: 150px;
+            height: 150px;
+            background: transparent;
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -344,7 +350,7 @@
             font-weight: bold;
             color: var(--color-dark);
             margin: 0 auto 1rem auto;
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            box-shadow: none;
             animation: slideDown 0.8s ease;
         }
 
@@ -371,8 +377,8 @@
 
         /* FOOTER */
         footer {
-            background-color: var(--color-dark-light);
-            border-top: 1px solid var(--color-border);
+            background-color: transparent;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
             padding: 3rem 2rem;
             margin-top: auto;
         }
@@ -463,7 +469,9 @@
         <header>
             <div class="header-content">
                 <a class="logo" onclick="scrollToSection('home')">
-                    <div class="logo-icon">S</div>
+                    <div class="logo-icon">
+                        <img src="attached_assets/shivakalabslogo-removebg-preview_1764242646338.png" alt="Logo">
+                    </div>
                     <span>Shivakalabs</span>
                 </a>
 
