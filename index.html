@@ -258,6 +258,7 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .service-card::before {
@@ -342,9 +343,19 @@
             font-size: 4rem;
             font-weight: bold;
             color: var(--color-dark);
-            margin-bottom: 2rem;
+            margin: 0 auto 1rem auto;
             box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
             animation: slideDown 0.8s ease;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            margin-top: 0;
         }
 
         @keyframes slideDown {
@@ -460,7 +471,6 @@
                     <a class="nav-link active" onclick="scrollToSection('home')">Home</a>
                     <a class="nav-link" onclick="scrollToSection('services')">Services</a>
                     <a class="nav-link" onclick="scrollToSection('about')">About</a>
-                    <a class="nav-link" onclick="scrollToSection('portfolio')">Portfolio</a>
                     <a class="nav-link" onclick="scrollToSection('contact')">Contact</a>
                 </nav>
 
@@ -495,37 +505,37 @@
                 </div>
 
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card" onclick="openService('eCitizen', 'Streamlined government service access and documentation support to help you navigate official procedures effortlessly.')">
                         <div class="service-icon">🏛️</div>
                         <h3>eCitizen Services</h3>
                         <p>Streamlined government service access and documentation support to help you navigate official procedures effortlessly.</p>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card" onclick="openService('Web Development', 'Modern, responsive websites built with cutting-edge technology for optimal performance and user experience.')">
                         <div class="service-icon">🌐</div>
                         <h3>Web Development</h3>
                         <p>Modern, responsive websites built with cutting-edge technology for optimal performance and user experience.</p>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card" onclick="openService('Graphic Design', 'Professional design solutions including branding, logos, and visual content that makes your business stand out.')">
                         <div class="service-icon">🎨</div>
                         <h3>Graphic Design</h3>
                         <p>Professional design solutions including branding, logos, and visual content that makes your business stand out.</p>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card" onclick="openService('Digital Marketing', 'Strategic marketing campaigns designed to increase visibility and engagement with your target audience.')">
                         <div class="service-icon">📱</div>
                         <h3>Digital Marketing</h3>
                         <p>Strategic marketing campaigns designed to increase visibility and engagement with your target audience.</p>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card" onclick="openService('CV & Cover Letters', 'Professional CV and cover letter creation with AI-powered assistance to land your dream job.')">
                         <div class="service-icon">📄</div>
                         <h3>CV & Cover Letters</h3>
                         <p>Professional CV and cover letter creation with AI-powered assistance to land your dream job.</p>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card" onclick="openService('DocumentsGen', 'Generate professional documents instantly - proposals, invoices, certificates, and more with customizable templates.')">
                         <div class="service-icon">📊</div>
                         <h3>DocumentsGen</h3>
                         <p>Generate professional documents instantly - proposals, invoices, certificates, and more with customizable templates.</p>
@@ -557,52 +567,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- PORTFOLIO SECTION -->
-            <section class="section content-section" id="portfolio">
-                <div class="section-header">
-                    <h2>Recent Projects</h2>
-                    <p>Showcase of our latest and greatest work</p>
-                </div>
-
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <h3>eCitizen Platform Enhancement</h3>
-                        <p style="opacity: 0.85; margin-bottom: 1rem;">Streamlined government services portal with improved user experience and faster processing.</p>
-                        <span style="color: var(--color-gold); font-size: 0.9rem;">Government Services</span>
-                    </div>
-
-                    <div class="portfolio-item">
-                        <h3>Corporate Website Redesign</h3>
-                        <p style="opacity: 0.85; margin-bottom: 1rem;">Modern responsive website for a tech startup with SEO optimization and fast loading times.</p>
-                        <span style="color: var(--color-gold); font-size: 0.9rem;">Web Development</span>
-                    </div>
-
-                    <div class="portfolio-item">
-                        <h3>Brand Identity Design</h3>
-                        <p style="opacity: 0.85; margin-bottom: 1rem;">Complete brand identity including logo, color palette, and visual guidelines for a growing business.</p>
-                        <span style="color: var(--color-gold); font-size: 0.9rem;">Graphic Design</span>
-                    </div>
-
-                    <div class="portfolio-item">
-                        <h3>Digital Marketing Campaign</h3>
-                        <p style="opacity: 0.85; margin-bottom: 1rem;">Integrated social media and email marketing campaign that increased engagement by 250%.</p>
-                        <span style="color: var(--color-gold); font-size: 0.9rem;">Digital Marketing</span>
-                    </div>
-
-                    <div class="portfolio-item">
-                        <h3>CV Transformation Service</h3>
-                        <p style="opacity: 0.85; margin-bottom: 1rem;">Helped 500+ professionals land their dream jobs with professionally written CVs and cover letters.</p>
-                        <span style="color: var(--color-gold); font-size: 0.9rem;">CV Writing</span>
-                    </div>
-
-                    <div class="portfolio-item">
-                        <h3>Document Generation System</h3>
-                        <p style="opacity: 0.85; margin-bottom: 1rem;">Automated document generation tool serving 1000+ users monthly with customizable templates.</p>
-                        <span style="color: var(--color-gold); font-size: 0.9rem;">DocumentsGen</span>
-                    </div>
-                </div>
-            </section>
         </main>
 
         <!-- FOOTER / CONTACT SECTION -->
@@ -625,7 +589,7 @@
                         <li><a onclick="scrollToSection('home')">Home</a></li>
                         <li><a onclick="scrollToSection('services')">Services</a></li>
                         <li><a onclick="scrollToSection('about')">About</a></li>
-                        <li><a onclick="scrollToSection('portfolio')">Portfolio</a></li>
+                        <li><a onclick="scrollToSection('contact')">Contact</a></li>
                     </ul>
                 </div>
 
@@ -688,9 +652,44 @@
             }
         }
 
+        // Service card click handler
+        function openService(serviceName, description) {
+            const modal = document.createElement('div');
+            modal.id = 'service-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                backdrop-filter: blur(5px);
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: var(--color-dark-light); border: 2px solid var(--color-gold); border-radius: 16px; padding: 2rem; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h2 style="color: var(--color-gold); margin: 0;">${serviceName}</h2>
+                        <button onclick="document.getElementById('service-modal').remove()" style="background: none; border: none; color: var(--color-gold); font-size: 1.5rem; cursor: pointer;">✕</button>
+                    </div>
+                    <p style="color: var(--color-text); margin-bottom: 2rem; line-height: 1.8;">${description}</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <button onclick="scrollToSection('contact'); document.getElementById('service-modal').remove()" style="flex: 1; padding: 0.875rem; background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%); color: var(--color-dark); border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Get Started</button>
+                        <button onclick="document.getElementById('service-modal').remove()" style="flex: 1; padding: 0.875rem; background: transparent; color: var(--color-gold); border: 2px solid var(--color-gold); border-radius: 8px; font-weight: 600; cursor: pointer;">Close</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
         // Update active nav link on scroll
         window.addEventListener('scroll', () => {
-            const sections = ['home', 'services', 'about', 'portfolio', 'contact'];
+            const sections = ['home', 'services', 'about', 'contact'];
             let currentSection = 'home';
 
             sections.forEach(sectionId => {
