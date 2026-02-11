@@ -20,7 +20,7 @@
     "postcss": "^8.4.31",
     "autoprefixer": "^10.4.16",
     "zustand": "^4.4.1",
-    "axios": "^1.6.0",
+    "axios": "^1.13.5",
     "zod": "^3.22.4",
     "react-hook-form": "^7.48.0",
     "crypto-js": "^4.1.1"
