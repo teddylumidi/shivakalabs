@@ -514,6 +514,97 @@ footer{background:var(--s2);border-top:1px solid var(--b1);padding:3.5rem 5% 1.5
 }
 .sc-badge{font-size:0}
 .sc-badge svg{color:var(--gold)}
+
+/* ════ LANG/CURR CONTROLS ═══════════════════════════════════════════════════ */
+.nav-tools{display:flex;align-items:center;gap:.35rem;margin-right:.4rem;flex-shrink:0}
+.lang-grp{display:flex;gap:1px;border:1px solid var(--b2);border-radius:7px;overflow:hidden}
+.lang-btn{padding:.27rem .52rem;font-size:.67rem;font-weight:700;border:none;background:none;color:var(--sub);cursor:pointer;transition:.12s}
+.lang-btn.on{background:var(--gd);color:var(--gold)}
+.lang-btn:hover:not(.on){background:rgba(255,255,255,.04);color:var(--text)}
+.curr-drop{padding:.27rem .58rem;font-size:.67rem;font-weight:700;border:1px solid var(--b2);border-radius:7px;background:var(--card);color:var(--sub);cursor:pointer;-webkit-appearance:none;outline:none}
+.curr-drop:hover{border-color:rgba(232,160,0,.38);color:var(--gold)}
+select option{background:var(--s2)}
+@media(max-width:1050px){.nav-tools{display:none}}
+
+/* ════ PRICE TAG ═════════════════════════════════════════════════════════════ */
+.price-tag{display:inline-flex;align-items:center;background:rgba(232,160,0,.1);border:1px solid rgba(232,160,0,.25);color:var(--gold);font-size:.78rem;font-weight:800;padding:.18rem .65rem;border-radius:50px;margin-bottom:.65rem}
+
+/* ════ AI TOOLS PAGE ═════════════════════════════════════════════════════════ */
+.ai-hero-row{display:grid;grid-template-columns:1fr 1.05fr;gap:3rem;padding:2.8rem 5%;align-items:center}
+@media(max-width:900px){.ai-hero-row{grid-template-columns:1fr;gap:1.8rem;padding:2rem 5%}}
+.ai-price-box{background:var(--card);border:1px solid var(--b1);border-radius:14px;overflow:hidden}
+.ai-px-head{padding:.65rem 1.1rem;background:var(--gd2);font-size:.64rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);display:flex;justify-content:space-between}
+.ai-px-row{display:flex;justify-content:space-between;align-items:center;padding:.68rem 1.1rem;border-top:1px solid var(--b1)}
+.ai-px-row .n{font-size:.83rem;color:var(--text)}
+.ai-px-row .p{font-weight:800;color:var(--gold);font-size:.88rem}
+.ai-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;padding:1.8rem 5% 2.5rem}
+.aic{background:var(--card);border:1px solid var(--b1);border-radius:14px;padding:1.55rem 1.35rem;transition:all .25s;position:relative;overflow:hidden}
+.aic::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#25d366,var(--gold));opacity:0;transition:.25s}
+.aic:hover{border-color:rgba(232,160,0,.3);transform:translateY(-4px);box-shadow:0 18px 45px rgba(0,0,0,.4)}
+.aic:hover::after{opacity:1}
+.aic-icon{width:52px;height:52px;border-radius:11px;background:var(--gd);border:1px solid rgba(232,160,0,.18);display:flex;align-items:center;justify-content:center;margin-bottom:.9rem;color:var(--gold)}
+.aic h3{font-size:.95rem;font-weight:700;margin-bottom:.3rem;color:var(--white)}
+.aic p{font-size:.8rem;color:var(--sub);line-height:1.62;margin-bottom:.85rem}
+.ai-pill{display:inline-block;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.13rem .48rem;border-radius:4px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.2);margin-bottom:.5rem}
+.ai-features-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.85rem;padding:1rem 5% 3rem}
+.ai-feat-item{background:var(--card);border:1px solid var(--b1);border-radius:11px;padding:1.1rem 1rem;display:flex;gap:.75rem;align-items:flex-start;transition:.2s}
+.ai-feat-item:hover{border-color:rgba(232,160,0,.22)}
+.afi-ic{width:36px;height:36px;border-radius:8px;background:var(--gd);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0}
+.ai-feat-item h4{font-size:.83rem;font-weight:700;margin-bottom:.15rem;color:var(--text)}
+.ai-feat-item p{font-size:.73rem;color:var(--sub);line-height:1.55}
+
+/* ════ DOCGEN PAGE ═══════════════════════════════════════════════════════════ */
+.dg-top{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;padding:3rem 5%;align-items:center;background:var(--s1);border-bottom:1px solid var(--b1)}
+@media(max-width:900px){.dg-top{grid-template-columns:1fr;padding:2rem 5%}}
+.dg-stat-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem}
+.dg-stat{background:var(--card);border:1px solid var(--b1);border-radius:10px;padding:.65rem 1rem;text-align:center;flex:1;min-width:90px}
+.dg-stat .n{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--gold)}
+.dg-stat .l{font-size:.65rem;color:var(--sub);text-transform:uppercase;letter-spacing:.07em}
+.dg-cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:.9rem;padding:1.5rem 5% 2.5rem}
+.dgc{background:var(--card);border:1px solid var(--b1);border-radius:12px;padding:1.3rem 1.1rem;transition:all .2s}
+.dgc:hover{border-color:rgba(232,160,0,.28);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.dgc-ic{width:42px;height:42px;border-radius:9px;background:var(--gd);border:1px solid rgba(232,160,0,.16);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:.75rem}
+.dgc h4{font-size:.87rem;font-weight:700;margin-bottom:.28rem;color:var(--text)}
+.dgc p{font-size:.73rem;color:var(--sub);line-height:1.55;margin-bottom:.6rem}
+.dgc-list{font-size:.7rem;color:var(--sub);display:flex;flex-direction:column;gap:.2rem}
+.dgc-list span::before{content:'• ';color:var(--gold)}
+.plans-sec{padding:2.5rem 5% 4rem;background:var(--s2)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:1rem;margin-top:2rem}
+.plan-card{background:var(--card);border:1px solid var(--b1);border-radius:16px;padding:1.9rem 1.6rem;transition:all .22s;position:relative}
+.plan-card.feat{border-color:rgba(232,160,0,.42);background:linear-gradient(180deg,rgba(232,160,0,.07),var(--card))}
+.plan-star{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:.18rem .75rem;border-radius:50px;white-space:nowrap}
+.plan-name{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;letter-spacing:.04em;color:var(--white)}
+.plan-amount{font-family:'Bebas Neue',sans-serif;font-size:2.9rem;letter-spacing:.02em;color:var(--gold);line-height:1.1;margin:.4rem 0 .15rem}
+.plan-per{font-size:.73rem;color:var(--sub);margin-bottom:1.2rem}
+.plan-feats{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.6rem}
+.pf{display:flex;align-items:flex-start;gap:.42rem;font-size:.79rem;color:var(--sub);line-height:1.48}
+.pf::before{content:'✓';color:#25d366;font-weight:800;flex-shrink:0;font-size:.82rem;margin-top:.05rem}
+.pf.no{opacity:.42}
+.pf.no::before{content:'✗';color:var(--sub)}
+.dg-addons{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;padding:1.5rem 5% 3rem}
+.addon{background:var(--card);border:1px solid var(--b1);border-radius:11px;padding:1.1rem 1rem;display:flex;gap:.65rem;align-items:flex-start;transition:.18s}
+.addon:hover{border-color:rgba(37,211,102,.25)}
+.addon-ic{width:34px;height:34px;border-radius:8px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.18);display:flex;align-items:center;justify-content:center;color:#25d366;flex-shrink:0}
+.addon h5{font-size:.82rem;font-weight:700;margin-bottom:.12rem;color:var(--text)}
+.addon p{font-size:.7rem;color:var(--sub);line-height:1.5}
+
+/* ════ CHATBOT ═══════════════════════════════════════════════════════════════ */
+.cb-btn{position:fixed;bottom:5.8rem;right:1.4rem;z-index:9997;display:flex;align-items:center;gap:.38rem;background:var(--card2);border:1px solid rgba(232,160,0,.32);border-radius:50px;padding:.36rem .88rem;font-size:.71rem;font-weight:700;color:var(--gold);cursor:pointer;transition:all .2s;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.cb-btn:hover{background:var(--gd);transform:translateY(-2px)}
+.cb-wrap{position:fixed;bottom:7.4rem;right:1.4rem;z-index:9998;width:295px;background:var(--card2);border:1px solid var(--b2);border-radius:16px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.65);display:none;flex-direction:column}
+.cb-wrap.open{display:flex}
+.cb-hd{background:linear-gradient(135deg,#075e54,#128c7e);padding:.85rem 1rem;display:flex;align-items:center;gap:.6rem}
+.cb-ava{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cb-hd-t strong{display:block;font-size:.84rem;color:#fff;font-weight:700;line-height:1.2}
+.cb-hd-t span{font-size:.67rem;color:rgba(255,255,255,.75)}
+.cb-x{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.8);cursor:pointer;font-size:1rem;padding:.2rem;line-height:1}
+.cb-body{overflow-y:auto;padding:.85rem;display:flex;flex-direction:column;gap:.5rem;max-height:320px;min-height:80px}
+.cb-m{max-width:90%;padding:.52rem .82rem;border-radius:10px;font-size:.77rem;line-height:1.52}
+.cb-m.b{background:var(--s1);color:var(--text);border-radius:10px 10px 10px 2px;align-self:flex-start}
+.cb-m.u{background:#25d366;color:#fff;border-radius:10px 10px 2px 10px;align-self:flex-end}
+.cb-opts{display:flex;flex-direction:column;gap:.3rem;margin-top:.2rem}
+.cb-o{padding:.4rem .72rem;border-radius:8px;border:1px solid var(--b2);background:none;font-size:.73rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;transition:.12s}
+.cb-o:hover{border-color:rgba(37,211,102,.38);color:#25d366;background:rgba(37,211,102,.06)}
 </style>
 </head>
 <body>
@@ -553,7 +644,8 @@ footer{background:var(--s2);border-top:1px solid var(--b1);padding:3.5rem 5% 1.5
     <li class="nav-item"><button class="nb" onclick="showPage('webdev')">Web Dev</button></li>
     <li class="nav-item"><button class="nb" onclick="showPage('design')">Design</button></li>
     <li class="nav-item"><button class="nb" onclick="showPage('marketing')">Marketing</button></li>
-    <li class="nav-item"><button class="nb" onclick="showPage('other')">Other</button></li>
+    <li class="nav-item"><button class="nb" onclick="showPage('ai')">AI Tools</button></li>
+    <li class="nav-item"><button class="nb" onclick="showPage('docgen')">Doc Gen</button></li>
     <li class="nav-item"><button class="nb" onclick="showPage('contact')">Contact</button></li>
     <li>
       <a class="nav-wa" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20your%20services" target="_blank">
@@ -561,6 +653,20 @@ footer{background:var(--s2);border-top:1px solid var(--b1);padding:3.5rem 5% 1.5
       </a>
     </li>
   </ul>
+  <div class="nav-tools">
+    <div class="lang-grp">
+      <button class="lang-btn on" id="lang-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="lang-sw" onclick="setLang('sw')">SW</button>
+    </div>
+    <select class="curr-drop" id="curr-drop" onchange="setCurr(this.value)">
+      <option value="KES">KSh</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="UGX">UGX</option>
+      <option value="TZS">TZS</option>
+    </select>
+  </div>
   <div class="ham" onclick="toggleMob()" id="ham"><span></span><span></span><span></span></div>
 </nav>
 
@@ -581,6 +687,24 @@ footer{background:var(--s2);border-top:1px solid var(--b1);padding:3.5rem 5% 1.5
   <button class="mb" onclick="showPage('design');closeMob()">Graphic Design</button>
   <button class="mb" onclick="showPage('marketing');closeMob()">Digital Marketing</button>
   <button class="mb" onclick="showPage('other');closeMob()">Other Services</button>
+  <div class="mdiv"></div>
+  <button class="mb" onclick="showPage('ai');closeMob()">✨ AI Tools</button>
+  <button class="mb" onclick="showPage('docgen');closeMob()">📄 Doc Gen Platform</button>
+  <div class="mdiv"></div>
+  <div style="padding:.5rem 1rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+    <div class="lang-grp">
+      <button class="lang-btn on" id="lang-en-m" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="lang-sw-m" onclick="setLang('sw')">SW</button>
+    </div>
+    <select class="curr-drop" id="curr-drop-m" onchange="setCurr(this.value)">
+      <option value="KES">KSh (KES)</option>
+      <option value="USD">$ (USD)</option>
+      <option value="EUR">€ (EUR)</option>
+      <option value="GBP">£ (GBP)</option>
+      <option value="UGX">UGX</option>
+      <option value="TZS">TZS</option>
+    </select>
+  </div>
   <div class="mdiv"></div>
   <button class="mb" onclick="showPage('contact');closeMob()">Contact</button>
   <a class="mb" style="background:rgba(37,211,102,.1);color:#25d366;font-weight:700"
@@ -829,6 +953,8 @@ footer{background:var(--s2);border-top:1px solid var(--b1);padding:3.5rem 5% 1.5
         <a onclick="showPage('webdev')">Web Development</a>
         <a onclick="showPage('design')">Graphic Design</a>
         <a onclick="showPage('marketing')">Digital Marketing</a>
+        <a onclick="showPage('ai')">AI Tools</a>
+        <a onclick="showPage('docgen')">Document Gen</a>
         <a onclick="showPage('other')">Other Services</a>
       </div>
     </div>
@@ -847,6 +973,331 @@ footer{background:var(--s2);border-top:1px solid var(--b1);padding:3.5rem 5% 1.5
     <span>Kenya&#8217;s Trusted Digital Partner</span>
   </div>
 </footer>
+
+<!-- ═══════════ AI TOOLS PAGE ════════════════════════════════════════════ -->
+<div class="page" id="page-ai">
+  <div class="ph">
+    <div class="stag" data-en="AI-Powered Services" data-sw="Huduma za AI">AI-Powered Services</div>
+    <h1 data-en="AI Tools &amp; Creative Services" data-sw="Zana za AI na Huduma za Ubunifu">AI Tools &amp; Creative Services</h1>
+    <p data-en="Intelligent services powered by the latest AI — fast, accurate, and affordable" data-sw="Huduma za akili zinazoendeshwa na AI mpya zaidi — haraka, sahihi, na bei nafuu">Intelligent services powered by the latest AI — fast, accurate, and affordable</p>
+  </div>
+
+  <!-- Price overview row -->
+  <div class="ai-hero-row">
+    <div>
+      <div class="stag" data-en="Why AI?" data-sw="Kwa Nini AI?">Why AI?</div>
+      <h2 class="sec-h" data-en="Smart Tools, Real Results" data-sw="Zana Bora, Matokeo Halisi">Smart Tools, Real Results</h2>
+      <p style="color:var(--sub);font-size:.9rem;line-height:1.72;margin:.7rem 0 1.1rem" data-en="Shivakalabs harnesses cutting-edge AI to deliver high-quality creative services at a fraction of traditional costs. Get stunning outputs in minutes, not days." data-sw="Shivakalabs hutumia AI ya kisasa kutoa huduma bora za ubunifu kwa gharama ndogo. Pata matokeo mazuri kwa dakika, si siku.">Shivakalabs harnesses cutting-edge AI to deliver high-quality creative services at a fraction of traditional costs. Get stunning outputs in minutes, not days.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+        <span style="display:inline-flex;align-items:center;gap:.3rem;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);border-radius:8px;padding:.4rem .85rem;font-size:.77rem;color:#25d366;font-weight:600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> AI-Powered</span>
+        <span style="display:inline-flex;align-items:center;gap:.3rem;background:var(--gd2);border:1px solid rgba(232,160,0,.2);border-radius:8px;padding:.4rem .85rem;font-size:.77rem;color:var(--gold);font-weight:600">⚡ Fast Delivery</span>
+        <span style="display:inline-flex;align-items:center;gap:.3rem;background:var(--gd2);border:1px solid rgba(232,160,0,.2);border-radius:8px;padding:.4rem .85rem;font-size:.77rem;color:var(--gold);font-weight:600">🌍 Multi-Currency</span>
+      </div>
+    </div>
+    <div class="ai-price-box">
+      <div class="ai-px-head"><span data-en="Service" data-sw="Huduma">Service</span><span data-en="Starting From" data-sw="Kuanzia">Starting From</span></div>
+      <div class="ai-px-row"><span class="n" data-en="CV Writing" data-sw="Kuandika CV">CV Writing</span><span class="p price-display" data-kes="500">KSh 500</span></div>
+      <div class="ai-px-row"><span class="n" data-en="Cover Letter" data-sw="Barua ya Maombi">Cover Letter</span><span class="p price-display" data-kes="300">KSh 300</span></div>
+      <div class="ai-px-row"><span class="n" data-en="Image Generation" data-sw="Utengenezaji Picha">Image Generation</span><span class="p price-display" data-kes="150">KSh 150</span></div>
+      <div class="ai-px-row"><span class="n" data-en="Photo Retouching" data-sw="Kurekebisha Picha">Photo Retouching</span><span class="p price-display" data-kes="350">KSh 350</span></div>
+      <div class="ai-px-row"><span class="n" data-en="Passport Photo" data-sw="Picha ya Pasipoti">Passport Photo</span><span class="p price-display" data-kes="250">KSh 250</span></div>
+      <div class="ai-px-row"><span class="n" data-en="Document Generation" data-sw="Utengenezaji Hati">Document Generation</span><span class="p price-display" data-kes="250">KSh 250</span></div>
+    </div>
+  </div>
+
+  <!-- Service cards -->
+  <div class="ai-cards-grid">
+    <!-- CV & Cover Letter -->
+    <div class="aic">
+      <div class="ai-pill">Professional</div>
+      <div class="aic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h8"/></svg></div>
+      <h3 data-en="CV &amp; Cover Letter Writing" data-sw="Kuandika CV na Barua">CV &amp; Cover Letter Writing</h3>
+      <p data-en="Get a professional, ATS-optimized CV and tailored cover letter crafted with AI and reviewed by our team. Stand out in any job market." data-sw="Pata CV ya kitaalamu iliyoboreshwa na AI na barua ya maombi iliyofanyiwa kazi na timu yetu.">Get a professional, ATS-optimized CV and tailored cover letter crafted with AI and reviewed by our team. Stand out in any job market.</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem">
+        <span class="price-tag">CV — <span class="price-display" data-kes="500">KSh 500</span></span>
+        <span class="price-tag">Cover Letter — <span class="price-display" data-kes="300">KSh 300</span></span>
+      </div>
+      <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20a%20CV%20%2F%20Cover%20Letter" target="_blank" style="display:inline-flex;font-size:.78rem;padding:.5rem 1.1rem;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order on WhatsApp</a>
+    </div>
+    <!-- Image Generation -->
+    <div class="aic">
+      <div class="ai-pill">AI Creative</div>
+      <div class="aic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+      <h3 data-en="AI Image Generation" data-sw="Utengenezaji Picha za AI">AI Image Generation</h3>
+      <p data-en="Custom AI-generated images for your business, social media, marketing, or personal use. Any style, any concept — described in text, delivered as art." data-sw="Picha za AI zilizoundwa kwa mahitaji yako ya biashara, mitandao ya kijamii, au matumizi ya kibinafsi.">Custom AI-generated images for your business, social media, marketing, or personal use. Any style, any concept — described in text, delivered as art.</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem">
+        <span class="price-tag"><span class="price-display" data-kes="150">KSh 150</span>/image</span>
+        <span class="price-tag">Bundle 5 — <span class="price-display" data-kes="600">KSh 600</span></span>
+      </div>
+      <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20AI%20image%20generation" target="_blank" style="display:inline-flex;font-size:.78rem;padding:.5rem 1.1rem;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order on WhatsApp</a>
+    </div>
+    <!-- Photo Retouching -->
+    <div class="aic">
+      <div class="ai-pill">AI Creative</div>
+      <div class="aic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+      <h3 data-en="Photo Retouching &amp; Manipulation" data-sw="Kurekebisha na Kubadilisha Picha">Photo Retouching &amp; Manipulation</h3>
+      <p data-en="Professional-grade photo editing: background removal, colour correction, skin retouching, object removal, and creative compositing. Send your photo, receive perfection." data-sw="Uhariri wa picha wa kiwango cha kitaalamu: kuondoa mandharinyuma, kusahihisha rangi, na mengi zaidi.">Professional-grade photo editing: background removal, colour correction, skin retouching, object removal, and creative compositing.</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem">
+        <span class="price-tag">Basic — <span class="price-display" data-kes="350">KSh 350</span></span>
+        <span class="price-tag">Advanced — <span class="price-display" data-kes="900">KSh 900</span></span>
+      </div>
+      <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20photo%20retouching" target="_blank" style="display:inline-flex;font-size:.78rem;padding:.5rem 1.1rem;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order on WhatsApp</a>
+    </div>
+    <!-- Passport Photo -->
+    <div class="aic">
+      <div class="ai-pill">AI Creative</div>
+      <div class="aic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M7 21c0-2.761 2.239-5 5-5s5 2.239 5 5"/></svg></div>
+      <h3 data-en="Passport Photo Generator" data-sw="Kizalishaji cha Picha ya Pasipoti">Passport Photo Generator</h3>
+      <p data-en="Upload your photo and our AI transforms it into a compliant passport photo — correct dimensions, white background, and perfect framing. Works for Kenya, US, UK, EU, and more." data-sw="Pakia picha yako na AI yetu itaibadilisha kuwa picha ya pasipoti inayofuata kanuni — vipimo sahihi, mandharinyuma nyeupe.">Upload your photo and our AI transforms it into a compliant passport photo — correct dimensions, white background, and perfect framing for any country.</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem">
+        <span class="price-tag"><span class="price-display" data-kes="250">KSh 250</span>/set</span>
+      </div>
+      <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20a%20passport%20photo" target="_blank" style="display:inline-flex;font-size:.78rem;padding:.5rem 1.1rem;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order on WhatsApp</a>
+    </div>
+    <!-- Web Dev AI -->
+    <div class="aic">
+      <div class="ai-pill">Tech</div>
+      <div class="aic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <h3 data-en="AI Website Development" data-sw="Ujenzi wa Tovuti ya AI">AI Website Development</h3>
+      <p data-en="Get a fully functional, mobile-responsive website built using AI-assisted development. Choose between a do-it-yourself AI platform walkthrough or full-service development by our team." data-sw="Pata tovuti inayofanya kazi, inayojibu simu, iliyojengwa kwa kutumia ujenzi wa msaada wa AI.">Get a fully functional, mobile-responsive website built using AI-assisted development — or have our team build it entirely for you.</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem">
+        <span class="price-tag">AI Build — <span class="price-display" data-kes="4999">KSh 4,999</span></span>
+        <span class="price-tag">Full Service — <span class="price-display" data-kes="15000">KSh 15,000</span>+</span>
+      </div>
+      <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20an%20AI%20website" target="_blank" style="display:inline-flex;font-size:.78rem;padding:.5rem 1.1rem;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order on WhatsApp</a>
+    </div>
+    <!-- Chatbot -->
+    <div class="aic">
+      <div class="ai-pill">AI Tech</div>
+      <div class="aic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <h3 data-en="AI Chatbot for Your Business" data-sw="Chatbot ya AI kwa Biashara Yako">AI Chatbot for Your Business</h3>
+      <p data-en="Custom AI-powered chatbots for websites, WhatsApp, or apps. Automate customer support, bookings, and sales 24/7 — in any language." data-sw="Chatbots za AI zilizoundwa kwa tovuti, WhatsApp, au programu. Otomeshea msaada wa wateja, miadi, na mauzo saa 24/7.">Custom AI-powered chatbots for websites, WhatsApp, or apps. Automate customer support, bookings, and sales 24/7 — in any language.</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem">
+        <span class="price-tag"><span class="price-display" data-kes="12000">KSh 12,000</span>+</span>
+      </div>
+      <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20an%20AI%20chatbot" target="_blank" style="display:inline-flex;font-size:.78rem;padding:.5rem 1.1rem;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order on WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Platform Features -->
+  <section class="sec sec-alt" style="padding-top:1.5rem;padding-bottom:2rem">
+    <div class="stag" data-en="Why Choose Us" data-sw="Kwa Nini Sisi">Why Choose Us</div>
+    <h2 class="sec-h" data-en="Everything You Need in One Place" data-sw="Kila Kitu Unachohitaji Mahali Pamoja">Everything You Need in One Place</h2>
+    <div class="ai-features-row">
+      <div class="ai-feat-item"><div class="afi-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><h4 data-en="Instant AI Delivery" data-sw="Utoaji wa Haraka wa AI">Instant AI Delivery</h4><p data-en="Most services delivered within hours" data-sw="Huduma nyingi zitatolewa ndani ya masaa machache">Most services delivered within hours</p></div></div>
+      <div class="ai-feat-item"><div class="afi-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div><div><h4 data-en="Multi-Language Support" data-sw="Msaada wa Lugha Nyingi">Multi-Language Support</h4><p data-en="English, Swahili, French, Arabic &amp; more" data-sw="Kiingereza, Kiswahili, Kifaransa, Kiarabu na zaidi">English, Swahili, French, Arabic &amp; more</p></div></div>
+      <div class="ai-feat-item"><div class="afi-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div><h4 data-en="Flexible Payment" data-sw="Malipo Rahisi">Flexible Payment</h4><p data-en="M-Pesa, Bank, PayPal, Crypto &amp; more" data-sw="M-Pesa, Benki, PayPal, Crypto na zaidi">M-Pesa, Bank, PayPal, Crypto &amp; more</p></div></div>
+      <div class="ai-feat-item"><div class="afi-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4 data-en="100% Secure &amp; Private" data-sw="Salama Kabisa &amp; ya Faragha">100% Secure &amp; Private</h4><p data-en="Your data is encrypted and never shared" data-sw="Data yako imesimbwa kwa njia fiche na haishirikiwi kamwe">Your data is encrypted and never shared</p></div></div>
+      <div class="ai-feat-item"><div class="afi-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 12.02 19.79 19.79 0 01.13 3.39 2 2 0 012.11 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.4a16 16 0 006 6l.55-.55a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0120.22 16z"/></svg></div><div><h4 data-en="WhatsApp-First" data-sw="WhatsApp Kwanza">WhatsApp-First</h4><p data-en="Order, communicate, and receive via WhatsApp" data-sw="Agiza, wasiliana, na pokea kupitia WhatsApp">Order, communicate, and receive via WhatsApp</p></div></div>
+      <div class="ai-feat-item"><div class="afi-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><h4 data-en="Human Review" data-sw="Ukaguzi wa Binadamu">Human Review</h4><p data-en="Every AI output is reviewed by our experts" data-sw="Kila matokeo ya AI yanakaguliwa na wataalamu wetu">Every AI output is reviewed by our experts</p></div></div>
+    </div>
+  </section>
+
+  <div style="padding:0 5% 4rem">
+    <div class="cta">
+      <h2 data-en="Ready to Create Something Amazing?" data-sw="Uko Tayari Kuunda Kitu Cha Ajabu?">Ready to Create Something Amazing?</h2>
+      <p data-en="All AI services are handled via WhatsApp. Fast response guaranteed." data-sw="Huduma zote za AI zinasimamiwa kupitia WhatsApp. Jibu la haraka linahakikishwa.">All AI services are handled via WhatsApp. Fast response guaranteed.</p>
+      <div class="cta-btns">
+        <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20AI%20services" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Start on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ DOCUMENT GEN PAGE ════════════════════════════════════════ -->
+<div class="page" id="page-docgen">
+  <div class="dg-top">
+    <div>
+      <div class="stag" data-en="SaaS Platform" data-sw="Jukwaa la SaaS">SaaS Platform</div>
+      <h1 data-en="Document Gen Platform" data-sw="Jukwaa la Utengenezaji Hati">Document Gen Platform</h1>
+      <p style="color:var(--sub);font-size:.9rem;line-height:1.72;margin:.7rem 0 1.1rem" data-en="A one-stop solution for generating, editing, and managing any professional document — for individuals, businesses, and organisations worldwide." data-sw="Suluhisho kamili la kutengeneza, kuhariri, na kusimamia hati yoyote ya kitaalamu — kwa watu binafsi, biashara, na mashirika duniani kote.">A one-stop solution for generating, editing, and managing any professional document — for individuals, businesses, and organisations worldwide.</p>
+      <div class="dg-stat-row">
+        <div class="dg-stat"><div class="n">35+</div><div class="l" data-en="Doc Types" data-sw="Aina za Hati">Doc Types</div></div>
+        <div class="dg-stat"><div class="n">50+</div><div class="l" data-en="Templates" data-sw="Violezo">Templates</div></div>
+        <div class="dg-stat"><div class="n">AI</div><div class="l" data-en="Writing Assist" data-sw="Msaada wa Kuandika">Writing Assist</div></div>
+        <div class="dg-stat"><div class="n">🌍</div><div class="l" data-en="Global Formats" data-sw="Miundo ya Kimataifa">Global Formats</div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--card);border:1px solid var(--b1);border-radius:14px;padding:1.5rem;background:linear-gradient(135deg,rgba(232,160,0,.08),var(--card))">
+        <div style="font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem" data-en="Powered By" data-sw="Inaendeshwa Na">Powered By</div>
+        <div style="display:flex;flex-direction:column;gap:.55rem">
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem;color:var(--text)"><div style="width:8px;height:8px;border-radius:50%;background:#25d366;flex-shrink:0"></div> Google Gemini AI</div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem;color:var(--text)"><div style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0"></div> Multi-language Generation</div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem;color:var(--text)"><div style="width:8px;height:8px;border-radius:50%;background:#4285f4;flex-shrink:0"></div> GDPR &amp; HIPAA Compliant</div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem;color:var(--text)"><div style="width:8px;height:8px;border-radius:50%;background:#ea4335;flex-shrink:0"></div> Cloud Storage &amp; E-Sign</div>
+        </div>
+      </div>
+      <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20the%20Document%20Gen%20platform" target="_blank" style="display:inline-flex;gap:.4rem;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> <span data-en="Get Started on WhatsApp" data-sw="Anza Kupitia WhatsApp">Get Started on WhatsApp</span></a>
+    </div>
+  </div>
+
+  <!-- Document categories -->
+  <section class="sec" style="padding-bottom:1rem">
+    <div class="stag" data-en="All Document Types" data-sw="Aina Zote za Hati">All Document Types</div>
+    <h2 class="sec-h" data-en="Generate Any Document, Instantly" data-sw="Tengeneza Hati Yoyote, Papo Hapo">Generate Any Document, Instantly</h2>
+    <p class="sec-sub" data-en="From professional proposals to personal letters — every type of document, in every format, for every country." data-sw="Kuanzia mapendekezo ya kitaalamu hadi barua za kibinafsi — kila aina ya hati, kwa kila umbizo, kwa kila nchi.">From professional proposals to personal letters — every type of document, in every format, for every country.</p>
+  </section>
+  <div class="dg-cats-grid">
+    <div class="dgc">
+      <div class="dgc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <h4 data-en="Professional Documents" data-sw="Hati za Kitaalamu">Professional Documents</h4>
+      <p data-en="For entrepreneurs, consultants &amp; freelancers" data-sw="Kwa wajasiriamali, washauri na wafanyakazi huru">For entrepreneurs, consultants &amp; freelancers</p>
+      <div class="dgc-list"><span data-en="Proposal Writing" data-sw="Kuandika Mapendekezo">Proposal Writing</span><span data-en="Contract Drafting" data-sw="Kuandaa Mikataba">Contract Drafting</span><span data-en="Resignation Letters" data-sw="Barua za Kuacha Kazi">Resignation Letters</span><span data-en="Company Profiles" data-sw="Maelezo ya Kampuni">Company Profiles</span></div>
+    </div>
+    <div class="dgc">
+      <div class="dgc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-7 10 7M6 10v8h12V10"/></svg></div>
+      <h4 data-en="Academic Documents" data-sw="Hati za Kitaaluma">Academic Documents</h4>
+      <p data-en="For students and academics worldwide" data-sw="Kwa wanafunzi na wasomi duniani kote">For students and academics worldwide</p>
+      <div class="dgc-list"><span data-en="Thesis &amp; Dissertation" data-sw="Tasnifu na Shahada">Thesis &amp; Dissertation</span><span data-en="Essay Writing" data-sw="Kuandika Insha">Essay Writing</span><span data-en="Statement of Purpose" data-sw="Taarifa ya Madhumuni">Statement of Purpose</span><span data-en="Plagiarism Checking" data-sw="Ukaguzi wa Uigiaji">Plagiarism Checking</span></div>
+    </div>
+    <div class="dgc">
+      <div class="dgc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h4 data-en="Business Documents" data-sw="Hati za Biashara">Business Documents</h4>
+      <p data-en="For SMEs and large corporations" data-sw="Kwa biashara ndogo na makampuni makubwa">For SMEs and large corporations</p>
+      <div class="dgc-list"><span data-en="Invoices &amp; Receipts" data-sw="Ankara na Risiti">Invoices &amp; Receipts</span><span data-en="Financial Projections" data-sw="Makadirio ya Fedha">Financial Projections</span><span data-en="Marketing Plans" data-sw="Mipango ya Uuzaji">Marketing Plans</span><span data-en="Feasibility Studies" data-sw="Tafiti za Uwezekano">Feasibility Studies</span></div>
+    </div>
+    <div class="dgc">
+      <div class="dgc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6M9 17h4"/></svg></div>
+      <h4 data-en="Legal Documents" data-sw="Hati za Kisheria">Legal Documents</h4>
+      <p data-en="For lawyers, paralegals &amp; individuals" data-sw="Kwa mawakili, wasaidizi wa kisheria na watu binafsi">For lawyers, paralegals &amp; individuals</p>
+      <div class="dgc-list"><span data-en="NDAs &amp; MOUs" data-sw="Mikataba ya Usiri">NDAs &amp; MOUs</span><span data-en="Will &amp; Testament" data-sw="Wosia">Will &amp; Testament</span><span data-en="Power of Attorney" data-sw="Wakala wa Kisheria">Power of Attorney</span><span data-en="Lease Agreements" data-sw="Mikataba ya Upangaji">Lease Agreements</span></div>
+    </div>
+    <div class="dgc">
+      <div class="dgc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+      <h4 data-en="Creative Documents" data-sw="Hati za Ubunifu">Creative Documents</h4>
+      <p data-en="For writers, bloggers &amp; content creators" data-sw="Kwa waandishi, wablogaji na waunda maudhui">For writers, bloggers &amp; content creators</p>
+      <div class="dgc-list"><span data-en="E-Book Formatting" data-sw="Uundaji wa E-Book">E-Book Formatting</span><span data-en="Speech Writing" data-sw="Kuandika Hotuba">Speech Writing</span><span data-en="Press Releases" data-sw="Matangazo ya Habari">Press Releases</span><span data-en="Blog &amp; Article Writing" data-sw="Uandishi wa Blogu">Blog &amp; Article Writing</span></div>
+    </div>
+    <div class="dgc">
+      <div class="dgc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <h4 data-en="Personal Documents" data-sw="Hati za Kibinafsi">Personal Documents</h4>
+      <p data-en="For individuals &amp; students" data-sw="Kwa watu binafsi na wanafunzi">For individuals &amp; students</p>
+      <div class="dgc-list"><span data-en="Personal Statements" data-sw="Taarifa za Kibinafsi">Personal Statements</span><span data-en="Scholarship Applications" data-sw="Maombi ya Udhamini">Scholarship Applications</span><span data-en="Visa &amp; Immigration" data-sw="Viza na Uhamiaji">Visa &amp; Immigration</span><span data-en="Invitation Letters" data-sw="Barua za Mwaliko">Invitation Letters</span></div>
+    </div>
+    <div class="dgc">
+      <div class="dgc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20M12 2v20M17 2v20M2 7h20M2 12h20M2 17h20"/></svg></div>
+      <h4 data-en="Technical Documents" data-sw="Hati za Kiufundi">Technical Documents</h4>
+      <p data-en="For developers &amp; project teams" data-sw="Kwa watengenezaji na timu za mradi">For developers &amp; project teams</p>
+      <div class="dgc-list"><span data-en="User Manuals" data-sw="Miongozo ya Mtumiaji">User Manuals</span><span data-en="Project Reports" data-sw="Ripoti za Mradi">Project Reports</span><span data-en="Technical Documentation" data-sw="Hati za Kiufundi">Technical Documentation</span><span data-en="API Documentation" data-sw="Hati za API">API Documentation</span></div>
+    </div>
+    <div class="dgc">
+      <div class="dgc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+      <h4 data-en="Translation &amp; Localisation" data-sw="Tafsiri na Ujumla wa Hali ya Ndani">Translation &amp; Localisation</h4>
+      <p data-en="Any document, any language" data-sw="Hati yoyote, lugha yoyote">Any document, any language</p>
+      <div class="dgc-list"><span data-en="50+ Languages" data-sw="Lugha 50+">50+ Languages</span><span data-en="Certified Translation" data-sw="Tafsiri Iliyoidhinishwa">Certified Translation</span><span data-en="Cultural Adaptation" data-sw="Urekebishaji wa Kiutamaduni">Cultural Adaptation</span><span data-en="Format Preservation" data-sw="Uhifadhi wa Muundo">Format Preservation</span></div>
+    </div>
+  </div>
+
+  <!-- Pricing plans -->
+  <div class="plans-sec">
+    <div class="stag" data-en="Pricing Plans" data-sw="Mipango ya Bei">Pricing Plans</div>
+    <h2 class="sec-h" data-en="Choose Your Plan" data-sw="Chagua Mpango Wako">Choose Your Plan</h2>
+    <p class="sec-sub" data-en="Start free — upgrade only when you need more. All plans include AI writing assistance." data-sw="Anza bure — panda daraja tu unapohitaji zaidi. Mipango yote inajumuisha msaada wa kuandika wa AI.">Start free — upgrade only when you need more. All plans include AI writing assistance.</p>
+    <div class="plans-grid">
+      <!-- Free -->
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-amount">KSh 0</div>
+        <div class="plan-per" data-en="Forever free" data-sw="Bure milele">Forever free</div>
+        <div class="plan-feats">
+          <div class="pf" data-en="3 documents / month" data-sw="Hati 3 / mwezi">3 documents / month</div>
+          <div class="pf" data-en="Basic templates" data-sw="Violezo vya msingi">Basic templates</div>
+          <div class="pf" data-en="PDF &amp; Word export" data-sw="Mauzo ya PDF na Word">PDF &amp; Word export</div>
+          <div class="pf no" data-en="AI writing assistant" data-sw="Msaidizi wa kuandika wa AI">AI writing assistant</div>
+          <div class="pf no" data-en="Translation services" data-sw="Huduma za tafsiri">Translation services</div>
+          <div class="pf no" data-en="Collaboration tools" data-sw="Zana za ushirikiano">Collaboration tools</div>
+        </div>
+        <a class="btn-outline" href="https://wa.me/254716358703?text=Hello%2C%20I%20want%20to%20start%20with%20the%20Free%20plan" target="_blank" style="display:block;text-align:center;padding:.7rem;border-radius:9px;font-weight:700;font-size:.82rem;border:1px solid var(--b2);color:var(--text)" data-en="Get Started Free" data-sw="Anza Bure">Get Started Free</a>
+      </div>
+      <!-- Basic -->
+      <div class="plan-card">
+        <div class="plan-name">Basic</div>
+        <div class="plan-amount price-display" data-kes="999">KSh 999</div>
+        <div class="plan-per" data-en="per month" data-sw="kwa mwezi">per month</div>
+        <div class="plan-feats">
+          <div class="pf" data-en="30 documents / month" data-sw="Hati 30 / mwezi">30 documents / month</div>
+          <div class="pf" data-en="All 50+ templates" data-sw="Violezo vyote 50+">All 50+ templates</div>
+          <div class="pf" data-en="PDF, Word, Google Docs export" data-sw="Mauzo ya PDF, Word, Google Docs">PDF, Word, Google Docs export</div>
+          <div class="pf" data-en="AI writing assistant" data-sw="Msaidizi wa kuandika wa AI">AI writing assistant</div>
+          <div class="pf no" data-en="Translation services" data-sw="Huduma za tafsiri">Translation services</div>
+          <div class="pf no" data-en="Custom branding" data-sw="Nembo ya kibinafsi">Custom branding</div>
+        </div>
+        <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20want%20the%20Basic%20Doc%20Gen%20plan" target="_blank" style="display:block;text-align:center" data-en="Get Basic" data-sw="Pata Msingi">Get Basic</a>
+      </div>
+      <!-- Pro -->
+      <div class="plan-card feat">
+        <div class="plan-star" data-en="Most Popular" data-sw="Maarufu Zaidi">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-amount price-display" data-kes="2499">KSh 2,499</div>
+        <div class="plan-per" data-en="per month" data-sw="kwa mwezi">per month</div>
+        <div class="plan-feats">
+          <div class="pf" data-en="Unlimited documents" data-sw="Hati zisizo na kikomo">Unlimited documents</div>
+          <div class="pf" data-en="All 50+ templates + custom" data-sw="Violezo vyote 50+ + maalum">All 50+ templates + custom</div>
+          <div class="pf" data-en="All export formats" data-sw="Miundo yote ya mauzo">All export formats</div>
+          <div class="pf" data-en="Advanced AI writing assistant" data-sw="Msaidizi wa kuandika wa AI ulioendelea">Advanced AI writing assistant</div>
+          <div class="pf" data-en="Translation in 50+ languages" data-sw="Tafsiri katika lugha 50+">Translation in 50+ languages</div>
+          <div class="pf" data-en="Custom branding &amp; logos" data-sw="Nembo ya kibinafsi na alama">Custom branding &amp; logos</div>
+          <div class="pf" data-en="Collaboration &amp; team access" data-sw="Ushirikiano na upatikanaji wa timu">Collaboration &amp; team access</div>
+        </div>
+        <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20want%20the%20Pro%20Doc%20Gen%20plan" target="_blank" style="display:block;text-align:center" data-en="Get Pro" data-sw="Pata Pro">Get Pro</a>
+      </div>
+      <!-- Enterprise -->
+      <div class="plan-card">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-amount" data-en="Custom" data-sw="Maalum">Custom</div>
+        <div class="plan-per" data-en="tailored pricing" data-sw="bei iliyoundwa">tailored pricing</div>
+        <div class="plan-feats">
+          <div class="pf" data-en="Everything in Pro" data-sw="Kila kitu katika Pro">Everything in Pro</div>
+          <div class="pf" data-en="Dedicated account manager" data-sw="Msimamizi wa akaunti aliyotengwa">Dedicated account manager</div>
+          <div class="pf" data-en="SLA &amp; compliance guarantees" data-sw="Dhamana za SLA na uzingatiaji">SLA &amp; compliance guarantees</div>
+          <div class="pf" data-en="Custom API integration" data-sw="Ushirikiano wa API maalum">Custom API integration</div>
+          <div class="pf" data-en="GDPR / HIPAA compliance" data-sw="Uzingatiaji wa GDPR / HIPAA">GDPR / HIPAA compliance</div>
+          <div class="pf" data-en="White-label option" data-sw="Chaguo la nembo nyeupe">White-label option</div>
+        </div>
+        <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20an%20Enterprise%20Doc%20Gen%20plan" target="_blank" style="display:block;text-align:center" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add-ons -->
+  <section class="sec" style="padding-bottom:1rem">
+    <div class="stag" data-en="Platform Add-ons" data-sw="Nyongeza za Jukwaa">Platform Add-ons</div>
+    <h2 class="sec-h" data-en="Enhance Your Experience" data-sw="Boresha Uzoefu Wako">Enhance Your Experience</h2>
+  </section>
+  <div class="dg-addons">
+    <div class="addon"><div class="addon-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h8"/></svg></div><div><h5 data-en="Document Templates" data-sw="Violezo vya Hati">Document Templates</h5><p data-en="50+ downloadable, editable templates tailored to specific needs" data-sw="Violezo 50+ vinavyoweza kupakiwa na kuhaririwa">50+ downloadable, editable templates tailored to specific needs</p></div></div>
+    <div class="addon"><div class="addon-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><h5 data-en="AI Writing Assistant" data-sw="Msaidizi wa Kuandika wa AI">AI Writing Assistant</h5><p data-en="Real-time suggestions, content optimisation, and instant feedback" data-sw="Mapendekezo ya wakati halisi, uboreshaji wa maudhui, na maoni ya haraka">Real-time suggestions, content optimisation, and instant feedback</p></div></div>
+    <div class="addon"><div class="addon-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div><div><h5 data-en="Proofreading &amp; Editing" data-sw="Ukaguzi wa Makosa na Uhariri">Proofreading &amp; Editing</h5><p data-en="Professional proofreading for grammatical accuracy and coherence" data-sw="Ukaguzi wa kitaalamu wa usahihi wa kisarufi na mshikamano">Professional proofreading for grammatical accuracy and coherence</p></div></div>
+    <div class="addon"><div class="addon-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div><div><h5 data-en="Translation Services" data-sw="Huduma za Tafsiri">Translation Services</h5><p data-en="Multilingual document translation in 50+ languages for global use" data-sw="Tafsiri ya hati katika lugha 50+ kwa matumizi ya kimataifa">Multilingual document translation in 50+ languages</p></div></div>
+    <div class="addon"><div class="addon-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h5 data-en="Formatting Services" data-sw="Huduma za Uundaji">Formatting Services</h5><p data-en="APA, MLA, Chicago, and all major citation and document styles" data-sw="APA, MLA, Chicago, na mitindo yote ya nukuu na hati">APA, MLA, Chicago, and all major citation styles</p></div></div>
+    <div class="addon"><div class="addon-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><h5 data-en="Collaboration Tools" data-sw="Zana za Ushirikiano">Collaboration Tools</h5><p data-en="Real-time multi-user editing, comments, and document sharing" data-sw="Uhariri wa wakati halisi wa watumiaji wengi, maoni, na kushiriki hati">Real-time multi-user editing, comments, and document sharing</p></div></div>
+  </div>
+
+  <div style="padding:0 5% 4rem">
+    <div class="cta">
+      <h2 data-en="Start Generating Documents Today" data-sw="Anza Kutengeneza Hati Leo">Start Generating Documents Today</h2>
+      <p data-en="From CVs to contracts, we generate, format, and deliver any document you need." data-sw="Kutoka CV hadi mikataba, tunatengeneza, kupanga, na kutoa hati yoyote unayohitaji.">From CVs to contracts, we generate, format, and deliver any document you need.</p>
+      <div class="cta-btns">
+        <a class="btn-gold" href="https://wa.me/254716358703?text=Hello%2C%20I%20want%20to%20use%20Document%20Gen" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> <span data-en="Get Started on WhatsApp" data-sw="Anza Kupitia WhatsApp">Get Started on WhatsApp</span></a>
+        <button class="btn-outline" onclick="showPage('ai')" style="background:none;border:1px solid var(--b2);color:var(--text);padding:.75rem 1.5rem;border-radius:10px;font-size:.88rem;font-weight:600;cursor:pointer;transition:.15s" onmouseover="this.style.borderColor='rgba(232,160,0,.4)'" onmouseout="this.style.borderColor='var(--b2)'" data-en="Explore AI Tools" data-sw="Chunguza Zana za AI">Explore AI Tools</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT WIDGET -->
+<div class="cb-wrap" id="cb-wrap">
+  <div class="cb-hd">
+    <div class="cb-ava"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+    <div class="cb-hd-t"><strong>Shiva Assistant</strong><span data-en="Typically replies in minutes" data-sw="Kawaida hujibu kwa dakika">Typically replies in minutes</span></div>
+    <button class="cb-x" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="cb-body" id="cb-body"></div>
+</div>
+<button class="cb-btn" id="cb-btn" onclick="toggleChat()">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> <span data-en="Chat with us" data-sw="Zungumza nasi">Chat with us</span>
+</button>
 
 <!-- WHATSAPP FLOAT -->
 <a class="wa-float" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20your%20services" target="_blank">
@@ -1145,6 +1596,197 @@ renderGrid('designGrid', designServices, 'design');
 renderGrid('marketingGrid', marketingServices, 'marketing');
 renderGrid('otherGrid', otherServices, 'other');
 renderEci();
+
+/* ═══ LANGUAGE SWITCHER ═════════════════════════════════════════════════ */
+let currentLang = 'en';
+function setLang(lang){
+  currentLang = lang;
+  ['lang-en','lang-sw','lang-en-m','lang-sw-m'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.classList.toggle('on', id.includes(lang));
+  });
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+  });
+  // Re-apply currency display after language switch
+  applyCurrencyDisplay();
+}
+
+/* ═══ CURRENCY CONVERTER ════════════════════════════════════════════════ */
+const CURR_RATES = {
+  KES: { rate: 1,     sym: 'KSh ',  code: 'KES', dec: 0 },
+  USD: { rate: 0.0077,sym: '$',     code: 'USD', dec: 2 },
+  EUR: { rate: 0.0071,sym: '€',     code: 'EUR', dec: 2 },
+  GBP: { rate: 0.0062,sym: '£',     code: 'GBP', dec: 2 },
+  UGX: { rate: 28.5,  sym: 'UGX ',  code: 'UGX', dec: 0 },
+  TZS: { rate: 20.0,  sym: 'TZS ',  code: 'TZS', dec: 0 }
+};
+let currentCurr = 'KES';
+function setCurr(code){
+  currentCurr = code;
+  // Sync both dropdowns
+  const dd = document.getElementById('curr-drop');
+  const ddm = document.getElementById('curr-drop-m');
+  if(dd) dd.value = code;
+  if(ddm) ddm.value = code;
+  applyCurrencyDisplay();
+}
+function applyCurrencyDisplay(){
+  const c = CURR_RATES[currentCurr];
+  document.querySelectorAll('.price-display').forEach(el => {
+    const kes = parseFloat(el.getAttribute('data-kes'));
+    if(isNaN(kes)) return;
+    const converted = kes * c.rate;
+    const formatted = c.dec === 0
+      ? Math.round(converted).toLocaleString()
+      : converted.toFixed(c.dec);
+    el.textContent = c.sym + formatted;
+  });
+  // Update plan amounts (they use .plan-amount with data-kes)
+  document.querySelectorAll('.plan-amount[data-kes]').forEach(el => {
+    const kes = parseFloat(el.getAttribute('data-kes'));
+    if(isNaN(kes)) return;
+    const converted = kes * c.rate;
+    const formatted = c.dec === 0
+      ? Math.round(converted).toLocaleString()
+      : converted.toFixed(c.dec);
+    el.textContent = c.sym + formatted;
+  });
+}
+
+/* ═══ CHATBOT ═══════════════════════════════════════════════════════════ */
+let chatOpen = false;
+let chatStarted = false;
+const CHAT_FLOWS = {
+  main: {
+    msg: 'Hi! 👋 Welcome to Shivakalabs. How can we help you today?',
+    opts: [
+      { label: '🇰🇪 eCitizen Services', next: 'ecitizen' },
+      { label: '🤖 AI Tools (CV, Photos, Images)', next: 'ai' },
+      { label: '📄 Document Generation', next: 'docgen' },
+      { label: '💻 Web Development', next: 'webdev' },
+      { label: '🎨 Design & Marketing', next: 'design' },
+      { label: '💬 Chat on WhatsApp', action: 'wa', msg: 'general enquiry' }
+    ]
+  },
+  ecitizen: {
+    msg: 'We handle all eCitizen services fast and affordably! Which one do you need?',
+    opts: [
+      { label: 'Passport Application / Renewal', action: 'wa', msg: 'Passport Application' },
+      { label: 'National ID / Huduma Namba', action: 'wa', msg: 'National ID' },
+      { label: 'KRA / Tax PIN', action: 'wa', msg: 'KRA PIN' },
+      { label: 'NTSA / Driving Licence', action: 'wa', msg: 'NTSA service' },
+      { label: 'Birth / Death Certificate', action: 'wa', msg: 'Birth Certificate' },
+      { label: '← Back', next: 'main' }
+    ]
+  },
+  ai: {
+    msg: 'Our AI services are fast and affordable! What do you need?',
+    opts: [
+      { label: 'CV & Cover Letter Writing', action: 'wa', msg: 'CV%20or%20Cover%20Letter%20writing' },
+      { label: 'AI Image Generation', action: 'wa', msg: 'AI%20image%20generation' },
+      { label: 'Photo Retouching', action: 'wa', msg: 'photo%20retouching' },
+      { label: 'Passport Photo', action: 'wa', msg: 'passport%20photo' },
+      { label: 'AI Chatbot for my business', action: 'wa', msg: 'AI%20chatbot' },
+      { label: '← Back', next: 'main' }
+    ]
+  },
+  docgen: {
+    msg: 'Generate any document instantly with AI! What type do you need?',
+    opts: [
+      { label: 'Professional (CV, Proposal, Contract)', action: 'wa', msg: 'professional%20document%20generation' },
+      { label: 'Academic (Essay, Thesis, SOP)', action: 'wa', msg: 'academic%20document' },
+      { label: 'Legal (NDA, Will, Lease)', action: 'wa', msg: 'legal%20document' },
+      { label: 'Business (Invoice, Plan, Report)', action: 'wa', msg: 'business%20document' },
+      { label: 'Personal (Statement, Visa, Scholarship)', action: 'wa', msg: 'personal%20document' },
+      { label: '← Back', next: 'main' }
+    ]
+  },
+  webdev: {
+    msg: 'We build beautiful, fast websites. What are you looking for?',
+    opts: [
+      { label: 'Business / Company Website', action: 'wa', msg: 'business%20website' },
+      { label: 'E-Commerce / Online Store', action: 'wa', msg: 'e-commerce%20website' },
+      { label: 'Web App / SaaS Platform', action: 'wa', msg: 'web%20app' },
+      { label: 'Landing Page', action: 'wa', msg: 'landing%20page' },
+      { label: '← Back', next: 'main' }
+    ]
+  },
+  design: {
+    msg: 'Stand out with great design and marketing! What do you need?',
+    opts: [
+      { label: 'Logo & Brand Identity', action: 'wa', msg: 'logo%20design' },
+      { label: 'Social Media Graphics', action: 'wa', msg: 'social%20media%20graphics' },
+      { label: 'Flyers & Brochures', action: 'wa', msg: 'flyers' },
+      { label: 'SEO & Digital Marketing', action: 'wa', msg: 'digital%20marketing' },
+      { label: '← Back', next: 'main' }
+    ]
+  }
+};
+function toggleChat(){
+  chatOpen = !chatOpen;
+  const wrap = document.getElementById('cb-wrap');
+  if(chatOpen){
+    wrap.classList.add('open');
+    if(!chatStarted){ chatStarted = true; renderChatFlow('main'); }
+  } else {
+    wrap.classList.remove('open');
+  }
+}
+function renderChatFlow(flowKey){
+  const flow = CHAT_FLOWS[flowKey];
+  if(!flow) return;
+  const body = document.getElementById('cb-body');
+  // Add bot message
+  const msg = document.createElement('div');
+  msg.className = 'cb-m b';
+  msg.textContent = flow.msg;
+  body.appendChild(msg);
+  // Add options
+  const opts = document.createElement('div');
+  opts.className = 'cb-opts';
+  flow.opts.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'cb-o';
+    btn.textContent = opt.label;
+    btn.onclick = () => {
+      // Remove options
+      opts.remove();
+      // Add user message
+      const um = document.createElement('div');
+      um.className = 'cb-m u';
+      um.textContent = opt.label.replace('← ', '');
+      body.appendChild(um);
+      body.scrollTop = body.scrollHeight;
+      if(opt.action === 'wa'){
+        // Redirect to WhatsApp
+        const wamsg = document.createElement('div');
+        wamsg.className = 'cb-m b';
+        wamsg.innerHTML = 'Great! Connecting you to WhatsApp... 🟢';
+        body.appendChild(wamsg);
+        body.scrollTop = body.scrollHeight;
+        setTimeout(() => {
+          window.open('https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20' + (opt.msg || 'your%20services'), '_blank');
+          // Reset chat after delay
+          setTimeout(() => {
+            body.innerHTML = '';
+            chatStarted = false;
+            chatStarted = true;
+            renderChatFlow('main');
+          }, 2500);
+        }, 600);
+      } else if(opt.next){
+        setTimeout(() => renderChatFlow(opt.next), 300);
+      }
+    };
+    opts.appendChild(btn);
+  });
+  body.appendChild(opts);
+  body.scrollTop = body.scrollHeight;
+}
+
+// Init currency and language on load
+applyCurrencyDisplay();
 </script>
 </body>
 </html>
