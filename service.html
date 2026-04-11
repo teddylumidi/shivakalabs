@@ -21,33 +21,20 @@
   
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/43361fe41f.js" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHDYR7PQ7X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KHDYR7PQ7X');
+  </script>
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar navbar-expand-lg" id="mainNavbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="ShivakaLabs" class="navbar-logo">Shivaka<span>Labs</span></a>
-    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#ecitizen">eCitizen</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#webdev">Web Dev</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#design">Graphic Design</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#marketing">Digital Marketing</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#other">Others</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
-      </ul>
-      <a href="https://wa.me/254716358703?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services" target="_blank" rel="noopener noreferrer" class="btn whatsapp-nav-btn ms-3">
-        <i class="fa fa-whatsapp"></i> WhatsApp
-      </a>
-    </div>
-  </div>
-</nav>
+<!-- ===== NAVBAR CONTAINER ===== -->
+<div id="navbar-container"></div>
 
 <!-- ===== SERVICE HERO ===== -->
 <section class="service-hero" id="service-hero" style="padding: 5rem 0; background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); min-height: 300px; display: flex; align-items: center;">
@@ -144,23 +131,104 @@
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container-fluid">
-    <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-      <img src="img/logo.png" alt="ShivakaLabs" style="height:40px; width:auto;">
-      <p style="margin:0;">Shivaka<span style="color:#FFD700">Labs</span></p>
-    </div>
-    <div class="footer-links">
-      <a href="index.html#home">Home</a>
-      <a href="about-us.html">About Us</a>
-      <a href="index.html#ecitizen">eCitizen</a>
-      <a href="index.html#webdev">Web Dev</a>
-      <a href="index.html#design">Graphic Design</a>
-      <a href="index.html#marketing">Digital Marketing</a>
-      <a href="index.html#other">Others</a>
-      <a href="index.html#contact">Contact</a>
-    </div>
+<!-- ===== FOOTER CONTAINER ===== -->
+<div id="footer-container"></div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Service Data -->
+<script src="js/services.js"></script>
+
+<!-- Component Loader -->
+<script src="js/components.js"></script>
+
+<!-- Initialize Service Page -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get service ID from URL query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const serviceId = urlParams.get('id') || 'online-forms'; // Default service
+  
+  // Load the service details
+  loadServiceDetails(serviceId);
+  
+  // Load related services
+  loadRelatedServices(serviceId);
+});
+
+function loadRelatedServices(currentServiceId) {
+  const container = document.getElementById('related-services');
+  container.innerHTML = '';
+  
+  // Get all service IDs except the current one
+  const serviceIds = Object.keys(serviceData).filter(id => id !== currentServiceId);
+  
+  // Load up to 3 related services
+  serviceIds.slice(0, 3).forEach(serviceId => {
+    const service = serviceData[serviceId];
+    const serviceLink = `service.html?id=${serviceId}`;
+    
+    const card = document.createElement('div');
+    card.style.cssText = 'background: #252525; padding: 2rem; border-radius: 10px; text-align: center; transition: transform 0.3s ease;';
+    card.innerHTML = `
+      <div style="font-size: 2.5rem; color: #FFD700; margin-bottom: 1rem;">
+        <i class="${service.icon}"></i>
+      </div>
+      <h5 style="color: #ffffff; margin-bottom: 0.5rem;">${service.name}</h5>
+      <p style="color: #999999; font-size: 0.9rem; margin-bottom: 1rem;">${service.shortDesc}</p>
+      <a href="${serviceLink}" class="btn btn-sm" style="background: #FFD700; color: #000; border: none;">View Service</a>
+    `;
+    
+    card.onmouseenter = function() {
+      this.style.transform = 'translateY(-5px)';
+    };
+    card.onmouseleave = function() {
+      this.style.transform = 'translateY(0)';
+    };
+    
+    container.appendChild(card);
+  });
+}
+</script>
+</body>
+</html>
+    <nav class="navbar navbar-expand-lg footer-navbar" id="footerNavbar">
+      <div class="container-fluid" style="padding: 0;">
+        <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="ShivakaLabs" class="navbar-logo">Shivaka<span>Labs</span></a>
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#footerNavbarNav" aria-controls="footerNavbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="footerNavbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="ecitizen.html">eCitizen Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="webdev.html">Web Development</a></li>
+            <li class="nav-item"><a class="nav-link" href="design.html">Graphic Design</a></li>
+            <li class="nav-item"><a class="nav-link" href="marketing.html">Digital Marketing</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="footerOtherServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Other Services</a>
+              <ul class="dropdown-menu" aria-labelledby="footerOtherServicesDropdown">
+                <li><a class="dropdown-item" href="service-online-forms.html">Online Form Filling</a></li>
+                <li><a class="dropdown-item" href="service-document-scanning.html">Document Scanning & Upload</a></li>
+                <li><a class="dropdown-item" href="service-cv-writing.html">CV / Resume Writing</a></li>
+                <li><a class="dropdown-item" href="service-pdf-editing.html">PDF Editing / Conversion</a></li>
+                <li><a class="dropdown-item" href="service-online-applications.html">Online Applications</a></li>
+                <li><a class="dropdown-item" href="service-email-setup.html">Email Setup / Recovery</a></li>
+                <li><a class="dropdown-item" href="service-other-digital.html">Other Digital Services</a></li>
+              </ul>
+            </li>
+          </ul>
+          <a href="https://wa.me/254716358703?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services" target="_blank" rel="noopener noreferrer" class="btn whatsapp-nav-btn ms-3">
+            <i class="fa fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- ===== SOCIAL MEDIA WIDGETS ===== -->
+    <div style="border-top: 1px solid rgba(255, 215, 0, 0.2); margin-top: 2rem; padding-top: 2rem;"></div>
     <div class="social">
       <a href="https://www.facebook.com/ShivakaLabs" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:#1877F2;"><i class="fa fa-facebook-square"></i></a>
       <a href="https://twitter.com/ShivakaLabs" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="color:#000000;"><i class="fa fa-twitter"></i></a>

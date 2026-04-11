@@ -286,10 +286,6 @@ p {
 .hero h1 span {
   color: var(--primary-yellow);
   display: block;
-  background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .hero h2 {
@@ -687,14 +683,24 @@ section.alternate {
 footer {
   background: #000000;
   border-top: 2px solid rgba(255, 215, 0, 0.3);
-  padding: 4rem 0 2rem;
+  padding: 2rem 0;
   text-align: center;
+}
+
+/* Footer Navbar */
+.footer-navbar {
+  padding: 1.5rem 0;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  position: relative;
+  width: 100%;
 }
 
 footer p {
   color: #aaaaaa;
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
+  display: none;
 }
 
 footer p:first-child {
@@ -702,47 +708,32 @@ footer p:first-child {
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 0.2rem;
+  display: none;
 }
 
 footer p:first-child span {
   color: var(--primary-yellow);
+  display: none;
 }
 
 .footer-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin: 2rem 0;
+  display: none;
 }
 
 .footer-links a {
-  color: #ffffff;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  padding: 0.5rem 0.75rem;
-  font-weight: 500;
-  font-size: 0.9rem;
+  display: none;
 }
 
 .footer-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary-yellow);
-  transition: width 0.3s ease;
+  display: none;
 }
 
 .footer-links a:hover {
-  color: var(--primary-yellow);
+  display: none;
 }
 
 .footer-links a:hover::after {
-  width: 100%;
+  display: none;
 }
 
 .social {
