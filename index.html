@@ -3,26 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ShivakaLabs - Professional Digital Services Company. eCitizen, Web Development, Graphic Design & Digital Marketing. Trusted by businesses across Kenya.">
-  <meta name="keywords" content="digital services, eCitizen services, web development, graphic design, digital marketing, business solutions">
+  <meta name="description" content="ShivakaLabs — Professional Digital Services. eCitizen portal assistance, web development, graphic design & digital marketing. Trusted by businesses across Kenya.">
+  <meta name="keywords" content="digital services, eCitizen, web development, graphic design, digital marketing, Kenya">
   <meta name="author" content="ShivakaLabs">
-  <title>ShivakaLabs | Professional Digital Services Company</title>
-  
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
-  
-  <!-- Google Fonts -->
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ShivakaLabs | Professional Digital Services">
+  <meta property="og:description" content="eCitizen portal assistance, web development, graphic design & digital marketing.">
+  <meta property="og:type" content="website">
+
+  <title>ShivakaLabs | Professional Digital Services</title>
+
+  <!-- Preconnect for fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Fonts (deferred via media trick) -->
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  </noscript>
+
   <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/43361fe41f.js" crossorigin="anonymous"></script>
-  
-  <!-- Google Analytics -->
+  <script src="https://kit.fontawesome.com/43361fe41f.js" crossorigin="anonymous" defer></script>
+
+  <!-- Google Analytics (async, non-blocking) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHDYR7PQ7X"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -31,560 +44,245 @@
     gtag('config', 'G-KHDYR7PQ7X');
   </script>
 </head>
-<body>
+<body data-page="home">
 
-<!-- ===== NAVBAR CONTAINER ===== -->
+<!-- Navbar injected here -->
 <div id="navbar-container"></div>
 
-<!-- ===== HERO SECTION ===== -->
+<!-- ===== HERO ===== -->
 <header class="hero" id="home">
-  <div class="content">
-    <h4>Fast &bull; Reliable &bull; Professional</h4>
-    <h1>Shivaka<span>Labs</span></h1>
-    <p class="hero-sub">Professional digital services for Kenya's businesses and individuals — Government eCitizen portal assistance, custom website development, graphic design, and strategic digital marketing solutions.</p>
-    <div class="hero-btns">
-      <a href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20your%20services" target="_blank" rel="noopener noreferrer" class="btn whatsapp-btn-hero">
-        <i class="fa fa-whatsapp me-2"></i>Get Help on WhatsApp
+  <div class="hero-content">
+    <span class="hero-eyebrow">Fast &bull; Reliable &bull; Professional</span>
+    <h1>Shivaka<span class="accent">Labs</span></h1>
+    <p class="hero-sub">Professional digital services for Kenya's businesses and individuals — Government eCitizen portal assistance, custom website development, graphic design and strategic digital marketing.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20your%20services"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-wa btn-wa-hero">
+        <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
       </a>
-      <a href="#popular" class="btn btn-outline-hero">Browse Services</a>
+      <a href="#popular" class="btn-outline-gold">Browse Services</a>
     </div>
   </div>
-</header>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom JavaScript -->
-<script>
-  // Navbar scroll effect
-  window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('mainNavbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-
-  // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      if (this.getAttribute('href') !== '#') {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      }
-    });
-  });
-
-  // Navbar collapse on link click (mobile)
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      const navbarCollapse = document.querySelector('.navbar-collapse');
-      if (navbarCollapse.classList.contains('show')) {
-        bootstrap.Collapse.getInstance(navbarCollapse).hide();
-      }
-    });
-  });
-</script>
-
-
 </header>
 
 <!-- ===== POPULAR SERVICES ===== -->
-<section class="service" id="popular">
+<section id="popular">
   <div class="container-fluid">
-    <div class="title">
-      <h2>Popular <span class="txt-red">Services</span></h2>
-      <p class="section-sub">Most requested — click any service to get started instantly on WhatsApp</p>
+    <div class="section-title">
+      <h2>Popular <span class="accent">Services</span></h2>
+      <p class="subtitle">Most requested — click any service to get started instantly on WhatsApp</p>
     </div>
-    <div class="box">
-      <div class="card">
-        <img src="img/services/service-goodconduct.png" alt="Good Conduct" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;" loading="lazy" onerror="this.src='img/ecitizen-hero.png';">
-        <em class="fa fa-certificate" aria-hidden="true"></em>
-        <h5>Good Conduct</h5>
-        <div class="pra">
+    <div class="popular-grid">
+
+      <div class="svc-card">
+        <img src="img/services/certificate-of-good-conduct-application.png" alt="Good Conduct Certificate" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <div class="svc-card-body">
+          <i class="fa fa-certificate svc-card-icon" aria-hidden="true"></i>
+          <h5>Good Conduct</h5>
           <p>Certificate of Good Conduct application, renewal &amp; booking assistance.</p>
-          <a class="whatsapp-service-btn" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Good%20Conduct%20Certificate" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
+          <a class="btn-wa" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Good%20Conduct%20Certificate"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
+          </a>
         </div>
       </div>
-      <div class="card">
-        <img src="img/services/service-passport.png" alt="Passport" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;" loading="lazy" onerror="this.src='img/ecitizen-hero.png';">
-        <em class="fa fa-book" aria-hidden="true"></em>
-        <h5>Passport</h5>
-        <div class="pra">
+
+      <div class="svc-card">
+        <img src="img/services/passport-application-assistance.png" alt="Passport Application" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <div class="svc-card-body">
+          <i class="fa fa-book svc-card-icon" aria-hidden="true"></i>
+          <h5>Passport</h5>
           <p>New passport application, renewal, lost passport replacement &amp; tracking.</p>
-          <a class="whatsapp-service-btn" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Passport%20Application" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
+          <a class="btn-wa" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Passport%20Application"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
+          </a>
         </div>
       </div>
-      <div class="card">
-        <img src="img/services/service-kra.png" alt="KRA PIN" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;" loading="lazy" onerror="this.src='img/ecitizen-hero.png';">
-        <em class="fa fa-calculator" aria-hidden="true"></em>
-        <h5>KRA PIN</h5>
-        <div class="pra">
+
+      <div class="svc-card">
+        <img src="img/services/kra-pin-registration.png" alt="KRA PIN" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <div class="svc-card-body">
+          <i class="fa fa-calculator svc-card-icon" aria-hidden="true"></i>
+          <h5>KRA PIN</h5>
           <p>KRA PIN registration, retrieval, update, tax compliance certificate &amp; nil returns.</p>
-          <a class="whatsapp-service-btn" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20KRA%20PIN%20Registration" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
+          <a class="btn-wa" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20KRA%20PIN%20Registration"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
+          </a>
         </div>
       </div>
-      <div class="card">
-        <img src="img/services/service-birthcert.png" alt="Birth Certificate" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;" loading="lazy" onerror="this.src='img/ecitizen-hero.png';">
-        <em class="fa fa-child" aria-hidden="true"></em>
-        <h5>Birth Certificate</h5>
-        <div class="pra">
+
+      <div class="svc-card">
+        <img src="img/services/birth-certificate-application.png" alt="Birth Certificate" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <div class="svc-card-body">
+          <i class="fa fa-child svc-card-icon" aria-hidden="true"></i>
+          <h5>Birth Certificate</h5>
           <p>Birth certificate application, replacement &amp; late registration assistance.</p>
-          <a class="whatsapp-service-btn" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Birth%20Certificate%20Application" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
+          <a class="btn-wa" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Birth%20Certificate%20Application"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
+          </a>
         </div>
       </div>
-      <div class="card">
-        <img src="img/services/service-business.png" alt="Business Registration" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;" loading="lazy" onerror="this.src='img/ecitizen-hero.png';">
-        <em class="fa fa-building" aria-hidden="true"></em>
-        <h5>Business Registration</h5>
-        <div class="pra">
+
+      <div class="svc-card">
+        <img src="img/services/business-name-registration.png" alt="Business Registration" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <div class="svc-card-body">
+          <i class="fa fa-building svc-card-icon" aria-hidden="true"></i>
+          <h5>Business Registration</h5>
           <p>Business name search, registration, CR12, company registration &amp; annual returns.</p>
-          <a class="whatsapp-service-btn" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Business%20Registration" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
+          <a class="btn-wa" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Business%20Registration"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
+          </a>
         </div>
       </div>
-      <div class="card">
-        <img src="img/services/service-website.png" alt="Website Design" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;" loading="lazy" onerror="this.src='img/webdev-hero.png';">
-        <em class="fa fa-laptop" aria-hidden="true"></em>
-        <h5>Website Design</h5>
-        <div class="pra">
+
+      <div class="svc-card">
+        <img src="img/services/business-website-design.png" alt="Website Design" class="svc-card-img" loading="lazy" onerror="this.src='img/webdev-hero.png'">
+        <div class="svc-card-body">
+          <i class="fa fa-laptop svc-card-icon" aria-hidden="true"></i>
+          <h5>Website Design</h5>
           <p>Professional business websites, portfolios, e-commerce &amp; landing pages.</p>
-          <a class="whatsapp-service-btn" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20a%20website%20developed" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
+          <a class="btn-wa" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20a%20website%20developed"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
+          </a>
         </div>
       </div>
-      <div class="card">
-        <img src="img/services/service-logo.png" alt="Logo Design" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;" loading="lazy" onerror="this.src='img/design-hero.png';">
-        <em class="fa fa-paint-brush" aria-hidden="true"></em>
-        <h5>Logo Design</h5>
-        <div class="pra">
+
+      <div class="svc-card">
+        <img src="img/services/logo-design.png" alt="Logo Design" class="svc-card-img" loading="lazy" onerror="this.src='img/design-hero.png'">
+        <div class="svc-card-body">
+          <i class="fa fa-paint-brush svc-card-icon" aria-hidden="true"></i>
+          <h5>Logo Design</h5>
           <p>Professional logo, branding package, flyers, posters &amp; business cards.</p>
-          <a class="whatsapp-service-btn" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Logo%20Design" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
+          <a class="btn-wa" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Logo%20Design"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
+          </a>
         </div>
       </div>
-      <div class="card">
-        <img src="img/services/service-socialmedia.png" alt="Social Media Marketing" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;" loading="lazy" onerror="this.src='img/marketing-hero.png';">
-        <em class="fa fa-bullhorn" aria-hidden="true"></em>
-        <h5>Social Media Marketing</h5>
-        <div class="pra">
+
+      <div class="svc-card">
+        <img src="img/services/social-media-management.png" alt="Social Media Marketing" class="svc-card-img" loading="lazy" onerror="this.src='img/marketing-hero.png'">
+        <div class="svc-card-body">
+          <i class="fa fa-bullhorn svc-card-icon" aria-hidden="true"></i>
+          <h5>Social Media Marketing</h5>
           <p>Social media management, SEO, Google Business profile &amp; ad campaigns.</p>
-          <a class="whatsapp-service-btn" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Social%20Media%20Management" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
+          <a class="btn-wa" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20Social%20Media%20Management"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
+          </a>
         </div>
       </div>
-    </div>
+
+    </div><!-- /popular-grid -->
   </div>
 </section>
 
-
-<!-- ===== FAQ SECTION ===== -->
-<section id="faq" class="faq-section">
+<!-- ===== FAQ ===== -->
+<section class="faq-section" id="faq">
   <div class="container-fluid">
-    <div class="title">
-      <h2>Frequently Asked <span class="txt-red">Questions</span></h2>
+    <div class="section-title">
+      <h2>Frequently Asked <span class="accent">Questions</span></h2>
     </div>
     <div class="faq-list">
+
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How do I request a service? <i class="fa fa-chevron-down faq-icon"></i></button>
-        <div class="faq-answer"><p>Simply click the <strong>Get Help on WhatsApp</strong> button on any service card. It will open a WhatsApp chat with a pre-filled message about the service you need. We'll respond quickly and guide you through the process.</p></div>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          How do I request a service?
+          <i class="fa fa-chevron-down faq-icon" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Simply click the <strong>Get Help on WhatsApp</strong> button on any service card. It opens a WhatsApp chat with a pre-filled message. We'll respond quickly and guide you through the process.</p>
+        </div>
       </div>
+
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How do I pay for services? <i class="fa fa-chevron-down faq-icon"></i></button>
-        <div class="faq-answer"><p>Payment is done via M-Pesa after we discuss your requirements on WhatsApp. The cost depends on the specific service and complexity. No upfront hidden fees.</p></div>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          How do I pay for services?
+          <i class="fa fa-chevron-down faq-icon" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Payment is done via <strong>M-Pesa</strong> after we discuss your requirements on WhatsApp. The cost depends on the specific service and complexity.</p>
+        </div>
       </div>
+
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How long does processing take? <i class="fa fa-chevron-down faq-icon"></i></button>
-        <div class="faq-answer"><p>Processing times vary by service. Most eCitizen applications are submitted same day. Government processing timelines depend on the specific department — we'll keep you updated throughout.</p></div>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          How long does processing take?
+          <i class="fa fa-chevron-down faq-icon" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Processing times vary by service. Most eCitizen applications are submitted same day. Government processing timelines depend on the specific department — we keep you updated throughout.</p>
+        </div>
       </div>
+
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do you help with eCitizen account issues? <i class="fa fa-chevron-down faq-icon"></i></button>
-        <div class="faq-answer"><p>Yes! We assist with eCitizen account creation, login recovery, password reset, profile updates, payment guidance, and navigating any government portal.</p></div>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Do you help with eCitizen account issues?
+          <i class="fa fa-chevron-down faq-icon" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! We assist with eCitizen account creation, login recovery, password reset, profile updates, payment guidance, and navigating any government portal.</p>
+        </div>
       </div>
+
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do you build websites? <i class="fa fa-chevron-down faq-icon"></i></button>
-        <div class="faq-answer"><p>Absolutely! We build professional business websites, portfolios, e-commerce stores, landing pages and more. We also handle website maintenance, redesigns and bug fixes. Just message us on WhatsApp.</p></div>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Do you build websites?
+          <i class="fa fa-chevron-down faq-icon" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely! We build professional business websites, portfolios, e-commerce stores, landing pages and more. We also handle maintenance, redesigns and bug fixes. Just message us on WhatsApp.</p>
+        </div>
       </div>
+
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Can you help both individuals and businesses? <i class="fa fa-chevron-down faq-icon"></i></button>
-        <div class="faq-answer"><p>Yes — we serve individuals needing personal documents as well as businesses needing registration, websites, design and marketing. No job is too small or too large.</p></div>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Can you help both individuals and businesses?
+          <i class="fa fa-chevron-down faq-icon" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Yes — we serve individuals needing personal documents as well as businesses needing registration, websites, design and marketing. No job is too small or too large.</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ===== CTA STRIP ===== -->
-<section class="contact-me" id="cta">
+<section class="cta-strip" id="contact">
   <div class="container-fluid">
-    <p>Ready to get started? Reach out to us on WhatsApp</p>
-    <a class="button-two" href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20your%20services" target="_blank" rel="noopener noreferrer" style="background:#25D366;">
-      <i class="fa fa-whatsapp me-2"></i>Contact
+    <p>Ready to get started? Reach out to us on WhatsApp — we're online and ready to help.</p>
+    <a class="btn-wa btn-wa-cta"
+       href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20your%20services"
+       target="_blank" rel="noopener noreferrer">
+      <i class="fa fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
     </a>
   </div>
 </section>
 
-<!-- ===== FOOTER CONTAINER ===== -->
+<!-- Footer injected here -->
 <div id="footer-container"></div>
 
-<!-- ===== FLOATING WHATSAPP BUTTON ===== -->
-<a href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20your%20services" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Chat on WhatsApp">
-  <i class="fa fa-whatsapp"></i>
-  <span class="floating-tooltip">Chat on WhatsApp</span>
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20your%20services"
+   target="_blank" rel="noopener noreferrer"
+   class="float-wa" aria-label="Chat on WhatsApp">
+  <i class="fa fa-whatsapp" aria-hidden="true"></i>
+  <span class="float-wa-tooltip">Chat on WhatsApp</span>
 </a>
 
-<!-- Bootstrap JS -->
+<!-- Bootstrap JS (single load) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Services Data -->
+<!-- App JS -->
 <script src="js/services.js"></script>
-
-<!-- Component Loader -->
-<script src="js/components.js"></script>
-
-<!-- ===== SERVICES DATA & RENDERING ===== -->
-<script>
-const WA = "254716358703";
-function waLink(service){return`https://wa.me/${WA}?text=${encodeURIComponent("Hello, I need help with "+service)}`;}
-function waBtn(service){return`<a class="button" href="${waLink(service)}" target="_blank" rel="noopener noreferrer"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>`;}
-
-const ecitizenServices=[
-  {name:"New ID Application Assistance",desc:"Help applying for your first national identity card online via eCitizen.",category:"id",icon:"fa-id-card"},
-  {name:"ID Replacement Assistance",desc:"Assistance replacing a lost, damaged or defaced national ID card.",category:"id",icon:"fa-id-card"},
-  {name:"ID Correction / Amendment",desc:"Help correcting name, date of birth or other details on your national ID.",category:"id",icon:"fa-id-card"},
-  {name:"Lost ID Replacement Guidance",desc:"Step-by-step guidance for replacing a lost national identity card.",category:"id",icon:"fa-id-card"},
-  {name:"ID Status Follow-up",desc:"Track and follow up on your national ID application status.",category:"id",icon:"fa-id-card"},
-  {name:"National Registration Form Assistance",desc:"Assistance filling and submitting national registration forms correctly.",category:"id",icon:"fa-id-card"},
-  {name:"Birth Certificate Application",desc:"Apply for a birth certificate through eCitizen with professional assistance.",category:"birth",icon:"fa-child"},
-  {name:"Birth Certificate Replacement",desc:"Replace a lost or damaged birth certificate quickly and easily.",category:"birth",icon:"fa-child"},
-  {name:"Late Birth Registration Assistance",desc:"Guidance for registering births that were not registered at the time of birth.",category:"birth",icon:"fa-child"},
-  {name:"Birth Certificate Follow-up",desc:"Track and follow up on pending birth certificate applications.",category:"birth",icon:"fa-child"},
-  {name:"Birth Certificate Correction / Amendment",desc:"Correct errors in names or dates on an existing birth certificate.",category:"birth",icon:"fa-child"},
-  {name:"Child Registration Guidance",desc:"Full guidance on registering a newborn or young child.",category:"birth",icon:"fa-child"},
-  {name:"Death Certificate Application",desc:"Assistance applying for an official death certificate via eCitizen.",category:"death",icon:"fa-file-text"},
-  {name:"Death Certificate Replacement",desc:"Replace a lost or damaged death certificate professionally.",category:"death",icon:"fa-file-text"},
-  {name:"Death Registration Assistance",desc:"Guidance on registering a death and obtaining official documentation.",category:"death",icon:"fa-file-text"},
-  {name:"Death Certificate Follow-up",desc:"Track pending death certificate applications and resolve delays.",category:"death",icon:"fa-file-text"},
-  {name:"Marriage Certificate Application",desc:"Apply for an official marriage certificate with guided assistance.",category:"marriage",icon:"fa-heart"},
-  {name:"Marriage Certificate Replacement",desc:"Obtain a copy or replacement of a marriage certificate.",category:"marriage",icon:"fa-heart"},
-  {name:"Civil Marriage Booking Guidance",desc:"Guidance on booking a civil marriage through official channels.",category:"marriage",icon:"fa-heart"},
-  {name:"Marriage Registration Support",desc:"Support registering a marriage and obtaining required documents.",category:"marriage",icon:"fa-heart"},
-  {name:"Marriage Notice Submission Assistance",desc:"Assistance submitting marriage notice through the official portal.",category:"marriage",icon:"fa-heart"},
-  {name:"Registrar's Certificate Issuance Guidance",desc:"Guidance obtaining a Registrar's Certificate from the Attorney General.",category:"marriage",icon:"fa-heart"},
-  {name:"Solemnization of Marriage Guidance",desc:"Assistance with solemnization of marriage procedures and booking.",category:"marriage",icon:"fa-heart"},
-  {name:"Commissioning of Affidavits",desc:"Professional guidance on commissioning affidavits through authorized officials.",category:"marriage",icon:"fa-heart"},
-  {name:"Special Marriage License Application",desc:"Assistance applying for special marriage licenses under exceptional circumstances.",category:"marriage",icon:"fa-heart"},
-  {name:"Certificate of Good Conduct Application",desc:"Apply for a Certificate of Good Conduct (DCI) via eCitizen.",category:"goodconduct",icon:"fa-certificate"},
-  {name:"Good Conduct Renewal Guidance",desc:"Guidance on renewing an expired Certificate of Good Conduct.",category:"goodconduct",icon:"fa-certificate"},
-  {name:"Good Conduct Booking Assistance",desc:"Help booking a DCI fingerprint appointment for Good Conduct.",category:"goodconduct",icon:"fa-certificate"},
-  {name:"Fingerprint / CID Process Guidance",desc:"Step-by-step guidance on the fingerprinting and CID process.",category:"goodconduct",icon:"fa-certificate"},
-  {name:"Good Conduct Status Follow-up",desc:"Track and follow up on a pending Good Conduct application.",category:"goodconduct",icon:"fa-certificate"},
-  {name:"Passport Application Assistance",desc:"Professional help applying for a new Kenyan passport online.",category:"passport",icon:"fa-book"},
-  {name:"Passport Renewal Assistance",desc:"Renew your expiring or expired passport via eCitizen.",category:"passport",icon:"fa-book"},
-  {name:"Lost Passport Replacement Guidance",desc:"Guidance on replacing a lost passport through official channels.",category:"passport",icon:"fa-book"},
-  {name:"Child Passport Application",desc:"Apply for a child's passport with full guidance and assistance.",category:"passport",icon:"fa-book"},
-  {name:"Passport Tracking / Follow-up",desc:"Track your passport application status and resolve delays.",category:"passport",icon:"fa-book"},
-  {name:"Immigration Form Filling Assistance",desc:"Assistance completing immigration forms accurately.",category:"passport",icon:"fa-book"},
-  {name:"Travel Document Guidance",desc:"Guidance on travel documents, emergency certificates and related services.",category:"passport",icon:"fa-book"},
-  {name:"Visa Application Assistance",desc:"Help applying for visa applications for foreign nationals.",category:"immigration",icon:"fa-plane"},
-  {name:"Foreign Nationals Services",desc:"Assistance with permits, passes, and alien registration cards.",category:"immigration",icon:"fa-users"},
-  {name:"Permanent Residence Application",desc:"Professional guidance on applying for permanent residence status in Kenya.",category:"immigration",icon:"fa-home"},
-  {name:"Kenya Citizenship Application",desc:"Assistance applying for Kenyan citizenship through the official channels.",category:"immigration",icon:"fa-flag"},
-  {name:"Smart Driving License Renewal",desc:"Renew your smart driving licence via NTSA TIMS with assistance.",category:"ntsa",icon:"fa-car"},
-  {name:"Driving License Application Guidance",desc:"Guidance applying for a new driving licence through NTSA.",category:"ntsa",icon:"fa-car"},
-  {name:"Interim Driving License Guidance",desc:"Help obtaining an interim driving licence while awaiting the smart DL.",category:"ntsa",icon:"fa-car"},
-  {name:"NTSA TIMS Account Help",desc:"Create or recover your NTSA TIMS account for licence and vehicle services.",category:"ntsa",icon:"fa-car"},
-  {name:"Vehicle Search Assistance",desc:"Search vehicle details and owner information via NTSA.",category:"ntsa",icon:"fa-car"},
-  {name:"Vehicle Transfer Assistance",desc:"Guidance on transferring vehicle ownership through NTSA TIMS.",category:"ntsa",icon:"fa-car"},
-  {name:"Logbook Transfer Guidance",desc:"Step-by-step assistance with logbook (ownership) transfer process.",category:"ntsa",icon:"fa-car"},
-  {name:"Vehicle Inspection Booking",desc:"Book a vehicle inspection appointment through NTSA.",category:"ntsa",icon:"fa-car"},
-  {name:"PSV Badge Application Guidance",desc:"Guidance applying for a PSV badge through NTSA.",category:"ntsa",icon:"fa-car"},
-  {name:"Driving Test Booking Assistance",desc:"Help booking a driving test slot through NTSA.",category:"ntsa",icon:"fa-car"},
-  {name:"Provisional Driving License (PDL) Application",desc:"Guidance applying for a provisional driving license through NTSA.",category:"ntsa",icon:"fa-car"},
-  {name:"Driving License Duplicate Application",desc:"Apply for a duplicate driving license if your original is lost or damaged.",category:"ntsa",icon:"fa-car"},
-  {name:"Driving Class Endorsement Assistance",desc:"Assistance adding or upgrading driving class endorsements on your license.",category:"ntsa",icon:"fa-car"},
-  {name:"Driving License Information Correction",desc:"Correct personal information on your existing driving license.",category:"ntsa",icon:"fa-car"},
-  {name:"Number Plate / Registration Guidance",desc:"Assistance with number plate applications and vehicle registration.",category:"ntsa",icon:"fa-car"},
-  {name:"KRA PIN Registration",desc:"Register a new KRA Personal Identification Number on iTax.",category:"kra",icon:"fa-calculator"},
-  {name:"KRA PIN Retrieval",desc:"Retrieve a forgotten or lost KRA PIN from the iTax portal.",category:"kra",icon:"fa-calculator"},
-  {name:"KRA PIN Update / Email Change",desc:"Update your KRA profile details including email address.",category:"kra",icon:"fa-calculator"},
-  {name:"KRA PIN Reset Assistance",desc:"Assistance resetting your iTax login credentials.",category:"kra",icon:"fa-calculator"},
-  {name:"Tax Compliance Certificate (TCC)",desc:"Apply for a Tax Compliance Certificate for tenders, jobs and loans.",category:"kra",icon:"fa-calculator"},
-  {name:"Nil Returns Filing",desc:"File your KRA nil returns on time to avoid penalties.",category:"kra",icon:"fa-calculator"},
-  {name:"Individual Tax Return Filing",desc:"Professional assistance filing individual income tax returns.",category:"kra",icon:"fa-calculator"},
-  {name:"Business Tax Return Filing",desc:"File business tax returns accurately and on time.",category:"kra",icon:"fa-calculator"},
-  {name:"VAT Filing Assistance",desc:"Guidance filing VAT returns and managing VAT obligations.",category:"kra",icon:"fa-calculator"},
-  {name:"PAYE Filing Guidance",desc:"Help filing PAYE for employers through the iTax portal.",category:"kra",icon:"fa-calculator"},
-  {name:"KRA Password Reset",desc:"Reset your iTax password and regain access to your account.",category:"kra",icon:"fa-calculator"},
-  {name:"iTax Account Support",desc:"General support navigating and using the KRA iTax portal.",category:"kra",icon:"fa-calculator"},
-  {name:"Withholding Tax (WHT) Checker",desc:"Check and manage withholding tax obligations and queries.",category:"kra",icon:"fa-calculator"},
-  {name:"Excisable Goods Management",desc:"Guidance on excisable goods management and reporting.",category:"kra",icon:"fa-calculator"},
-  {name:"KRA Mobile Payments (mService)",desc:"Set up and manage mobile-based payments through KRA mService.",category:"kra",icon:"fa-calculator"},
-  {name:"SHA Registration Assistance",desc:"Register on the Social Health Authority (SHA) portal.",category:"sha",icon:"fa-medkit"},
-  {name:"SHIF Registration Assistance",desc:"Register on the Social Health Insurance Fund (SHIF) portal.",category:"sha",icon:"fa-medkit"},
-  {name:"NHIF Legacy Account Guidance",desc:"Guidance on NHIF legacy accounts and transition to SHA/SHIF.",category:"sha",icon:"fa-medkit"},
-  {name:"Dependant Addition Support",desc:"Add dependants to your health insurance account online.",category:"sha",icon:"fa-medkit"},
-  {name:"Benefit Verification Assistance",desc:"Verify your health cover benefits and entitlements online.",category:"sha",icon:"fa-medkit"},
-  {name:"Online Health Cover Registration Help",desc:"Complete health cover registration through the official online portal.",category:"sha",icon:"fa-medkit"},
-  {name:"NSSF Registration Assistance",desc:"Register for the National Social Security Fund (NSSF) online.",category:"nssf",icon:"fa-shield"},
-  {name:"NSSF Number Retrieval",desc:"Retrieve your NSSF number from the NSSF portal.",category:"nssf",icon:"fa-shield"},
-  {name:"NSSF Statement Guidance",desc:"Access and download your NSSF benefits statement online.",category:"nssf",icon:"fa-shield"},
-  {name:"Employer / Employee NSSF Registration",desc:"Register as an employer or employee on the NSSF portal.",category:"nssf",icon:"fa-shield"},
-  {name:"HELB Application Guidance",desc:"Apply for a HELB student loan through the HELB portal.",category:"helb",icon:"fa-graduation-cap"},
-  {name:"HELB Portal Account Setup",desc:"Create and set up your HELB portal account.",category:"helb",icon:"fa-graduation-cap"},
-  {name:"HELB Compliance Certificate Guidance",desc:"Obtain a HELB compliance certificate for employment or tenders.",category:"helb",icon:"fa-graduation-cap"},
-  {name:"HELB Clearance Assistance",desc:"Clear your HELB loan status and obtain clearance documentation.",category:"helb",icon:"fa-graduation-cap"},
-  {name:"Student Portal Support",desc:"General support navigating student portals and education services.",category:"helb",icon:"fa-graduation-cap"},
-  {name:"Business Name Search",desc:"Search for business name availability on the BRS portal.",category:"business",icon:"fa-building"},
-  {name:"Business Name Registration",desc:"Register your business name on the Business Registration Service.",category:"business",icon:"fa-building"},
-  {name:"Sole Proprietorship Registration",desc:"Register a sole proprietorship business professionally.",category:"business",icon:"fa-building"},
-  {name:"Company Registration Assistance",desc:"Full assistance registering a limited company in Kenya.",category:"business",icon:"fa-building"},
-  {name:"CR12 Application Guidance",desc:"Apply for a CR12 (official company search certificate) from BRS.",category:"business",icon:"fa-building"},
-  {name:"Annual Returns Filing Guidance",desc:"File your company annual returns on time to remain compliant.",category:"business",icon:"fa-building"},
-  {name:"Business Ownership Update Support",desc:"Update ownership, directors or shareholders of a registered business.",category:"business",icon:"fa-building"},
-  {name:"Director / Shareholder Changes Guidance",desc:"Add or remove directors and shareholders from a company.",category:"business",icon:"fa-building"},
-  {name:"Business Certificate Retrieval",desc:"Obtain official business registration certificates.",category:"business",icon:"fa-building"},
-  {name:"Cessation of Business Name",desc:"Professional guidance on ceasing or cancelling a registered business name.",category:"business",icon:"fa-building"},
-  {name:"Land Search Guidance",desc:"Search for land ownership and parcel details on the Ardhisasa portal.",category:"land",icon:"fa-map"},
-  {name:"Title Verification Support",desc:"Verify land title authenticity through official digital channels.",category:"land",icon:"fa-map"},
-  {name:"Land Rates / Records Assistance",desc:"Access land rates records and payment status online.",category:"land",icon:"fa-map"},
-  {name:"Ardhi / Land Portal Navigation Support",desc:"Help navigating the Ardhisasa land management portal.",category:"land",icon:"fa-map"},
-  {name:"Property Ownership Search Guidance",desc:"Search and verify property ownership records online.",category:"land",icon:"fa-map"},
-  {name:"Land Rent Clearance Certificate",desc:"Obtain Land Rent Clearance Certificate from the Ministry of Lands.",category:"land",icon:"fa-map"},
-  {name:"Land Rent Payment Assistance",desc:"Assistance making land rent payments through official channels.",category:"land",icon:"fa-map"},
-  {name:"eFiling Account Setup Guidance",desc:"Create and configure a court eFiling account for online submissions.",category:"land",icon:"fa-gavel"},
-  {name:"Court eFiling Navigation Support",desc:"Guidance filing documents through the court eFiling system.",category:"land",icon:"fa-gavel"},
-  {name:"Online Document Upload Assistance",desc:"Help uploading court documents to the eFiling portal correctly.",category:"land",icon:"fa-gavel"},
-  {name:"Cause List Search Guidance",desc:"Search court cause lists and track case status online.",category:"land",icon:"fa-gavel"},
-  {name:"Police Abstract Guidance",desc:"Guidance obtaining a police abstract for accidents or lost documents.",category:"general",icon:"fa-shield"},
-  {name:"Lost Document Reporting Guidance",desc:"Report lost documents through official online channels.",category:"general",icon:"fa-shield"},
-  {name:"Security Clearance Related Support",desc:"Assistance with security clearance applications online.",category:"general",icon:"fa-shield"},
-  {name:"Single Business Permit Guidance",desc:"Apply for or renew a Single Business Permit from your county.",category:"county",icon:"fa-building"},
-  {name:"County Permit Renewal Assistance",desc:"Renew county business permits and licences online.",category:"county",icon:"fa-building"},
-  {name:"Trade License Digital Support",desc:"Obtain trade licences through county digital revenue portals.",category:"county",icon:"fa-building"},
-  {name:"County Revenue Portal Support",desc:"Navigate county revenue portals for payments and applications.",category:"county",icon:"fa-building"},
-  {name:"eCitizen Account Creation",desc:"Create a new eCitizen account for accessing all government services.",category:"general",icon:"fa-user-plus"},
-  {name:"eCitizen Login Recovery",desc:"Recover access to a locked or forgotten eCitizen account.",category:"general",icon:"fa-user-plus"},
-  {name:"eCitizen Password Reset",desc:"Reset your eCitizen account password and regain access.",category:"general",icon:"fa-user-plus"},
-  {name:"eCitizen Profile Update",desc:"Update your personal details and profile on eCitizen.",category:"general",icon:"fa-user-plus"},
-  {name:"eCitizen Payment Guidance",desc:"Guidance making payments on eCitizen via M-Pesa or card.",category:"general",icon:"fa-user-plus"},
-  {name:"eCitizen Transaction Follow-up",desc:"Track and resolve eCitizen payment or transaction issues.",category:"general",icon:"fa-user-plus"},
-  {name:"eCitizen Form Filling Help",desc:"Professional assistance completing all eCitizen application forms.",category:"general",icon:"fa-user-plus"},
-  {name:"eCitizen Document Upload Assistance",desc:"Help scanning, formatting and uploading documents to eCitizen.",category:"general",icon:"fa-user-plus"},
-  {name:"eCitizen Appointment Booking Help",desc:"Book service appointments through the eCitizen portal.",category:"general",icon:"fa-user-plus"},
-  {name:"Kenya Wildlife Service (KWS) Park Entry Fees",desc:"Assistance with Kenya Wildlife Service park entry fees and licensing.",category:"kws",icon:"fa-paw"},
-  {name:"National Construction Authority (NCA) Registration",desc:"Guidance on NCA contractor registration and project registration.",category:"nca",icon:"fa-building"},
-  {name:"NCA Project Registration Support",desc:"Professional assistance with National Construction Authority project registration.",category:"nca",icon:"fa-building"},
-  {name:"State Department Document Authentication",desc:"Assistance with document authentication and legalization services.",category:"state",icon:"fa-certificate"},
-  {name:"Mining & Blue Economy Export Permits",desc:"Guidance on export and import permits for mining and blue economy activities.",category:"mining",icon:"fa-flask"},
-  {name:"Kenya Bureau of Standards (KEBS) Mark Application",desc:"Assistance applying for KEBS standardisation mark for your products.",category:"kebs",icon:"fa-check-circle"},
-];
-
-const webdevServices=[
-  {name:"Business Website Design",desc:"Professional, modern websites for businesses of all sizes.",icon:"fa-laptop"},
-  {name:"Personal Portfolio Website",desc:"Showcase your work and skills with a stunning portfolio site.",icon:"fa-laptop"},
-  {name:"Company Website",desc:"Full corporate website with services, about, team and contact sections.",icon:"fa-laptop"},
-  {name:"Landing Page Design",desc:"High-converting landing pages for products, campaigns or lead generation.",icon:"fa-laptop"},
-  {name:"E-commerce Website Development",desc:"Online stores with product listings, cart and payment integration.",icon:"fa-shopping-cart"},
-  {name:"Blog Website Setup",desc:"Set up a professional blog or content website.",icon:"fa-pencil"},
-  {name:"School / Institution Website",desc:"Websites for schools, colleges, training centres and institutions.",icon:"fa-graduation-cap"},
-  {name:"Church / NGO Website",desc:"Professional websites for churches, NGOs and non-profit organisations.",icon:"fa-heart"},
-  {name:"Website Redesign",desc:"Modernise and upgrade an existing outdated website.",icon:"fa-refresh"},
-  {name:"Website Maintenance",desc:"Ongoing maintenance, updates and content management for your site.",icon:"fa-wrench"},
-  {name:"Website Speed Optimisation",desc:"Improve page load speed and performance for better user experience.",icon:"fa-bolt"},
-  {name:"Mobile Responsive Website Fixes",desc:"Fix websites that break or display poorly on mobile devices.",icon:"fa-mobile"},
-  {name:"Domain and Hosting Setup Guidance",desc:"Help registering a domain name and setting up web hosting.",icon:"fa-globe"},
-  {name:"Website Bug Fixing",desc:"Identify and fix broken features, layout issues and JavaScript errors.",icon:"fa-bug"},
-  {name:"Custom Web Application Development",desc:"Build custom web applications tailored to your specific business needs.",icon:"fa-code"},
-  {name:"WordPress Setup / Fixes",desc:"WordPress installation, theme setup, plugin configuration and fixes.",icon:"fa-wordpress"},
-  {name:"SEO-Friendly Website Structure",desc:"Build or restructure websites with proper SEO architecture.",icon:"fa-search"},
-  {name:"Blog Integration / Feed Setup",desc:"Add or fix blog sections, RSS feeds and content management.",icon:"fa-rss"},
-];
-
-const designServices=[
-  {name:"Logo Design",desc:"Professional, unique logos that define your brand identity.",icon:"fa-paint-brush"},
-  {name:"Poster Design",desc:"Eye-catching posters for events, promotions and announcements.",icon:"fa-image"},
-  {name:"Flyer Design",desc:"Creative flyers for marketing campaigns, events and promotions.",icon:"fa-file-image-o"},
-  {name:"Business Card Design",desc:"Professional business cards that make a lasting first impression.",icon:"fa-id-card"},
-  {name:"Social Media Post Design",desc:"Engaging graphics for Facebook, Instagram, Twitter and LinkedIn.",icon:"fa-share-alt"},
-  {name:"Banner Design",desc:"Digital and print banners for websites, events and storefronts.",icon:"fa-picture-o"},
-  {name:"Brochure Design",desc:"Professional brochures for products, services and company profiles.",icon:"fa-book"},
-  {name:"Company Profile Design",desc:"Polished company profile documents for presentations and tenders.",icon:"fa-building"},
-  {name:"CV / Resume Design",desc:"Professional, modern CV and resume designs that stand out.",icon:"fa-file-text"},
-  {name:"Invitation Card Design",desc:"Beautiful invitation cards for weddings, events and celebrations.",icon:"fa-envelope"},
-  {name:"Church Programme Design",desc:"Elegant church bulletin and programme designs.",icon:"fa-heart"},
-  {name:"Event Poster Design",desc:"Vibrant event posters for concerts, conferences and launches.",icon:"fa-calendar"},
-  {name:"Product Label Design",desc:"Creative labels for products, packaging and merchandise.",icon:"fa-tag"},
-  {name:"Menu Design",desc:"Stylish menus for restaurants, cafes and food businesses.",icon:"fa-cutlery"},
-  {name:"Certificate Design",desc:"Professional certificate templates for awards and completion.",icon:"fa-certificate"},
-  {name:"Book / eBook Cover Design",desc:"Compelling book covers that attract readers and convey the message.",icon:"fa-book"},
-  {name:"Branding Package Design",desc:"Full branding package: logo, colours, typography and brand guide.",icon:"fa-star"},
-  {name:"Thumbnail Design",desc:"High-CTR YouTube and social media thumbnails.",icon:"fa-youtube-play"},
-  {name:"Ad Creative Design",desc:"Compelling ad creatives for digital and print advertising.",icon:"fa-bullhorn"},
-  {name:"Presentation / Slide Design",desc:"Professional PowerPoint and Google Slides presentations.",icon:"fa-desktop"},
-];
-
-const marketingServices=[
-  {name:"Social Media Management",desc:"Full management of your social media pages for consistent growth.",icon:"fa-share-alt"},
-  {name:"Facebook Marketing",desc:"Facebook page management, posting strategy and audience engagement.",icon:"fa-facebook"},
-  {name:"Instagram Marketing",desc:"Instagram content strategy, posting and growth services.",icon:"fa-instagram"},
-  {name:"TikTok Marketing",desc:"TikTok content creation and marketing strategy for brands.",icon:"fa-video-camera"},
-  {name:"WhatsApp Marketing Setup",desc:"Set up WhatsApp Business and marketing broadcast campaigns.",icon:"fa-whatsapp"},
-  {name:"Google Business Profile Setup / Optimisation",desc:"Create and optimise your Google Business profile for local visibility.",icon:"fa-google"},
-  {name:"SEO Services",desc:"Search engine optimisation to rank your website higher on Google.",icon:"fa-search"},
-  {name:"Website SEO Optimisation",desc:"Technical and on-page SEO improvements for better rankings.",icon:"fa-search-plus"},
-  {name:"Content Marketing",desc:"Blog posts, articles and content strategy to attract and engage audiences.",icon:"fa-pencil"},
-  {name:"Email Marketing Setup",desc:"Set up email lists, newsletters and automated email campaigns.",icon:"fa-envelope"},
-  {name:"Lead Generation Services",desc:"Generate quality leads for your business through digital channels.",icon:"fa-users"},
-  {name:"Paid Ads Setup (Meta / Google Ads)",desc:"Set up and manage paid advertising campaigns on Meta and Google.",icon:"fa-money"},
-  {name:"Online Brand Promotion",desc:"Promote your brand across multiple digital platforms strategically.",icon:"fa-star"},
-  {name:"Digital Strategy Consultation",desc:"Professional consultation on your digital marketing strategy.",icon:"fa-lightbulb-o"},
-  {name:"Campaign Creative Setup",desc:"Design and set up complete digital marketing campaigns.",icon:"fa-rocket"},
-  {name:"Social Media Ad Design + Posting Support",desc:"Create and publish sponsored social media ad posts.",icon:"fa-picture-o"},
-  {name:"Profile Optimisation for Businesses",desc:"Optimise all social and business profiles for maximum impact.",icon:"fa-user-circle"},
-  {name:"Hashtag / Content Planning",desc:"Research and plan hashtags and content calendars for growth.",icon:"fa-list"},
-  {name:"Audience Growth Strategy",desc:"Strategic approach to growing your followers and engagement.",icon:"fa-line-chart"},
-];
-
-const otherServices=[
-  {name:"Online Form Filling Assistance",desc:"Professional help completing any online form accurately.",icon:"fa-edit"},
-  {name:"Document Scanning and Upload Support",desc:"Scan, format and upload documents to any online portal.",icon:"fa-upload"},
-  {name:"CV / Resume Writing Help",desc:"Professional CV writing and formatting for job applications.",icon:"fa-file-text"},
-  {name:"PDF Editing / Conversion Help",desc:"Edit, merge, split or convert PDF documents.",icon:"fa-file-pdf-o"},
-  {name:"Online Application Assistance",desc:"Help completing and submitting all types of online applications.",icon:"fa-paper-plane"},
-  {name:"University / College Application Help",desc:"Guidance applying to universities and colleges online.",icon:"fa-graduation-cap"},
-  {name:"Job Application Assistance",desc:"Help completing online job applications and submission.",icon:"fa-briefcase"},
-  {name:"Government Portal Navigation Help",desc:"Navigate any government or county portal with professional guidance.",icon:"fa-compass"},
-  {name:"Online Booking Services",desc:"Book appointments and services through any online portal.",icon:"fa-calendar-check-o"},
-  {name:"Document Formatting / Typing Services",desc:"Professional document typing, formatting and proofreading.",icon:"fa-keyboard-o"},
-  {name:"Passport Photo / Document Prep Guidance",desc:"Guidance on passport photo requirements and document preparation.",icon:"fa-camera"},
-  {name:"Email Setup / Recovery Assistance",desc:"Create or recover email accounts for individuals or businesses.",icon:"fa-envelope-o"},
-  {name:"Online Account Registration Help",desc:"Help registering accounts on any online platform or portal.",icon:"fa-user-plus"},
-  {name:"Digital Profile Setup Help",desc:"Set up professional digital profiles on LinkedIn, Google and more.",icon:"fa-user-circle"},
-];
-
-function slugify(text){
-  return text.toLowerCase().replace(/[^\w\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-');
-}
-
-function getServiceImage(serviceName, category){
-  // Get service-specific image based on slugified name
-  const slug = slugify(serviceName);
-  const serviceImg = `img/services/${slug}.png`;
-  return serviceImg;
-}
-
-function renderGrid(data, containerId){
-  const c=document.getElementById(containerId);
-  if(!c)return;
-  
-  // Category fallback images (used if service image not available)
-  const categoryFallback = {
-    'ecitizenGrid': 'img/ecitizen-hero.png',
-    'webdevGrid': 'img/webdev-hero.png',
-    'designGrid': 'img/design-hero.png',
-    'marketingGrid': 'img/marketing-hero.png',
-    'otherGrid': 'img/others-hero.png'
-  };
-  
-  const categoryFallbackImg = categoryFallback[containerId] || 'img/logo.png';
-  
-  c.innerHTML=data.map(s=>`
-    <div class="svc-card" data-category="${s.category||''}" data-name="${s.name.toLowerCase()}" style="cursor: pointer; transition: all 0.3s ease;">
-      <img src="${getServiceImage(s.name, s.category)}" alt="${s.name}" class="svc-image" loading="lazy" onerror="this.src='${categoryFallbackImg}';">
-      <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; flex: 1;">
-        <div style="text-align: center;">
-          <em class="fa ${s.icon}" aria-hidden="true" style="font-size: 2rem; color: #FFD700; margin-bottom: 0.5rem; display: block;"></em>
-          <h5 style="margin: 0; font-size: 1.1rem;">${s.name}</h5>
-        </div>
-        <div class="svc-pra" style="flex: 1;">
-          <p style="margin-bottom: 1rem;">${s.desc}</p>
-        </div>
-        <a class="whatsapp-service-btn" href="${waLink(s.name)}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
-      </div>
-    </div>`).join('');
-  
-  // Add hover effects
-  document.querySelectorAll('.svc-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-10px)';
-      this.style.boxShadow = '0 15px 40px rgba(255, 215, 0, 0.2)';
-    });
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
-      this.style.boxShadow = 'none';
-    });
-  });
-}
-
-let currentFilter='all';
-function setFilter(cat,btn){
-  currentFilter=cat;
-  document.querySelectorAll('.filter-tab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  filterServices();
-}
-function filterServices(){
-  const q=document.getElementById('serviceSearch').value.toLowerCase();
-  const cards=document.querySelectorAll('#ecitizenGrid .svc-card');
-  let vis=0;
-  cards.forEach(card=>{
-    const mc=currentFilter==='all'||card.dataset.category===currentFilter;
-    const ms=!q||card.dataset.name.includes(q)||card.querySelector('p').textContent.toLowerCase().includes(q);
-    card.style.display=(mc&&ms)?'':'none';
-    if(mc&&ms)vis++;
-  });
-  document.getElementById('noResults').style.display=vis===0?'block':'none';
-}
-
-function toggleFaq(btn){
-  const ans=btn.nextElementSibling;
-  const ico=btn.querySelector('.faq-icon');
-  const open=ans.classList.contains('open');
-  document.querySelectorAll('.faq-answer.open').forEach(a=>{
-    a.classList.remove('open');
-    a.previousElementSibling.querySelector('.faq-icon').style.transform='rotate(0deg)';
-  });
-  if(!open){ans.classList.add('open');ico.style.transform='rotate(180deg)';}
-}
-
-renderGrid(otherServices,'otherGrid');
-
-window.addEventListener('scroll',function(){
-  const n=document.getElementById('mainNavbar');
-  n.classList.toggle('scrolled',window.scrollY>50);
-});
-
-document.addEventListener('click',function(e){
-  const a=e.target.closest('a[href^="#"]');
-  if(!a)return;
-  const t=document.querySelector(a.getAttribute('href'));
-  if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
-});
-
-document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(l=>{
-  l.addEventListener('click',()=>{
-    const nc=document.querySelector('.navbar-collapse');
-    if(nc.classList.contains('show'))bootstrap.Collapse.getInstance(nc)?.hide();
-  });
-});
-
-document.querySelectorAll('[data-filter]').forEach(item=>{
-  item.addEventListener('click',function(){
-    const cat=this.dataset.filter;
-    if(!cat)return;
-    setTimeout(()=>{
-      const tab=[...document.querySelectorAll('.filter-tab')].find(b=>(b.getAttribute('onclick')||'').includes("'"+cat+"'"));
-      if(tab)setFilter(cat,tab);
-    },300);
-  });
-});
-
-const imgs=document.querySelectorAll('img[loading="lazy"]');
-const io=new IntersectionObserver((entries,obs)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('loaded');obs.unobserve(e.target);}});});
-imgs.forEach(i=>io.observe(i));
-</script>
+<script src="js/app.js"></script>
 </body>
 </html>

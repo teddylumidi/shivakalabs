@@ -3,214 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Web Development Services - ShivakaLabs. Professional website design, e-commerce, landing pages, WordPress, and custom web applications.">
-  <meta name="keywords" content="web development, website design, e-commerce, landing pages, WordPress, web applications">
+  <meta name="description" content="Web Development Services — ShivakaLabs. Professional website design, e-commerce, landing pages, WordPress setup and custom web applications in Kenya.">
+  <meta name="keywords" content="web development Kenya, website design, e-commerce, WordPress, landing pages, web applications">
   <meta name="author" content="ShivakaLabs">
+  <meta name="theme-color" content="#000000">
   <title>Web Development Services | ShivakaLabs</title>
-  
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/43361fe41f.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <script src="https://kit.fontawesome.com/43361fe41f.js" crossorigin="anonymous" defer></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHDYR7PQ7X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-KHDYR7PQ7X');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KHDYR7PQ7X');</script>
 </head>
-<body>
+<body data-page="webdev">
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar navbar-expand-lg" id="mainNavbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="ShivakaLabs" class="navbar-logo">Shivaka<span>Labs</span></a>
-    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="ecitizen.html">eCitizen Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="webdev.html">Web Development</a></li>
-        <li class="nav-item"><a class="nav-link" href="design.html">Graphic Design</a></li>
-        <li class="nav-item"><a class="nav-link" href="marketing.html">Digital Marketing</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="otherServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Other Services</a>
-          <ul class="dropdown-menu" aria-labelledby="otherServicesDropdown">
-            <li><a class="dropdown-item" href="service-online-forms.html">Online Form Filling</a></li>
-            <li><a class="dropdown-item" href="service-document-scanning.html">Document Scanning & Upload</a></li>
-            <li><a class="dropdown-item" href="service-cv-writing.html">CV / Resume Writing</a></li>
-            <li><a class="dropdown-item" href="service-pdf-editing.html">PDF Editing / Conversion</a></li>
-            <li><a class="dropdown-item" href="service-online-applications.html">Online Applications</a></li>
-            <li><a class="dropdown-item" href="service-email-setup.html">Email Setup / Recovery</a></li>
-            <li><a class="dropdown-item" href="service-other-digital.html">Other Digital Services</a></li>
-          </ul>
-        </li>
-      </ul>
-      <a href="https://wa.me/254716358703?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services" target="_blank" rel="noopener noreferrer" class="btn whatsapp-nav-btn ms-3">
-        <i class="fa fa-whatsapp"></i> WhatsApp
-      </a>
-    </div>
-  </div>
-</nav>
+<div id="navbar-container"></div>
 
-<!-- ===== HERO SECTION ===== -->
-<header class="hero" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('img/webdev-hero.png'); background-size: cover; background-position: center; background-attachment: fixed;">
-  <div class="content">
-    <h4>Fast &bull; Reliable &bull; Professional</h4>
-    <h1>Web <span>Development</span></h1>
-    <p class="hero-sub">Professional websites built for businesses, individuals & organizations. 18 comprehensive web services.</p>
-    <div class="hero-btns">
-      <a href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20web%20development" target="_blank" rel="noopener noreferrer" class="btn whatsapp-btn-hero">
-        <i class="fa fa-whatsapp me-2"></i>Get Help on WhatsApp
+<!-- Hero -->
+<header class="hero hero-webdev" style="min-height:420px;" id="home">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Custom. Modern. Mobile-First.</span>
+    <h1>Web <span class="accent">Development</span></h1>
+    <p class="hero-sub">Professional websites built for businesses, individuals &amp; organizations — fast, responsive and designed to convert. 18 comprehensive web services.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20web%20development"
+         target="_blank" rel="noopener noreferrer" class="btn-wa btn-wa-hero">
+        <i class="fa fa-whatsapp" aria-hidden="true"></i> Get Help on WhatsApp
       </a>
-      <a href="#services" class="btn btn-outline-hero">Browse Services</a>
+      <a href="#services" class="btn-outline-gold">View Services</a>
     </div>
   </div>
 </header>
 
-<!-- ===== WEB DEVELOPMENT SERVICES PAGE ===== -->
-<section class="service" style="padding-top: 0;" id="services">
+<!-- Services -->
+<section id="services" class="bg-dark-alt">
   <div class="container-fluid">
-    <div class="title">
-      <h2>Web <span class="txt-red">Development</span></h2>
-      <p class="section-sub">Professional websites built for businesses, individuals &amp; organizations. 18 comprehensive web services.</p>
+    <div class="section-title">
+      <h2>Web <span class="accent">Development</span></h2>
+      <p class="subtitle">From simple landing pages to full e-commerce platforms — we build it all</p>
     </div>
-    <div class="service-grid" id="webdevGrid"></div>
+    <div class="svc-grid" id="webdevGrid"></div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
+<!-- CTA -->
+<section class="cta-strip">
   <div class="container-fluid">
-    <!-- ===== FOOTER NAVBAR ===== -->
-    <nav class="navbar navbar-expand-lg footer-navbar" id="footerNavbar">
-      <div class="container-fluid" style="padding: 0;">
-        <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="ShivakaLabs" class="navbar-logo">Shivaka<span>Labs</span></a>
-        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#footerNavbarNav" aria-controls="footerNavbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="footerNavbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="ecitizen.html">eCitizen Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="webdev.html">Web Development</a></li>
-            <li class="nav-item"><a class="nav-link" href="design.html">Graphic Design</a></li>
-            <li class="nav-item"><a class="nav-link" href="marketing.html">Digital Marketing</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="footerOtherServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Other Services</a>
-              <ul class="dropdown-menu" aria-labelledby="footerOtherServicesDropdown">
-                <li><a class="dropdown-item" href="service-online-forms.html">Online Form Filling</a></li>
-                <li><a class="dropdown-item" href="service-document-scanning.html">Document Scanning & Upload</a></li>
-                <li><a class="dropdown-item" href="service-cv-writing.html">CV / Resume Writing</a></li>
-                <li><a class="dropdown-item" href="service-pdf-editing.html">PDF Editing / Conversion</a></li>
-                <li><a class="dropdown-item" href="service-online-applications.html">Online Applications</a></li>
-                <li><a class="dropdown-item" href="service-email-setup.html">Email Setup / Recovery</a></li>
-                <li><a class="dropdown-item" href="service-other-digital.html">Other Digital Services</a></li>
-              </ul>
-            </li>
-          </ul>
-          <a href="https://wa.me/254716358703?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services" target="_blank" rel="noopener noreferrer" class="btn whatsapp-nav-btn ms-3">
-            <i class="fa fa-whatsapp"></i> WhatsApp
-          </a>
-        </div>
-      </div>
-    </nav>
-    
-    <!-- ===== SOCIAL MEDIA WIDGETS ===== -->
-    <div style="border-top: 1px solid rgba(255, 215, 0, 0.2); margin-top: 2rem; padding-top: 2rem;"></div>
-    <div class="social" style="margin-top: 2rem;">
-      <a href="https://www.facebook.com/ShivakaLabs" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:#1877F2;"><i class="fa fa-facebook-square"></i></a>
-      <a href="https://twitter.com/ShivakaLabs" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="color:#000000;"><i class="fa fa-twitter"></i></a>
-      <a href="https://www.instagram.com/ShivakaLabs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:#E1306C;"><i class="fa fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/company/ShivakaLabs/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="color:#0A66C2;"><i class="fa fa-linkedin-square"></i></a>
-      <a href="https://wa.me/254716358703" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style="color:#25D366;"><i class="fa fa-whatsapp"></i></a>
-    </div>
+    <p>Ready to build your professional website? Let's talk on WhatsApp.</p>
+    <a class="btn-wa btn-wa-cta"
+       href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20a%20professional%20website%20built"
+       target="_blank" rel="noopener noreferrer">
+      <i class="fa fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
+    </a>
   </div>
-</footer>
+</section>
 
-<!-- ===== FLOATING WHATSAPP BUTTON ===== -->
-<a href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20web%20development" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Chat on WhatsApp">
-  <i class="fa fa-whatsapp"></i>
-  <span class="floating-tooltip">Chat on WhatsApp</span>
+<div id="footer-container"></div>
+
+<a href="https://wa.me/254716358703?text=Hello%2C%20I%20need%20help%20with%20web%20development"
+   target="_blank" rel="noopener noreferrer" class="float-wa" aria-label="Chat on WhatsApp">
+  <i class="fa fa-whatsapp" aria-hidden="true"></i>
+  <span class="float-wa-tooltip">Chat on WhatsApp</span>
 </a>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="js/services.js"></script>
+<script src="js/app.js"></script>
 <script>
-const WA = "254716358703";
-function waLink(service){return`https://wa.me/${WA}?text=${encodeURIComponent("Hello, I need help with "+service)}`;}
-
-const webdevServices=[
-  {name:"Business Website Design",desc:"Professional, modern websites for businesses of all sizes.",icon:"fa-laptop"},
-  {name:"Personal Portfolio Website",desc:"Showcase your work and skills with a stunning portfolio site.",icon:"fa-laptop"},
-  {name:"Company Website",desc:"Full corporate website with services, about, team and contact sections.",icon:"fa-laptop"},
-  {name:"Landing Page Design",desc:"High-converting landing pages for products, campaigns or lead generation.",icon:"fa-laptop"},
-  {name:"E-commerce Website Development",desc:"Online stores with product listings, cart and payment integration.",icon:"fa-shopping-cart"},
-  {name:"Blog Website Setup",desc:"Set up a professional blog or content website.",icon:"fa-pencil"},
-  {name:"School / Institution Website",desc:"Websites for schools, colleges, training centres and institutions.",icon:"fa-graduation-cap"},
-  {name:"Church / NGO Website",desc:"Professional websites for churches, NGOs and non-profit organisations.",icon:"fa-heart"},
-  {name:"Website Redesign",desc:"Modernise and upgrade an existing outdated website.",icon:"fa-refresh"},
-  {name:"Website Maintenance",desc:"Ongoing maintenance, updates and content management for your site.",icon:"fa-wrench"},
-  {name:"Website Speed Optimisation",desc:"Improve page load speed and performance for better user experience.",icon:"fa-bolt"},
-  {name:"Mobile Responsive Website Fixes",desc:"Fix websites that break or display poorly on mobile devices.",icon:"fa-mobile"},
-  {name:"Domain and Hosting Setup Guidance",desc:"Help registering a domain name and setting up web hosting.",icon:"fa-globe"},
-  {name:"Website Bug Fixing",desc:"Identify and fix broken features, layout issues and JavaScript errors.",icon:"fa-bug"},
-  {name:"Custom Web Application Development",desc:"Build custom web applications tailored to your specific business needs.",icon:"fa-code"},
-  {name:"WordPress Setup / Fixes",desc:"WordPress installation, theme setup, plugin configuration and fixes.",icon:"fa-wordpress"},
-  {name:"SEO-Friendly Website Structure",desc:"Build or restructure websites with proper SEO architecture.",icon:"fa-search"},
-  {name:"Blog Integration / Feed Setup",desc:"Add or fix blog sections, RSS feeds and content management.",icon:"fa-rss"},
-];
-
-function slugify(text){
-  return text.toLowerCase().replace(/[^\w\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-');
-}
-
-function getServiceImage(serviceName){
-  const slug = slugify(serviceName);
-  return `img/services/${slug}.png`;
-}
-
-function renderGrid(data, containerId){
-  const c=document.getElementById(containerId);
-  if(!c)return;
-  const fallback = 'img/webdev-hero.png';
-  
-  c.innerHTML=data.map(s=>`
-    <div class="svc-card" style="cursor: pointer;">
-      <img src="${getServiceImage(s.name)}" alt="${s.name}" class="svc-image" loading="lazy" onerror="this.src='${fallback}';">
-      <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; flex: 1;">
-        <div style="text-align: center;">
-          <em class="fa ${s.icon}" aria-hidden="true" style="font-size: 2rem; color: #FFD700; margin-bottom: 0.5rem; display: block;"></em>
-          <h5 style="margin: 0; font-size: 1.1rem;">${s.name}</h5>
-        </div>
-        <div style="flex: 1;"><p style="margin-bottom: 1rem;">${s.desc}</p></div>
-        <a class="whatsapp-service-btn" href="${waLink(s.name)}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%; display: flex;"><i class="fa fa-whatsapp me-1"></i> Get Help on WhatsApp</a>
-      </div>
-    </div>`).join('');
-}
-
-renderGrid(webdevServices,'webdevGrid');
-
-window.addEventListener('scroll',function(){
-  const n=document.getElementById('mainNavbar');
-  n.classList.toggle('scrolled',window.scrollY>50);
-});
-
-document.querySelectorAll('.nav-link').forEach(l=>{
-  l.addEventListener('click',()=>{
-    const nc=document.querySelector('.navbar-collapse');
-    if(nc.classList.contains('show'))bootstrap.Collapse.getInstance(nc)?.hide();
+  document.addEventListener('DOMContentLoaded', () => {
+    renderServiceGrid(WEBDEV_SERVICES, 'webdevGrid', 'img/webdev-hero.png');
   });
-});
 </script>
 </body>
 </html>
