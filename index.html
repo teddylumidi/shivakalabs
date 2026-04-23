@@ -19,11 +19,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap CSS (preload critical) -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"></noscript>
+
+  <!-- Custom CSS (preload critical) -->
+  <link rel="preload" href="styles.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
   <!-- Fonts (deferred via media trick) -->
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700;800&display=swap"
@@ -34,6 +37,9 @@
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/43361fe41f.js" crossorigin="anonymous" defer></script>
+
+  <!-- Preload hero image for LCP -->
+  <link rel="preload" as="image" href="img/background.jpg">
 
   <!-- Google Analytics (async, non-blocking) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHDYR7PQ7X"></script>
@@ -76,7 +82,7 @@
     <div class="popular-grid">
 
       <div class="svc-card">
-        <img src="img/services/certificate-of-good-conduct-application.png" alt="Good Conduct Certificate" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <img src="img/services/certificate-of-good-conduct-application.png" alt="Good Conduct Certificate" class="svc-card-img" loading="lazy" width="400" height="190" onerror="this.src='img/ecitizen-hero.png'">
         <div class="svc-card-body">
           <i class="fa fa-certificate svc-card-icon" aria-hidden="true"></i>
           <h5>Good Conduct</h5>
@@ -89,7 +95,7 @@
       </div>
 
       <div class="svc-card">
-        <img src="img/services/passport-application-assistance.png" alt="Passport Application" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <img src="img/services/passport-application-assistance.png" alt="Passport Application" class="svc-card-img" loading="lazy" width="400" height="190" onerror="this.src='img/ecitizen-hero.png'">
         <div class="svc-card-body">
           <i class="fa fa-book svc-card-icon" aria-hidden="true"></i>
           <h5>Passport</h5>
@@ -102,7 +108,7 @@
       </div>
 
       <div class="svc-card">
-        <img src="img/services/kra-pin-registration.png" alt="KRA PIN" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <img src="img/services/kra-pin-registration.png" alt="KRA PIN" class="svc-card-img" loading="lazy" width="400" height="190" onerror="this.src='img/ecitizen-hero.png'">
         <div class="svc-card-body">
           <i class="fa fa-calculator svc-card-icon" aria-hidden="true"></i>
           <h5>KRA PIN</h5>
@@ -115,7 +121,7 @@
       </div>
 
       <div class="svc-card">
-        <img src="img/services/birth-certificate-application.png" alt="Birth Certificate" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <img src="img/services/birth-certificate-application.png" alt="Birth Certificate" class="svc-card-img" loading="lazy" width="400" height="190" onerror="this.src='img/ecitizen-hero.png'">
         <div class="svc-card-body">
           <i class="fa fa-child svc-card-icon" aria-hidden="true"></i>
           <h5>Birth Certificate</h5>
@@ -128,7 +134,7 @@
       </div>
 
       <div class="svc-card">
-        <img src="img/services/business-name-registration.png" alt="Business Registration" class="svc-card-img" loading="lazy" onerror="this.src='img/ecitizen-hero.png'">
+        <img src="img/services/business-name-registration.png" alt="Business Registration" class="svc-card-img" loading="lazy" width="400" height="190" onerror="this.src='img/ecitizen-hero.png'">
         <div class="svc-card-body">
           <i class="fa fa-building svc-card-icon" aria-hidden="true"></i>
           <h5>Business Registration</h5>
@@ -141,7 +147,7 @@
       </div>
 
       <div class="svc-card">
-        <img src="img/services/business-website-design.png" alt="Website Design" class="svc-card-img" loading="lazy" onerror="this.src='img/webdev-hero.png'">
+        <img src="img/services/business-website-design.png" alt="Website Design" class="svc-card-img" loading="lazy" width="400" height="190" onerror="this.src='img/webdev-hero.png'">
         <div class="svc-card-body">
           <i class="fa fa-laptop svc-card-icon" aria-hidden="true"></i>
           <h5>Website Design</h5>
@@ -154,7 +160,7 @@
       </div>
 
       <div class="svc-card">
-        <img src="img/services/logo-design.png" alt="Logo Design" class="svc-card-img" loading="lazy" onerror="this.src='img/design-hero.png'">
+        <img src="img/services/logo-design.png" alt="Logo Design" class="svc-card-img" loading="lazy" width="400" height="190" onerror="this.src='img/design-hero.png'">
         <div class="svc-card-body">
           <i class="fa fa-paint-brush svc-card-icon" aria-hidden="true"></i>
           <h5>Logo Design</h5>
@@ -167,7 +173,7 @@
       </div>
 
       <div class="svc-card">
-        <img src="img/services/social-media-management.png" alt="Social Media Marketing" class="svc-card-img" loading="lazy" onerror="this.src='img/marketing-hero.png'">
+        <img src="img/services/social-media-management.png" alt="Social Media Marketing" class="svc-card-img" loading="lazy" width="400" height="190" onerror="this.src='img/marketing-hero.png'">
         <div class="svc-card-body">
           <i class="fa fa-bullhorn svc-card-icon" aria-hidden="true"></i>
           <h5>Social Media Marketing</h5>
@@ -278,11 +284,11 @@
   <span class="float-wa-tooltip">Chat on WhatsApp</span>
 </a>
 
-<!-- Bootstrap JS (single load) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS (defer) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
 
-<!-- App JS -->
-<script src="js/services.js"></script>
-<script src="js/app.js"></script>
+<!-- App JS (defer) -->
+<script src="js/services.js" defer></script>
+<script src="js/app.js" defer></script>
 </body>
 </html>

@@ -198,8 +198,14 @@ function renderServiceGrid(data, containerId, fallbackImg) {
   const fb = fallbackImg || 'img/logo.png';
   container.innerHTML = data.map(svc => `
     <div class="svc-card" data-category="${svc.category||''}" data-name="${svc.name.toLowerCase()}">
-      <img src="img/services/${slugify(svc.name)}.png" alt="${svc.name}"
-           class="svc-card-img" loading="lazy" onerror="this.src='${fb}'">
+      <img src="img/services/${slugify(svc.name)}.png"
+           alt="${svc.name}"
+           class="svc-card-img"
+           loading="lazy"
+           width="400" height="190"
+           srcset="img/services/${slugify(svc.name)}.png 400w, img/services/${slugify(svc.name)}.png 800w"
+           sizes="(max-width: 600px) 100vw, 400px"
+           onerror="this.src='${fb}'">
       <div class="svc-card-body">
         <i class="fa ${svc.icon} svc-card-icon" aria-hidden="true"></i>
         <h5>${svc.name}</h5>
