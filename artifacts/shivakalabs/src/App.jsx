@@ -4,7 +4,7 @@
  * and lazy-loads each page for code splitting.
  */
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, ScrollRestoration } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar           from './components/Navbar';
 import Footer           from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
