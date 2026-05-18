@@ -1,6 +1,6 @@
-# [Project name]
+# ShivakaLabs
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A professional digital services website for ShivakaLabs — a Kenyan agency offering eCitizen portal assistance, web development, graphic design, and digital marketing.
 
 ## Run & Operate
 
@@ -22,15 +22,31 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/shivakalabs/` — frontend React + Vite app (served at `/`)
+- `artifacts/shivakalabs/src/App.jsx` — root routing component
+- `artifacts/shivakalabs/src/pages/` — page components (Home, About, ECitizen, WebDev, Design, Marketing, NotFound)
+- `artifacts/shivakalabs/src/components/` — shared components (Navbar, Footer, ServiceCard, ServiceGrid, CtaStrip, FloatingWhatsApp)
+- `artifacts/shivakalabs/src/data/services.js` — single source of truth for all service data
+- `artifacts/shivakalabs/src/app.css` — global styles and design tokens
+- `artifacts/shivakalabs/public/img/` — images including logo, hero images, and service card images
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Pure frontend app — no backend API routes needed; all data is static in `services.js`
+- react-router-dom v7 for client-side routing (BrowserRouter with lazy-loaded pages)
+- Font Awesome 4.7 loaded from CDN for icons; Josefin Sans from Google Fonts
+- WhatsApp deep links are the primary CTA mechanism (no server-side contact form)
+- Service images use slug-based filenames with fallbacks on `onError`
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Home page: hero, popular services grid, FAQ accordion, WhatsApp CTA
+- eCitizen Services: filterable/searchable grid of 90+ government portal services
+- Web Development: searchable grid of web dev services
+- Graphic Design: searchable grid of design services
+- Digital Marketing: searchable grid of marketing services
+- About Us: company story, team photo, and values
+- Floating WhatsApp button and sticky navbar on all pages
 
 ## User preferences
 
