@@ -4,7 +4,7 @@
  * and lazy-loads each page for code splitting.
  */
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Navbar           from './components/Navbar';
 import Footer           from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -34,7 +34,7 @@ function PageLoader() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       {/* Shared layout wrapper */}
       <Navbar />
 
@@ -54,6 +54,6 @@ export default function App() {
 
       <Footer />
       <FloatingWhatsApp />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
