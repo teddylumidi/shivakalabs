@@ -31,6 +31,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <header className="hero" id="home">
+        <div className="hero-bg" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}img/background.jpg)` }} aria-hidden="true" />
         <div className="hero-content">
           <span className="hero-eyebrow">Fast &bull; Reliable &bull; Professional</span>
           <h1>Shivaka<span className="accent">Labs</span></h1>
@@ -69,7 +70,7 @@ export default function Home() {
                 desc={svc.desc}
                 icon={svc.icon}
                 imgSlug={svc.img}
-                fallbackImg={`/img/${svc.fallback}.jpg`}
+                fallbackImg={`${import.meta.env.BASE_URL}img/${svc.fallback}.jpg`}
                 waMsg={svc.waMsg}
               />
             ))}

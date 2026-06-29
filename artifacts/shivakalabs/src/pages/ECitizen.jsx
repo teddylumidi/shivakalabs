@@ -44,7 +44,7 @@ export default function ECitizen() {
           <ServiceGrid
             services={ECITIZEN_SERVICES}
             filters={FILTERS}
-            fallbackImg="/img/ecitizen-hero.jpg"
+            fallbackImg={`${import.meta.env.BASE_URL}img/ecitizen-hero.jpg`}
           />
         </div>
       </section>

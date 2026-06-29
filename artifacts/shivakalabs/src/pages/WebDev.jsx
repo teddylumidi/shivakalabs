@@ -22,7 +22,7 @@ export default function WebDev() {
           {/* No category filters needed for webdev — all in one group */}
           <ServiceGrid
             services={WEBDEV_SERVICES}
-            fallbackImg="/img/webdev-hero.jpg"
+            fallbackImg={`${import.meta.env.BASE_URL}img/webdev-hero.jpg`}
           />
         </div>
       </section>

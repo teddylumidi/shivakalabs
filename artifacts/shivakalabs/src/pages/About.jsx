@@ -44,7 +44,7 @@ export default function About() {
               </p>
             </div>
             <div className="about-img">
-              <img src="/img/about-team.png" alt="ShivakaLabs Team" loading="lazy" />
+              <img src={`${import.meta.env.BASE_URL}img/about-team.png`} alt="ShivakaLabs Team" loading="lazy" />
             </div>
           </div>
 

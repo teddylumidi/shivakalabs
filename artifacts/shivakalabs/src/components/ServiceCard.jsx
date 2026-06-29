@@ -6,13 +6,14 @@ import { waLink, slugify } from '../data/services';
 
 export default function ServiceCard({ name, desc, icon, imgSlug, fallbackImg, waMsg, category }) {
   const slug = imgSlug || slugify(name);
-  const fb   = fallbackImg || '/img/logo.png';
+  const base = import.meta.env.BASE_URL;
+  const fb   = fallbackImg || `${base}img/logo.png`;
   const msg  = waMsg || name;
 
   return (
     <div className="svc-card" data-category={category || ''}>
       <img
-        src={`/img/services/${slug}.png`}
+        src={`${base}img/services/${slug}.png`}
         alt={name}
         className="svc-card-img"
         loading="lazy"

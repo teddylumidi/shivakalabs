@@ -21,7 +21,7 @@ export default function Marketing() {
         <div className="container">
           <ServiceGrid
             services={MARKETING_SERVICES}
-            fallbackImg="/img/marketing-hero.jpg"
+            fallbackImg={`${import.meta.env.BASE_URL}img/marketing-hero.jpg`}
           />
         </div>
       </section>

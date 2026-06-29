@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="footer-brand">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.75rem' }}>
-              <img src="/img/logo.png" alt="ShivakaLabs Logo" style={{ height: 42 }} />
+              <img src={`${import.meta.env.BASE_URL}img/logo.png`} alt="ShivakaLabs Logo" style={{ height: 42 }} />
               <h3>Shivaka<span className="accent">Labs</span></h3>
             </div>
             <p>

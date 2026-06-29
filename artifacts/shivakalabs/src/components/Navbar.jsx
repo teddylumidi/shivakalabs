@@ -42,7 +42,7 @@ export default function Navbar() {
 
           {/* Brand */}
           <Link className="navbar-brand" to="/">
-            <img src="/img/logo.png" alt="ShivakaLabs Logo" className="logo-img" />
+            <img src={`${import.meta.env.BASE_URL}img/logo.png`} alt="ShivakaLabs Logo" className="logo-img" />
             Shivaka<span className="brand-accent">Labs</span>
           </Link>
 
