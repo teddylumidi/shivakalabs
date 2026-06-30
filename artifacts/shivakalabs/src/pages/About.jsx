@@ -1,6 +1,7 @@
 /**
  * About.jsx — About Us page: story, team photo, and company values.
  */
+import PageHero from '../components/PageHero';
 import CtaStrip from '../components/CtaStrip';
 
 const VALUES = [
@@ -13,15 +14,11 @@ const VALUES = [
 export default function About() {
   return (
     <>
-      {/* Page Hero */}
-      <div className="page-hero">
-        <i className="fa fa-info-circle page-hero-icon" aria-hidden="true" />
-        <h1>About <span className="accent">ShivakaLabs</span></h1>
-        <p>
-          We are a Kenyan digital services agency helping individuals and businesses navigate
-          government portals, build online presence, and grow digitally.
-        </p>
-      </div>
+      <PageHero
+        icon="fa-info-circle"
+        title={<h1>About <span className="accent">ShivakaLabs</span></h1>}
+        subtitle="We are a Kenyan digital services agency helping individuals and businesses navigate government portals, build online presence, and grow digitally."
+      />
 
       <section>
         <div className="container about-section">
@@ -44,7 +41,11 @@ export default function About() {
               </p>
             </div>
             <div className="about-img">
-              <img src={`${import.meta.env.BASE_URL}img/about-team.png`} alt="ShivakaLabs Team" loading="lazy" />
+              <img
+                src={`${import.meta.env.BASE_URL}img/about-team.webp`}
+                alt="ShivakaLabs Team"
+                loading="lazy"
+              />
             </div>
           </div>
 

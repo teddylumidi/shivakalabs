@@ -26,12 +26,24 @@ if (!basePath) {
   );
 }
 
+// Strip trailing slash for path matching, ensure one for substitution
+const base = basePath.endsWith('/') ? basePath : `${basePath}/`;
+
 export default defineConfig({
   base: basePath,
   plugins: [
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
+    // Fix root-relative paths in index.html (preload, favicon) to use the correct base
+    {
+      name: 'rewrite-html-asset-paths',
+      transformIndexHtml(html) {
+        return html
+          .replace(/href="\/img\//g, `href="${base}img/`)
+          .replace(/href="\/img\//g, `href="${base}img/`);
+      },
+    },
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [
@@ -57,6 +69,25 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    target: "es2020",
+    minify: "esbuild",
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Bundle react + react-dom together in one vendor chunk
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+            return 'vendor-react';
+          }
+          // Router in its own chunk — shared by all pages
+          if (id.includes('node_modules/react-router')) {
+            return 'vendor-router';
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+    // Inline tiny assets (< 4 KB) as base64 to save round trips
+    assetsInlineLimit: 4096,
   },
   server: {
     port,

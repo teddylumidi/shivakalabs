@@ -1,6 +1,7 @@
 /**
  * Design.jsx — Graphic design services page.
  */
+import PageHero from '../components/PageHero';
 import ServiceGrid from '../components/ServiceGrid';
 import CtaStrip from '../components/CtaStrip';
 import { DESIGN_SERVICES } from '../data/services';
@@ -8,20 +9,17 @@ import { DESIGN_SERVICES } from '../data/services';
 export default function Design() {
   return (
     <>
-      <div className="page-hero">
-        <i className="fa fa-paint-brush page-hero-icon" aria-hidden="true" />
-        <h1>Graphic <span className="accent">Design</span></h1>
-        <p>
-          Logos, flyers, posters, brochures, social media graphics and full branding packages —
-          professional design that makes your brand stand out.
-        </p>
-      </div>
+      <PageHero
+        icon="fa-paint-brush"
+        title={<h1>Graphic <span className="accent">Design</span></h1>}
+        subtitle="Logos, flyers, posters, brochures, social media graphics and full branding packages — professional design that makes your brand stand out."
+      />
 
       <section>
         <div className="container">
           <ServiceGrid
             services={DESIGN_SERVICES}
-            fallbackImg={`${import.meta.env.BASE_URL}img/design-hero.jpg`}
+            fallbackImg={`${import.meta.env.BASE_URL}img/design-hero.webp`}
           />
         </div>
       </section>

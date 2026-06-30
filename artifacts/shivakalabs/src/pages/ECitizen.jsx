@@ -2,6 +2,7 @@
  * ECitizen.jsx — eCitizen government portal services page.
  * Features a large filterable service grid with category tabs.
  */
+import PageHero from '../components/PageHero';
 import ServiceGrid from '../components/ServiceGrid';
 import CtaStrip from '../components/CtaStrip';
 import { ECITIZEN_SERVICES } from '../data/services';
@@ -29,22 +30,18 @@ const FILTERS = [
 export default function ECitizen() {
   return (
     <>
-      {/* Page Hero */}
-      <div className="page-hero">
-        <i className="fa fa-globe page-hero-icon" aria-hidden="true" />
-        <h1>eCitizen <span className="accent">Services</span></h1>
-        <p>
-          We help you navigate Kenya's government portals — from KRA and NTSA to Passport,
-          Business Registration, and more. Professional, fast, and stress-free.
-        </p>
-      </div>
+      <PageHero
+        icon="fa-globe"
+        title={<h1>eCitizen <span className="accent">Services</span></h1>}
+        subtitle="We help you navigate Kenya's government portals — from KRA and NTSA to Passport, Business Registration, and more. Professional, fast, and stress-free."
+      />
 
       <section>
         <div className="container">
           <ServiceGrid
             services={ECITIZEN_SERVICES}
             filters={FILTERS}
-            fallbackImg={`${import.meta.env.BASE_URL}img/ecitizen-hero.jpg`}
+            fallbackImg={`${import.meta.env.BASE_URL}img/ecitizen-hero.webp`}
           />
         </div>
       </section>
