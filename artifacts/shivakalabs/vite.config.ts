@@ -39,9 +39,7 @@ export default defineConfig({
     {
       name: 'rewrite-html-asset-paths',
       transformIndexHtml(html) {
-        return html
-          .replace(/href="\/img\//g, `href="${base}img/`)
-          .replace(/href="\/img\//g, `href="${base}img/`);
+        return html.replace(/href="\/img\//g, `href="${base}img/`);
       },
     },
     ...(process.env.NODE_ENV !== "production" &&
