@@ -44,6 +44,12 @@ export const PAGES = [
     description:
       'Social media management, SEO, Google Business Profile setup, Meta and Google Ads, email marketing and lead generation services from ShivakaLabs.',
   },
+  {
+    path: '/documents',
+    title: 'CV Writing KSh 100 & Cover Letters KSh 30 in Kenya | ShivakaLabs',
+    description:
+      'Professional CV writing for KSh 100, cover letters for KSh 30, plus application, resignation, recommendation and official letters. Pay with M-Pesa or card and download in Word or PDF.',
+  },
 ];
 
 export const NOT_FOUND = {

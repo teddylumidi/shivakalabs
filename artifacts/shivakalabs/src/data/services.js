@@ -257,7 +257,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: 'How do I pay for services?',
-    a: 'Payment is done via <strong>M-Pesa</strong> after we discuss your requirements on WhatsApp. The cost depends on the specific service and complexity.',
+    a: 'For most services, payment is via <strong>M-Pesa</strong> after we discuss your requirements on WhatsApp; the cost depends on the service. <a href="documents/">CV and document writing</a> is paid upfront online with <strong>M-Pesa or Visa/Mastercard</strong>: CVs are KSh 100 and cover letters KSh 30.',
   },
   {
     q: 'How long does processing take?',

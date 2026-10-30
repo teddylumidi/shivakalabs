@@ -2,9 +2,18 @@
  * Home.jsx — Landing page with hero, popular services, FAQ, and CTA strip.
  */
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ServiceCard from '../components/ServiceCard';
 import CtaStrip from '../components/CtaStrip';
+import HowItWorks from '../components/HowItWorks';
 import { POPULAR_SERVICES, FAQ_ITEMS, WA_NUMBER } from '../data/services';
+
+const HOW_STEPS = [
+  { icon: 'fa-search',   title: 'Choose a service', text: 'Find your service and tap “Get Help on WhatsApp” — the chat opens with your request filled in.' },
+  { icon: 'fa-file-o',   title: 'Send your details', text: 'Share the details and documents we ask for. See what to prepare on each service page.' },
+  { icon: 'fa-mobile',   title: 'Confirm and pay', text: 'We tell you the cost before we start, and you pay via M-Pesa.' },
+  { icon: 'fa-check',    title: 'We get it done', text: 'We complete the work and send you the confirmation, receipt or files on WhatsApp.' },
+];
 
 // ── FAQ Item ─────────────────────────────────────────────────────────────────
 function FaqItem({ id, q, a }) {
@@ -84,6 +93,23 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Documents promo */}
+      <section className="promo-section" aria-labelledby="promo-title">
+        <div className="container">
+          <div className="promo-band">
+            <div>
+              <span className="promo-tag">New</span>
+              <h2 id="promo-title" className="promo-title">CV writing <span className="accent">KSh 100</span> · Cover letters <span className="accent">KSh 30</span></h2>
+              <p>Fill in your details, pay with M-Pesa or card, and download your document in Word or PDF instantly.</p>
+            </div>
+            <Link to="/documents" className="btn-gold">Order a document <i className="fa fa-arrow-right" aria-hidden="true" /></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <HowItWorks steps={HOW_STEPS} subtitle="Four simple steps, all on WhatsApp" />
 
       {/* FAQ */}
       <section className="faq-section" id="faq">

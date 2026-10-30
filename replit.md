@@ -20,7 +20,8 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 - pnpm workspace with a single package: `artifacts/shivakalabs`
 - React 19 + Vite 7, react-router-dom v7 (BrowserRouter, clean URLs)
 - Plain CSS (`src/app.css`), Font Awesome 4.7 and Josefin Sans from CDNs
-- No backend: all content is static; WhatsApp deep links are the contact mechanism
+- No backend for the site itself: content is static; WhatsApp deep links are the main contact mechanism
+- Paid document writing (CV & Documents page) uses a separate Vercel API in `services/document-api` (Paystack payments + Claude writing + Word/PDF output). See its README for setup and environment variables
 
 ## Where things live
 
@@ -29,6 +30,9 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 - `artifacts/shivakalabs/src/components/` — Navbar, Footer, ServiceCard, ServiceGrid, PageHero, CtaStrip, FloatingWhatsApp, Seo, ScrollManager
 - `artifacts/shivakalabs/src/data/services.js` — single source of truth for all services, FAQ and the WhatsApp number
 - `artifacts/shivakalabs/src/data/pages.js` — per-page titles and meta descriptions (used for SEO and the sitemap)
+- `artifacts/shivakalabs/src/data/requirements.js` — "What to prepare" lists per eCitizen category
+- `services/document-api/lib/catalog.js` — paid document types, prices and form fields (shared by the site and the API, so the shown price is the charged price)
+- `artifacts/shivakalabs/src/lib/docsApi.js` + `components/OrderDialog.jsx` — order form, Paystack popup and downloads
 - `artifacts/shivakalabs/src/entry-server.jsx` + `scripts/postbuild.mjs` — build-time prerendering, 404.html, sitemap.xml, robots.txt
 - `artifacts/shivakalabs/public/img/` — logo and service card images (WebP only)
 
@@ -48,6 +52,8 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 - Graphic Design: searchable grid of design services
 - Digital Marketing: searchable grid of marketing services
 - About Us: company story, team photo, and values
+- CV & Documents: paid document writing (CV KSh 100, cover letter KSh 30, other letters/documents). Details form → pay first via Paystack (M-Pesa or card) → download Word and PDF
+- How it works: on Home, eCitizen and CV & Documents; eCitizen page also lists what to prepare per category
 - Floating WhatsApp button and sticky navbar on all pages
 
 ## User preferences
@@ -57,5 +63,7 @@ _Populate as you build — explicit user instructions worth remembering across s
 ## Gotchas
 
 - Add new images as WebP, or drop PNG/JPG files into `public/img` and run the `images` script (it converts and deletes the originals)
+- The document API URL defaults to `https://shivakalabs-docs.vercel.app`; if the Vercel project gets another URL, publish with `VITE_DOCS_API_URL=<url> pnpm run publish`
+- To change document prices or add a document type, edit `services/document-api/lib/catalog.js` (and its guidance in `lib/writer.js`), redeploy the API, then republish the site
 - To add a page: add the route in `App.jsx`, its metadata in `src/data/pages.js`, and a nav link in `Navbar.jsx`/`Footer.jsx`
 

@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: 'Web Development',  to: '/webdev' },
   { label: 'Graphic Design',   to: '/design' },
   { label: 'Digital Marketing',to: '/marketing' },
+  { label: 'CV & Documents',   to: '/documents' },
 ];
 
 export default function Navbar() {

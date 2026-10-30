@@ -57,6 +57,7 @@ export default function Footer() {
               <li><Link to="/webdev">Web Development</Link></li>
               <li><Link to="/design">Graphic Design</Link></li>
               <li><Link to="/marketing">Digital Marketing</Link></li>
+              <li><Link to="/documents">CV &amp; Documents</Link></li>
             </ul>
           </div>
 

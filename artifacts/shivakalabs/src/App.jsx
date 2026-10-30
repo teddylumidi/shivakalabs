@@ -25,6 +25,7 @@ const ECitizen  = lazy(() => import('./pages/ECitizen'));
 const WebDev    = lazy(() => import('./pages/WebDev'));
 const Design    = lazy(() => import('./pages/Design'));
 const Marketing = lazy(() => import('./pages/Marketing'));
+const Documents = lazy(() => import('./pages/Documents'));
 const NotFound  = lazy(() => import('./pages/NotFound'));
 
 /** Full-screen loading spinner shown during page lazy-load */
@@ -60,6 +61,7 @@ export function AppShell() {
             <Route path="/webdev"    element={<WebDev />} />
             <Route path="/design"    element={<Design />} />
             <Route path="/marketing" element={<Marketing />} />
+            <Route path="/documents" element={<Documents />} />
             <Route path="*"          element={<NotFound />} />
           </Routes>
         </Suspense>

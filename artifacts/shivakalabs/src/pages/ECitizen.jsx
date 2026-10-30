@@ -5,7 +5,16 @@
 import PageHero from '../components/PageHero';
 import ServiceGrid from '../components/ServiceGrid';
 import CtaStrip from '../components/CtaStrip';
+import HowItWorks from '../components/HowItWorks';
 import { ECITIZEN_SERVICES } from '../data/services';
+import { ECITIZEN_REQUIREMENTS } from '../data/requirements';
+
+const STEPS = [
+  { icon: 'fa-search',   title: 'Pick your service', text: 'Find it below and tap “Get Help on WhatsApp”.' },
+  { icon: 'fa-file-o',   title: 'Send what we need', text: 'Share the details and documents listed under “What to prepare”.' },
+  { icon: 'fa-mobile',   title: 'Confirm and pay', text: 'We tell you the cost before we start, and you pay via M-Pesa.' },
+  { icon: 'fa-check',    title: 'Receive confirmation', text: 'We submit or follow up and send you the receipt, status or document.' },
+];
 
 // Filter tabs mapping category value → display label
 const FILTERS = [
@@ -42,6 +51,29 @@ export default function ECitizen() {
             services={ECITIZEN_SERVICES}
             filters={FILTERS}
           />
+        </div>
+      </section>
+
+      <HowItWorks steps={STEPS} className="how-alt" />
+
+      <section aria-labelledby="prepare-title">
+        <div className="container">
+          <div className="section-title">
+            <h2 id="prepare-title">What to <span className="accent">Prepare</span></h2>
+            <p className="subtitle">Have these ready to speed things up. Requirements can vary by case — we confirm before starting.</p>
+          </div>
+          <div className="req-grid">
+            {FILTERS.filter(f => ECITIZEN_REQUIREMENTS[f.value]).map(f => (
+              <details key={f.value} className="req-card">
+                <summary>{f.label}</summary>
+                <ul>
+                  {ECITIZEN_REQUIREMENTS[f.value].map(item => (
+                    <li key={item} className={item.startsWith('Note:') ? 'req-note' : undefined}>{item}</li>
+                  ))}
+                </ul>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
