@@ -24,7 +24,7 @@ export const PAGES = [
     path: '/ecitizen',
     title: 'eCitizen Services Assistance in Kenya | KRA, NTSA, Passport, ID | ShivakaLabs',
     description:
-      'Help with 90+ eCitizen and government portal services: KRA PIN and returns, NTSA, passports, national ID, good conduct, birth certificates, business registration and more.',
+      'Help with 75+ eCitizen and government portal services you can complete online: KRA PIN and returns, NTSA, passports, good conduct, birth certificates, business registration and more.',
   },
   {
     path: '/webdev',

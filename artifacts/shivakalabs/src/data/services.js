@@ -25,23 +25,14 @@ export function slugify(text) {
 // ── eCitizen Services ────────────────────────────────────────────────────────
 export const ECITIZEN_SERVICES = [
   // National ID
-  { name: 'New ID Application Assistance', desc: 'Help applying for your first national identity card online via eCitizen.', category: 'id', icon: 'fa-id-card' },
-  { name: 'ID Replacement Assistance', desc: 'Assistance replacing a lost, damaged or defaced national ID card.', category: 'id', icon: 'fa-id-card' },
-  { name: 'ID Correction / Amendment', desc: 'Help correcting name, date of birth or other details on your national ID.', category: 'id', icon: 'fa-id-card' },
-  { name: 'Lost ID Replacement Guidance', desc: 'Step-by-step guidance for replacing a lost national identity card.', category: 'id', icon: 'fa-id-card' },
   { name: 'ID Status Follow-up', desc: 'Track and follow up on your national ID application status.', category: 'id', icon: 'fa-id-card' },
-  { name: 'National Registration Form Assistance', desc: 'Assistance filling and submitting national registration forms correctly.', category: 'id', icon: 'fa-id-card' },
   // Birth
   { name: 'Birth Certificate Application', desc: 'Apply for a birth certificate through eCitizen with professional assistance.', category: 'birth', icon: 'fa-child' },
   { name: 'Birth Certificate Replacement', desc: 'Replace a lost or damaged birth certificate quickly and easily.', category: 'birth', icon: 'fa-child' },
-  { name: 'Late Birth Registration Assistance', desc: 'Guidance for registering births that were not registered at the time of birth.', category: 'birth', icon: 'fa-child' },
   { name: 'Birth Certificate Follow-up', desc: 'Track and follow up on pending birth certificate applications.', category: 'birth', icon: 'fa-child' },
-  { name: 'Birth Certificate Correction / Amendment', desc: 'Correct errors in names or dates on an existing birth certificate.', category: 'birth', icon: 'fa-child' },
-  { name: 'Child Registration Guidance', desc: 'Full guidance on registering a newborn or young child.', category: 'birth', icon: 'fa-child' },
   // Death
   { name: 'Death Certificate Application', desc: 'Assistance applying for an official death certificate via eCitizen.', category: 'death', icon: 'fa-file-text' },
   { name: 'Death Certificate Replacement', desc: 'Replace a lost or damaged death certificate professionally.', category: 'death', icon: 'fa-file-text' },
-  { name: 'Death Registration Assistance', desc: 'Guidance on registering a death and obtaining official documentation.', category: 'death', icon: 'fa-file-text' },
   { name: 'Death Certificate Follow-up', desc: 'Track pending death certificate applications and resolve delays.', category: 'death', icon: 'fa-file-text' },
   // Marriage
   { name: 'Marriage Certificate Application', desc: 'Apply for an official marriage certificate with guided assistance.', category: 'marriage', icon: 'fa-heart' },

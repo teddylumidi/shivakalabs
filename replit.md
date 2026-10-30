@@ -43,7 +43,7 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 ## Product
 
 - Home page: hero, popular services grid, FAQ accordion, WhatsApp CTA
-- eCitizen Services: filterable/searchable grid of 90+ government portal services
+- eCitizen Services: filterable/searchable grid of 75+ government portal services (only ones that can be done online; in-person-only services such as new IDs were removed)
 - Web Development: searchable grid of web dev services
 - Graphic Design: searchable grid of design services
 - Digital Marketing: searchable grid of marketing services
