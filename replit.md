@@ -33,6 +33,7 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 - `artifacts/shivakalabs/src/data/requirements.js` — "What to prepare" lists per eCitizen category
 - `services/document-api/lib/catalog.js` — paid document types, prices and form fields (shared by the site and the API, so the shown price is the charged price)
 - `artifacts/shivakalabs/src/lib/docsApi.js` + `components/OrderDialog.jsx` — order form, Paystack popup and downloads
+- `artifacts/shivakalabs/src/pages/documents/` — Documents hub, category pages and passport photo tool; `src/lib/passportPhoto.js` does background removal and framing
 - `artifacts/shivakalabs/src/entry-server.jsx` + `scripts/postbuild.mjs` — build-time prerendering, 404.html, sitemap.xml, robots.txt
 - `artifacts/shivakalabs/public/img/` — logo and service card images (WebP only)
 
@@ -52,7 +53,9 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 - Graphic Design: searchable grid of design services
 - Digital Marketing: searchable grid of marketing services
 - About Us: company story, team photo, and values
-- CV & Documents: paid document writing (CV KSh 100, cover letter KSh 30, other letters/documents). Details form → pay first via Paystack (M-Pesa or card) → download Word and PDF
+- Documents section (`/documents`, with its own sub-menu): Career, Letters, Legal, Business, Personal and Passport Photo pages. 26 paid document types (CV KSh 100, cover letter KSh 30, affidavits, agreements, business plans…). Details form → pay first via Paystack (M-Pesa or card) → download Word and PDF
+- Passport photo (`/documents/passport-photo`, KSh 50): upload → background removed and face framed in the browser → choose size and colour → pay → JPG and A4 print PDF
+- Web Development page shows website packages: Basic KSh 15,000, Standard KSh 30,000, Premium KSh 60,000 (`WEB_PACKAGES` in services.js)
 - How it works: on Home, eCitizen and CV & Documents; eCitizen page also lists what to prepare per category
 - Floating WhatsApp button and sticky navbar on all pages
 

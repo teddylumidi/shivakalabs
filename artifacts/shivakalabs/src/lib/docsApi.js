@@ -37,6 +37,8 @@ async function post(path, body) {
 
 export const createOrder = (docType, details) => post('/api/order', { docType, details });
 export const generateDocument = (reference, docType, details) => post('/api/generate', { reference, docType, details });
+export const createPhotoOrder = (sizeId, email, fullName, photoHash) => post('/api/photo-order', { sizeId, email, fullName, photoHash });
+export const generatePhoto = (reference, sizeId, background, image) => post('/api/photo', { reference, sizeId, background, image });
 
 let paystackPromise;
 function loadPaystack() {

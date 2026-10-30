@@ -84,3 +84,42 @@ test('generate returns a real DOCX and PDF for a paid CV', async () => {
 test('PDF sanitizer keeps Latin text and drops unsupported characters', () => {
   assert.equal(sanitize('Café – “ok” 😀 Ł'), 'Café – “ok”  L');
 });
+
+import { DOCUMENT_CATEGORIES, PHOTO_SIZES } from '../lib/catalog.js';
+
+test('every document type is complete and consistent', () => {
+  const ids = new Set();
+  const cats = new Set(DOCUMENT_CATEGORIES.map(c => c.id));
+  for (const t of DOCUMENT_TYPES) {
+    assert.ok(!ids.has(t.id), `duplicate id ${t.id}`); ids.add(t.id);
+    assert.ok(cats.has(t.category), `${t.id} has unknown category`);
+    assert.ok(['cv', 'letter', 'document', 'any'].includes(t.format), `${t.id} format`);
+    assert.ok(t.guide && t.guide.length > 40, `${t.id} needs writing guidance`);
+    assert.ok(Number.isInteger(t.price) && t.price > 0, `${t.id} price`);
+    assert.match(newReference(t.id), /^SL-[A-Z]{1,4}-\d{8}-[0-9A-F]{8}$/);
+    const keys = t.fields.map(f => f.key);
+    assert.equal(new Set(keys).size, keys.length, `${t.id} duplicate field keys`);
+  }
+  for (const c of cats) assert.ok(DOCUMENT_TYPES.some(t => t.category === c), `${c} is empty`);
+  assert.ok(PHOTO_SIZES.find(s => s.id === 'ke-passport').widthMm === 50);
+});
+
+test('custom documents refuse official records', () => {
+  const base = { fullName: 'A B', phone: '0712', email: 'a@b.co', content: 'x' };
+  assert.throws(() => validateOrder({ docType: 'custom-document', details: { ...base, documentType: 'Payslip for March' } }), /official records/);
+  assert.throws(() => validateOrder({ docType: 'custom-document', details: { ...base, documentType: 'KCSE result slip' } }), /official records/);
+  assert.doesNotThrow(() => validateOrder({ docType: 'custom-document', details: { ...base, documentType: 'Church event notice' } }));
+});
+
+test('legal documents are written with the document layout', async () => {
+  const type = getDocumentType('affidavit');
+  const details = { fullName: 'John Otieno', phone: '0712', email: 'j@o.co', idNumber: '12345678', purpose: 'Name confirmation', facts: 'x' };
+  const { details: d } = validateOrder({ docType: 'affidavit', details });
+  let usedTool;
+  const out = await handleGenerate({ reference: newReference('affidavit'), docType: 'affidavit', details }, {
+    verify: async () => paidTx(type, d),
+    client: { messages: { create: async a => { usedTool = a.tool_choice.name; return { content: [{ type: 'tool_use', name: 'write_document', input: { title: 'REPUBLIC OF KENYA', subtitle: 'AFFIDAVIT', sections: [{ paragraphs: ['1. That I am an adult.'] }] } }] }; } } },
+  });
+  assert.equal(usedTool, 'write_document');
+  assert.equal(Buffer.from(out.pdf, 'base64').subarray(0, 4).toString(), '%PDF');
+});

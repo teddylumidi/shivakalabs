@@ -25,7 +25,11 @@ const ECitizen  = lazy(() => import('./pages/ECitizen'));
 const WebDev    = lazy(() => import('./pages/WebDev'));
 const Design    = lazy(() => import('./pages/Design'));
 const Marketing = lazy(() => import('./pages/Marketing'));
-const Documents = lazy(() => import('./pages/Documents'));
+const DocumentsHub     = lazy(() => import('./pages/documents/DocumentsHub'));
+const DocumentCategory = lazy(() => import('./pages/documents/DocumentCategory'));
+const PassportPhoto    = lazy(() => import('./pages/documents/PassportPhoto'));
+
+const DOC_CATEGORY_IDS = ['career', 'letters', 'legal', 'business', 'personal'];
 const NotFound  = lazy(() => import('./pages/NotFound'));
 
 /** Full-screen loading spinner shown during page lazy-load */
@@ -61,7 +65,11 @@ export function AppShell() {
             <Route path="/webdev"    element={<WebDev />} />
             <Route path="/design"    element={<Design />} />
             <Route path="/marketing" element={<Marketing />} />
-            <Route path="/documents" element={<Documents />} />
+            <Route path="/documents" element={<DocumentsHub />} />
+            {DOC_CATEGORY_IDS.map(id => (
+              <Route key={id} path={`/documents/${id}`} element={<DocumentCategory categoryId={id} />} />
+            ))}
+            <Route path="/documents/passport-photo" element={<PassportPhoto />} />
             <Route path="*"          element={<NotFound />} />
           </Routes>
         </Suspense>

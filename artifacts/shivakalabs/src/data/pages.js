@@ -46,9 +46,45 @@ export const PAGES = [
   },
   {
     path: '/documents',
+    title: 'CV Writing, Letters, Legal Documents & Passport Photos | ShivakaLabs',
+    description:
+      'CVs for KSh 100, cover letters for KSh 30, affidavits, agreements, business plans and passport photos. Pay with M-Pesa or card and download in Word, PDF or JPG instantly.',
+  },
+  {
+    path: '/documents/career',
     title: 'CV Writing KSh 100 & Cover Letters KSh 30 in Kenya | ShivakaLabs',
     description:
-      'Professional CV writing for KSh 100, cover letters for KSh 30, plus application, resignation, recommendation and official letters. Pay with M-Pesa or card and download in Word or PDF.',
+      'Professional CV writing for KSh 100, cover letters for KSh 30, plus job application, resignation and recommendation letters. Pay with M-Pesa or card, download Word or PDF.',
+  },
+  {
+    path: '/documents/letters',
+    title: 'Official, Leave, Visa Invitation & Authorisation Letters | ShivakaLabs',
+    description:
+      'Formal letters written for you: official and business letters, leave applications, visa invitation letters and authorisation letters. Pay with M-Pesa and download instantly.',
+  },
+  {
+    path: '/documents/legal',
+    title: 'Affidavits, Tenancy & Sale Agreements, Contracts in Kenya | ShivakaLabs',
+    description:
+      'Affidavits, tenancy agreements, motor vehicle sale agreements, loan agreements, employment contracts, NDAs, power of attorney and travel consent, in standard Kenyan formats.',
+  },
+  {
+    path: '/documents/business',
+    title: 'Business Plans, Proposals, Company Profiles & Minutes | ShivakaLabs',
+    description:
+      'Business plans, business proposals, company profiles and meeting minutes for chamas, boards and SMEs. Pay with M-Pesa or card and download in Word or PDF.',
+  },
+  {
+    path: '/documents/personal',
+    title: 'Speech, Eulogy & Custom Document Writing | ShivakaLabs',
+    description:
+      'Wedding and event speeches, eulogies and life histories, and any other written document. Pay with M-Pesa or card and download in Word or PDF.',
+  },
+  {
+    path: '/documents/passport-photo',
+    title: 'Passport Photo Online KSh 50 – Kenya Passport, Visa & ID Size | ShivakaLabs',
+    description:
+      'Upload a photo and get a passport-size photo with a white or coloured background for KSh 50. Kenya passport 50×50 mm, 35×45 mm and 2×2 in. Download JPG or print-ready PDF.',
   },
 ];
 

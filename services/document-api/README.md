@@ -19,6 +19,15 @@ Word + PDF ◄──── base64 files ──────┘ render DOCX + PDF
 Nothing is written until Paystack confirms the payment. Prices live in
 `lib/catalog.js` (also imported by the website, so the shown price is the charged price).
 
+## Passport photos
+
+The browser removes the background and frames the face with Google MediaPipe
+(Apache-2.0, loaded from jsDelivr), shows a watermarked preview, and uploads
+the transparent cutout only after payment. Payment is bound to the SHA-256 of
+that cutout, so one payment buys one photo; the background colour can be
+changed and re-downloaded free. Sizes and colours are in `lib/catalog.js`
+(Kenya passport/visa 50 × 50 mm, white background).
+
 ## Files
 
 | Path | Purpose |
@@ -27,6 +36,9 @@ Nothing is written until Paystack confirms the payment. Prices live in
 | `api/order.js` | `POST /api/order` — validate details, start Paystack payment |
 | `api/generate.js` | `POST /api/generate` — verify payment, write and return files |
 | `api/health.js` | `GET /api/health` — shows whether keys are configured (never the keys) |
+| `api/photo-order.js` | `POST /api/photo-order` — start KSh 50 payment for a passport photo |
+| `api/photo.js` | `POST /api/photo` — verify payment, return JPG (under 300 KB) + A4 print PDF |
+| `lib/photo.js` | Photo sizes/backgrounds handling, JPG and print sheet rendering (sharp + pdf-lib) |
 | `lib/writer.js` | Claude prompt and writing rules per document type |
 | `lib/layout.js`, `lib/render-*.js` | Turn written content into matching Word and PDF files |
 

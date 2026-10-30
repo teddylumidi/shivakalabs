@@ -257,7 +257,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: 'How do I pay for services?',
-    a: 'For most services, payment is via <strong>M-Pesa</strong> after we discuss your requirements on WhatsApp; the cost depends on the service. <a href="documents/">CV and document writing</a> is paid upfront online with <strong>M-Pesa or Visa/Mastercard</strong>: CVs are KSh 100 and cover letters KSh 30.',
+    a: 'For most services, payment is via <strong>M-Pesa</strong> after we discuss your requirements on WhatsApp; the cost depends on the service. <a href="documents/">Documents and passport photos</a> are paid upfront online with <strong>M-Pesa or Visa/Mastercard</strong>: CVs are KSh 100, cover letters KSh 30 and passport photos KSh 50.',
   },
   {
     q: 'How long does processing take?',
@@ -274,5 +274,54 @@ export const FAQ_ITEMS = [
   {
     q: 'Can you help both individuals and businesses?',
     a: 'Yes — we serve individuals needing personal documents as well as businesses needing registration, websites, design and marketing. No job is too small or too large.',
+  },
+];
+
+/**
+ * Website packages shown on the Web Development page. Prices in KSh.
+ * Inclusions are a starting point — adjust to what each package really covers.
+ */
+export const WEB_PACKAGES = [
+  {
+    name: 'Basic',
+    price: 15000,
+    tagline: 'A professional online presence for a small business.',
+    features: [
+      'Up to 5 pages',
+      'Mobile-friendly design',
+      'WhatsApp button and contact form',
+      'Google Maps location',
+      'Basic on-page SEO',
+      '1 round of revisions',
+    ],
+  },
+  {
+    name: 'Standard',
+    price: 30000,
+    tagline: 'A custom business website built to bring in customers.',
+    popular: true,
+    features: [
+      'Up to 10 pages',
+      'Custom design to match your brand',
+      'Blog or news section',
+      'Google Business Profile setup',
+      'SEO setup with Google Analytics and Search Console',
+      'Speed optimisation',
+      '3 rounds of revisions and 1 month of support',
+    ],
+  },
+  {
+    name: 'Premium',
+    price: 60000,
+    tagline: 'Online shop or advanced website with custom features.',
+    features: [
+      'Up to 20 pages, or a full online shop',
+      'M-Pesa and card payments',
+      'Bookings, quotes or custom forms',
+      'Product or listings management you can update',
+      'Advanced SEO and performance tuning',
+      'Training on managing your site',
+      '3 months of support',
+    ],
   },
 ];

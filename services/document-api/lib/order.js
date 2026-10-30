@@ -8,7 +8,7 @@
  * re-downloaded, but it can't be reused to write a different document.
  */
 import { createHash, randomBytes } from 'node:crypto';
-import { getDocumentType } from './catalog.js';
+import { getDocumentType, BLOCKED_DOCUMENTS } from './catalog.js';
 
 export class HttpError extends Error {
   constructor(status, message) {
@@ -33,6 +33,9 @@ export function validateOrder(body) {
     if (value.length > field.max) throw new HttpError(400, `${field.label} is too long (max ${field.max} characters).`);
     if (value && field.type === 'email' && !EMAIL_RE.test(value)) throw new HttpError(400, 'Please enter a valid email address.');
     if (value) details[field.key] = value;
+  }
+  if (type.id === 'custom-document' && BLOCKED_DOCUMENTS.test(details.documentType || '')) {
+    throw new HttpError(400, 'We can’t prepare official records such as certificates, statements, receipts or IDs. Message us on WhatsApp if you need help getting the real document.');
   }
   return { type, details };
 }

@@ -101,9 +101,9 @@ export default function Home() {
             <div>
               <span className="promo-tag">New</span>
               <h2 id="promo-title" className="promo-title">CV writing <span className="accent">KSh 100</span> · Cover letters <span className="accent">KSh 30</span></h2>
-              <p>Fill in your details, pay with M-Pesa or card, and download your document in Word or PDF instantly.</p>
+              <p>Plus legal agreements, affidavits, business plans and <Link to="/documents/passport-photo" className="accent">passport photos for KSh 50</Link>. Pay with M-Pesa or card and download instantly.</p>
             </div>
-            <Link to="/documents" className="btn-gold">Order a document <i className="fa fa-arrow-right" aria-hidden="true" /></Link>
+            <Link to="/documents" className="btn-gold">Browse documents <i className="fa fa-arrow-right" aria-hidden="true" /></Link>
           </div>
         </div>
       </section>

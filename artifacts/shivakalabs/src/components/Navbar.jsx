@@ -13,8 +13,10 @@ const NAV_LINKS = [
   { label: 'Web Development',  to: '/webdev' },
   { label: 'Graphic Design',   to: '/design' },
   { label: 'Digital Marketing',to: '/marketing' },
-  { label: 'CV & Documents',   to: '/documents' },
+  { label: 'Documents',        to: '/documents' },
 ];
+
+const isActive = (pathname, to) => pathname === to || (to !== '/' && pathname.startsWith(`${to}/`));
 
 export default function Navbar() {
   const { pathname: rawPath } = useLocation();
@@ -63,7 +65,7 @@ export default function Navbar() {
               <Link
                 key={to}
                 to={to}
-                className={`nav-link-item${pathname === to ? ' active' : ''}`}
+                className={`nav-link-item${isActive(pathname, to) ? ' active' : ''}`}
                 aria-current={pathname === to ? 'page' : undefined}
               >
                 {label}
@@ -100,7 +102,7 @@ export default function Navbar() {
           <Link
             key={to}
             to={to}
-            className={`nav-link-item${pathname === to ? ' active' : ''}`}
+            className={`nav-link-item${isActive(pathname, to) ? ' active' : ''}`}
             aria-current={pathname === to ? 'page' : undefined}
           >
             {label}
