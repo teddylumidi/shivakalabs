@@ -7,7 +7,7 @@ export default function HowItWorks({ steps, title, subtitle, className = '' }) {
     <section className={`how-section ${className}`} aria-labelledby="how-it-works-title">
       <div className="container">
         <div className="section-title">
-          <h2 id="how-it-works-title">{title || <>How It <span className="accent">Works</span></>}</h2>
+          <h2 id="how-it-works-title">{title || "How it works"}</h2>
           {subtitle && <p className="subtitle">{subtitle}</p>}
         </div>
         <ol className="how-steps">

@@ -4,9 +4,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ServiceCard from '../components/ServiceCard';
+import ServiceSearch from '../components/ServiceSearch';
+import PriceBoard from '../components/PriceBoard';
 import CtaStrip from '../components/CtaStrip';
 import HowItWorks from '../components/HowItWorks';
-import { POPULAR_SERVICES, FAQ_ITEMS, WA_NUMBER } from '../data/services';
+import { POPULAR_SERVICES, FAQ_ITEMS, WA_NUMBER, ECITIZEN_SERVICES, WEB_PACKAGES } from '../data/services';
+import { DOCUMENT_TYPES } from '../data/documents';
 
 const HOW_STEPS = [
   { icon: 'fa-search',   title: 'Choose a service', text: 'Find your service and tap “Get Help on WhatsApp” — the chat opens with your request filled in.' },
@@ -39,44 +42,90 @@ function FaqItem({ id, q, a }) {
   );
 }
 
+// ── Service areas ────────────────────────────────────────────────────────────
+const AREAS = [
+  {
+    to: '/ecitizen',
+    title: 'eCitizen and government portals',
+    text: `KRA, NTSA, passports, good conduct, SHA, HELB, business registration and more — ${ECITIZEN_SERVICES.length} services you can start from your phone.`,
+    link: 'See eCitizen services',
+  },
+  {
+    to: '/documents',
+    title: 'Documents and passport photos',
+    text: `CVs, letters, affidavits, agreements and business plans written for you (${DOCUMENT_TYPES.length} types), plus passport photos. Pay first, download straight away.`,
+    link: 'Browse documents',
+  },
+  {
+    to: '/webdev',
+    title: 'Websites',
+    text: `Business websites and online shops with M-Pesa payments, from KSh ${WEB_PACKAGES[0].price.toLocaleString('en-KE')}.`,
+    link: 'See website packages',
+  },
+  {
+    to: '/design',
+    title: 'Design and marketing',
+    text: 'Logos, posters, social media, Google Business Profile, SEO and ads.',
+    link: 'See design services',
+    extra: { to: '/marketing', label: 'See marketing services' },
+  },
+];
+
 // ── Home Page ─────────────────────────────────────────────────────────────────
 export default function Home() {
   const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hello, I need help with your services')}`;
 
   return (
     <>
-      {/* Hero */}
-      <header className="hero" id="home">
-        <div className="hero-bg" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}img/logo.webp)` }} aria-hidden="true" />
-        <div className="hero-content">
-          <span className="hero-eyebrow">Fast &bull; Reliable &bull; Professional</span>
-          <h1>Shivaka<span className="accent">Labs</span></h1>
-          <p className="hero-sub">
-            Professional digital services for Kenya's businesses and individuals —
-            Government eCitizen portal assistance, custom website development, graphic design
-            and strategic digital marketing.
-          </p>
-          <div className="hero-actions">
-            <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn-wa btn-wa-hero">
-              <i className="fa fa-whatsapp" aria-hidden="true" /> Get Help on WhatsApp
-            </a>
-            <a href="#popular" className="btn-outline-gold"
-              onClick={e => {
-                e.preventDefault();
-                document.getElementById('popular')?.scrollIntoView({ behavior: 'smooth' });
-              }}>
-              Browse Services
-            </a>
+      {/* Hero: search for a service, or read prices off the board */}
+      <header className="home-hero" id="home">
+        <div className="container home-hero-grid">
+          <div className="home-hero-copy">
+            <h1>eCitizen help, documents and websites, sorted from your phone.</h1>
+            <p className="home-hero-sub">
+              Tell us what you need on WhatsApp and we handle the government portals for you.
+              We also write CVs and legal documents, make passport photos and build websites for Kenyan businesses.
+            </p>
+            <ServiceSearch />
+            <p className="home-hero-alt">
+              Not sure what you need?{' '}
+              <a href={waHref} target="_blank" rel="noopener noreferrer" className="link-wa">
+                <i className="fa fa-whatsapp" aria-hidden="true" /> Chat with us on WhatsApp
+              </a>
+            </p>
           </div>
+          <PriceBoard />
         </div>
       </header>
 
+      {/* Service areas */}
+      <section className="areas" aria-labelledby="areas-title">
+        <div className="container">
+          <h2 id="areas-title" className="section-heading">What we do</h2>
+          <ul className="area-list">
+            {AREAS.map(a => (
+              <li key={a.to} className="area">
+                <h3 className="area-title"><Link to={a.to}>{a.title}</Link></h3>
+                <p className="area-text">{a.text}</p>
+                <p className="area-links">
+                  <Link to={a.to}>{a.link}</Link>
+                  {a.extra && <Link to={a.extra.to}>{a.extra.label}</Link>}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <HowItWorks steps={HOW_STEPS} title="How it works" subtitle="Four steps, all on WhatsApp." />
+
       {/* Popular Services */}
-      <section id="popular">
+      <section id="popular" aria-labelledby="popular-title">
         <div className="container">
           <div className="section-title">
-            <h2>Popular <span className="accent">Services</span></h2>
-            <p className="subtitle">Most requested — click any service to get started instantly on WhatsApp</p>
+            <h2 id="popular-title">Popular services</h2>
+            <p className="subtitle">Tap a service to start a WhatsApp chat with your request filled in.</p>
           </div>
           <div className="popular-grid">
             {POPULAR_SERVICES.map(svc => (
@@ -86,7 +135,6 @@ export default function Home() {
                 desc={svc.desc}
                 icon={svc.icon}
                 imgSlug={svc.img}
-                
                 waMsg={svc.waMsg}
               />
             ))}
@@ -94,28 +142,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Documents promo */}
-      <section className="promo-section" aria-labelledby="promo-title">
-        <div className="container">
-          <div className="promo-band">
-            <div>
-              <span className="promo-tag">New</span>
-              <h2 id="promo-title" className="promo-title">CV writing <span className="accent">KSh 100</span> · Cover letters <span className="accent">KSh 30</span></h2>
-              <p>Plus legal agreements, affidavits, business plans and <Link to="/documents/passport-photo" className="accent">passport photos for KSh 50</Link>. Pay with M-Pesa or card and download instantly.</p>
-            </div>
-            <Link to="/documents" className="btn-gold">Browse documents <i className="fa fa-arrow-right" aria-hidden="true" /></Link>
-          </div>
-        </div>
-      </section>
-
-      {/* How it works */}
-      <HowItWorks steps={HOW_STEPS} subtitle="Four simple steps, all on WhatsApp" />
-
       {/* FAQ */}
-      <section className="faq-section" id="faq">
+      <section className="faq-section" id="faq" aria-labelledby="faq-title">
         <div className="container">
           <div className="section-title">
-            <h2>Frequently Asked <span className="accent">Questions</span></h2>
+            <h2 id="faq-title">Questions people ask</h2>
           </div>
           <div className="faq-list">
             {FAQ_ITEMS.map((item, i) => (
@@ -125,7 +156,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
       <CtaStrip />
     </>
   );

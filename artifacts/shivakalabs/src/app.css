@@ -4,29 +4,31 @@
 
 /* ── Design Tokens ──────────────────────────────────────────── */
 :root {
-  --black:       #0a0a0a;
-  --near-black:  #111111;
-  --surface:     #161616;
-  --surface-2:   #1e1e1e;
-  --surface-3:   #252525;
-  --border:      rgba(255, 255, 255, 0.08);
+  /* Brand: black and gold. Gold is used as a surface (the price board) as
+     well as an accent; WhatsApp green is reserved for chat actions. */
+  --black:       #000000;
+  --near-black:  #0c0b09;
+  --surface:     #15130f;
+  --surface-2:   #1d1a15;
+  --surface-3:   #29251d;
+  --border:      rgba(232, 200, 120, 0.13);
   --gold:        #c9a84c;
-  --gold-light:  #e2c06e;
-  --gold-dark:   #a0843a;
-  --white:       #f5f5f0;
-  --gray-400:    #9a9a9a;
-  --gray-200:    #cccccc;
+  --gold-light:  #e6c56a;
+  --gold-dark:   #9c8238;
+  --white:       #f5f3ee;
+  --gray-400:    #a39d90;
+  --gray-200:    #d6d1c6;
   --wa-green:    #25d366;
   --wa-dark:     #128c7e;
   --accent:      var(--gold);
-  --font-display: 'Josefin Sans', 'Trebuchet MS', sans-serif;
-  --font-body:    'Josefin Sans', 'Trebuchet MS', sans-serif;
-  --radius:    12px;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body:    'Barlow', 'Segoe UI', Roboto, sans-serif;
+  --radius:    10px;
   --radius-sm: 6px;
-  --shadow:    0 4px 24px rgba(0, 0, 0, 0.5);
-  --shadow-gold: 0 0 0 1px var(--gold-dark), 0 4px 24px rgba(201, 168, 76, 0.15);
+  --shadow:    0 10px 30px rgba(0, 0, 0, 0.55);
+  --shadow-gold: 0 0 0 1px var(--gold-dark);
   --nav-h:    60px;
-  --transition: 0.2s ease;
+  --transition: 0.18s ease;
 }
 
 /* ── Reset ──────────────────────────────────────────────────── */
@@ -724,3 +726,177 @@ section[id], header[id] { scroll-margin-top: var(--nav-h); }
 .photo-privacy { margin-top: 1.25rem; text-align: center; }
 .pkg-card .pkg-cta { max-width: none; }
 .docs-subnav + section { padding-top: 1.75rem; }
+
+/* ============================================================
+   2026 revamp — signboard look
+   Type: Barlow Condensed (headings, price board) + Barlow (body).
+   Gold is spent on one memorable thing: the homepage price board.
+   Everything else is quiet black, warm greys and hairlines.
+   ============================================================ */
+
+/* Type */
+body { font-size: 16px; line-height: 1.6; }
+p { font-size: 1rem; line-height: 1.6; }
+h1, h2, h3, h4, h5 { font-family: var(--font-display); letter-spacing: 0; }
+h1 { font-weight: 700; line-height: 1.02; }
+h2 { font-weight: 700; line-height: 1.08; font-size: clamp(1.8rem, 5vw, 2.6rem); }
+h3 { font-weight: 600; line-height: 1.15; }
+/* Headings no longer colour a single word; the brand mark keeps its gold. */
+h1 .accent, h2 .accent { color: inherit; }
+main > * { animation: none; }
+
+/* Section headings sit on the left with a readable measure */
+.section-title { text-align: left; margin-bottom: 1.75rem; }
+.section-title .subtitle { margin-top: 0.4rem; max-width: 62ch; font-size: 1rem; color: var(--gray-400); }
+.section-heading { margin-bottom: 1.5rem; }
+
+/* Buttons: squarer, sign-like */
+.btn-wa, .btn-outline-gold, .btn-gold { border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; letter-spacing: 0.01em; }
+.btn-gold { color: #000; }
+
+/* Navbar: always solid so it reads over any page */
+.navbar, .navbar.scrolled {
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow: none; border-bottom: 1px solid var(--border);
+}
+.navbar-brand { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.01em; }
+.nav-link-item { font-size: 0.92rem; font-weight: 500; }
+.nav-link-item.active { color: var(--gold-light); box-shadow: inset 0 -2px 0 var(--gold); border-radius: 0; }
+.mobile-menu .nav-link-item.active { box-shadow: inset 3px 0 0 var(--gold); }
+.btn-wa-nav { border-radius: var(--radius-sm); }
+
+/* Page headers: left-aligned title block, no watermark */
+.page-hero {
+  text-align: left; background: var(--black);
+  padding: calc(var(--nav-h) + 2.25rem) 1rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+@media (min-width: 768px) { .page-hero { padding: calc(var(--nav-h) + 3rem) 1.25rem 2.5rem; } }
+.page-hero-bg, .page-hero-icon { display: none; }
+.page-hero-inner { max-width: 1280px; margin: 0 auto; }
+.page-hero h1 { font-size: clamp(2.3rem, 7vw, 3.8rem); max-width: 20ch; }
+.page-hero p { margin: 0.9rem 0 0; max-width: 62ch; font-size: 1.05rem; }
+
+/* Documents sub-menu lines up with the content */
+@media (min-width: 900px) { .docs-subnav-inner { justify-content: flex-start; padding: 0.6rem 1.25rem; } }
+.docs-subnav-link { border-radius: var(--radius-sm); font-family: var(--font-body); }
+.doc-card, .pkg-card { scroll-margin-top: calc(var(--nav-h) + 4.5rem); }
+
+/* Quieter structural chrome */
+.pkg-badge { text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
+.footer-col h5, .footer-heading { text-transform: none; letter-spacing: 0; font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--white); }
+.footer-brand .footer-brand-name { font-weight: 700; }
+.cta-strip { background: var(--surface); }
+.cta-strip p { font-size: 1.1rem; }
+.faq-question { font-family: var(--font-body); font-size: 1rem; }
+.svc-card-title, .doc-card-title { font-size: 1.3rem; }
+.doc-price, .pkg-price, .cat-name { font-family: var(--font-display); font-variant-numeric: tabular-nums; }
+.filter-tab { border-radius: var(--radius-sm); font-family: var(--font-body); }
+
+/* ── Home hero ─────────────────────────────────────────────── */
+.home-hero { padding: calc(var(--nav-h) + 2rem) 0 3rem; border-bottom: 1px solid var(--border); }
+@media (min-width: 768px) { .home-hero { padding: calc(var(--nav-h) + 3.5rem) 0 4.5rem; } }
+.home-hero-grid { display: grid; gap: 2.75rem; }
+@media (min-width: 980px) {
+  .home-hero-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 4.5rem; align-items: start; }
+}
+.home-hero h1 { font-size: clamp(2.5rem, 9vw, 4.6rem); max-width: 15ch; }
+.home-hero-sub { margin: 1.1rem 0 1.9rem; max-width: 54ch; font-size: 1.08rem; color: var(--gray-200); }
+.home-hero-alt { margin-top: 1.4rem; color: var(--gray-400); font-size: 0.95rem; }
+.link-wa { color: var(--wa-green); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.link-wa:hover { color: #5ee28f; }
+
+/* Service search */
+.svc-search { max-width: 560px; }
+.svc-search-label { display: block; font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: var(--white); margin-bottom: 0.55rem; }
+.svc-search-box { position: relative; }
+.svc-search-box i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #6b665c; font-size: 1.05rem; pointer-events: none; }
+.svc-search-box input {
+  width: 100%; height: 56px; padding: 0 1rem 0 2.75rem;
+  font: inherit; font-size: 17px; color: #111; background: var(--white);
+  border: 2px solid var(--white); border-radius: 8px;
+}
+.svc-search-box input::placeholder { color: #8a857a; }
+.svc-search-box input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.35); }
+.svc-quick { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.85rem; }
+.svc-chip {
+  font-size: 0.9rem; font-weight: 500; color: var(--gray-200);
+  border: 1px solid var(--surface-3); background: var(--surface); border-radius: var(--radius-sm);
+  padding: 0.45rem 0.8rem; min-height: 40px;
+}
+.svc-chip:hover { border-color: var(--gold-dark); color: var(--white); }
+.svc-results {
+  margin-top: 0.6rem; background: var(--surface); border: 1px solid var(--surface-3);
+  border-radius: 8px; overflow: hidden;
+}
+.svc-results li + li { border-top: 1px solid var(--border); }
+.svc-result {
+  display: grid; grid-template-columns: 1fr auto; column-gap: 1rem; row-gap: 0.1rem;
+  padding: 0.75rem 1rem; min-height: 56px; align-items: center;
+}
+.svc-result:hover, .svc-result:focus-visible { background: var(--surface-2); }
+.svc-result-name { font-weight: 600; color: var(--white); }
+.svc-result-meta { grid-row: 2; font-size: 0.85rem; color: var(--gray-400); }
+.svc-result-action { grid-row: 1 / span 2; grid-column: 2; font-size: 0.85rem; font-weight: 600; color: var(--gold-light); white-space: nowrap; }
+.svc-result-empty { padding: 1rem; display: grid; gap: 0.75rem; justify-items: start; }
+
+/* ── The price board ───────────────────────────────────────── */
+.board {
+  background: var(--gold); color: #000; border-radius: 3px;
+  padding: 1.35rem 1.25rem 1.1rem;
+  box-shadow: 0 0 0 5px var(--black), 0 0 0 6px var(--gold-dark), 0 18px 40px rgba(0,0,0,0.6);
+  margin: 6px;
+}
+@media (min-width: 980px) { .board { transform: rotate(-1deg); margin-top: 1.25rem; padding: 1.6rem 1.6rem 1.25rem; } }
+.board-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 2.1rem; line-height: 1;
+  color: #000; padding-bottom: 0.45rem; border-bottom: 3px solid #000; margin-bottom: 0.35rem;
+}
+.board-row {
+  display: flex; align-items: baseline; gap: 0.45rem; min-height: 46px; padding: 0.5rem 0;
+  font-family: var(--font-display); font-size: 1.32rem; font-weight: 600; color: #000;
+}
+.board-rows li + li .board-row { border-top: 1px solid rgba(0,0,0,0.12); }
+.board-item { white-space: nowrap; }
+.board-leader { flex: 1; min-width: 1rem; border-bottom: 2px dotted rgba(0,0,0,0.55); transform: translateY(-0.28em); }
+.board-price { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.board-row:hover .board-item, .board-row:focus-visible .board-item { text-decoration: underline; text-underline-offset: 4px; }
+.board-row:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+.board-foot { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid rgba(0,0,0,0.3); font-size: 0.88rem; line-height: 1.45; color: rgba(0,0,0,0.78); }
+@media (max-width: 360px) { .board-row { font-size: 1.15rem; } }
+
+/* One orchestrated moment: the board's rows are chalked up on first load */
+@keyframes board-row-in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+.board-rows li { animation: board-row-in 0.35s ease both; animation-delay: calc(var(--i) * 70ms + 200ms); }
+
+/* ── Service areas ─────────────────────────────────────────── */
+.area-list { display: grid; border-top: 1px solid var(--border); }
+@media (min-width: 760px) { .area-list { grid-template-columns: 1fr 1fr; column-gap: 3.5rem; } }
+.area { padding: 1.4rem 0 1.5rem; border-bottom: 1px solid var(--border); }
+.area-title { font-size: 1.65rem; }
+.area-title a { color: var(--white); }
+.area-title a:hover { color: var(--gold-light); }
+.area-text { margin-top: 0.4rem; max-width: 52ch; color: var(--gray-200); }
+.area-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 0.7rem; }
+.area-links a { color: var(--gold-light); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(230,197,106,0.45); min-height: 32px; display: inline-flex; align-items: center; }
+.area-links a:hover { text-decoration-color: currentColor; }
+.faq-list { margin: 0; }
+.areas { padding-bottom: 1.5rem; }
+.navbar-brand > span { white-space: nowrap; }
+@media (min-width: 768px) { .page-hero-inner { max-width: calc(1280px - 2.5rem); } }
+.pkg-grid { margin: 0; }
+.about-section { max-width: 1000px; margin: 0; }
+/* eCitizen filters: one swipeable row on phones instead of six wrapped rows */
+@media (max-width: 767px) {
+  .filter-bar { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -1rem 1.25rem; padding: 0 1rem 0.25rem; -webkit-overflow-scrolling: touch; }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-tab { flex-shrink: 0; min-height: 40px; }
+}
+.home-hero-grid { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 980px) { .home-hero-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); } }
+.home-hero-grid > * { min-width: 0; }
+.link-wa { white-space: normal; }
+.board-item { white-space: normal; min-width: 0; }
+.container.about-section { max-width: 1280px; margin: 0 auto; }
+.about-section > * { max-width: 1000px; }

@@ -53,7 +53,7 @@ export default function About() {
 
           {/* Values */}
           <div style={{ marginTop: '3rem' }}>
-            <h2 style={{ textAlign: 'center' }}>Our <span className="accent">Values</span></h2>
+            <h2>Our values</h2>
             <div className="value-cards">
               {VALUES.map(v => (
                 <div key={v.title} className="value-card">

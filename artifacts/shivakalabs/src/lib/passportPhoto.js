@@ -167,7 +167,7 @@ export function drawFrame(target, person, frame, bgHex, { watermark = false } = 
     ctx.save();
     ctx.translate(width / 2, height / 2);
     ctx.rotate(-Math.PI / 6);
-    ctx.font = `700 ${Math.round(width / 11)}px "Josefin Sans", sans-serif`;
+    ctx.font = `700 ${Math.round(width / 11)}px "Barlow Condensed", sans-serif`;
     ctx.textAlign = 'center';
     ctx.fillStyle = 'rgba(0,0,0,0.22)';
     ctx.strokeStyle = 'rgba(255,255,255,0.35)';

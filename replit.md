@@ -19,7 +19,8 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 
 - pnpm workspace with a single package: `artifacts/shivakalabs`
 - React 19 + Vite 7, react-router-dom v7 (BrowserRouter, clean URLs)
-- Plain CSS (`src/app.css`), Font Awesome 4.7 and Josefin Sans from CDNs
+- Plain CSS (`src/app.css`), Font Awesome 4.7 and Barlow / Barlow Condensed (Google Fonts) from CDNs
+- Look: black and brand gold; gold is used as a surface for the homepage price board. Headings are left-aligned, sentence case, with no single-word gold accents. The "2026 revamp" block at the end of `app.css` holds the current look
 - No backend for the site itself: content is static; WhatsApp deep links are the main contact mechanism
 - Paid document writing (CV & Documents page) uses a separate Vercel API in `services/document-api` (Paystack payments + Claude writing + Word/PDF output). See its README for setup and environment variables
 
@@ -47,13 +48,13 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 
 ## Product
 
-- Home page: hero, popular services grid, FAQ accordion, WhatsApp CTA
+- Home page: hero with a search across every service (`src/data/search.js`) and a gold price board with real prices (`PriceBoard.jsx`), service areas, how it works, popular services, FAQ, WhatsApp CTA
 - eCitizen Services: filterable/searchable grid of 75+ government portal services (only ones that can be done online; in-person-only services such as new IDs were removed)
 - Web Development: searchable grid of web dev services
 - Graphic Design: searchable grid of design services
 - Digital Marketing: searchable grid of marketing services
 - About Us: company story, team photo, and values
-- Documents section (`/documents`, with its own sub-menu): Career, Letters, Legal, Business, Personal and Passport Photo pages. 26 paid document types (CV KSh 100, cover letter KSh 30, affidavits, agreements, business plans…). Details form → pay first via Paystack (M-Pesa or card) → download Word and PDF
+- Documents section (`/documents`, with its own sub-menu): Career, Letters, Legal, Business, Personal and Passport Photo pages. 28 paid document types (CV KSh 100, cover letter KSh 30, affidavits, agreements, business plans…). Details form → pay first via Paystack (M-Pesa or card) → download Word and PDF
 - Passport photo (`/documents/passport-photo`, KSh 50): upload → background removed and face framed in the browser → choose size and colour → pay → JPG and A4 print PDF
 - Web Development page shows website packages: Basic KSh 15,000, Standard KSh 30,000, Premium KSh 60,000 (`WEB_PACKAGES` in services.js)
 - How it works: on Home, eCitizen and CV & Documents; eCitizen page also lists what to prepare per category

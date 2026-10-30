@@ -56,7 +56,7 @@ export default function Navbar() {
           {/* Brand */}
           <Link className="navbar-brand" to="/" aria-label="ShivakaLabs home">
             <img src={`${import.meta.env.BASE_URL}img/logo.webp`} alt="" className="logo-img" width={38} height={38} />
-            Shivaka<span className="brand-accent">Labs</span>
+            <span>Shivaka<span className="brand-accent">Labs</span></span>
           </Link>
 
           {/* Desktop links */}
