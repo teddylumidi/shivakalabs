@@ -11,7 +11,7 @@ export default function ServiceCard({ name, desc, icon, imgSlug, fallbackImg, wa
   const msg  = waMsg || name;
 
   return (
-    <div className="svc-card" data-category={category || ''}>
+    <article className="svc-card" data-category={category || ''}>
       <img
         src={`${base}img/services/${slug}.webp`}
         alt={name}
@@ -19,11 +19,17 @@ export default function ServiceCard({ name, desc, icon, imgSlug, fallbackImg, wa
         loading="lazy"
         width={400}
         height={190}
-        onError={e => { e.currentTarget.src = fb; }}
+        decoding="async"
+        onError={e => {
+          // Swap to the fallback once; avoid a loop if the fallback is missing too.
+          if (e.currentTarget.dataset.fallback) return;
+          e.currentTarget.dataset.fallback = '1';
+          e.currentTarget.src = fb;
+        }}
       />
       <div className="svc-card-body">
         <i className={`fa ${icon} svc-card-icon`} aria-hidden="true" />
-        <h5>{name}</h5>
+        <h3 className="svc-card-title">{name}</h3>
         <p>{desc}</p>
         <a
           className="btn-wa"
@@ -32,8 +38,9 @@ export default function ServiceCard({ name, desc, icon, imgSlug, fallbackImg, wa
           rel="noopener noreferrer"
         >
           <i className="fa fa-whatsapp" aria-hidden="true" /> Get Help on WhatsApp
+          <span className="sr-only"> about {name}</span>
         </a>
       </div>
-    </div>
+    </article>
   );
 }

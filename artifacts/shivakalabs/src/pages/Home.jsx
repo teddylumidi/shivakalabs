@@ -2,21 +2,28 @@
  * Home.jsx — Landing page with hero, popular services, FAQ, and CTA strip.
  */
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import ServiceCard from '../components/ServiceCard';
 import CtaStrip from '../components/CtaStrip';
 import { POPULAR_SERVICES, FAQ_ITEMS, WA_NUMBER } from '../data/services';
 
 // ── FAQ Item ─────────────────────────────────────────────────────────────────
-function FaqItem({ q, a }) {
+function FaqItem({ id, q, a }) {
   const [open, setOpen] = useState(false);
   return (
     <div className={`faq-item${open ? ' open' : ''}`}>
-      <button className="faq-question" onClick={() => setOpen(o => !o)} aria-expanded={open}>
-        {q}
-        <i className="fa fa-chevron-down faq-icon" aria-hidden="true" />
-      </button>
-      <div className="faq-answer" aria-hidden={!open}>
+      <h3 className="faq-heading">
+        <button
+          type="button"
+          className="faq-question"
+          onClick={() => setOpen(o => !o)}
+          aria-expanded={open}
+          aria-controls={`faq-answer-${id}`}
+        >
+          {q}
+          <i className="fa fa-chevron-down faq-icon" aria-hidden="true" />
+        </button>
+      </h3>
+      <div className="faq-answer" id={`faq-answer-${id}`} aria-hidden={!open}>
         <p dangerouslySetInnerHTML={{ __html: a }} />
       </div>
     </div>
@@ -31,7 +38,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <header className="hero" id="home">
-        <div className="hero-bg" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}img/background.webp)` }} aria-hidden="true" />
+        <div className="hero-bg" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}img/logo.webp)` }} aria-hidden="true" />
         <div className="hero-content">
           <span className="hero-eyebrow">Fast &bull; Reliable &bull; Professional</span>
           <h1>Shivaka<span className="accent">Labs</span></h1>
@@ -44,13 +51,13 @@ export default function Home() {
             <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn-wa btn-wa-hero">
               <i className="fa fa-whatsapp" aria-hidden="true" /> Get Help on WhatsApp
             </a>
-            <Link to="#popular" className="btn-outline-gold"
+            <a href="#popular" className="btn-outline-gold"
               onClick={e => {
                 e.preventDefault();
                 document.getElementById('popular')?.scrollIntoView({ behavior: 'smooth' });
               }}>
               Browse Services
-            </Link>
+            </a>
           </div>
         </div>
       </header>
@@ -70,7 +77,7 @@ export default function Home() {
                 desc={svc.desc}
                 icon={svc.icon}
                 imgSlug={svc.img}
-                fallbackImg={`${import.meta.env.BASE_URL}img/${svc.fallback}.webp`}
+                
                 waMsg={svc.waMsg}
               />
             ))}
@@ -85,8 +92,8 @@ export default function Home() {
             <h2>Frequently Asked <span className="accent">Questions</span></h2>
           </div>
           <div className="faq-list">
-            {FAQ_ITEMS.map(item => (
-              <FaqItem key={item.q} q={item.q} a={item.a} />
+            {FAQ_ITEMS.map((item, i) => (
+              <FaqItem key={item.q} id={i} q={item.q} a={item.a} />
             ))}
           </div>
         </div>

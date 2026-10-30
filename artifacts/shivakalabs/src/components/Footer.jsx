@@ -21,8 +21,8 @@ export default function Footer() {
           {/* Brand column */}
           <div className="footer-brand">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.75rem' }}>
-              <img src={`${import.meta.env.BASE_URL}img/logo.webp`} alt="ShivakaLabs Logo" style={{ height: 42 }} />
-              <h3>Shivaka<span className="accent">Labs</span></h3>
+              <img src={`${import.meta.env.BASE_URL}img/logo.webp`} alt="" width={42} height={42} loading="lazy" style={{ height: 42, width: 42 }} />
+              <p className="footer-brand-name">Shivaka<span className="accent">Labs</span></p>
             </div>
             <p>
               Professional digital services for Kenya's businesses and individuals —
@@ -40,7 +40,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="footer-col">
-            <h5>Quick Links</h5>
+            <h2 className="footer-heading">Quick Links</h2>
             <ul className="footer-links">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About Us</Link></li>
@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Services */}
           <div className="footer-col">
-            <h5>Services</h5>
+            <h2 className="footer-heading">Services</h2>
             <ul className="footer-links">
               <li><Link to="/ecitizen">eCitizen Portal</Link></li>
               <li><Link to="/webdev">Web Development</Link></li>
@@ -62,7 +62,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="footer-col">
-            <h5>Contact</h5>
+            <h2 className="footer-heading">Contact</h2>
             <ul className="footer-links">
               <li>
                 <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noopener noreferrer">

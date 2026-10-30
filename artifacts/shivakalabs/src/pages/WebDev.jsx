@@ -19,7 +19,6 @@ export default function WebDev() {
         <div className="container">
           <ServiceGrid
             services={WEBDEV_SERVICES}
-            fallbackImg={`${import.meta.env.BASE_URL}img/webdev-hero.webp`}
           />
         </div>
       </section>

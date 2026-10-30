@@ -9,7 +9,7 @@ export default function PageHero({ icon, title, subtitle }) {
       {/* Same background as home hero, at low opacity */}
       <div
         className="page-hero-bg"
-        style={{ backgroundImage: `url(${base}img/background.webp)` }}
+        style={{ backgroundImage: `url(${base}img/logo.webp)` }}
         aria-hidden="true"
       />
       <div className="page-hero-inner">

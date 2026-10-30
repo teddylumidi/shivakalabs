@@ -42,8 +42,10 @@ export default function About() {
             </div>
             <div className="about-img">
               <img
-                src={`${import.meta.env.BASE_URL}img/about-team.webp`}
-                alt="ShivakaLabs Team"
+                src={`${import.meta.env.BASE_URL}img/logo.webp`}
+                alt="ShivakaLabs logo"
+                width={420}
+                height={420}
                 loading="lazy"
               />
             </div>
@@ -56,7 +58,7 @@ export default function About() {
               {VALUES.map(v => (
                 <div key={v.title} className="value-card">
                   <i className={`fa ${v.icon}`} aria-hidden="true" />
-                  <h5>{v.title}</h5>
+                  <h3 className="value-card-title">{v.title}</h3>
                   <p>{v.desc}</p>
                 </div>
               ))}

@@ -1,27 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-KE">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ShivakaLabs — Professional Digital Services. eCitizen portal assistance, web development, graphic design & digital marketing. Trusted by businesses across Kenya." />
+    <title>ShivakaLabs | eCitizen Help, Web Design &amp; Digital Marketing in Kenya</title>
+    <meta name="description" content="ShivakaLabs offers eCitizen portal assistance, website development, graphic design and digital marketing for individuals and businesses across Kenya. Get help on WhatsApp." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
     <meta name="theme-color" content="#0a0a0a" />
-    <meta property="og:title" content="ShivakaLabs | Professional Digital Services" />
-    <meta property="og:description" content="eCitizen portal assistance, web development, graphic design & digital marketing across Kenya." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <title>ShivakaLabs | Professional Digital Services</title>
 
-    <!-- Favicon (path rewritten to base at build time) -->
+    <!-- Open Graph / social sharing -->
+    <meta property="og:site_name" content="ShivakaLabs" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_KE" />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:title" content="ShivakaLabs | eCitizen Help, Web Design &amp; Digital Marketing in Kenya" />
+    <meta property="og:description" content="ShivakaLabs offers eCitizen portal assistance, website development, graphic design and digital marketing for individuals and businesses across Kenya. Get help on WhatsApp." />
+    <meta property="og:image" content="%VITE_SITE_URL%/opengraph.jpg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ShivakaLabs | eCitizen Help, Web Design &amp; Digital Marketing in Kenya" />
+    <meta name="twitter:description" content="ShivakaLabs offers eCitizen portal assistance, website development, graphic design and digital marketing for individuals and businesses across Kenya. Get help on WhatsApp." />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/opengraph.jpg" />
+
+    <!-- Icons (paths rewritten to base at build time) -->
     <link rel="icon" type="image/webp" href="/img/logo.webp" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Preconnect for external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 
-    <!-- Preload critical assets (paths rewritten to base at build time) -->
+    <!-- Preload the logo used in the navbar and hero background -->
     <link rel="preload" href="/img/logo.webp" as="image" type="image/webp" />
-    <link rel="preload" href="/img/background.webp" as="image" type="image/webp" />
 
     <!-- Fonts — display=swap keeps text visible during load -->
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
@@ -29,6 +42,30 @@
     <!-- Font Awesome — loaded non-render-blocking -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /></noscript>
+
+    <!-- Structured data: business details for search engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "ShivakaLabs",
+        "url": "%VITE_SITE_URL%/",
+        "logo": "%VITE_SITE_URL%/img/logo.webp",
+        "image": "%VITE_SITE_URL%/opengraph.jpg",
+        "description": "eCitizen portal assistance, website development, graphic design and digital marketing for individuals and businesses across Kenya.",
+        "telephone": "+254716358703",
+        "email": "info@shivakalabs.com",
+        "areaServed": { "@type": "Country", "name": "Kenya" },
+        "address": { "@type": "PostalAddress", "addressCountry": "KE" },
+        "paymentAccepted": "M-Pesa",
+        "sameAs": [
+          "https://www.facebook.com/shivakalabs",
+          "https://www.instagram.com/shivakalabs",
+          "https://twitter.com/shivakalabs",
+          "https://www.linkedin.com/company/shivakalabs"
+        ]
+      }
+    </script>
 
     <!-- Google Analytics — deferred so it never blocks paint -->
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-KHDYR7PQ7X"></script>
@@ -41,6 +78,13 @@
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="padding:2rem;color:#f5f5f0;background:#0a0a0a;font-family:sans-serif">
+        ShivakaLabs needs JavaScript to display services. You can reach us on WhatsApp at
+        <a href="https://wa.me/254716358703" style="color:#c9a84c">+254 716 358 703</a>
+        or email <a href="mailto:info@shivakalabs.com" style="color:#c9a84c">info@shivakalabs.com</a>.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

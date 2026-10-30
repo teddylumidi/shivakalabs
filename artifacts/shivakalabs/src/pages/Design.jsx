@@ -19,7 +19,6 @@ export default function Design() {
         <div className="container">
           <ServiceGrid
             services={DESIGN_SERVICES}
-            fallbackImg={`${import.meta.env.BASE_URL}img/design-hero.webp`}
           />
         </div>
       </section>

@@ -19,7 +19,6 @@ export default function Marketing() {
         <div className="container">
           <ServiceGrid
             services={MARKETING_SERVICES}
-            fallbackImg={`${import.meta.env.BASE_URL}img/marketing-hero.webp`}
           />
         </div>
       </section>

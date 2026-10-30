@@ -41,7 +41,6 @@ export default function ECitizen() {
           <ServiceGrid
             services={ECITIZEN_SERVICES}
             filters={FILTERS}
-            fallbackImg={`${import.meta.env.BASE_URL}img/ecitizen-hero.webp`}
           />
         </div>
       </section>

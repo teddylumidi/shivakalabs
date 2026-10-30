@@ -4,39 +4,39 @@ A professional digital services website for ShivakaLabs — a Kenyan agency offe
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `pnpm install` — install dependencies (pnpm only)
+- `pnpm dev` — run the site locally (Vite dev server)
+- `pnpm build` — production build into `artifacts/shivakalabs/dist/public` (prerenders every page)
+- `pnpm typecheck` — TypeScript check
+- `pnpm --filter @workspace/shivakalabs run images` — convert new PNG/JPG images in `public/img` to WebP
+
+Deployment: every push to `main` builds and deploys to GitHub Pages via `.github/workflows/deploy.yml`
+(https://teddylumidi.github.io/shivakalabs/). `main` is the only branch.
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- pnpm workspace with a single package: `artifacts/shivakalabs`
+- React 19 + Vite 7, react-router-dom v7 (BrowserRouter, clean URLs)
+- Plain CSS (`src/app.css`), Font Awesome 4.7 and Josefin Sans from CDNs
+- No backend: all content is static; WhatsApp deep links are the contact mechanism
 
 ## Where things live
 
-- `artifacts/shivakalabs/` — frontend React + Vite app (served at `/`)
-- `artifacts/shivakalabs/src/App.jsx` — root routing component
-- `artifacts/shivakalabs/src/pages/` — page components (Home, About, ECitizen, WebDev, Design, Marketing, NotFound)
-- `artifacts/shivakalabs/src/components/` — shared components (Navbar, Footer, ServiceCard, ServiceGrid, CtaStrip, FloatingWhatsApp)
-- `artifacts/shivakalabs/src/data/services.js` — single source of truth for all service data
-- `artifacts/shivakalabs/src/app.css` — global styles and design tokens
-- `artifacts/shivakalabs/public/img/` — images including logo, hero images, and service card images
+- `artifacts/shivakalabs/src/App.jsx` — layout and routes (`AppShell` is shared by the browser and the prerenderer)
+- `artifacts/shivakalabs/src/pages/` — Home, About, ECitizen, WebDev, Design, Marketing, NotFound
+- `artifacts/shivakalabs/src/components/` — Navbar, Footer, ServiceCard, ServiceGrid, PageHero, CtaStrip, FloatingWhatsApp, Seo, ScrollManager
+- `artifacts/shivakalabs/src/data/services.js` — single source of truth for all services, FAQ and the WhatsApp number
+- `artifacts/shivakalabs/src/data/pages.js` — per-page titles and meta descriptions (used for SEO and the sitemap)
+- `artifacts/shivakalabs/src/entry-server.jsx` + `scripts/postbuild.mjs` — build-time prerendering, 404.html, sitemap.xml, robots.txt
+- `artifacts/shivakalabs/public/img/` — logo and service card images (WebP only)
 
 ## Architecture decisions
 
-- Pure frontend app — no backend API routes needed; all data is static in `services.js`
-- react-router-dom v7 for client-side routing (BrowserRouter with lazy-loaded pages)
-- Font Awesome 4.7 loaded from CDN for icons; Josefin Sans from Google Fonts
-- WhatsApp deep links are the primary CTA mechanism (no server-side contact form)
-- Service images use slug-based filenames with fallbacks on `onError`
+- Pages are prerendered to static HTML at build time and hydrated in the browser: search engines see full content and each page has its own title, description, canonical URL and Open Graph tags
+- Clean URLs (`/ecitizen/`) instead of hash URLs; old `/#/ecitizen` links redirect automatically
+- GitHub Pages serves `404.html` for unknown URLs
+- Service card images are looked up by slug: "Logo Design" → `img/services/logo-design.webp`, falling back to the logo if missing
+- Site URL for canonical links is set by `VITE_SITE_URL` in the deploy workflow
 
 ## Product
 
@@ -54,8 +54,6 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Add new images as WebP, or drop PNG/JPG files into `public/img` and run the `images` script (it converts and deletes the originals)
+- To add a page: add the route in `App.jsx`, its metadata in `src/data/pages.js`, and a nav link in `Navbar.jsx`/`Footer.jsx`
 
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details

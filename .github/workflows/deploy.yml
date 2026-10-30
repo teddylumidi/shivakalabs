@@ -26,11 +26,11 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build shivakalabs
         working-directory: artifacts/shivakalabs
@@ -38,6 +38,9 @@ jobs:
           PORT: 3000
           BASE_PATH: /shivakalabs/
           NODE_ENV: production
+          # Public site URL (no trailing slash) for canonical links and the
+          # sitemap. Change this if you move the site to a custom domain.
+          VITE_SITE_URL: https://teddylumidi.github.io/shivakalabs
         run: pnpm run build
 
       - name: Upload Pages artifact

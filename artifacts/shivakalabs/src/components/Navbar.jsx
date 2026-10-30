@@ -16,7 +16,9 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const { pathname } = useLocation();
+  const { pathname: rawPath } = useLocation();
+  // Treat /about and /about/ as the same page
+  const pathname = rawPath.length > 1 ? rawPath.replace(/\/+$/, '') : rawPath;
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
 
@@ -31,6 +33,14 @@ export default function Navbar() {
   // Close mobile menu on route change
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
+  // Close mobile menu with the Escape key
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onKey = e => { if (e.key === 'Escape') setMenuOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
+
   const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
     'Hello, I would like to know more about your services'
   )}`;
@@ -41,18 +51,17 @@ export default function Navbar() {
         <div className="navbar-inner">
 
           {/* Brand */}
-          <Link className="navbar-brand" to="/">
-            <img src={`${import.meta.env.BASE_URL}img/logo.webp`} alt="ShivakaLabs Logo" className="logo-img" />
+          <Link className="navbar-brand" to="/" aria-label="ShivakaLabs home">
+            <img src={`${import.meta.env.BASE_URL}img/logo.webp`} alt="" className="logo-img" width={38} height={38} />
             Shivaka<span className="brand-accent">Labs</span>
           </Link>
 
           {/* Desktop links */}
-          <div className="nav-links" role="menubar">
+          <div className="nav-links">
             {NAV_LINKS.map(({ label, to }) => (
               <Link
                 key={to}
                 to={to}
-                role="menuitem"
                 className={`nav-link-item${pathname === to ? ' active' : ''}`}
                 aria-current={pathname === to ? 'page' : undefined}
               >
@@ -61,15 +70,18 @@ export default function Navbar() {
             ))}
             <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn-wa btn-wa-nav">
               <i className="fa fa-whatsapp" aria-hidden="true" /> WhatsApp
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
 
           {/* Hamburger (mobile) */}
           <button
+            type="button"
             className={`hamburger${menuOpen ? ' open' : ''}`}
             onClick={() => setMenuOpen(o => !o)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             <span /><span /><span />
           </button>
@@ -77,13 +89,18 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      <div className={`mobile-menu${menuOpen ? ' open' : ''}`} role="menu">
+      <nav
+        id="mobile-menu"
+        className={`mobile-menu${menuOpen ? ' open' : ''}`}
+        aria-label="Mobile navigation"
+        hidden={!menuOpen}
+      >
         {NAV_LINKS.map(({ label, to }) => (
           <Link
             key={to}
             to={to}
-            role="menuitem"
             className={`nav-link-item${pathname === to ? ' active' : ''}`}
+            aria-current={pathname === to ? 'page' : undefined}
           >
             {label}
           </Link>
@@ -91,7 +108,7 @@ export default function Navbar() {
         <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn-wa">
           <i className="fa fa-whatsapp" aria-hidden="true" /> WhatsApp
         </a>
-      </div>
+      </nav>
     </>
   );
 }
