@@ -7,11 +7,13 @@ A professional digital services website for ShivakaLabs — a Kenyan agency offe
 - `pnpm install` — install dependencies (pnpm only)
 - `pnpm dev` — run the site locally (Vite dev server)
 - `pnpm build` — production build into `artifacts/shivakalabs/dist/public` (prerenders every page)
+- `pnpm run publish` — build for GitHub Pages and copy into `docs/`
 - `pnpm typecheck` — TypeScript check
 - `pnpm --filter @workspace/shivakalabs run images` — convert new PNG/JPG images in `public/img` to WebP
 
-Deployment: every push to `main` builds and deploys to GitHub Pages via `.github/workflows/deploy.yml`
-(https://teddylumidi.github.io/shivakalabs/). `main` is the only branch.
+Deployment: GitHub Pages serves the `docs/` folder on `main` (https://teddylumidi.github.io/shivakalabs/).
+After changing the site, run `pnpm run publish` (builds and copies into `docs/`), then commit and push.
+Never edit `docs/` by hand; it is generated. `main` is the only branch.
 
 ## Stack
 

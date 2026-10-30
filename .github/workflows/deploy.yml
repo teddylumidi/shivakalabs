@@ -1,8 +1,12 @@
 name: Deploy to GitHub Pages
 
+# The live site is currently published from the /docs folder on main
+# (Settings -> Pages -> "Deploy from a branch: main /docs"); update it with
+# `pnpm run publish`. This workflow is the alternative: to use it, set
+# Settings -> Pages -> Source to "GitHub Actions", then add back:
+#   push:
+#     branches: [main]
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

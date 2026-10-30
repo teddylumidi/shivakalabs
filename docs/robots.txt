@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://teddylumidi.github.io/shivakalabs/sitemap.xml
