@@ -20,7 +20,7 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 - pnpm workspace with a single package: `artifacts/shivakalabs`
 - React 19 + Vite 7, react-router-dom v7 (BrowserRouter, clean URLs)
 - Plain CSS (`src/app.css`), Font Awesome 4.7 and Barlow / Barlow Condensed (Google Fonts) from CDNs
-- Look: black and brand gold; gold is used as a surface for the homepage price board. Headings are left-aligned, sentence case, with no single-word gold accents. The "2026 revamp" block at the end of `app.css` holds the current look
+- Look: light theme (white pages, ink text, light grey bands, dark footer) with brand gold as a fill for the price board, receipts and gold buttons. Use `--gold-ink` for gold text and `--gold-icon` for gold icons on white (plain `--gold` is too faint for text). Headings use Barlow; Barlow Condensed is kept for the price board, receipts and prices. Colour tokens are at the top of `app.css`; the "Light theme layer" block at the end holds the current look
 - No backend for the site itself: content is static; WhatsApp deep links are the main contact mechanism
 - Paid document writing (CV & Documents page) uses a separate Vercel API in `services/document-api` (Paystack payments + Claude writing + Word/PDF output). See its README for setup and environment variables
 

@@ -87,6 +87,11 @@ export default function Home() {
               We also write CVs and legal documents, make passport photos and build websites for Kenyan businesses.
             </p>
             <ServiceSearch />
+            <ul className="hero-trust" aria-label="How we work">
+              <li><i className="fa fa-check-circle" aria-hidden="true" /> Full price shown before you pay</li>
+              <li><i className="fa fa-check-circle" aria-hidden="true" /> Pay with M-Pesa or card</li>
+              <li><i className="fa fa-check-circle" aria-hidden="true" /> Help from a real person on WhatsApp</li>
+            </ul>
             <p className="home-hero-alt">
               Not sure what you need?{' '}
               <a href={waHref} target="_blank" rel="noopener noreferrer" className="link-wa">

@@ -41,7 +41,7 @@ function PageLoader() {
       alignItems: 'center',
       justifyContent: 'center',
     }}>
-      <i className="fa fa-spinner fa-spin" style={{ fontSize: '2rem', color: 'var(--gold)' }} />
+      <i className="fa fa-spinner fa-spin" style={{ fontSize: '2rem', color: 'var(--gold-icon)' }} />
     </div>
   );
 }

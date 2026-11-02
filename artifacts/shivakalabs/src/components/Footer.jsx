@@ -74,13 +74,13 @@ export default function Footer() {
               </li>
               <li>
                 <a href="mailto:info@shivakalabs.com">
-                  <i className="fa fa-envelope" style={{ color: 'var(--gold)' }} aria-hidden="true" />
+                  <i className="fa fa-envelope" style={{ color: 'var(--gold-icon)' }} aria-hidden="true" />
                   info@shivakalabs.com
                 </a>
               </li>
               <li>
                 <span>
-                  <i className="fa fa-map-marker" style={{ color: 'var(--gold)' }} aria-hidden="true" />
+                  <i className="fa fa-map-marker" style={{ color: 'var(--gold-icon)' }} aria-hidden="true" />
                   Remote Kenya
                 </span>
               </li>

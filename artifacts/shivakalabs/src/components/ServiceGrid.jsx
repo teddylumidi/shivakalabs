@@ -74,7 +74,7 @@ export default function ServiceGrid({ services, filters, fallbackImg }) {
           ))
         ) : (
           <div className="no-results">
-            <i className="fa fa-search" style={{ fontSize: '2rem', color: 'var(--gold)', marginBottom: '0.75rem', display: 'block' }} />
+            <i className="fa fa-search" style={{ fontSize: '2rem', color: 'var(--gold-icon)', marginBottom: '0.75rem', display: 'block' }} />
             <p>No services found for "<strong>{query}</strong>". Try a different keyword.</p>
           </div>
         )}
