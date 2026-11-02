@@ -63,9 +63,15 @@ export const ECITIZEN_REQUIREMENTS = {
   ],
   helb: [
     'National ID and KCSE index number and year',
+    'Your course choices (KUCCPS and KMTC)',
     'Admission letter (applications)',
     'Parents’ or guardians’ ID copies (applications)',
     'HELB portal login, if available',
+  ],
+  work: [
+    'National ID and your TSC number or personal number',
+    'Portal login (TSC, GHRIS or IFMIS), or phone and email to set one up',
+    'Certificates or business documents the form asks for',
   ],
   business: [
     'Three proposed names in order of preference (new registration)',

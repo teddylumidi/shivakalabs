@@ -93,7 +93,7 @@ test('every document type is complete and consistent', () => {
   for (const t of DOCUMENT_TYPES) {
     assert.ok(!ids.has(t.id), `duplicate id ${t.id}`); ids.add(t.id);
     assert.ok(cats.has(t.category), `${t.id} has unknown category`);
-    assert.ok(['cv', 'letter', 'document', 'any'].includes(t.format), `${t.id} format`);
+    assert.ok(['cv', 'letter', 'document', 'any', 'bundle'].includes(t.format), `${t.id} format`);
     assert.ok(t.guide && t.guide.length > 40, `${t.id} needs writing guidance`);
     assert.ok(Number.isInteger(t.price) && t.price > 0, `${t.id} price`);
     assert.match(newReference(t.id), /^SL-[A-Z]{1,4}-\d{8}-[0-9A-F]{8}$/);
@@ -122,4 +122,32 @@ test('legal documents are written with the document layout', async () => {
   });
   assert.equal(usedTool, 'write_document');
   assert.equal(Buffer.from(out.pdf, 'base64').subarray(0, 4).toString(), '%PDF');
+});
+
+test('CV + cover letter bundle costs 130 and returns both documents', async () => {
+  const type = getDocumentType('cv-cover-letter');
+  assert.equal(type.price, 130);
+  const details = {
+    fullName: 'Jane Wanjiku', phone: '0712', email: 'jane@example.com', targetRole: 'Accountant',
+    education: 'BCom', skills: 'Excel', jobTitle: 'Finance Officer', company: 'Acme Ltd', jobAdvert: 'Needs Excel',
+  };
+  const { details: d } = validateOrder({ docType: 'cv-cover-letter', details });
+  const calls = [];
+  const client = { messages: { create: async a => {
+    calls.push(a);
+    const name = a.tool_choice.name;
+    const input = name === 'write_cv'
+      ? { full_name: 'Jane Wanjiku', summary: 'x', education: [{ qualification: 'BCom', institution: 'UoN' }], skills: ['Excel'] }
+      : { sender_lines: ['Jane Wanjiku'], date: '2 November 2026', salutation: 'Dear Sir/Madam,', paragraphs: ['I apply.'], closing: 'Yours faithfully,', signature_lines: ['Jane Wanjiku'] };
+    return { content: [{ type: 'tool_use', name, input }] };
+  } } };
+  const out = await handleGenerate({ reference: newReference('cv-cover-letter'), docType: 'cv-cover-letter', details }, { verify: async () => paidTx(type, d), client });
+  assert.equal(out.parts.length, 2);
+  assert.deepEqual(out.parts.map(p => p.label), ['CV', 'Cover Letter']);
+  assert.equal(out.parts[1].fileName, 'Jane-Wanjiku-Cover-Letter');
+  assert.match(calls[1].messages[0].content, /Skills:\nExcel/, 'cover letter gets the CV details as background');
+  for (const p of out.parts) {
+    assert.equal(Buffer.from(p.docx, 'base64').subarray(0, 2).toString(), 'PK');
+    assert.equal(Buffer.from(p.pdf, 'base64').subarray(0, 4).toString(), '%PDF');
+  }
 });

@@ -11,6 +11,7 @@
 import { postHandler } from '../lib/http.js';
 import { HttpError, validateOrder, orderHash } from '../lib/order.js';
 import { verifyTransaction } from '../lib/paystack.js';
+import { getDocumentType } from '../lib/catalog.js';
 import { writeDocument } from '../lib/writer.js';
 import { toBlocks, fileStem } from '../lib/layout.js';
 import { renderDocx } from '../lib/render-docx.js';
@@ -41,9 +42,38 @@ export async function buildFiles(type, written) {
   return { fileName: stem, docx: docx.toString('base64'), pdf: pdf.toString('base64') };
 }
 
+/**
+ * Details for one part of a bundle. The cover letter's "background" is
+ * built from the CV fields so the customer fills in one form.
+ */
+export function partDetails(partType, details) {
+  if (partType.id !== 'cover-letter') return details;
+  const background = [
+    details.experience && `Experience:\n${details.experience}`,
+    details.education && `Education:\n${details.education}`,
+    details.skills && `Skills:\n${details.skills}`,
+    details.certifications && `Certificates:\n${details.certifications}`,
+  ].filter(Boolean).join('\n\n');
+  return { ...details, background };
+}
+
 export const handleGenerate = async (body, deps = {}) => {
   const { type, details } = validateOrder(body);
   await checkPayment(body.reference, type, details, deps.verify);
+
+  if (type.format === 'bundle') {
+    const partTypes = type.parts.map(getDocumentType);
+    const written = await Promise.all(
+      partTypes.map(pt => writeDocument(pt, partDetails(pt, details), { client: deps.client })),
+    );
+    const parts = await Promise.all(partTypes.map(async (pt, i) => ({
+      label: pt.name.replace(/ Writing$/, '').replace(/ \/ Resume$/, ''),
+      ...(await buildFiles(pt, written[i])),
+    })));
+    // Top-level fields mirror the first part for older clients.
+    return { ...parts[0], parts };
+  }
+
   const written = await writeDocument(type, details, { client: deps.client });
   return buildFiles(type, written);
 };

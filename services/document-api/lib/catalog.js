@@ -8,7 +8,8 @@
  * To add a document type, add one entry to DOCUMENT_TYPES:
  *   id        unique slug
  *   category  one of DOCUMENT_CATEGORIES ids
- *   format    'cv' | 'letter' | 'document' | 'any' — the layout Claude writes into
+ *   format    'cv' | 'letter' | 'document' | 'any' | 'bundle' — the layout Claude writes into
+ *             (a bundle lists its `parts` by document id and returns one file per part)
  *   price     whole Kenyan shillings
  *   guide     writing instructions for Claude
  *   needs     "What you'll need" list shown on the card
@@ -79,6 +80,31 @@ export const DOCUMENT_TYPES = [
       { key: 'recipient', label: 'Hiring manager name and company address', type: 'textarea', required: false, max: 400, placeholder: 'Leave blank if not known' },
       { key: 'jobAdvert', label: 'Job advert or key requirements', type: 'textarea', required: true, max: 4000, placeholder: 'Paste the advert or list what they are looking for' },
       { key: 'background', label: 'Your relevant experience and skills', type: 'textarea', required: true, max: 3000 },
+    ],
+  },
+  {
+    id: 'cv-cover-letter', category: 'career', format: 'bundle', parts: ['cv', 'cover-letter'],
+    name: 'CV + Cover Letter', price: 130, icon: 'fa-files-o',
+    desc: 'Your CV and a matching cover letter for one job, written together from one form. Both come in Word and PDF.',
+    guide: 'Write a CV and a matching cover letter for the same job from one set of details. Each part follows its own guidance.',
+    needs: [
+      'Contact details (phone, email, town)',
+      'Work experience, education and skills',
+      'The job title, company and the job advert',
+      'Referees (optional)',
+    ],
+    fields: [
+      ...contactFields,
+      { key: 'targetRole', label: 'Job title or field you are targeting', type: 'text', required: true, max: 120, placeholder: 'e.g. Accountant, Sales Executive' },
+      { key: 'experience', label: 'Work experience', type: 'textarea', required: false, max: 4000, placeholder: 'One job per paragraph: job title, employer, start and end dates, and what you did or achieved.' },
+      { key: 'education', label: 'Education', type: 'textarea', required: true, max: 2000, placeholder: 'e.g. Bachelor of Commerce, University of Nairobi, 2019–2023' },
+      { key: 'skills', label: 'Skills', type: 'textarea', required: true, max: 1500 },
+      { key: 'certifications', label: 'Certificates, awards and languages', type: 'textarea', required: false, max: 1500 },
+      { key: 'referees', label: 'Referees', type: 'textarea', required: false, max: 1500, placeholder: 'Name, title, organisation, phone and email for each referee' },
+      { key: 'jobTitle', label: 'Job title for the cover letter', type: 'text', required: true, max: 120 },
+      { key: 'company', label: 'Company / organisation', type: 'text', required: true, max: 120 },
+      { key: 'recipient', label: 'Hiring manager name and company address', type: 'textarea', required: false, max: 400, placeholder: 'Leave blank if not known' },
+      { key: 'jobAdvert', label: 'Job advert or key requirements', type: 'textarea', required: true, max: 4000, placeholder: 'Paste the advert or list what they are looking for' },
     ],
   },
   {
@@ -342,6 +368,34 @@ export const DOCUMENT_TYPES = [
     legal: true,
   },
   {
+    id: 'partnership-deed', category: 'legal', format: 'document',
+    name: 'Partnership Deed', price: 800, icon: 'fa-users',
+    desc: 'A partnership agreement setting out capital, profit sharing, roles and exit terms between partners.',
+    guide: `${LEGAL_NOTE} Title it "PARTNERSHIP DEED". Cover: the partners with identification, firm name and business, place of business, commencement and duration, capital contributions, profit and loss sharing ratio, drawings, management and duties, banking and signatories, books of account, admission and retirement of partners, death or incapacity, dissolution, dispute resolution (mediation, then arbitration in Kenya), and execution blocks for every partner with witnesses.`,
+    needs: ['Every partner’s name, ID number and address', 'Firm name, business and location', 'Capital each partner puts in and the profit-sharing ratio', 'Who signs cheques and manages the business'],
+    fields: [
+      ...contactFields,
+      party('partners', 'Partners’ details (one per line)'),
+      { key: 'firm', label: 'Firm name, business activity and location', type: 'textarea', required: true, max: 600 },
+      { key: 'terms', label: 'Capital contributions, profit-sharing ratio, roles, signatories and exit terms', type: 'textarea', required: true, max: 3000 },
+    ],
+    legal: true,
+  },
+  {
+    id: 'articles-of-association', category: 'legal', format: 'document',
+    name: 'Articles of Association', price: 1500, icon: 'fa-book',
+    desc: 'Articles of association for a private limited company, tailored to your shareholders and how you want decisions made.',
+    guide: `${LEGAL_NOTE} Title it "THE COMPANIES ACT, 2015 — PRIVATE COMPANY LIMITED BY SHARES — ARTICLES OF ASSOCIATION OF [COMPANY NAME] LIMITED". Use numbered parts and articles covering: interpretation and limited liability; directors' powers and responsibilities; decision-making by directors (meetings, quorum, chairperson, conflicts of interest); appointment and removal of directors; shares and distributions (issue, transfer, pre-emption rights if requested, dividends); decision-making by shareholders (general meetings, notice, quorum, voting, written resolutions); administrative arrangements (notices, records, indemnity). Reflect the customer's specific share structure and decision rules, and end with the subscribers' names and signature lines with a witness.`,
+    needs: ['Company name', 'Directors and shareholders with their shares', 'How decisions are made and any share-transfer rules'],
+    fields: [
+      ...contactFields,
+      { key: 'company', label: 'Company name (as reserved or registered)', type: 'text', required: true, max: 160 },
+      party('members', 'Directors and shareholders, with shares held'),
+      { key: 'rules', label: 'Decision rules, share transfers, dividends and anything special', type: 'textarea', required: false, max: 3000 },
+    ],
+    legal: true,
+  },
+  {
     id: 'demand-letter', category: 'legal', format: 'letter',
     name: 'Demand Letter', price: 200, icon: 'fa-exclamation-triangle',
     desc: 'A firm, formal demand for money owed or an obligation that hasn’t been met.',
@@ -386,7 +440,7 @@ export const DOCUMENT_TYPES = [
   },
   {
     id: 'company-profile', category: 'business', format: 'document',
-    name: 'Company Profile', price: 300, icon: 'fa-building',
+    name: 'Company Profile', price: 1000, icon: 'fa-building',
     desc: 'A professional company profile for tenders, clients and partners.',
     guide: 'Write a company profile with: About Us, Vision and Mission, Core Values, Products/Services, Key Clients or Projects (only those given), Team, Registrations and Compliance (only those given), and Contact Details.',
     needs: ['Company details and history', 'Services and past clients or projects', 'Team, registrations and contacts'],

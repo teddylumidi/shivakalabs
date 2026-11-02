@@ -1113,3 +1113,8 @@ footer a:focus-visible { outline-color: #fff; }
 .faq-question { color: var(--ink); }
 .faq-question:hover { color: var(--gold-ink); }
 .order-link { color: var(--gold-ink); }
+.order-download-group { width: 100%; display: grid; gap: 0.5rem; }
+.order-download-group + .order-download-group { margin-top: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+.order-download-label { font-weight: 700; color: var(--ink); }
+@media (min-width: 900px) { .cost-tabs { flex-wrap: wrap; overflow: visible; } }
+.receipt-tag { display: inline-block; margin-left: 0.4rem; padding: 0.05rem 0.45rem; border: 1px solid rgba(0,0,0,0.55); border-radius: 50px; font-size: 0.72rem; font-weight: 600; vertical-align: 0.1em; white-space: nowrap; }

@@ -10,7 +10,7 @@ import HowItWorks from '../../components/HowItWorks';
 import CtaStrip from '../../components/CtaStrip';
 import { DOCUMENT_CATEGORIES, PHOTO_PRODUCT, DOC_STEPS, getDocumentType, typesInCategory } from '../../data/documents';
 
-const POPULAR = ['cv', 'cover-letter', 'affidavit'].map(getDocumentType);
+const POPULAR = ['cv-cover-letter', 'cv', 'cover-letter'].map(getDocumentType);
 
 export default function DocumentsHub() {
   return (
@@ -18,7 +18,7 @@ export default function DocumentsHub() {
       <PageHero
         icon="fa-file-text"
         title={<h1>Documents &amp; <span className="accent">Passport Photos</span></h1>}
-        subtitle="CVs for KSh 100, cover letters for KSh 30, letters, legal agreements, business documents and passport photos. Pay with M-Pesa or card, then download instantly."
+        subtitle="CVs for KSh 100, cover letters for KSh 30, or both together for KSh 130. Letters, legal agreements, business documents and passport photos. Pay with M-Pesa or card, then download instantly."
       />
       <DocsSubnav />
 

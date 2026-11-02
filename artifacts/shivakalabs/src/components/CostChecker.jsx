@@ -10,15 +10,38 @@
  */
 import { useEffect, useId, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { FEE_GROUPS, FEES_CHECKED, feeOption, totalOf, ksh } from '../data/fees';
+import { FEE_GROUPS, FEES_CHECKED, feeOption, totalOf, serviceFeeOf, ksh } from '../data/fees';
 import { WA_NUMBER } from '../data/services';
 
+/** Receipt lines for an option: [{ label, value }] — the total is added separately. */
+export function receiptLines(o) {
+  const govLabel = o.govLabel || o.group.govLabel;
+  if (o.mode === 'plus') {
+    return [
+      { label: govLabel, value: o.gov == null ? 'Paid separately' : ksh(o.gov) },
+      { label: 'ShivakaLabs service fee', value: ksh(o.price) },
+    ];
+  }
+  if (o.mode === 'included') {
+    const fee = serviceFeeOf(o);
+    return fee == null
+      ? [{ label: `${govLabel} and our service`, value: 'Included' }]
+      : [
+          { label: govLabel, value: ksh(o.gov), included: true },
+          { label: 'ShivakaLabs service fee', value: ksh(fee) },
+        ];
+  }
+  return [
+    ...(govLabel ? [{ label: govLabel, value: 'Free' }] : []),
+    { label: 'ShivakaLabs service fee', value: ksh(o.price) },
+  ];
+}
+
 function waQuote(option) {
-  const g = option.group;
+  const breakdown = receiptLines(option).map(l => `${l.label}: ${l.value}${l.included ? ' (included)' : ''}`).join('; ');
   const lines = [
     `Hello ShivakaLabs, I'd like help with: ${option.name} (${option.detail}).`,
-    `Your site shows a total of ${ksh(totalOf(option))}` +
-      (option.gov ? ` (government fee ${ksh(option.gov)} + service fee ${ksh(option.fee)}).` : ` (${g.name} charges nothing; service fee ${ksh(option.fee)}).`),
+    `Your site shows a total of ${ksh(totalOf(option))} (${breakdown}).`,
   ];
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
 }
@@ -107,14 +130,12 @@ export default function CostChecker() {
             <p className="receipt-title">{option.name}</p>
             <p className="receipt-sub">{option.detail}</p>
             <dl className="receipt-lines">
-              <div className="receipt-line">
-                <dt>{group.govLabel}</dt>
-                <dd>{option.gov ? ksh(option.gov) : 'Free'}</dd>
-              </div>
-              <div className="receipt-line">
-                <dt>ShivakaLabs service fee</dt>
-                <dd>{ksh(option.fee)}</dd>
-              </div>
+              {receiptLines(option).map(l => (
+                <div key={l.label} className="receipt-line">
+                  <dt>{l.label}{l.included && <span className="receipt-tag">included in total</span>}</dt>
+                  <dd>{l.value}</dd>
+                </div>
+              ))}
               <div className="receipt-line receipt-total">
                 <dt>Total</dt>
                 <dd>{ksh(totalOf(option))}</dd>
@@ -131,8 +152,10 @@ export default function CostChecker() {
               <i className="fa fa-whatsapp" aria-hidden="true" /> Apply on WhatsApp for {ksh(totalOf(option))}
             </a>
             <p className="receipt-fine">
-              Government fees checked {FEES_CHECKED} on{' '}
-              <a href={group.source.url} target="_blank" rel="noopener noreferrer">{group.source.label}</a>.
+              {group.source
+                ? <>Government fees checked {FEES_CHECKED} on{' '}
+                    <a href={group.source.url} target="_blank" rel="noopener noreferrer">{group.source.label}</a>.{' '}</>
+                : null}
               Fees can change, and we confirm the total before you pay.
             </p>
           </div>
@@ -144,14 +167,13 @@ export default function CostChecker() {
             <table key={g.id} className="cost-table">
               <caption>{g.name}</caption>
               <thead>
-                <tr><th scope="col">Service</th><th scope="col">Government</th><th scope="col">Our fee</th><th scope="col">Total</th></tr>
+                <tr><th scope="col">Service</th><th scope="col">Government fee</th><th scope="col">Total</th></tr>
               </thead>
               <tbody>
                 {g.options.map(o => (
                   <tr key={o.id}>
                     <th scope="row">{o.name}</th>
-                    <td>{o.gov ? o.gov.toLocaleString('en-KE') : 'Free'}</td>
-                    <td>{o.fee.toLocaleString('en-KE')}</td>
+                    <td>{o.gov == null ? (o.mode === 'plus' ? 'Separate' : 'Included') : o.gov === 0 ? 'Free' : `${o.gov.toLocaleString('en-KE')}${o.mode === 'included' ? ' (incl.)' : ''}`}</td>
                     <td>{totalOf(o).toLocaleString('en-KE')}</td>
                   </tr>
                 ))}

@@ -8,7 +8,8 @@
     "build": "vite build --config vite.config.ts && vite build --config vite.config.ts --ssr src/entry-server.jsx --outDir dist/server && node scripts/postbuild.mjs",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "images": "node scripts/compress-images.mjs"
+    "images": "node scripts/compress-images.mjs",
+    "service-images": "node scripts/generate-service-images.mjs"
   },
   "dependencies": {
     "react": "catalog:",
@@ -24,6 +25,7 @@
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "sharp": "^0.34.4",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "lucide-static": "1.66.0"
   }
 }

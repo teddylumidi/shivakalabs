@@ -49,13 +49,13 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 ## Product
 
 - Home page: hero with a search across every service (`src/data/search.js`) and a gold price board with real prices (`PriceBoard.jsx`), service areas, how it works, popular services, FAQ, WhatsApp CTA
-- eCitizen cost checker (`CostChecker.jsx`, data in `src/data/fees.js`): Passport, KRA and Good conduct tabs; shows government fee + ShivakaLabs fee + total on a receipt and opens WhatsApp with that exact quote. Deep link `/ecitizen?cost=<id>#cost`. Government fees checked 2 Nov 2026 (immigration.go.ke); service fees in `fees.js` are editable placeholders
+- eCitizen cost checker (`CostChecker.jsx`, data in `src/data/fees.js`): 8 tabs (Passport, KRA, NTSA, HELB & KUCCPS, Business, TSC & civil service, Certificates & accounts, Printing & writing help). Prices come from the ShivakaLabs price list; each option is `plus` (government fee on top), `included` (all-in price) or `free`. Deep link `/ecitizen?cost=<id>#cost`. Government fees checked 2 Nov 2026
 - eCitizen Services: filterable/searchable grid of 75+ government portal services (only ones that can be done online; in-person-only services such as new IDs were removed)
 - Web Development: searchable grid of web dev services
 - Graphic Design: searchable grid of design services
 - Digital Marketing: searchable grid of marketing services
 - About Us: company story, team photo, and values
-- Documents section (`/documents`, with its own sub-menu): Career, Letters, Legal, Business, Personal and Passport Photo pages. 28 paid document types (CV KSh 100, cover letter KSh 30, affidavits, agreements, business plans…). Details form → pay first via Paystack (M-Pesa or card) → download Word and PDF
+- Documents section (`/documents`, with its own sub-menu): Career, Letters, Legal, Business, Personal and Passport Photo pages. 31 paid document types (CV KSh 100, cover letter KSh 30, CV + cover letter bundle KSh 130, affidavits, agreements, business plans…). Details form → pay first via Paystack (M-Pesa or card) → download Word and PDF
 - Passport photo (`/documents/passport-photo`, KSh 50): upload → background removed and face framed in the browser → choose size and colour → pay → JPG and A4 print PDF
 - Web Development page shows website packages: Basic KSh 15,000, Standard KSh 30,000, Premium KSh 60,000 (`WEB_PACKAGES` in services.js)
 - How it works: on Home, eCitizen and CV & Documents; eCitizen page also lists what to prepare per category
@@ -67,7 +67,8 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-- Add new images as WebP, or drop PNG/JPG files into `public/img` and run the `images` script (it converts and deletes the originals)
+- Service card images are generated: `pnpm --filter @workspace/shivakalabs run service-images` draws one illustrated WebP per service (icon rules in `scripts/generate-service-images.mjs`, Lucide icons, ISC). Re-run after adding a service; add an icon rule if it errors
+- Other images: add as WebP, or drop PNG/JPG files into `public/img` and run the `images` script (it converts and deletes the originals)
 - The document API URL defaults to `https://shivakalabs-docs.vercel.app`; if the Vercel project gets another URL, publish with `VITE_DOCS_API_URL=<url> pnpm run publish`
 - To change document prices or add a document type, edit `services/document-api/lib/catalog.js` (and its guidance in `lib/writer.js`), redeploy the API, then republish the site
 - To add a page: add the route in `App.jsx`, its metadata in `src/data/pages.js`, and a nav link in `Navbar.jsx`/`Footer.jsx`

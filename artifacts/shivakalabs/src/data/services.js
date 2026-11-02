@@ -73,6 +73,9 @@ export const ECITIZEN_SERVICES = [
   { name: 'KRA PIN Retrieval', desc: 'Retrieve a forgotten or lost KRA PIN from the iTax portal.', category: 'kra', icon: 'fa-calculator' },
   { name: 'KRA PIN Update Email Change', desc: 'Update your KRA profile details including email address.', category: 'kra', icon: 'fa-calculator' },
   { name: 'Tax Compliance Certificate', desc: 'Apply for a Tax Compliance Certificate for tenders, jobs and loans.', category: 'kra', icon: 'fa-calculator' },
+  { name: 'KRA PIN for Company', desc: 'Register a KRA PIN for a newly incorporated company.', category: 'kra', icon: 'fa-calculator' },
+  { name: 'P9 Income Tax Return', desc: 'File your annual employment income return using your P9 form.', category: 'kra', icon: 'fa-calculator' },
+  { name: 'Withholding Tax Return Filing', desc: 'File an income tax return that claims withholding tax certificates.', category: 'kra', icon: 'fa-calculator' },
   { name: 'Nil Returns Filing', desc: 'File your KRA nil returns on time to avoid penalties.', category: 'kra', icon: 'fa-calculator' },
   { name: 'Business Tax Return Filing', desc: 'File business tax returns accurately and on time.', category: 'kra', icon: 'fa-calculator' },
   { name: 'VAT Filing Assistance', desc: 'Guidance filing VAT returns and managing VAT obligations.', category: 'kra', icon: 'fa-calculator' },
@@ -117,6 +120,24 @@ export const ECITIZEN_SERVICES = [
   { name: 'Single Business Permit Guidance', desc: 'Apply for or renew a Single Business Permit from your county.', category: 'county', icon: 'fa-building' },
   { name: 'County Permit Renewal Assistance', desc: 'Renew county business permits and licences online.', category: 'county', icon: 'fa-building' },
   { name: 'County Revenue Portal Support', desc: 'Navigate county revenue portals for payments and applications.', category: 'county', icon: 'fa-building' },
+  // Business (more)
+  { name: 'Business Linking', desc: 'Link your registered business to your eCitizen account.', category: 'business', icon: 'fa-link' },
+  { name: 'AGPO Certificate', desc: 'Apply for an AGPO certificate to access government tenders reserved for youth, women and PWDs.', category: 'business', icon: 'fa-certificate' },
+  // Education
+  { name: 'KUCCPS Application', desc: 'First-time KUCCPS placement application for degree and diploma courses.', category: 'helb', icon: 'fa-graduation-cap' },
+  { name: 'KUCCPS Course Revision', desc: 'Revise your KUCCPS course choices before the deadline.', category: 'helb', icon: 'fa-graduation-cap' },
+  { name: 'KMTC Application', desc: 'Create your KMTC account and apply for a certificate or diploma course.', category: 'helb', icon: 'fa-medkit' },
+  // TSC and civil service
+  { name: 'TSC Number Application', desc: 'Register as a teacher with TSC and get your TSC number.', category: 'work', icon: 'fa-id-badge' },
+  { name: 'TSC Wealth Declaration', desc: 'Complete the TSC wealth declaration form online.', category: 'work', icon: 'fa-id-badge' },
+  { name: 'GHRIS Registration', desc: 'Register on GHRIS, the government human resource portal for civil servants.', category: 'work', icon: 'fa-users' },
+  { name: 'GHRIS Payslip Download', desc: 'Download your civil service payslip from GHRIS.', category: 'work', icon: 'fa-file-text-o' },
+  { name: 'IFMIS Supplier Account', desc: 'Register as a supplier on the IFMIS government procurement portal.', category: 'work', icon: 'fa-briefcase' },
+  { name: 'IFMIS Tender Services', desc: 'Respond to tenders and manage invoices on IFMIS.', category: 'work', icon: 'fa-briefcase' },
+  // Certificates
+  { name: 'Metropol CRB Clearance Certificate', desc: 'Get your CRB clearance certificate from Metropol for jobs or loans.', category: 'general', icon: 'fa-check-square-o' },
+  { name: 'NSSF Returns Filing', desc: 'File monthly NSSF contribution returns for your employees.', category: 'nssf', icon: 'fa-shield' },
+  { name: 'Smart Driving Licence Application', desc: 'Apply for your first smart driving licence or upgrade from the red booklet.', category: 'ntsa', icon: 'fa-car' },
 ];
 
 // ── Web Dev Services ─────────────────────────────────────────────────────────

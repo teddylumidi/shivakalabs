@@ -15,7 +15,7 @@ const ROWS = [
   { label: 'Cover letter',       price: `${fmt(doc('cover-letter').price)}/-`, to: '/documents/career#cover-letter' },
   { label: 'Passport photo',     price: `${fmt(PHOTO_PRODUCT.price)}/-`,      to: '/documents/passport-photo' },
   { label: 'CV writing',         price: `${fmt(doc('cv').price)}/-`,          to: '/documents/career#cv' },
-  { label: 'Affidavit',          price: `${fmt(doc('affidavit').price)}/-`,   to: '/documents/legal#affidavit' },
+  { label: 'CV + cover letter',  price: `${fmt(doc('cv-cover-letter').price)}/-`, to: '/documents/career#cv-cover-letter' },
   { label: 'KRA PIN',            price: `${fmt(totalOf(feeOption('kra-pin')))}/-`, to: '/ecitizen?cost=kra-pin#cost' },
   { label: 'Passport, all in',   price: `${fmt(totalOf(feeOption('passport-34')))}/-`, to: '/ecitizen?cost=passport-34#cost' },
   { label: 'Business website',   price: `from ${fmt(WEB_PACKAGES[0].price)}/-`, to: '/webdev' },

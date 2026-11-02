@@ -52,9 +52,9 @@ export const PAGES = [
   },
   {
     path: '/documents/career',
-    title: 'CV Writing KSh 100 & Cover Letters KSh 30 in Kenya | ShivakaLabs',
+    title: 'CV Writing KSh 100, Cover Letter KSh 30, Both KSh 130 | ShivakaLabs',
     description:
-      'Professional CV writing for KSh 100, cover letters for KSh 30, plus job application, resignation and recommendation letters. Pay with M-Pesa or card, download Word or PDF.',
+      'Professional CV writing for KSh 100, cover letters for KSh 30, or a CV and matching cover letter for KSh 130. Plus job application, resignation and recommendation letters. Pay with M-Pesa or card, download Word or PDF.',
   },
   {
     path: '/documents/letters',
@@ -66,7 +66,7 @@ export const PAGES = [
     path: '/documents/legal',
     title: 'Affidavits, Tenancy & Sale Agreements, Contracts in Kenya | ShivakaLabs',
     description:
-      'Affidavits, tenancy agreements, motor vehicle sale agreements, loan agreements, employment contracts, NDAs, power of attorney and travel consent, in standard Kenyan formats.',
+      'Affidavits, tenancy and sale agreements, partnership deeds, articles of association, loan and employment contracts, NDAs, power of attorney and travel consent, in standard Kenyan formats.',
   },
   {
     path: '/documents/business',

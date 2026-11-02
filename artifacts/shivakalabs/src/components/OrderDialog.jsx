@@ -97,7 +97,7 @@ export default function OrderDialog({ type, resume, onClose }) {
       <div className="order-dialog-head">
         <div>
           <h2 id="order-dialog-title" className="order-dialog-title">{type.name}</h2>
-          <p className="order-dialog-price">KSh {type.price.toLocaleString('en-KE')} · Word &amp; PDF</p>
+          <p className="order-dialog-price">KSh {type.price.toLocaleString('en-KE')} · {type.parts ? 'Both documents in Word and PDF' : 'Word and PDF'}</p>
         </div>
         <button type="button" className="order-close" onClick={close} disabled={busy} aria-label="Close">
           <i className="fa fa-times" aria-hidden="true" />
@@ -201,15 +201,20 @@ export default function OrderDialog({ type, resume, onClose }) {
       {stage === 'done' && files && (
         <div className="order-panel order-center">
           <i className="fa fa-check-circle order-done-icon" aria-hidden="true" />
-          <p>Your document is ready. Download it in either format.</p>
-          <div className="order-actions order-actions-center">
-            <button type="button" className="btn-gold" onClick={() => downloadBase64(files.docx, `${files.fileName}.docx`, DOCX_MIME)}>
-              <i className="fa fa-file-word-o" aria-hidden="true" /> Download Word
-            </button>
-            <button type="button" className="btn-gold" onClick={() => downloadBase64(files.pdf, `${files.fileName}.pdf`, PDF_MIME)}>
-              <i className="fa fa-file-pdf-o" aria-hidden="true" /> Download PDF
-            </button>
-          </div>
+          <p>{files.parts ? 'Your documents are ready. Download each in either format.' : 'Your document is ready. Download it in either format.'}</p>
+          {(files.parts || [{ label: '', ...files }]).map(part => (
+            <div key={part.fileName} className="order-download-group">
+              {part.label && <p className="order-download-label">{part.label}</p>}
+              <div className="order-actions order-actions-center">
+                <button type="button" className="btn-gold" onClick={() => downloadBase64(part.docx, `${part.fileName}.docx`, DOCX_MIME)}>
+                  <i className="fa fa-file-word-o" aria-hidden="true" /> Download Word{part.label && <span className="sr-only"> ({part.label})</span>}
+                </button>
+                <button type="button" className="btn-gold" onClick={() => downloadBase64(part.pdf, `${part.fileName}.pdf`, PDF_MIME)}>
+                  <i className="fa fa-file-pdf-o" aria-hidden="true" /> Download PDF{part.label && <span className="sr-only"> ({part.label})</span>}
+                </button>
+              </div>
+            </div>
+          ))}
           <p className="order-note">Need changes? Edit the Word file, or message us on WhatsApp with reference {reference}.</p>
         </div>
       )}
