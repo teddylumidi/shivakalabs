@@ -10,8 +10,9 @@
  *
  *   pnpm --filter @workspace/shivakalabs run service-images
  *
- * Only services WITHOUT an image get one, so your own photos are never
- * replaced. Pass --force to redraw every image (this overwrites photos).
+ * Opt-in only: the site uses your own photos. Run with --missing to draw
+ * images just for services that have no photo, or --force to redraw every
+ * image (this overwrites photos). With no flag it does nothing.
  */
 import { readFile, mkdir, access } from 'fs/promises';
 import path from 'path';
@@ -210,6 +211,10 @@ for (const p of POPULAR_SERVICES) {
 }
 
 const FORCE = process.argv.includes('--force');
+if (!FORCE && !process.argv.includes('--missing')) {
+  console.log('Nothing generated: the site uses your own photos. Use --missing or --force to draw images.');
+  process.exit(0);
+}
 const exists = f => access(f).then(() => true, () => false);
 
 await mkdir(OUT, { recursive: true });

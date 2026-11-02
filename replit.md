@@ -67,7 +67,7 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-- Service card images are generated: `pnpm --filter @workspace/shivakalabs run service-images` draws an illustrated WebP only for services that have no image yet (your own photos are kept; `-- --force` redraws all). Icon rules in `scripts/generate-service-images.mjs`, Lucide icons (ISC)
+- Service card images are generated: Service images are your own photos. A service without a photo shows the logo; add `public/img/services/<slug>.webp` to give it one. The optional `service-images` script can draw illustrations (`-- --missing` or `-- --force`) but does nothing by default. Icon rules in `scripts/generate-service-images.mjs`, Lucide icons (ISC)
 - Other images: add as WebP, or drop PNG/JPG files into `public/img` and run the `images` script (it converts and deletes the originals)
 - The document API URL defaults to `https://shivakalabs-docs.vercel.app`; if the Vercel project gets another URL, publish with `VITE_DOCS_API_URL=<url> pnpm run publish`
 - To change document prices or add a document type, edit `services/document-api/lib/catalog.js` (and its guidance in `lib/writer.js`), redeploy the API, then republish the site
