@@ -1118,3 +1118,6 @@ footer a:focus-visible { outline-color: #fff; }
 .order-download-label { font-weight: 700; color: var(--ink); }
 @media (min-width: 900px) { .cost-tabs { flex-wrap: wrap; overflow: visible; } }
 .receipt-tag { display: inline-block; margin-left: 0.4rem; padding: 0.05rem 0.45rem; border: 1px solid rgba(0,0,0,0.55); border-radius: 50px; font-size: 0.72rem; font-weight: 600; vertical-align: 0.1em; white-space: nowrap; }
+.svc-card-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.4rem; margin: 0.15rem 0 0.75rem; font-size: 0.86rem; color: var(--muted); }
+.svc-card-price strong { font-family: var(--font-sign); font-size: 1.3rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.svc-card-price-link { flex-basis: 100%; color: var(--gold-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; font-size: 0.84rem; }

@@ -1,10 +1,25 @@
 /**
  * ServiceCard.jsx — Reusable card for a single service.
- * Accepts: name, desc, icon, imgSlug, fallbackImg, waMsg, category
+ * Accepts: name, desc, icon, imgSlug, fallbackImg, waMsg, category, fee (a fees.js option id)
  */
+import { Link } from 'react-router-dom';
 import { waLink, slugify } from '../data/services';
+import { feeOption, totalOf } from '../data/fees';
 
-export default function ServiceCard({ name, desc, icon, imgSlug, fallbackImg, waMsg, category }) {
+/** Price line for a card: the total, and what it includes. */
+function priceInfo(feeId) {
+  const o = feeId && feeOption(feeId);
+  if (!o) return null;
+  const from = o.group.id === 'passport' && o.id === 'passport-34';
+  const note = o.mode === 'plus' && o.gov ? 'incl. government fee'
+    : o.mode === 'included' ? 'all in'
+    : o.mode === 'free' && o.gov === 0 && o.group.govLabel ? 'no government fee'
+    : '';
+  return { id: o.id, total: totalOf(o), from, note };
+}
+
+export default function ServiceCard({ name, desc, icon, imgSlug, fallbackImg, waMsg, category, fee }) {
+  const price = priceInfo(fee);
   const slug = imgSlug || slugify(name);
   const base = import.meta.env.BASE_URL;
   const fb   = fallbackImg || `${base}img/logo.webp`;
@@ -31,6 +46,15 @@ export default function ServiceCard({ name, desc, icon, imgSlug, fallbackImg, wa
         <i className={`fa ${icon} svc-card-icon`} aria-hidden="true" />
         <h3 className="svc-card-title">{name}</h3>
         <p>{desc}</p>
+        {price && (
+          <p className="svc-card-price">
+            <strong>{price.from ? 'From ' : ''}KSh {price.total.toLocaleString('en-KE')}</strong>
+            {price.note && <span> {price.note}</span>}
+            <Link to={`/ecitizen?cost=${price.id}#cost`} className="svc-card-price-link">
+              See breakdown<span className="sr-only"> for {name}</span>
+            </Link>
+          </p>
+        )}
         <a
           className="btn-wa"
           href={waLink(msg)}

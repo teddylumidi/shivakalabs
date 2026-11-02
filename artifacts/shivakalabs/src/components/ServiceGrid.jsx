@@ -68,6 +68,7 @@ export default function ServiceGrid({ services, filters, fallbackImg }) {
               desc={svc.desc}
               icon={svc.icon}
               imgSlug={svc.img || slugify(svc.name)}
+              fee={svc.fee}
               fallbackImg={fallbackImg}
               category={svc.category}
             />
