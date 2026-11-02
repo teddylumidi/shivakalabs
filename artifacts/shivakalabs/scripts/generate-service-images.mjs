@@ -9,9 +9,11 @@
  * Icons: Lucide (ISC licence), from the `lucide-static` package.
  *
  *   pnpm --filter @workspace/shivakalabs run service-images
- *   (re-run after adding a service; existing images are overwritten)
+ *
+ * Only services WITHOUT an image get one, so your own photos are never
+ * replaced. Pass --force to redraw every image (this overwrites photos).
  */
-import { readFile, mkdir } from 'fs/promises';
+import { readFile, mkdir, access } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
@@ -207,12 +209,16 @@ for (const p of POPULAR_SERVICES) {
   if (!jobs.has(p.img)) jobs.set(p.img, { name: p.waMsg || p.name, area: POPULAR_AREA[p.img] || 'general' });
 }
 
+const FORCE = process.argv.includes('--force');
+const exists = f => access(f).then(() => true, () => false);
+
 await mkdir(OUT, { recursive: true });
 let n = 0;
 for (const [slug, { name, area }] of jobs) {
   if (!PALETTE[area]) throw new Error(`No palette for area "${area}" (${name})`);
+  if (!FORCE && await exists(path.join(OUT, `${slug}.webp`))) continue;
   const svg = await svgFor(name, area);
   await sharp(Buffer.from(svg)).webp({ quality: 82 }).toFile(path.join(OUT, `${slug}.webp`));
   n++;
 }
-console.log(`Generated ${n} service images in public/img/services/`);
+console.log(`Generated ${n} service image(s) in public/img/services/${FORCE ? " (redrew all)" : " (existing images kept)"}`);
