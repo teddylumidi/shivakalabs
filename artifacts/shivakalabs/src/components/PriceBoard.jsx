@@ -6,6 +6,7 @@
 import { Link } from 'react-router-dom';
 import { getDocumentType, PHOTO_PRODUCT } from '../data/documents';
 import { WEB_PACKAGES } from '../data/services';
+import { feeOption, totalOf } from '../data/fees';
 
 const doc = id => getDocumentType(id);
 const fmt = n => n.toLocaleString('en-KE');
@@ -15,7 +16,8 @@ const ROWS = [
   { label: 'Passport photo',     price: `${fmt(PHOTO_PRODUCT.price)}/-`,      to: '/documents/passport-photo' },
   { label: 'CV writing',         price: `${fmt(doc('cv').price)}/-`,          to: '/documents/career#cv' },
   { label: 'Affidavit',          price: `${fmt(doc('affidavit').price)}/-`,   to: '/documents/legal#affidavit' },
-  { label: 'Tenancy agreement',  price: `${fmt(doc('tenancy-agreement').price)}/-`, to: '/documents/legal#tenancy-agreement' },
+  { label: 'KRA PIN',            price: `${fmt(totalOf(feeOption('kra-pin')))}/-`, to: '/ecitizen?cost=kra-pin#cost' },
+  { label: 'Passport, all in',   price: `${fmt(totalOf(feeOption('passport-34')))}/-`, to: '/ecitizen?cost=passport-34#cost' },
   { label: 'Business website',   price: `from ${fmt(WEB_PACKAGES[0].price)}/-`, to: '/webdev' },
 ];
 
@@ -35,7 +37,8 @@ export default function PriceBoard() {
         ))}
       </ul>
       <p className="board-foot">
-        Pay with M-Pesa or card. eCitizen services are quoted on WhatsApp.
+        Passport and good conduct prices include the government fee.{' '}
+        <Link to="/ecitizen#cost" className="board-more">Check any eCitizen cost</Link>
       </p>
     </aside>
   );

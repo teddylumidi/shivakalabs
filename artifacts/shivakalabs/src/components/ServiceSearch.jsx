@@ -50,9 +50,9 @@ export default function ServiceSearch() {
               <>
                 <span className="svc-result-name">{r.name}</span>
                 <span className="svc-result-meta">
-                  {r.area}{r.price ? `, ${r.price.toLocaleString('en-KE')}/-` : ''}
+                  {r.area}{r.price ? `, ${r.all ? 'total ' : ''}${r.price.toLocaleString('en-KE')}/-` : ''}
                 </span>
-                <span className="svc-result-action">{r.to ? 'Order' : 'Ask on WhatsApp'}</span>
+                <span className="svc-result-action">{r.all ? 'See cost' : r.to ? 'Order' : 'Ask on WhatsApp'}</span>
               </>
             );
             return (

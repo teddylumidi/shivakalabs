@@ -49,6 +49,7 @@ Never edit `docs/` by hand; it is generated. `main` is the only branch.
 ## Product
 
 - Home page: hero with a search across every service (`src/data/search.js`) and a gold price board with real prices (`PriceBoard.jsx`), service areas, how it works, popular services, FAQ, WhatsApp CTA
+- eCitizen cost checker (`CostChecker.jsx`, data in `src/data/fees.js`): Passport, KRA and Good conduct tabs; shows government fee + ShivakaLabs fee + total on a receipt and opens WhatsApp with that exact quote. Deep link `/ecitizen?cost=<id>#cost`. Government fees checked 2 Nov 2026 (immigration.go.ke); service fees in `fees.js` are editable placeholders
 - eCitizen Services: filterable/searchable grid of 75+ government portal services (only ones that can be done online; in-person-only services such as new IDs were removed)
 - Web Development: searchable grid of web dev services
 - Graphic Design: searchable grid of design services

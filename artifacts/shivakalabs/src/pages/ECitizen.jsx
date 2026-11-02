@@ -6,6 +6,7 @@ import PageHero from '../components/PageHero';
 import ServiceGrid from '../components/ServiceGrid';
 import CtaStrip from '../components/CtaStrip';
 import HowItWorks from '../components/HowItWorks';
+import CostChecker from '../components/CostChecker';
 import { ECITIZEN_SERVICES } from '../data/services';
 import { ECITIZEN_REQUIREMENTS } from '../data/requirements';
 
@@ -42,11 +43,16 @@ export default function ECitizen() {
       <PageHero
         icon="fa-globe"
         title={<h1>eCitizen <span className="accent">Services</span></h1>}
-        subtitle="We help you navigate Kenya's government portals — from KRA and NTSA to Passport, Business Registration, and more. Professional, fast, and stress-free."
+        subtitle="We handle KRA, NTSA, passports, good conduct, business registration and more for you. Check the full cost first, then apply on WhatsApp."
       />
 
-      <section>
+      <CostChecker />
+
+      <section aria-labelledby="all-ecitizen-title">
         <div className="container">
+          <div className="section-title">
+            <h2 id="all-ecitizen-title">All eCitizen services</h2>
+          </div>
           <ServiceGrid
             services={ECITIZEN_SERVICES}
             filters={FILTERS}

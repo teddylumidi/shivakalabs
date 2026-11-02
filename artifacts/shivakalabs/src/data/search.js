@@ -4,6 +4,7 @@
  */
 import { ECITIZEN_SERVICES, WEBDEV_SERVICES, DESIGN_SERVICES, MARKETING_SERVICES, waLink } from './services';
 import { DOCUMENT_TYPES, PHOTO_PRODUCT } from './documents';
+import { ALL_FEE_OPTIONS, totalOf } from './fees';
 
 // Everyday words people type, mapped to the words used in service names.
 const SYNONYMS = {
@@ -31,6 +32,10 @@ export const SEARCH_INDEX = [
     name: 'Passport Photo', desc: 'Upload a photo and get a passport-size photo with the background colour you choose.',
     area: 'Documents', price: PHOTO_PRODUCT.price, to: '/documents/passport-photo',
   },
+  ...ALL_FEE_OPTIONS.map(o => ({
+    name: o.name, desc: `${o.detail}. ${o.group.name}`, area: 'eCitizen', price: totalOf(o), all: true,
+    to: `/ecitizen?cost=${o.id}#cost`,
+  })),
   ...ECITIZEN_SERVICES.map(s => ({ name: s.name, desc: s.desc, area: 'eCitizen', href: waLink(s.name) })),
   ...WEBDEV_SERVICES.map(s => ({ name: s.name, desc: s.desc, area: 'Websites', href: waLink(s.name) })),
   ...DESIGN_SERVICES.map(s => ({ name: s.name, desc: s.desc, area: 'Design', href: waLink(s.name) })),

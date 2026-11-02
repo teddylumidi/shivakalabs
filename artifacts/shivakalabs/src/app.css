@@ -900,3 +900,76 @@ main > * { animation: none; }
 .board-item { white-space: normal; min-width: 0; }
 .container.about-section { max-width: 1280px; margin: 0 auto; }
 .about-section > * { max-width: 1000px; }
+
+/* ── eCitizen cost checker ─────────────────────────────────── */
+.cost { border-bottom: 1px solid var(--border); }
+.cost-tabs { display: flex; gap: 0.4rem; margin-bottom: 1.1rem; overflow-x: auto; scrollbar-width: none; }
+.cost-tabs::-webkit-scrollbar { display: none; }
+.cost-tab {
+  flex-shrink: 0; min-height: 44px; padding: 0.5rem 1.1rem; border-radius: var(--radius-sm);
+  font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--gray-200);
+  border: 1px solid var(--surface-3); background: var(--surface);
+}
+.cost-tab:hover { color: var(--white); border-color: var(--gold-dark); }
+.cost-tab.active { background: var(--white); color: #000; border-color: var(--white); }
+.cost-body { display: grid; gap: 1.5rem; }
+@media (min-width: 900px) { .cost-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: start; } }
+.cost-options { border: 0; display: grid; border-top: 1px solid var(--border); min-width: 0; }
+.cost-option {
+  position: relative; display: grid; grid-template-columns: 1fr auto; column-gap: 1rem; align-items: center;
+  padding: 0.8rem 0.9rem 0.8rem 2.6rem; min-height: 60px; cursor: pointer;
+  border-bottom: 1px solid var(--border);
+}
+.cost-option:hover { background: var(--surface); }
+.cost-option.selected { background: var(--surface-2); box-shadow: inset 3px 0 0 var(--gold); }
+.cost-option input { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; accent-color: var(--gold); margin: 0; }
+.cost-option-name { font-weight: 600; color: var(--white); }
+.cost-option-detail { grid-row: 2; font-size: 0.86rem; color: var(--gray-400); }
+.cost-option-total { grid-row: 1 / span 2; grid-column: 2; font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--gold-light); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* The receipt: same gold paper as the homepage board */
+.receipt {
+  background: var(--gold); color: #000; border-radius: 3px; padding: 1.4rem 1.25rem 1.2rem;
+  box-shadow: 0 0 0 5px var(--black), 0 0 0 6px var(--gold-dark), 0 18px 40px rgba(0,0,0,0.6); margin: 6px;
+}
+@media (min-width: 900px) { .receipt { position: sticky; top: calc(var(--nav-h) + 1.5rem); padding: 1.6rem 1.6rem 1.3rem; } }
+.receipt p, .receipt li, .receipt dt, .receipt dd { color: #000; }
+.receipt-title { font-family: var(--font-display); font-size: 2rem; font-weight: 700; line-height: 1.05; }
+.receipt-sub { font-size: 0.95rem; margin-top: 0.15rem; color: rgba(0,0,0,0.72) !important; }
+.receipt-lines { margin: 1rem 0 1.1rem; border-top: 3px solid #000; }
+.receipt-line { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px dotted rgba(0,0,0,0.5); }
+.receipt-line dt { flex: 1; font-size: 0.95rem; }
+.receipt-line dd { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.receipt-total { border-bottom: 3px solid #000; }
+.receipt-total dt { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; }
+.receipt-total dd { font-size: 1.9rem; font-weight: 700; }
+.receipt-need-title { font-weight: 600; font-size: 0.95rem; }
+.receipt-needs { list-style: disc; padding-left: 1.2rem; margin: 0.3rem 0 0.75rem; display: grid; gap: 0.15rem; font-size: 0.93rem; }
+.receipt-note { font-size: 0.9rem; line-height: 1.5; color: rgba(0,0,0,0.8) !important; }
+.receipt-cta { width: 100%; justify-content: center; margin-top: 1.1rem; min-height: 50px; font-size: 1rem; white-space: normal; text-align: center; }
+.receipt-fine { margin-top: 0.75rem; font-size: 0.8rem; line-height: 1.45; color: rgba(0,0,0,0.72) !important; }
+.receipt-fine a { color: #000; text-decoration: underline; text-underline-offset: 2px; }
+.receipt a:focus-visible { outline-color: #000; }
+
+.cost-all { margin-top: 2rem; }
+.cost-all summary { cursor: pointer; display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
+.cost-table { width: 100%; max-width: 760px; border-collapse: collapse; margin-top: 1.25rem; font-size: 0.93rem; }
+.cost-table caption { text-align: left; font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; padding-bottom: 0.4rem; color: var(--white); }
+.cost-table th, .cost-table td { padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); text-align: right; font-variant-numeric: tabular-nums; }
+.cost-table th[scope=row], .cost-table thead th:first-child { text-align: left; font-weight: 500; color: var(--white); }
+.cost-table thead th { font-size: 0.82rem; font-weight: 600; color: var(--gray-400); }
+.cost-table td:last-child { color: var(--gold-light); font-weight: 600; }
+@media (max-width: 480px) { .cost-table { font-size: 0.85rem; } .cost-table th, .cost-table td { padding: 0.5rem 0.3rem; } }
+
+.board-more { color: #000; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+#cost, .receipt { scroll-margin-top: calc(var(--nav-h) + 1.25rem); }
+.cost-bar {
+  position: sticky; bottom: 0; z-index: 5; display: flex; align-items: center; gap: 0.75rem;
+  margin: -1.5rem -1rem 0; padding: 0.7rem 5.25rem 0.7rem 1rem; /* right padding clears the floating WhatsApp button */
+  background: rgba(0,0,0,0.96); border-top: 1px solid var(--gold-dark);
+}
+.cost-bar-text { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
+.cost-bar-name { font-size: 0.85rem; color: var(--gray-400); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cost-bar-text strong { font-family: var(--font-display); font-size: 1.35rem; color: var(--gold-light); font-variant-numeric: tabular-nums; }
+.cost-bar-link { flex-shrink: 0; font-weight: 600; color: var(--white); text-decoration: underline; text-underline-offset: 3px; min-height: 44px; display: inline-flex; align-items: center; }
+@media (min-width: 900px) { .cost-bar { display: none; } }
