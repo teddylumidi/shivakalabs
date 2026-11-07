@@ -2,19 +2,32 @@
  * fees.js — Prices for the eCitizen cost checker ("What will it cost?").
  *
  * Each option has:
- *   price  what ShivakaLabs charges, from the ShivakaLabs price list
- *   gov    the official fee paid to the government body, in KSh (0 = free, null = varies/not split)
- *   mode   how the two combine:
- *            'plus'      price is our service fee; the government fee is paid on top
- *            'included'  price already includes the government fee (an all-in price)
- *            'free'      the government charges nothing; price is the whole cost
- *   govLabel (optional) overrides the group's label, e.g. a CRB agency fee
+ *   price     what ShivakaLabs charges, from the ShivakaLabs price list
+ *   gov       the BASE government fee, in KSh, before the eCitizen platform fee
+ *             (0 = free, null = varies / shown on eCitizen at payment)
+ *   platform  the eCitizen platform (convenience) fee charged on that payment,
+ *             in KSh. Use P for payments made on eCitizen, 0 otherwise.
+ *   mode      how the price combines with the government charges:
+ *               'plus'      price is our fee; base + platform fee are paid on top
+ *               'included'  price is all-in; our fee = price − base − platform
+ *               'free'      the government charges nothing; price is the whole cost
+ *   from      (optional) true when the price is a starting price ("From KSh …")
+ *   govLabel  (optional) overrides the group's label, e.g. a CRB agency fee
  *
- * Government fees were checked on FEES_CHECKED. Update `gov` when a fee
- * changes; the page, homepage price list and WhatsApp messages follow.
+ * Fees were checked on FEES_CHECKED. When a government or platform fee
+ * changes, update `gov` or PLATFORM_FEE; the page, homepage price list,
+ * search and WhatsApp messages all follow.
  */
 
-export const FEES_CHECKED = '2 November 2026';
+export const FEES_CHECKED = '7 November 2026';
+
+/**
+ * eCitizen platform (convenience) fee per payment. KSh 50 flat at the time of
+ * checking; Treasury's draft 2026 regulations propose a tiered fee (free to
+ * KSh 100 by amount). If they are gazetted, set per-option `platform` values.
+ */
+export const PLATFORM_FEE = 50;
+const P = PLATFORM_FEE;
 
 const SRC = {
   immigration: { label: 'immigration.go.ke', url: 'https://immigration.go.ke/type-and-fees/' },
@@ -29,29 +42,25 @@ const SRC = {
 export const FEE_GROUPS = [
   {
     id: 'passport', name: 'Passport', source: SRC.immigration,
-    govLabel: 'Government fee (Immigration, paid on eCitizen)',
+    govLabel: 'Base government fee (Immigration)',
     note: 'You attend one biometrics appointment at an immigration office or embassy. We fill the form, book the slot and track the passport for you.',
     options: [
-      { id: 'passport-34', name: '34-page passport', detail: 'Ordinary, A series', price: 500, gov: 7550, mode: 'plus',
+      { id: 'passport-66', name: 'Passport application', detail: '66-page ordinary passport (the only booklet now issued)', price: 500, gov: 12500, platform: P, mode: 'plus',
         needs: ['National ID (and birth certificate for first-time applicants)', 'Parents’ ID copies', 'Recommender’s details', 'Passport photo (we can make one)'] },
-      { id: 'passport-50', name: '50-page passport', detail: 'Ordinary, B series', price: 500, gov: 9550, mode: 'plus',
-        needs: ['National ID (and birth certificate for first-time applicants)', 'Parents’ ID copies', 'Recommender’s details', 'Passport photo (we can make one)'] },
-      { id: 'passport-66', name: '66-page passport', detail: 'Ordinary, C series', price: 500, gov: 12050, mode: 'plus',
-        needs: ['National ID (and birth certificate for first-time applicants)', 'Parents’ ID copies', 'Recommender’s details', 'Passport photo (we can make one)'] },
-      { id: 'passport-lost', name: 'Lost passport replacement', detail: 'Replaces a lost passport', price: 500, gov: 20050, mode: 'plus',
+      { id: 'passport-lost', name: 'Lost passport replacement', detail: 'Replaces a lost passport', price: 500, gov: 20000, platform: P, mode: 'plus',
         needs: ['Police abstract for the lost passport', 'National ID', 'Copy or number of the lost passport, if you have it'] },
-      { id: 'passport-mutilated', name: 'Damaged passport replacement', detail: 'Replaces a damaged passport', price: 500, gov: 20050, mode: 'plus',
+      { id: 'passport-mutilated', name: 'Damaged passport replacement', detail: 'Replaces a damaged passport', price: 500, gov: 20000, platform: P, mode: 'plus',
         needs: ['The damaged passport', 'National ID'] },
-      { id: 'temporary-permit', name: 'Temporary permit', detail: 'Travel within East Africa', price: 500, gov: 1050, mode: 'plus',
+      { id: 'temporary-permit', name: 'Temporary permit', detail: 'Travel within East Africa', price: 500, gov: 1000, platform: P, mode: 'plus',
         needs: ['National ID', 'Passport photo', 'Travel details'] },
     ],
   },
   {
     id: 'kra', name: 'KRA', source: SRC.kra,
-    govLabel: 'Government fee (KRA)',
+    govLabel: 'Base government fee (KRA)',
     note: 'KRA does not charge for these services. You only pay our fee, and we send your certificate or acknowledgement receipt on WhatsApp.',
     options: [
-      { id: 'kra-pin', name: 'KRA PIN registration', detail: 'New individual PIN on iTax', price: 200, gov: 0, mode: 'free',
+      { id: 'kra-pin', name: 'KRA PIN registration', detail: 'New individual PIN on iTax', price: 100, gov: 0, mode: 'free',
         needs: ['National ID number', 'Phone number and an email you can open'] },
       { id: 'kra-pin-company', name: 'KRA PIN for a company', detail: 'PIN for a registered company', price: 500, gov: 0, mode: 'free',
         needs: ['Certificate of incorporation and CR12', 'Directors’ KRA PINs and IDs', 'Company email and phone'] },
@@ -61,8 +70,10 @@ export const FEE_GROUPS = [
         needs: ['KRA PIN and iTax password (or registered email)', 'P9 form from each employer'] },
       { id: 'kra-withholding', name: 'Return with withholding certificate', detail: 'Income tax return claiming withholding tax', price: 300, gov: 0, mode: 'free',
         needs: ['KRA PIN and iTax password', 'Withholding tax certificates'] },
-      { id: 'kra-tcc', name: 'Tax compliance certificate (TCC)', detail: 'Apply for a TCC', price: 100, gov: 0, mode: 'free',
+      { id: 'kra-tcc', name: 'Tax compliance certificate (TCC)', detail: 'Apply for a TCC', price: 500, gov: 0, mode: 'free',
         needs: ['KRA PIN and iTax password (or registered email)', 'All returns filed up to date'] },
+      { id: 'kra-etims', name: 'eTIMS invoicing setup', detail: 'Register and start issuing eTIMS invoices', price: 200, from: true, gov: 0, mode: 'free',
+        needs: ['KRA PIN and iTax password (or registered email)', 'Business details and the phone you will invoice from'] },
       { id: 'kra-update', name: 'KRA PIN update', detail: 'Name, phone or address', price: 100, gov: 0, mode: 'free',
         needs: ['KRA PIN and iTax password (or registered email)', 'The new details'] },
       { id: 'kra-email', name: 'KRA email reset', detail: 'Move iTax to a new email', price: 100, gov: 0, mode: 'free',
@@ -75,14 +86,14 @@ export const FEE_GROUPS = [
   },
   {
     id: 'ntsa', name: 'NTSA', source: SRC.ntsa,
-    govLabel: 'Government fee (NTSA, paid on eCitizen)',
+    govLabel: 'Base government fee (NTSA)',
     note: 'Driving tests and eye checks happen in person. We handle the online application, payment and booking.',
     options: [
-      { id: 'ntsa-pdl', name: 'Provisional driving licence (PDL)', detail: 'For learner drivers, per class', price: 850, gov: 600, mode: 'included',
+      { id: 'ntsa-pdl', name: 'Provisional driving licence (PDL)', detail: 'For learner drivers, per class', price: 850, gov: 600, platform: P, mode: 'included',
         needs: ['National ID', 'eCitizen login, or phone and email to create one', 'Driving school details'] },
-      { id: 'ntsa-smart-dl', name: 'Smart driving licence', detail: 'First smart DL or upgrade from the red booklet', price: 3500, gov: 3050, mode: 'included',
+      { id: 'ntsa-smart-dl', name: 'Smart driving licence', detail: 'First smart DL or upgrade from the red booklet', price: 3500, gov: 3000, platform: P, mode: 'included',
         needs: ['National ID', 'Current driving licence number', 'Passport photo (we can make one)'] },
-      { id: 'ntsa-renewal-1y', name: '1-year driving licence renewal', detail: 'Renew for one year', price: 650, gov: null, mode: 'included',
+      { id: 'ntsa-renewal-1y', name: '1-year driving licence renewal', detail: 'Renew for one year', price: 650, gov: null, platform: P, mode: 'included',
         needs: ['National ID', 'Driving licence number'] },
       { id: 'ntsa-tims', name: 'NTSA / TIMS account', detail: 'Create or recover your account', price: 200, gov: 0, mode: 'free',
         needs: ['National ID number', 'Phone number and email'] },
@@ -90,7 +101,7 @@ export const FEE_GROUPS = [
   },
   {
     id: 'education', name: 'HELB & KUCCPS', source: SRC.edu,
-    govLabel: 'Fee to the institution',
+    govLabel: 'Base fee to the institution',
     note: 'We apply on your behalf and send you the confirmation. Keep your payment reference — you need it for any changes later.',
     options: [
       { id: 'helb-account', name: 'HELB account creation', detail: 'Set up your HELB portal account', price: 100, gov: 0, mode: 'free',
@@ -109,12 +120,12 @@ export const FEE_GROUPS = [
   },
   {
     id: 'business', name: 'Business', source: SRC.brs,
-    govLabel: 'Government fee (BRS, paid on eCitizen)',
+    govLabel: 'Base government fee (BRS)',
     note: 'We prepare and file everything on eCitizen and send you the certificate and documents as PDFs.',
     options: [
-      { id: 'brs-business-name', name: 'Business name registration', detail: 'Sole proprietor or partnership', price: 1500, gov: 950, mode: 'included',
+      { id: 'brs-business-name', name: 'Business name registration', detail: 'Sole proprietor or partnership', price: 1500, gov: 950, platform: P, mode: 'included',
         needs: ['Three proposed names in order of preference', 'Owners’ IDs and KRA PINs', 'Business address, phone and email'] },
-      { id: 'brs-company', name: 'Company registration', detail: 'Private limited company', price: 18700, gov: 10650, mode: 'included',
+      { id: 'brs-company', name: 'Company registration', detail: 'Private limited company', price: 18700, gov: 10650, platform: P, mode: 'included',
         needs: ['Three proposed names', 'Directors’ and shareholders’ IDs, KRA PINs and passport photos', 'Share split and registered address'] },
       { id: 'brs-linking', name: 'Business linking', detail: 'Link a business to your eCitizen account', price: 500, gov: 0, mode: 'free',
         needs: ['Business registration number', 'Owner’s or director’s ID and KRA PIN'] },
@@ -124,10 +135,10 @@ export const FEE_GROUPS = [
   },
   {
     id: 'public-service', name: 'TSC & civil service', source: SRC.tsc,
-    govLabel: 'Government fee',
+    govLabel: 'Base government fee',
     note: 'We work on the official portals with your login and send you the confirmation or payslip as a PDF.',
     options: [
-      { id: 'tsc-number', name: 'TSC number application', detail: 'New teacher registration', price: 500, gov: 1050, mode: 'plus', govLabel: 'TSC registration fee (eCitizen)',
+      { id: 'tsc-number', name: 'TSC number application', detail: 'New teacher registration', price: 500, gov: 1000, platform: P, mode: 'plus', govLabel: 'Base TSC registration fee',
         needs: ['National ID', 'Academic and professional certificates', 'Passport photo', 'Certificate of good conduct'] },
       { id: 'tsc-wealth', name: 'TSC wealth declaration', detail: 'Online declaration form', price: 200, gov: 0, mode: 'free',
         needs: ['TSC number and ID', 'Your income, assets and liabilities, and your spouse’s if married'] },
@@ -143,10 +154,10 @@ export const FEE_GROUPS = [
   },
   {
     id: 'certificates', name: 'Certificates & accounts', source: SRC.ecitizen,
-    govLabel: 'Government fee (paid on eCitizen)',
+    govLabel: 'Base government fee',
     note: 'We apply and pay on the official portal, then send you the certificate or confirmation on WhatsApp.',
     options: [
-      { id: 'good-conduct', name: 'Certificate of good conduct', detail: 'Police clearance from DCI', price: 200, gov: 1050, mode: 'plus', govLabel: 'Government fee (DCI, paid on eCitizen)',
+      { id: 'good-conduct', name: 'Certificate of good conduct', detail: 'Police clearance from DCI', price: 200, gov: 1000, platform: P, mode: 'plus', govLabel: 'Base government fee (DCI)',
         needs: ['National ID number', 'eCitizen login, or phone and email to create one', 'You then give fingerprints at DCI or a Huduma Centre'] },
       { id: 'crb-metropol', name: 'Metropol CRB clearance', detail: 'CRB certificate for jobs or loans', price: 2600, gov: 2200, mode: 'included', govLabel: 'Metropol CRB fee',
         needs: ['National ID number', 'Phone number registered in your name'] },
@@ -181,10 +192,23 @@ export function feeOption(id) {
   return ALL_FEE_OPTIONS.find(o => o.id === id) || null;
 }
 
-/** What the customer pays in total. */
-export const totalOf = o => (o.mode === 'plus' ? o.price + (o.gov || 0) : o.price);
+/** eCitizen platform fee on this option's government payment (0 when none). */
+export const platformOf = o => (o.gov === 0 ? 0 : o.platform || 0);
 
-/** Our service fee within the total, when it can be worked out. */
-export const serviceFeeOf = o => (o.mode === 'included' ? (o.gov == null ? null : o.price - o.gov) : o.price);
+/** Base government fee + platform fee, or null when the base fee varies. */
+export const govChargesOf = o => (o.gov == null ? null : o.gov + platformOf(o));
+
+/** What the customer pays in total. */
+export const totalOf = o => (o.mode === 'plus' ? o.price + (govChargesOf(o) || 0) : o.price);
+
+/** Our (ShivakaLabs) fee within the total, when it can be worked out. */
+export const serviceFeeOf = o => {
+  if (o.mode !== 'included') return o.price;
+  const gov = govChargesOf(o);
+  return gov == null ? null : o.price - gov;
+};
 
 export const ksh = n => `KSh ${n.toLocaleString('en-KE')}`;
+
+/** Total as shown to customers, with "From" for starting prices. */
+export const totalText = o => `${o.from ? 'From ' : ''}${ksh(totalOf(o))}`;

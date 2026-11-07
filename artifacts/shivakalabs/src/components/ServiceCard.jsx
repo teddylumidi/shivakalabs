@@ -10,8 +10,8 @@ import { feeOption, totalOf } from '../data/fees';
 function priceInfo(feeId) {
   const o = feeId && feeOption(feeId);
   if (!o) return null;
-  const from = o.group.id === 'passport' && o.id === 'passport-34';
-  const note = o.mode === 'plus' && o.gov ? 'incl. government fee'
+  const from = !!o.from;
+  const note = o.mode === 'plus' && o.gov ? 'incl. government & eCitizen fees'
     : o.mode === 'included' ? 'all in'
     : o.mode === 'free' && o.gov === 0 && o.group.govLabel ? 'no government fee'
     : '';

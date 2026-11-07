@@ -46,8 +46,8 @@ export const ECITIZEN_SERVICES = [
   { name: 'Good Conduct Booking Assistance', desc: 'Help booking a DCI fingerprint appointment for Good Conduct.', category: 'goodconduct', icon: 'fa-certificate' },
   { name: 'Good Conduct Status Follow-up', desc: 'Track and follow up on a pending Good Conduct application.', category: 'goodconduct', icon: 'fa-certificate' },
   // Passport
-  { name: 'Passport Application Assistance', fee: 'passport-34', desc: 'Professional help applying for a new Kenyan passport online.', category: 'passport', icon: 'fa-book' },
-  { name: 'Passport Renewal Assistance', fee: 'passport-34', desc: 'Renew your expiring or expired passport via eCitizen.', category: 'passport', icon: 'fa-book' },
+  { name: 'Passport Application Assistance', fee: 'passport-66', desc: 'Professional help applying for a new Kenyan passport online.', category: 'passport', icon: 'fa-book' },
+  { name: 'Passport Renewal Assistance', fee: 'passport-66', desc: 'Renew your expiring or expired passport via eCitizen.', category: 'passport', icon: 'fa-book' },
   { name: 'Lost Passport Replacement Guidance', fee: 'passport-lost', desc: 'Guidance on replacing a lost passport through official channels.', category: 'passport', icon: 'fa-book' },
   { name: 'Child Passport Application', desc: "Apply for a child's passport with full guidance and assistance.", category: 'passport', icon: 'fa-book' },
   { name: 'Passport Tracking Follow-up', desc: 'Track your passport application status and resolve delays.', category: 'passport', icon: 'fa-book' },
@@ -76,6 +76,7 @@ export const ECITIZEN_SERVICES = [
   { name: 'KRA PIN for Company', fee: 'kra-pin-company', img: 'kra-pin-for-company', desc: 'Register a KRA PIN for a newly incorporated company.', category: 'kra', icon: 'fa-calculator' },
   { name: 'P9 Income Tax Return', fee: 'kra-employment-return', img: 'p9-income-tax-return', desc: 'File your annual employment income return using your P9 form.', category: 'kra', icon: 'fa-calculator' },
   { name: 'Withholding Tax Return Filing', fee: 'kra-withholding', img: 'withholding-tax-wht-checker', desc: 'File an income tax return that claims withholding tax certificates.', category: 'kra', icon: 'fa-calculator' },
+  { name: 'eTIMS Invoicing Setup', fee: 'kra-etims', img: 'kra-mobile-payments-mservice', desc: 'Register for KRA eTIMS and start issuing tax-compliant electronic invoices.', category: 'kra', icon: 'fa-file-text-o' },
   { name: 'Nil Returns Filing', fee: 'kra-nil-return', desc: 'File your KRA nil returns on time to avoid penalties.', category: 'kra', icon: 'fa-calculator' },
   { name: 'Business Tax Return Filing', desc: 'File business tax returns accurately and on time.', category: 'kra', icon: 'fa-calculator' },
   { name: 'VAT Filing Assistance', desc: 'Guidance filing VAT returns and managing VAT obligations.', category: 'kra', icon: 'fa-calculator' },

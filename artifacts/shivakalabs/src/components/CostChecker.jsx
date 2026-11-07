@@ -1,47 +1,55 @@
 /**
  * CostChecker.jsx — "What will it cost?" for eCitizen services.
  *
- * Pick a service and see the government fee, our fee and the total on a
- * receipt, then apply on WhatsApp with that exact service and total in the
+ * Pick a service and see the base government fee, the eCitizen platform fee,
+ * the ShivakaLabs fee and the total payable on a receipt, then apply on WhatsApp with that exact service and total in the
  * message. Every price is also in the prerendered "All prices" table, so
  * search engines and people without JavaScript can read them.
  *
- * Deep link: /ecitizen?cost=passport-34#cost
+ * Deep link: /ecitizen?cost=passport-66#cost
  */
 import { useEffect, useId, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { FEE_GROUPS, FEES_CHECKED, feeOption, totalOf, serviceFeeOf, ksh } from '../data/fees';
+import { FEE_GROUPS, FEES_CHECKED, feeOption, totalOf, serviceFeeOf, platformOf, ksh, totalText } from '../data/fees';
 import { WA_NUMBER } from '../data/services';
 
-/** Receipt lines for an option: [{ label, value }] — the total is added separately. */
+/** Base government fee cell text. */
+function baseText(o) {
+  if (o.gov == null) return 'Shown on eCitizen';
+  if (o.gov === 0) return 'Free';
+  return ksh(o.gov);
+}
+
+/** eCitizen platform fee cell text. */
+function platformText(o) {
+  if (o.gov === 0 || !o.platform) return 'None';
+  return ksh(platformOf(o));
+}
+
+/** ShivakaLabs fee cell text. */
+function feeText(o) {
+  const fee = serviceFeeOf(o);
+  return fee == null ? 'Included in total' : `${o.from ? 'From ' : ''}${ksh(fee)}`;
+}
+
+/**
+ * Receipt lines for an option: [{ label, value }] — the total is added separately.
+ * Always the same four rows, in the same order, so every service reads alike.
+ */
 export function receiptLines(o) {
-  const govLabel = o.govLabel || o.group.govLabel;
-  if (o.mode === 'plus') {
-    return [
-      { label: govLabel, value: o.gov == null ? 'Paid separately' : ksh(o.gov) },
-      { label: 'ShivakaLabs service fee', value: ksh(o.price) },
-    ];
-  }
-  if (o.mode === 'included') {
-    const fee = serviceFeeOf(o);
-    return fee == null
-      ? [{ label: `${govLabel} and our service`, value: 'Included' }]
-      : [
-          { label: govLabel, value: ksh(o.gov), included: true },
-          { label: 'ShivakaLabs service fee', value: ksh(fee) },
-        ];
-  }
+  const govLabel = o.govLabel || o.group.govLabel || 'Base government fee';
   return [
-    ...(govLabel ? [{ label: govLabel, value: 'Free' }] : []),
-    { label: 'ShivakaLabs service fee', value: ksh(o.price) },
+    { label: govLabel, value: baseText(o) },
+    { label: 'eCitizen platform fee', value: platformText(o) },
+    { label: 'ShivakaLabs fee', value: feeText(o) },
   ];
 }
 
 function waQuote(option) {
-  const breakdown = receiptLines(option).map(l => `${l.label}: ${l.value}${l.included ? ' (included)' : ''}`).join('; ');
+  const breakdown = receiptLines(option).map(l => `${l.label}: ${l.value}`).join('; ');
   const lines = [
     `Hello ShivakaLabs, I'd like help with: ${option.name} (${option.detail}).`,
-    `Your site shows a total of ${ksh(totalOf(option))} (${breakdown}).`,
+    `Your site shows a total of ${totalText(option)} (${breakdown}).`,
   ];
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
 }
@@ -83,7 +91,7 @@ export default function CostChecker() {
       <div className="container">
         <div className="section-title">
           <h2 id={`${uid}-title`}>What will it cost?</h2>
-          <p className="subtitle">Pick a service to see the government fee, our fee and the total before you message us.</p>
+          <p className="subtitle">Pick a service to see the base government fee, the eCitizen platform fee, our fee and the total payable before you message us.</p>
         </div>
 
         <div className="cost-tabs" role="tablist" aria-label="Service type">
@@ -113,14 +121,14 @@ export default function CostChecker() {
                 <input type="radio" name={`${uid}-option`} value={o.id} checked={o.id === option.id} onChange={() => setOptionId(o.id)} />
                 <span className="cost-option-name">{o.name}</span>
                 <span className="cost-option-detail">{o.detail}</span>
-                <span className="cost-option-total">{ksh(totalOf(o))}</span>
+                <span className="cost-option-total">{totalText(o)}</span>
               </label>
             ))}
           </fieldset>
 
           {/* Phones: the total stays in view while choosing; tap to see the breakdown */}
           <div className="cost-bar">
-            <span className="cost-bar-text"><span className="cost-bar-name">{option.name}</span> <strong>{ksh(totalOf(option))}</strong></span>
+            <span className="cost-bar-text"><span className="cost-bar-name">{option.name}</span> <strong>{totalText(option)}</strong></span>
             <a href={`#${uid}-receipt`} className="cost-bar-link" onClick={e => { e.preventDefault(); document.getElementById(`${uid}-receipt`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>
               See breakdown
             </a>
@@ -132,13 +140,13 @@ export default function CostChecker() {
             <dl className="receipt-lines">
               {receiptLines(option).map(l => (
                 <div key={l.label} className="receipt-line">
-                  <dt>{l.label}{l.included && <span className="receipt-tag">included in total</span>}</dt>
+                  <dt>{l.label}</dt>
                   <dd>{l.value}</dd>
                 </div>
               ))}
               <div className="receipt-line receipt-total">
-                <dt>Total</dt>
-                <dd>{ksh(totalOf(option))}</dd>
+                <dt>Total payable</dt>
+                <dd>{totalText(option)}</dd>
               </div>
             </dl>
 
@@ -149,11 +157,11 @@ export default function CostChecker() {
             <p className="receipt-note">{group.note}</p>
 
             <a className="btn-wa receipt-cta" href={waQuote(option)} target="_blank" rel="noopener noreferrer">
-              <i className="fa fa-whatsapp" aria-hidden="true" /> Apply on WhatsApp for {ksh(totalOf(option))}
+              <i className="fa fa-whatsapp" aria-hidden="true" /> Apply on WhatsApp for {totalText(option)}
             </a>
             <p className="receipt-fine">
               {group.source
-                ? <>Government fees checked {FEES_CHECKED} on{' '}
+                ? <>Government and platform fees checked {FEES_CHECKED} on{' '}
                     <a href={group.source.url} target="_blank" rel="noopener noreferrer">{group.source.label}</a>.{' '}</>
                 : null}
               Fees can change, and we confirm the total before you pay.
@@ -167,14 +175,22 @@ export default function CostChecker() {
             <table key={g.id} className="cost-table">
               <caption>{g.name}</caption>
               <thead>
-                <tr><th scope="col">Service</th><th scope="col">Government fee</th><th scope="col">Total</th></tr>
+                <tr>
+                  <th scope="col">Service</th>
+                  <th scope="col">Base Government Fee (KSh)</th>
+                  <th scope="col">eCitizen Platform Fee (KSh)</th>
+                  <th scope="col">ShivakaLabs Fee (KSh)</th>
+                  <th scope="col">Total Payable (KSh)</th>
+                </tr>
               </thead>
               <tbody>
                 {g.options.map(o => (
                   <tr key={o.id}>
                     <th scope="row">{o.name}</th>
-                    <td>{o.gov == null ? (o.mode === 'plus' ? 'Separate' : 'Included') : o.gov === 0 ? 'Free' : `${o.gov.toLocaleString('en-KE')}${o.mode === 'included' ? ' (incl.)' : ''}`}</td>
-                    <td>{totalOf(o).toLocaleString('en-KE')}</td>
+                    <td data-label="Base Government Fee">{o.gov == null ? 'On eCitizen' : o.gov === 0 ? 'Free' : o.gov.toLocaleString('en-KE')}</td>
+                    <td data-label="eCitizen Platform Fee">{o.gov === 0 || !o.platform ? '–' : platformOf(o).toLocaleString('en-KE')}</td>
+                    <td data-label="ShivakaLabs Fee">{serviceFeeOf(o) == null ? 'Incl.' : serviceFeeOf(o).toLocaleString('en-KE')}</td>
+                    <td data-label="Total Payable">{o.from ? 'From ' : ''}{totalOf(o).toLocaleString('en-KE')}</td>
                   </tr>
                 ))}
               </tbody>

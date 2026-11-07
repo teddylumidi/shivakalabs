@@ -962,7 +962,16 @@ main > * { animation: none; }
 .cost-table th[scope=row], .cost-table thead th:first-child { text-align: left; font-weight: 500; color: var(--ink); }
 .cost-table thead th { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
 .cost-table td:last-child { color: var(--gold-ink); font-weight: 600; }
-@media (max-width: 480px) { .cost-table { font-size: 0.85rem; } .cost-table th, .cost-table td { padding: 0.5rem 0.3rem; } }
+.cost-table { max-width: 900px; }
+@media (max-width: 640px) {
+  /* Five columns don't fit a phone: each service becomes a labelled block. */
+  .cost-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .cost-table, .cost-table tbody, .cost-table tr, .cost-table th[scope=row], .cost-table td { display: block; width: 100%; }
+  .cost-table tr { padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+  .cost-table th[scope=row] { border: 0; padding: 0 0 0.3rem; font-weight: 600; }
+  .cost-table td { display: flex; justify-content: space-between; gap: 1rem; border: 0; padding: 0.15rem 0; font-size: 0.88rem; }
+  .cost-table td::before { content: attr(data-label); color: var(--muted); text-align: left; }
+}
 
 .board-more { color: #000; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 #cost, .receipt { scroll-margin-top: calc(var(--nav-h) + 1.25rem); }
