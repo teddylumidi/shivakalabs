@@ -76,7 +76,7 @@ export const ECITIZEN_SERVICES = [
   { name: 'KRA PIN for Company', fee: 'kra-pin-company', img: 'kra-pin-for-company', desc: 'Register a KRA PIN for a newly incorporated company.', category: 'kra', icon: 'fa-calculator' },
   { name: 'P9 Income Tax Return', fee: 'kra-employment-return', img: 'p9-income-tax-return', desc: 'File your annual employment income return using your P9 form.', category: 'kra', icon: 'fa-calculator' },
   { name: 'Withholding Tax Return Filing', fee: 'kra-withholding', img: 'withholding-tax-wht-checker', desc: 'File an income tax return that claims withholding tax certificates.', category: 'kra', icon: 'fa-calculator' },
-  { name: 'eTIMS Invoicing Setup', fee: 'kra-etims', img: 'kra-mobile-payments-mservice', desc: 'Register for KRA eTIMS and start issuing tax-compliant electronic invoices.', category: 'kra', icon: 'fa-file-text-o' },
+  { name: 'eTIMS Invoicing Setup', fee: 'kra-etims', img: 'kra-mobile-payments-mservice', desc: 'Register for KRA eTIMS and start issuing tax-compliant electronic invoices. Price depends on how many items you sell.', category: 'kra', icon: 'fa-file-text-o' },
   { name: 'Nil Returns Filing', fee: 'kra-nil-return', desc: 'File your KRA nil returns on time to avoid penalties.', category: 'kra', icon: 'fa-calculator' },
   { name: 'Business Tax Return Filing', desc: 'File business tax returns accurately and on time.', category: 'kra', icon: 'fa-calculator' },
   { name: 'VAT Filing Assistance', desc: 'Guidance filing VAT returns and managing VAT obligations.', category: 'kra', icon: 'fa-calculator' },
